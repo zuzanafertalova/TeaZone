@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "66812828450",
+    "firebase_url": "https://teazone-project.firebaseio.com",
+    "project_id": "teazone-project",
+    "storage_bucket": "teazone-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:66812828450:android:9d0dcf6773306bdc63a37b",
+        "android_client_info": {
+          "package_name": "sk.upjs.ics.android.teazoneinc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "66812828450-v9dsd12fa9usvnh9us22plkhhf002vva.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5OamBV_5Vukhbr9F19jZkY9Rry5Uo48Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "66812828450-v9dsd12fa9usvnh9us22plkhhf002vva.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
