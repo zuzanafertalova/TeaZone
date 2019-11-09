@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".SignupActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -21,13 +21,13 @@
         app:srcCompat="@drawable/teazone_logo_transparent" />
 
     <TextView
-        android:id="@+id/tvLogin"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="180dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="180dp"
-        android:text="Login"
+        android:layout_marginStart="149dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="150dp"
+        android:text="Registration"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -36,7 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
-        android:id="@+id/tvLoginUsername"
+        android:id="@+id/tvSignupUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="99dp"
@@ -47,10 +47,10 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:id="@+id/pswdLoginPassword"
+        android:id="@+id/pswdSignupPswrd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="99dp"
@@ -61,46 +61,58 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvLoginUsername" />
+        app:layout_constraintTop_toBottomOf="@+id/tvSignupUsername" />
 
-    <TextView
-        android:id="@+id/textView2"
+    <EditText
+        android:id="@+id/pswdSignupConfirmPswrd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="94dp"
-        android:layout_marginTop="116dp"
-        android:layout_marginEnd="94dp"
-        android:text="Don't have an account? Click below"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
-
-    <Button
-        android:id="@+id/btnCreateAccount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="121dp"
+        android:layout_marginStart="99dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="122dp"
-        android:backgroundTint="@color/colorPrimaryGrey"
-        android:text="Create an account"
-        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginEnd="99dp"
+        android:ems="10"
+        android:hint="Confirm password"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/pswdSignupPswrd" />
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnSignup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="161dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="162dp"
-        android:backgroundTint="@color/colorPrimaryGrey"
-        android:text="Login"
-        android:textColor="@color/colorPrimaryDark"
+        android:background="@color/colorPrimaryGrey"
+        android:text="Sign Up"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pswdLoginPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/pswdSignupConfirmPswrd" />
+
+    <Button
+        android:id="@+id/btnLoginToAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="119dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="120dp"
+        android:background="@color/colorPrimaryGrey"
+        android:text="Login to your account"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="86dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="87dp"
+        android:text="Already have an account? Click below"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSignup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
