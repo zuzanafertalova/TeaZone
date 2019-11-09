@@ -51,4 +51,20 @@ class LoginActivity : AppCompatActivity() {
         })
         
     }
+
+        //toto je na to ze ked zapne apku hned ho prihlasi usera ked ostane prihlaseny
+//    public override fun onStart() {
+//        super.onStart()
+//        // Check if user is signed in (non-null) and update UI accordingly.
+//        val currentUser = auth.currentUser
+//        if (currentUser==null){
+//
+//        }
+//        else{
+//            intent = Intent(this,HomeScreenActivity::class.java)
+//            startActivity(intent)
+//        }
+//    }
+
 }
+
