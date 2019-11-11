@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "66812828450-gdfv7rrc0cj2eje7ge7qudvs4egus9vi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "sk.upjs.ics.android.teazoneinc",
+            "certificate_hash": "0e279badf7c026765967575cf48f57320facda69"
+          }
+        },
+        {
           "client_id": "66812828450-v9dsd12fa9usvnh9us22plkhhf002vva.apps.googleusercontent.com",
           "client_type": 3
         }
