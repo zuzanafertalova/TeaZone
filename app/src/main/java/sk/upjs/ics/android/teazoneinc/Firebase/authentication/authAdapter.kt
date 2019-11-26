@@ -1,4 +1,4 @@
-package sk.upjs.ics.android.teazoneinc.db
+package sk.upjs.ics.android.teazoneinc.Firebase
 
 import android.app.Activity
 import android.content.Intent

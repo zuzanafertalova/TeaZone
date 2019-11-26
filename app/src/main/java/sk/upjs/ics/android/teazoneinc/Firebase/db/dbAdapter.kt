@@ -1,4 +1,4 @@
-package sk.upjs.ics.android.teazoneinc.db
+package sk.upjs.ics.android.teazoneinc.Firebase
 
 import android.util.Log
 import com.google.firebase.firestore.DocumentSnapshot
@@ -7,7 +7,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class Data {
     private val db = FirebaseFirestore.getInstance()
-    fun getData(document: String, collections: String, eventListener: EventListener<DocumentSnapshot>) {
+    fun getData(collections: String, document: String, eventListener: EventListener<DocumentSnapshot>) {
         db.collection(collections).document(document)
             .get()
             .addOnSuccessListener {
