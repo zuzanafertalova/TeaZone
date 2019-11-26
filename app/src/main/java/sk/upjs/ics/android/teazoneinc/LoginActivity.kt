@@ -7,7 +7,17 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.EventListener
+import kotlinx.android.synthetic.main.activity_home_screen.*
 import kotlinx.android.synthetic.main.activity_login.*
+import sk.upjs.ics.android.teazoneinc.db.authAdapter
+import com.google.firebase.auth.FirebaseUser
+import androidx.core.app.ComponentActivity
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+
+
 
 class LoginActivity : AppCompatActivity() {
 
@@ -16,6 +26,8 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        val authAdapter = authAdapter()
 
         auth = FirebaseAuth.getInstance()
 
@@ -27,20 +39,11 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this,"Please fill up all fields",Toast.LENGTH_SHORT).show()
             }
             else{
-                auth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this) {
-                            task ->
-                        if (task.isSuccessful) {
-                            Log.w("SUCCESFULL LOGIN", "signInWithEmail:success")
-                            val user = auth.currentUser
-                            intent = Intent(this,HomeScreenActivity::class.java)
-                            startActivity(intent)
-                        } else {
-                            Log.w("UNSUCCESFULL LOGIN", "signInWithEmail:failure", task.exception)
-                            Toast.makeText(baseContext, "daco nedobre moj", Toast.LENGTH_SHORT).show()
-                        }
-
-                    }
+                authAdapter.login(email,password, this,EventListener { it, _ ->
+                    val user = auth.currentUser
+                    intent = Intent(this,HomeScreenActivity::class.java)
+                    startActivity(intent)
+                })
             }
 
         })
