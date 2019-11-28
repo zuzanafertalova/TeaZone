@@ -9,12 +9,13 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.EventListener
 import kotlinx.android.synthetic.main.activity_signup.*
+import sk.upjs.ics.android.teazoneinc.Firebase.db.Data
 
 class SignupActivity : AppCompatActivity() {
 
 
     val authAdapter = sk.upjs.ics.android.teazoneinc.Firebase.authentication.authAdapter()
-
+    val dbAdapter = Data()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
@@ -38,6 +39,9 @@ class SignupActivity : AppCompatActivity() {
                         val user = user
                         Toast.makeText(this,"Môžete sa prihlásiť",Toast.LENGTH_SHORT).show()
                         finish()
+                        user?.let {user ->
+                            dbAdapter.createUserInDatabase(user)
+                        }
                     })
 
                 }
