@@ -1,7 +1,9 @@
 package sk.upjs.ics.android.teazoneinc
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Html
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -53,6 +55,11 @@ class SignupActivity : AppCompatActivity() {
             }
 
         )
+
+        tvSignupFiremnyUcet.setOnClickListener(View.OnClickListener {
+            intent = Intent(this,SignupFirmaActivity::class.java)
+            startActivity(intent)
+        })
 
     }
 
