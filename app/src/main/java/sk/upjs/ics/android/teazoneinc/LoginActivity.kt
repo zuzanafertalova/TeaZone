@@ -7,12 +7,12 @@ import android.view.View
 import android.widget.Toast
 import com.google.firebase.firestore.EventListener
 import kotlinx.android.synthetic.main.activity_login.*
-import sk.upjs.ics.android.teazoneinc.Firebase.authentication.authAdapter
+import sk.upjs.ics.android.teazoneinc.Firebase.authentication.AuthAdapter
 
 
 class LoginActivity : AppCompatActivity() {
 
-    val authAdapter = authAdapter()
+    val authAdapter = AuthAdapter()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

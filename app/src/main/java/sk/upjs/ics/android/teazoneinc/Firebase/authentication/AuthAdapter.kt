@@ -11,7 +11,7 @@ import com.google.firebase.firestore.EventListener
 import sk.upjs.ics.android.teazoneinc.HomeScreenActivity
 
 
-class authAdapter {
+class AuthAdapter {
 
     private val auth : FirebaseAuth = FirebaseAuth.getInstance()
 

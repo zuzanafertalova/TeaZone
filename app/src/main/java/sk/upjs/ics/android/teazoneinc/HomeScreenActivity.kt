@@ -6,7 +6,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_home_screen.*
-import sk.upjs.ics.android.teazoneinc.Firebase.db.Data
+import sk.upjs.ics.android.teazoneinc.Firebase.db.DbAdapter
 
 class HomeScreenActivity : AppCompatActivity() {
 
@@ -22,7 +22,7 @@ class HomeScreenActivity : AppCompatActivity() {
 
         val userID: String? = auth.currentUser?.uid
 
-        val data = Data()
+        val data = DbAdapter()
 
         userID?.let {
             data.getData("Users", it, EventListener { document, firebaseFirestoreException ->
