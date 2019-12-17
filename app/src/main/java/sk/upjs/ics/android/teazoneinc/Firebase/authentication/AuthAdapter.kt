@@ -8,6 +8,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.EventListener
+import com.google.firebase.firestore.FirebaseFirestoreException
 import sk.upjs.ics.android.teazoneinc.HomeScreenActivity
 
 
@@ -24,8 +25,15 @@ class AuthAdapter {
                    eventListener.onEvent(auth.currentUser, null)
 
                 } else {
-                    Log.w("UNSUCCESFULL LOGIN", "signInWithEmail:failure", task.exception)
-                    eventListener.onEvent(null,null)
+                    task.exception?.localizedMessage?.let {
+                       Log.w("UNSUCCSFULL LOGIN" , it)
+                        when(it){
+                            "The password is invalid or the user does not have a password." -> Toast.makeText(activity , "Meno a heslo sa nezhoduju", Toast.LENGTH_SHORT).show()
+                            "There is no user record corresponding to this identifier. The user may have been deleted." -> Toast.makeText(activity , "Meno a heslo sa nezhoduju", Toast.LENGTH_SHORT).show()
+                            "An internal error has occurred. [ 7: ]" -> Toast.makeText(activity,"Skontrolujte si internetove pripojenie",Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
                 }
 
             }
@@ -41,6 +49,14 @@ class AuthAdapter {
                 }
                 else {
                     Log.w("POZRIME SA CO SA STALO", "createUserWithEmail:failure", task.exception)
+                    task.exception?.localizedMessage?.let {
+                        Log.w("UNSUCCSFULL LOGIN" , it)
+                        when(it){
+                            "The password is invalid or the user does not have a password." -> Toast.makeText(activity , "Meno a heslo sa nezhoduju", Toast.LENGTH_SHORT).show()
+                            "There is no user record corresponding to this identifier. The user may have been deleted." -> Toast.makeText(activity , "Meno a heslo sa nezhoduju", Toast.LENGTH_SHORT).show()
+                            "An internal error has occurred. [ 7: ]" -> Toast.makeText(activity,"Skontrolujte si internetove pripojenie",Toast.LENGTH_SHORT).show()
+                        }
+                    }
                 }
 
             }
