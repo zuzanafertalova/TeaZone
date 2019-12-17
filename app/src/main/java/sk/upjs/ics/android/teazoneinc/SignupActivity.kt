@@ -28,7 +28,7 @@ class SignupActivity : AppCompatActivity() {
             val confrimpassword: String = pswdSignupConfirmPswrd.text.toString()
 
             if (email.isEmpty() || password.isEmpty() || confrimpassword.isEmpty()){
-                Toast.makeText(this,"Please fill up all fields",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Vyplňte všetky polia",Toast.LENGTH_SHORT).show()
             }
 
             else {
@@ -44,7 +44,7 @@ class SignupActivity : AppCompatActivity() {
 
                 }
                 else{
-                    Toast.makeText(this,"Your passwords does not match",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,"Heslá sa nezhodujú",Toast.LENGTH_SHORT).show()
                 }
 
                 }

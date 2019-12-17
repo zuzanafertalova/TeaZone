@@ -28,7 +28,7 @@ class LoginActivity : AppCompatActivity() {
             val password : String = pswdLoginPassword.text.toString()
 
             if (email.isEmpty() || password.isEmpty()){
-                Toast.makeText(this,"Prosim vyplnte vsetky polia",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Vyplňte všetky polia",Toast.LENGTH_SHORT).show()
             }
             else{
                 authAdapter.login(email,password, this,EventListener { currentUser, firestoreExeption ->

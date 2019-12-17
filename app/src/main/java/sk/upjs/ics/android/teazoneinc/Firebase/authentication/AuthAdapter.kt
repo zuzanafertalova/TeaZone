@@ -52,9 +52,10 @@ class AuthAdapter {
                     task.exception?.localizedMessage?.let {
                         Log.w("UNSUCCSFULL LOGIN" , it)
                         when(it){
-                            "The password is invalid or the user does not have a password." -> Toast.makeText(activity , "Meno a heslo sa nezhoduju", Toast.LENGTH_SHORT).show()
-                            "There is no user record corresponding to this identifier. The user may have been deleted." -> Toast.makeText(activity , "Meno a heslo sa nezhoduju", Toast.LENGTH_SHORT).show()
-                            "An internal error has occurred. [ 7: ]" -> Toast.makeText(activity,"Skontrolujte si internetove pripojenie",Toast.LENGTH_SHORT).show()
+                            "The email address is already in use by another account." -> Toast.makeText(activity , "Na tento email už existuje účet", Toast.LENGTH_SHORT).show()
+                            "The given password is invalid. [ Password should be at least 6 characters ]" -> Toast.makeText(activity , "Heslo musí byť dlhšie ako 6 znakov", Toast.LENGTH_SHORT).show()
+                            "An internal error has occurred. [ 7: ]" -> Toast.makeText(activity,"Skontrolujte si internetové pripojenie",Toast.LENGTH_SHORT).show()
+                            "The email address is badly formatted." -> Toast.makeText(activity,"Zadaná emailová adresa je nesprávna",Toast.LENGTH_SHORT).show()
                         }
                     }
                 }
