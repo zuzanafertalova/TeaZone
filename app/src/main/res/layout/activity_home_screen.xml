@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#0022BCAF"
     tools:context=".HomeScreenActivity">
 
     <Button
@@ -37,4 +38,27 @@
         android:text="TextView"
         app:layout_constraintStart_toStartOf="@+id/tvDescription"
         app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:background="#22BCAF"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/Bauhaus 93 Regular"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="174dp"
+        tools:layout_editor_absoluteY="25dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
