@@ -20,20 +20,6 @@ class HomeScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen)
 
-        val userID: String? = auth.currentUser?.uid
 
-        val data = DbAdapter()
-
-        userID?.let {
-            data.getData("Users", it, EventListener { document, firebaseFirestoreException ->
-                postID = document?.getString("PostID")
-                postID?.let {id ->
-                    data.getData("Posts", id.trim(), EventListener { it, _ ->
-                        tvDescription.text = it?.getString("Name")
-                    })
-                }
-            })
-
-        }
     }
 }
