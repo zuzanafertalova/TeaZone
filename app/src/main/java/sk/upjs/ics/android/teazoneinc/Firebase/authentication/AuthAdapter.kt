@@ -16,6 +16,10 @@ class AuthAdapter {
 
     private val auth : FirebaseAuth = FirebaseAuth.getInstance()
 
+    fun getUser(): FirebaseUser? {
+        return auth.currentUser
+    }
+
 
     fun login(email : String , password : String, activity: Activity, eventListener: EventListener<FirebaseUser>){
         auth.signInWithEmailAndPassword(email, password)

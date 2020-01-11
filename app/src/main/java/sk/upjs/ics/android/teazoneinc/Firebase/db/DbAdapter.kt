@@ -11,20 +11,6 @@ class DbAdapter {
     private val db = FirebaseFirestore.getInstance()
 
 
-    fun getData(collections: String, document: String, eventListener: EventListener<DocumentSnapshot>) {
-        db.collection(collections).document(document)
-            .get()
-            .addOnSuccessListener {
-                eventListener.onEvent(it, null)
-            }
-            .addOnFailureListener { exception ->
-                eventListener.onEvent(null, null)
-                Log.w("TU SOMMMMMMM", "Error getting documents.", exception)
-            }
-    }
-
-
-
     fun createUserInDatabase(collectionID : String, user : FirebaseUser, map: HashMap<String,String>){
         var map = HashMap<String,String>()
         map.put("Email",user.email.toString())
@@ -48,6 +34,10 @@ class DbAdapter {
         map.put("Email",user.email.toString())
         map.put("ICO",ico)
         createUserInDatabase("FirmaUsers", user, map)
+    }
+
+    fun setUsersUsername(user: FirebaseUser ,username : String){
+        db.collection("Users").document(user.uid).update("Username",username)
     }
 
 
