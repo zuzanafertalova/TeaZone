@@ -39,7 +39,7 @@ class SignupActivity : AppCompatActivity() {
                         Toast.makeText(this,"Úspešná registrácia",Toast.LENGTH_SHORT).show()
                         user?.let {user ->
                             dbAdapter.createUserUserInDatabase(user)
-                            authAdapter.login(email,password, this,EventListener { currentUser, firestoreExeption ->
+                            authAdapter.login(email,password, this,EventListener { currentUser, _ ->
                                 val user = currentUser
                                 user?.let {
                                     intent = Intent(this,HomeScreenActivity::class.java)

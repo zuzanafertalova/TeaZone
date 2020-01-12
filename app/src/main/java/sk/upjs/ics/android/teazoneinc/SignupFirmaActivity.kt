@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.google.firebase.firestore.EventListener
-import kotlinx.android.synthetic.main.activity_signup.*
 import kotlinx.android.synthetic.main.activity_signup_firma.*
 import sk.upjs.ics.android.teazoneinc.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.Firebase.db.DbAdapter
@@ -34,7 +33,7 @@ class SignupFirmaActivity : AppCompatActivity() {
                         Toast.makeText(this, "Môžete sa prihlásiť", Toast.LENGTH_SHORT).show()
                         finish()
                         user?.let { user ->
-                            dbAdapter.createFirmaUserInDatabse(user, ico)
+                            dbAdapter.createFirmaUserInDatabase(user, ico)
                         }
                     })
 

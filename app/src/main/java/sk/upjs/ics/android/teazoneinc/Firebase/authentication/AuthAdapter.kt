@@ -45,6 +45,7 @@ class AuthAdapter {
 
 
     fun signup(email : String , password: String, activity: Activity,eventListener: EventListener<FirebaseUser>){
+
         auth.createUserWithEmailAndPassword(email,password)
             .addOnCompleteListener(activity){
                     task ->
