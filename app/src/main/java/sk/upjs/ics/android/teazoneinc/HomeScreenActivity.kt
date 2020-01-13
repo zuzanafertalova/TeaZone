@@ -3,7 +3,10 @@ package sk.upjs.ics.android.teazoneinc
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+<<<<<<< Updated upstream
 import androidx.core.view.isVisible
+=======
+>>>>>>> Stashed changes
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
@@ -26,6 +29,7 @@ class HomeScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen)
 
+<<<<<<< Updated upstream
 
         fragmentSetUserame.view?.visibility = View.INVISIBLE
         intent.extras?.let {
@@ -50,4 +54,11 @@ class HomeScreenActivity : AppCompatActivity() {
     }
 
 
+=======
+        button_house.setOnClickListener(View.OnClickListener {
+            button_house.setBackgroundColor(7)
+        })
+    }
+
+>>>>>>> Stashed changes
 }
