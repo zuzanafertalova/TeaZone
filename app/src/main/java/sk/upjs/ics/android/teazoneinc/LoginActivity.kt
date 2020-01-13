@@ -8,10 +8,8 @@ import android.view.View
 import android.widget.Toast
 import com.google.firebase.firestore.EventListener
 import kotlinx.android.synthetic.main.activity_login.*
-import sk.upjs.ics.android.teazoneinc.Firebase.User.dataUser
 import sk.upjs.ics.android.teazoneinc.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.Firebase.db.DbAdapter
-import kotlin.math.log
 
 
 class LoginActivity : AppCompatActivity() {
@@ -35,8 +33,8 @@ class LoginActivity : AppCompatActivity() {
             }
             else{
                 authAdapter.login(email,password, this,EventListener { currentUser, firestoreExeption ->
-                    val user = currentUser?.let { dbAdapter.setFirebaseUserToLocalUser(it) }
-                    user?.let {
+                    currentUser?.let {
+                        dbAdapter.setFirebaseUserToLocalUser(it)
                         intent = Intent(this,HomeScreenActivity::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                         startActivity(intent)

@@ -19,17 +19,23 @@ class SignupFirmaActivity : AppCompatActivity() {
         setContentView(R.layout.activity_signup_firma)
 
         btnSignupFirma.setOnClickListener(View.OnClickListener {
+
             val email: String = tvSignupFirmaEmail.text.toString()
             val password: String = pswdSignupFirmaPswrd.text.toString()
             val confrimpassword: String = pswdSignupFirmaConfirmPswrd.text.toString()
             val ico: String = tvSignupFirmaICO.text.toString()
 
+
             if (email.isEmpty() || password.isEmpty() || confrimpassword.isEmpty()) {
                 Toast.makeText(this, "Please fill up all fields", Toast.LENGTH_SHORT).show()
-            } else {
+
+            }
+
+            else {
+
                 if (password.equals(confrimpassword)) {
+
                     authAdapter.signup(email, password, this, EventListener { user, _ ->
-                        val user = user
                         Toast.makeText(this, "Môžete sa prihlásiť", Toast.LENGTH_SHORT).show()
                         finish()
                         user?.let { user ->
@@ -37,9 +43,9 @@ class SignupFirmaActivity : AppCompatActivity() {
                         }
                     })
 
-                } else {
-                    Toast.makeText(this, "Your passwords does not match", Toast.LENGTH_SHORT).show()
                 }
+
+                else { Toast.makeText(this, "Your passwords does not match", Toast.LENGTH_SHORT).show() }
 
             }
         })

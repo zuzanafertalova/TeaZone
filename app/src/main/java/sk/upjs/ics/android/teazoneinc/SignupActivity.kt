@@ -34,21 +34,11 @@ class SignupActivity : AppCompatActivity() {
 
             else {
                 if (password.equals(confrimpassword)){
-                    authAdapter.signup(email,password,this, EventListener { user, _ ->
-                        val user = user
-                        Toast.makeText(this,"Úspešná registrácia",Toast.LENGTH_SHORT).show()
-                        user?.let {user ->
-                            dbAdapter.createUserUserInDatabase(user)
-                            authAdapter.login(email,password, this,EventListener { currentUser, _ ->
-                                val user = currentUser
-                                user?.let {
-                                    intent = Intent(this,HomeScreenActivity::class.java)
-                                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                                    intent.putExtra("fromSignUp",3)
-                                    startActivity(intent)
-                                }
-
-                            })
+                    authAdapter.signup(email,password,this, EventListener { currentUser, _ ->
+                        Toast.makeText(this,"Úspešná registrácia, môžete sa prihlásiť",Toast.LENGTH_SHORT).show()
+                        currentUser?.let {
+                            dbAdapter.createUserUserInDatabase(it)
+                            finish()
                         }
                     })
 
