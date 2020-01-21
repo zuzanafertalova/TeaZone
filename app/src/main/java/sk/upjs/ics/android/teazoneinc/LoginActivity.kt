@@ -32,15 +32,13 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this,"Vyplňte všetky polia",Toast.LENGTH_SHORT).show()
             }
             else{
-                authAdapter.login(email,password, this,EventListener { currentUser, firestoreExeption ->
-                    currentUser?.let {
-                        dbAdapter.setFirebaseUserToLocalUser(it)
-                        intent = Intent(this,HomeScreenActivity::class.java)
-                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                        startActivity(intent)
-                    }
-
-                })
+                authAdapter.login(email,password, this)
+                authAdapter.getUser()?.let {
+                    dbAdapter.setFirebaseUserToLocalUser(it)
+                    intent = Intent(this, HomeScreenActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                    startActivity(intent)
+                }
             }
 
         })

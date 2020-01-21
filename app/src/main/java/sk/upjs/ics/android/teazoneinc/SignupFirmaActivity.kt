@@ -35,13 +35,12 @@ class SignupFirmaActivity : AppCompatActivity() {
 
                 if (password.equals(confrimpassword)) {
 
-                    authAdapter.signup(email, password, this, EventListener { user, _ ->
+                    authAdapter.signup(email, password, this)
                         Toast.makeText(this, "Môžete sa prihlásiť", Toast.LENGTH_SHORT).show()
                         finish()
-                        user?.let { user ->
-                            dbAdapter.createFirmaUserInDatabase(user, ico)
+                        authAdapter.getUser()?.let {
+                            dbAdapter.createFirmaUserInDatabase(it, ico)
                         }
-                    })
 
                 }
 

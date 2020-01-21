@@ -45,37 +45,40 @@ class DbAdapter {
     }
 
     fun setFirebaseUserToLocalUser(user : FirebaseUser){
-        val docRef = db.collection("Users").document(user.uid).get()
-        if (docRef.isSuccessful){
-            docRef.addOnCompleteListener{
-                it.addOnSuccessListener {document ->
-                    document.getString("email")?.let {email ->
-                        document.getString("username")?.let { username ->
-                            document.getString("following")?.let { following->
-                                userUser=DataUser(user.uid,email,username,following.toInt())
+
+        db.collection("Users").document(user.uid).get()
+            .addOnSuccessListener {document ->
+                        document.getString("email")?.let { email ->
+                            document.getString("username")?.let { username ->
+                                document.getLong("following")?.let {following ->
+                                    userUser = DataUser(user.uid, email, username, following.toInt())
+                                }
                             }
                         }
                     }
-                }
-            }
 
-        }
-        else{
-            db.collection("FirmaUsers").document(user.uid).get()
-                .addOnSuccessListener { document->
-                    document.getString("email")?.let {email ->
-                        document.getString("username")?.let { username ->
-                            document.getString("following")?.let { following->
-                                document.getString("followers")?.let { followers ->
-                                    document.getString("ico")?.let { ico->
-                                       userFirma = DataFirma(user.uid,email,username,following.toInt(),followers.toInt(),ico)
+
+                db.collection("FirmaUsers").document(user.uid).get()
+                    .addOnSuccessListener { document ->
+                        document.getString("email")?.let { email ->
+                            document.getString("username")?.let { username ->
+                                document.getLong("following")?.let { following ->
+                                    document.getLong("followers")?.let { followers ->
+                                        document.getString("ico")?.let { ico ->
+                                            userFirma = DataFirma(
+                                                user.uid,
+                                                email,
+                                                username,
+                                                following.toInt(),
+                                                followers.toInt(),
+                                                ico
+                                            )
+                                        }
                                     }
                                 }
                             }
                         }
                     }
-                }
-        }
 
     }
 

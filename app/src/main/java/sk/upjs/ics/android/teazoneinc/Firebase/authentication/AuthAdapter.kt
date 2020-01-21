@@ -21,12 +21,11 @@ class AuthAdapter {
     }
 
 
-    fun login(email : String , password : String, activity: Activity, eventListener: EventListener<FirebaseUser>){
+    fun login(email : String , password : String, activity: Activity){
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(activity) {
                     task ->
                 if (task.isSuccessful) {
-                   eventListener.onEvent(auth.currentUser, null)
 
                 } else {
                     task.exception?.localizedMessage?.let {
@@ -44,14 +43,15 @@ class AuthAdapter {
     }
 
 
-    fun signup(email : String , password: String, activity: Activity,eventListener: EventListener<FirebaseUser>){
+    fun signup(email : String , password: String, activity: Activity){
 
         auth.createUserWithEmailAndPassword(email,password)
-            .addOnCompleteListener(activity){
-                    task ->
+            .addOnCompleteListener(activity){ task ->
+
                 if (task.isSuccessful) {
-                    eventListener.onEvent(auth.currentUser,null)
+
                 }
+
                 else {
                     Log.w("POZRIME SA CO SA STALO", "createUserWithEmail:failure", task.exception)
                     task.exception?.localizedMessage?.let {

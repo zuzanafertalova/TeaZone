@@ -34,14 +34,12 @@ class SignupActivity : AppCompatActivity() {
 
             else {
                 if (password.equals(confrimpassword)){
-                    authAdapter.signup(email,password,this, EventListener { currentUser, _ ->
+                    authAdapter.signup(email,password,this)
                         Toast.makeText(this,"Úspešná registrácia, môžete sa prihlásiť",Toast.LENGTH_SHORT).show()
-                        currentUser?.let {
+                        authAdapter.getUser()?.let {
                             dbAdapter.createUserUserInDatabase(it)
                             finish()
                         }
-                    })
-
                 }
                 else{
                     Toast.makeText(this,"Heslá sa nezhodujú",Toast.LENGTH_SHORT).show()
