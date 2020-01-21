@@ -11,6 +11,11 @@ class DbAdapter {
 
     lateinit var userUser: DataUser
     lateinit var userFirma: DataFirma
+    var decider = 0
+
+    fun getUser(){
+
+    }
 
 
     fun createUserInDatabase(collectionID : String, user : FirebaseUser, map: DataUser){

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.google.firebase.firestore.EventListener
 import kotlinx.android.synthetic.main.activity_signup.*
 import sk.upjs.ics.android.teazoneinc.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.Firebase.db.DbAdapter
@@ -36,7 +35,7 @@ class SignupActivity : AppCompatActivity() {
                 if (password.equals(confrimpassword)){
                     authAdapter.signup(email,password,this)
                         Toast.makeText(this,"Úspešná registrácia, môžete sa prihlásiť",Toast.LENGTH_SHORT).show()
-                        authAdapter.getUser()?.let {
+                        authAdapter.getFirebaseUser()?.let {
                             dbAdapter.createUserUserInDatabase(it)
                             finish()
                         }

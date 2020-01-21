@@ -3,10 +3,8 @@ package sk.upjs.ics.android.teazoneinc
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
-import com.google.firebase.firestore.EventListener
 import kotlinx.android.synthetic.main.activity_login.*
 import sk.upjs.ics.android.teazoneinc.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.Firebase.db.DbAdapter
@@ -33,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
             }
             else{
                 authAdapter.login(email,password, this)
-                authAdapter.getUser()?.let {
+                authAdapter.getFirebaseUser()?.let {
                     dbAdapter.setFirebaseUserToLocalUser(it)
                     intent = Intent(this, HomeScreenActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK

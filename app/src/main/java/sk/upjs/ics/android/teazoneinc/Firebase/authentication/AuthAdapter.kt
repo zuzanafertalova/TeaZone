@@ -16,7 +16,7 @@ class AuthAdapter {
 
     private val auth : FirebaseAuth = FirebaseAuth.getInstance()
 
-    fun getUser(): FirebaseUser? {
+    fun getFirebaseUser(): FirebaseUser? {
         return auth.currentUser
     }
 
