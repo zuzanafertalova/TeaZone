@@ -1,5 +1,6 @@
 package sk.upjs.ics.android.teazoneinc
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -36,7 +37,8 @@ class SignupFirmaActivity : AppCompatActivity() {
 
                     authAdapter.signup(email, password, this)
                         Toast.makeText(this, "Môžete sa prihlásiť", Toast.LENGTH_SHORT).show()
-                        finish()
+                        intent = Intent(this, LoginActivity::class.java)
+                        startActivity(intent)
                         authAdapter.getFirebaseUser()?.let {
                             dbAdapter.createFirmaUserInDatabase(it, ico)
                         }

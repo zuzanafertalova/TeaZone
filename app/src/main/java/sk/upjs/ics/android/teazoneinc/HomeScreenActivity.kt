@@ -15,6 +15,9 @@ class HomeScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen)
 
+        authAdapter.getFirebaseUser()?.let {
+            dbAdapter.setFirebaseUserToLocalUser(it)
+        }
 
     }
 }

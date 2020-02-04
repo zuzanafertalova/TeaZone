@@ -32,7 +32,6 @@ class LoginActivity : AppCompatActivity() {
             else{
                 authAdapter.login(email,password, this)
                 authAdapter.getFirebaseUser()?.let {
-                    dbAdapter.setFirebaseUserToLocalUser(it)
                     intent = Intent(this, HomeScreenActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(intent)

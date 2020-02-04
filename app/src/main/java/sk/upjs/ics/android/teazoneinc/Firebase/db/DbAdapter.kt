@@ -11,11 +11,7 @@ class DbAdapter {
 
     lateinit var userUser: DataUser
     lateinit var userFirma: DataFirma
-    var decider = 0
-
-    fun getUser(){
-
-    }
+    var decider : Int = 5
 
 
     fun createUserInDatabase(collectionID : String, user : FirebaseUser, map: DataUser){
@@ -57,6 +53,7 @@ class DbAdapter {
                             document.getString("username")?.let { username ->
                                 document.getLong("following")?.let {following ->
                                     userUser = DataUser(user.uid, email, username, following.toInt())
+                                    decider=0
                                 }
                             }
                         }
@@ -78,6 +75,7 @@ class DbAdapter {
                                                 followers.toInt(),
                                                 ico
                                             )
+                                            decider=1
                                         }
                                     }
                                 }
