@@ -7,13 +7,13 @@ import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_signup.*
 import sk.upjs.ics.android.teazoneinc.Firebase.authentication.AuthAdapter
-import sk.upjs.ics.android.teazoneinc.Firebase.db.DbAdapter
+import sk.upjs.ics.android.teazoneinc.Firebase.db.DbAdapterUser
 
 class SignupActivity : AppCompatActivity() {
 
 
     val authAdapter = AuthAdapter()
-    val dbAdapter = DbAdapter()
+    val dbAdapter = DbAdapterUser()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)

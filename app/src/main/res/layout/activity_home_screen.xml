@@ -87,7 +87,8 @@
         app:layout_constraintBottom_toTopOf="@+id/bottom_menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/upper_menu">
+        app:layout_constraintTop_toBottomOf="@+id/upper_menu"
+        tools:layout="@layout/fragment_set_username2">
 
     </fragment>
 
