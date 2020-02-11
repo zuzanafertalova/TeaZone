@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_signup.*
 import kotlinx.android.synthetic.main.activity_signup_firma.*
 import sk.upjs.ics.android.teazoneinc.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.Firebase.db.DbAdapterUser
@@ -48,6 +49,11 @@ class SignupFirmaActivity : AppCompatActivity() {
                 else { Toast.makeText(this, "Your passwords does not match", Toast.LENGTH_SHORT).show() }
 
             }
+        })
+
+        btnLoginToAccount2.setOnClickListener(View.OnClickListener { ///sa vratim na login
+            intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
         })
 
     }

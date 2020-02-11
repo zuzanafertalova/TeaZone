@@ -1,9 +1,11 @@
 package sk.upjs.ics.android.teazoneinc
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.activity_home_screen.*
+import kotlinx.android.synthetic.main.activity_signup_firma.*
 import sk.upjs.ics.android.teazoneinc.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.Firebase.db.DbAdapterUser
 
@@ -20,6 +22,15 @@ class HomeScreenActivity : AppCompatActivity() {
         authAdapter.getFirebaseUser()?.let {
             dbAdapterUser.setFirebaseUserToLocalUser(it)
         }
+
+        button_user.setOnClickListener(View.OnClickListener { ///idem na profil usera
+            intent = Intent(this, ProfilUserActivity::class.java)
+            startActivity(intent)
+        })
+        button_find.setOnClickListener(View.OnClickListener { ///idem nazad domov
+            intent = Intent(this, SearchActivity::class.java)
+            startActivity(intent)
+        })
 
     }
 
