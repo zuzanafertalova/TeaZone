@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.google.firebase.firestore.EventListener
 import kotlinx.android.synthetic.main.activity_signup_firma.*
 import sk.upjs.ics.android.teazoneinc.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.Firebase.db.DbAdapterUser
@@ -12,7 +13,7 @@ import sk.upjs.ics.android.teazoneinc.Firebase.db.DbAdapterUser
 class SignupFirmaActivity : AppCompatActivity() {
 
     private val authAdapter = AuthAdapter()
-    private val dbAdapter = DbAdapterUser()
+    private val dbAdapterUser = DbAdapterUser()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,13 +36,14 @@ class SignupFirmaActivity : AppCompatActivity() {
 
                 if (password.equals(confrimpassword)) {
 
-                    authAdapter.signup(email, password, this)
-                        Toast.makeText(this, "Môžete sa prihlásiť", Toast.LENGTH_SHORT).show()
-                        intent = Intent(this, LoginActivity::class.java)
-                        startActivity(intent)
-                        authAdapter.getFirebaseUser()?.let {
-                            dbAdapter.createFirmaUserInDatabase(it, ico)
+                    authAdapter.signup(email, password, this, EventListener{user,_->
+                        user?.let {
+                            dbAdapterUser.createFirmaUserInDatabase(user, ico)
+                            Toast.makeText(this, "Môžete sa prihlásiť", Toast.LENGTH_SHORT).show()
+                            intent = Intent(this, LoginActivity::class.java)
+                            startActivity(intent)
                         }
+                    })
 
                 }
 

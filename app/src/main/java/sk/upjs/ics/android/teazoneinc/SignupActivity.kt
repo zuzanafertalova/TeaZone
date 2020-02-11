@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.google.firebase.firestore.EventListener
 import kotlinx.android.synthetic.main.activity_signup.*
 import sk.upjs.ics.android.teazoneinc.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.Firebase.db.DbAdapterUser
@@ -13,7 +14,7 @@ class SignupActivity : AppCompatActivity() {
 
 
     val authAdapter = AuthAdapter()
-    val dbAdapter = DbAdapterUser()
+    val dbAdapterUser = DbAdapterUser()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
@@ -33,12 +34,13 @@ class SignupActivity : AppCompatActivity() {
 
             else {
                 if (password.equals(confrimpassword)){
-                    authAdapter.signup(email,password,this)
-                        Toast.makeText(this,"Úspešná registrácia, môžete sa prihlásiť",Toast.LENGTH_SHORT).show()
-                        authAdapter.getFirebaseUser()?.let {
-                            dbAdapter.createUserUserInDatabase(it)
+                    authAdapter.signup(email,password,this, EventListener{user , _->
+                        user?.let {
+                            Toast.makeText(this, "Úspešná registrácia, môžete sa prihlásiť", Toast.LENGTH_SHORT).show()
+                            dbAdapterUser.createUserUserInDatabase(user)
                             finish()
                         }
+                    })
                 }
                 else{
                     Toast.makeText(this,"Heslá sa nezhodujú",Toast.LENGTH_SHORT).show()

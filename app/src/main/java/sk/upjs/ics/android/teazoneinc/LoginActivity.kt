@@ -5,15 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.google.firebase.firestore.EventListener
 import kotlinx.android.synthetic.main.activity_login.*
 import sk.upjs.ics.android.teazoneinc.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.Firebase.db.DbAdapterUser
+import sk.upjs.ics.android.teazoneinc.Firebase.db.GetUser
 
 
 class LoginActivity : AppCompatActivity() {
 
     val authAdapter = AuthAdapter()
-    val dbAdapter = DbAdapterUser()
+    val dbAdapterUser = DbAdapterUser()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,21 +32,34 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this,"Vyplňte všetky polia",Toast.LENGTH_SHORT).show()
             }
             else{
-                authAdapter.login(email,password, this)
-                authAdapter.getFirebaseUser()?.let {
-                    intent = Intent(this, HomeScreenActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                    startActivity(intent)
-                }
+                authAdapter.login(email,password, this, EventListener{user,_ ->
+                    user?.let {
+                        dbAdapterUser.setFirebaseUserToLocalUser(it,object : GetUser{
+                            override fun onSuccess() {
+                                startHomeScreenActivity()
+                            }
+                            override fun onFailure() {
+
+                            }
+                        })
+                    }
+                })
             }
 
         })
+
 
         btnCreateAccount.setOnClickListener(View.OnClickListener {
             intent = Intent(this,SignupActivity::class.java)
             startActivity(intent)
         })
         
+    }
+
+    fun startHomeScreenActivity(){
+        intent = Intent(this, HomeScreenActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
     }
 
 }

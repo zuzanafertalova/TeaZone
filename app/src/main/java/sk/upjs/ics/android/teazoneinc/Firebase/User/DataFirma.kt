@@ -1,5 +1,23 @@
 package sk.upjs.ics.android.teazoneinc.Firebase.User
 
-data class DataFirma(val docID: String, val email : String, val username : String?, val following : Int, val followers : Int, val ICO: String){
+class DataFirma{
+    var docID: String?=null
+    var email : String?=null
+    var username : String?=null
+    var following : Int?=null
+    var followers : Int?=null
+    var ICO: String?=null
 
+    constructor(docID: String, email : String, username : String?, following : Int, followers : Int, ICO: String){
+        this.docID=docID
+        this.email=email
+        this.username=username
+        this.following=following
+        this.followers=followers
+        this.ICO=ICO
+    }
+
+    constructor(){
+
+    }
 }

@@ -9,24 +9,26 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestoreException
+import sk.upjs.ics.android.teazoneinc.Firebase.db.DbAdapterUser
 import sk.upjs.ics.android.teazoneinc.HomeScreenActivity
 
 
 class AuthAdapter {
 
     private val auth : FirebaseAuth = FirebaseAuth.getInstance()
+    private val dbAdapterUser=DbAdapterUser()
 
     fun getFirebaseUser(): FirebaseUser? {
         return auth.currentUser
     }
 
 
-    fun login(email : String , password : String, activity: Activity){
+    fun login(email : String , password : String, activity: Activity,eventListener: EventListener<FirebaseUser>){
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(activity) {
                     task ->
                 if (task.isSuccessful) {
-
+                    eventListener.onEvent(auth.currentUser,null)
                 } else {
                     task.exception?.localizedMessage?.let {
                        Log.w("UNSUCCSFULL LOGIN" , it)
@@ -43,13 +45,12 @@ class AuthAdapter {
     }
 
 
-    fun signup(email : String , password: String, activity: Activity){
+    fun signup(email : String , password: String, activity: Activity,eventListener: EventListener<FirebaseUser>){
 
         auth.createUserWithEmailAndPassword(email,password)
             .addOnCompleteListener(activity){ task ->
-
                 if (task.isSuccessful) {
-
+                    eventListener.onEvent(auth.currentUser,null)
                 }
 
                 else {
