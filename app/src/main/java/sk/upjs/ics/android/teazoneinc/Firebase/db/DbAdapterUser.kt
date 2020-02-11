@@ -16,9 +16,11 @@ class DbAdapterUser {
 
     private val db = FirebaseFirestore.getInstance()
 
-    var userUser= DataUser()
-    var userFirma= DataFirma()
-    var decider = 0
+    companion object{
+        var userUser= DataUser()
+        var userFirma= DataFirma()
+        var decider = 0
+    }
 
     fun getStatusOfLoggedUser():String {
         if (decider==0)return "User"
