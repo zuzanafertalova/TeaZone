@@ -52,5 +52,10 @@ class SignupFirmaActivity : AppCompatActivity() {
             }
         })
 
+        btnLoginToAccount2.setOnClickListener(View.OnClickListener { ///sa vratim na login
+            intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        })
+
     }
 }

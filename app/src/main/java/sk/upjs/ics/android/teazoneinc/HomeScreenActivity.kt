@@ -1,9 +1,11 @@
 package sk.upjs.ics.android.teazoneinc
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.activity_home_screen.*
+import kotlinx.android.synthetic.main.activity_signup_firma.*
 import sk.upjs.ics.android.teazoneinc.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.Firebase.db.DbAdapterUser
 
