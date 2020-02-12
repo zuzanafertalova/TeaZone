@@ -68,17 +68,22 @@ class DbAdapterUser {
 
         db.collection("Users").document(user.uid).get()
             .addOnSuccessListener {document ->
-                        setUserUserToLocalUser(document)
-                        getUser.onSuccess()
-                    }.addOnFailureListener{
+                if (document.exists()) {
+                    setUserUserToLocalUser(document)
+                    getUser.onSuccess()
+                }
+                }
+                .addOnFailureListener{
                      getUser.onFailure()
                     }
 
 
                 db.collection("FirmaUsers").document(user.uid).get()
                     .addOnSuccessListener { document ->
-                        setUserFirmaToLocalUser(document)
-                        getUser.onSuccess()
+                        if (document.exists()) {
+                            setUserFirmaToLocalUser(document)
+                            getUser.onSuccess()
+                        }
                     }
                     .addOnFailureListener{
                         getUser.onFailure()
