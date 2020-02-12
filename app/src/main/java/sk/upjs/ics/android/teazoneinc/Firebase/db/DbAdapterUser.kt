@@ -60,8 +60,13 @@ class DbAdapterUser {
             }
     }
 
-    fun setUsersUsername(user: FirebaseUser ,username : String){
-        db.collection("Users").document(user.uid).update("username",username)
+    fun setUsername(user: FirebaseUser ,username : String){
+        if (getStatusOfLoggedUser().equals("User")) {
+            db.collection("Users").document(user.uid).update("username", username)
+        }
+        else{
+            db.collection("FirmaUsers").document(user.uid).update("username", username)
+        }
     }
 
     fun setFirebaseUserToLocalUser(user : FirebaseUser,getUser: GetUser){
@@ -88,11 +93,9 @@ class DbAdapterUser {
                     .addOnFailureListener{
                         getUser.onFailure()
                     }
-
     }
 
     fun setUserUserToLocalUser(document: DocumentSnapshot) {
-
         document.getString("email")?.let {userUser.email=it}
         document.getString("username")?.let { userUser.username=it}
         document.getLong("following")?.let {userUser.following=it.toInt()}
@@ -100,7 +103,6 @@ class DbAdapterUser {
     }
 
     fun setUserFirmaToLocalUser(document: DocumentSnapshot) {
-
         document.getString("email")?.let { userFirma.email=it }
         document.getString("username")?.let { userFirma.username=it}
         document.getLong("following")?.let { userFirma.following=it.toInt()}
@@ -108,7 +110,6 @@ class DbAdapterUser {
         document.getString("ico")?.let { userFirma.ICO=it}
         decider=1
     }
-
 
 }
 
