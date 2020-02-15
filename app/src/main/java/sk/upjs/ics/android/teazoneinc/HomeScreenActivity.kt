@@ -27,6 +27,8 @@ class HomeScreenActivity : AppCompatActivity() {
             }
         })
         setUsernameFragment()
+//        setClickBtnPost()
+//        setClickBtnComment()
     }
 
 
@@ -43,5 +45,17 @@ class HomeScreenActivity : AppCompatActivity() {
         }
 
     }
+
+//    fun setClickBtnPost(){
+//        btnPost.setOnClickListener(View.OnClickListener {
+//            dbAdapterPost.setPost(tvPost.text.toString())
+//        })
+//    }
+//
+//    fun setClickBtnComment(){
+//        btnComment.setOnClickListener(View.OnClickListener {
+//            dbAdapterPost.addComment(tvPost.text.toString())
+//        })
+//    }
 
 }

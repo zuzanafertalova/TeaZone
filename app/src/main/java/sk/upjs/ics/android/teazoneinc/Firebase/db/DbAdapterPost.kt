@@ -1,7 +1,9 @@
 package sk.upjs.ics.android.teazoneinc.Firebase.db
 
 import android.util.Log
+import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import sk.upjs.ics.android.teazoneinc.Firebase.DataHolderClasses.Post.DataPost
 
@@ -29,6 +31,17 @@ class DbAdapterPost {
         DbAdapterUser.userFirma.docID?.let {
             setPostToPostClass(it,content,0,0)
         }
+    }
+
+    fun addComment(comment:String){
+        db.collection("Posts").document("I62spcdIAjGYKaGYC8T9")
+            .update("comments",FieldValue.arrayUnion(comment))
+            .addOnSuccessListener {
+                Log.w("Podarilo sa komentnut","jes")
+            }
+            .addOnFailureListener{
+                Log.w("NEPODARILO SA KOMENT",it)
+            }
     }
 
 
