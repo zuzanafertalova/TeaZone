@@ -1,4 +1,4 @@
-package sk.upjs.ics.android.teazoneinc.Firebase.User
+package sk.upjs.ics.android.teazoneinc.Firebase.DataHolderClasses.Users
 
 class DataUser{
     var docID : String?=null

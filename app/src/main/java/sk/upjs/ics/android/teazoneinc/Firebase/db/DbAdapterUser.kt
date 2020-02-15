@@ -1,16 +1,11 @@
 package sk.upjs.ics.android.teazoneinc.Firebase.db
 
-import android.service.autofill.UserData
 import android.util.Log
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firestore.v1.Document
-import com.google.firestore.v1.StructuredQuery
-import sk.upjs.ics.android.teazoneinc.Firebase.User.DataFirma
-import sk.upjs.ics.android.teazoneinc.Firebase.User.DataUser
-import java.lang.ref.Reference
+import sk.upjs.ics.android.teazoneinc.Firebase.DataHolderClasses.Users.DataFirma
+import sk.upjs.ics.android.teazoneinc.Firebase.DataHolderClasses.Users.DataUser
 
 class DbAdapterUser {
 
@@ -44,13 +39,25 @@ class DbAdapterUser {
 
 
     fun createUserUserInDatabase(user : FirebaseUser){
-        val userData = DataUser(user.uid, user.email.toString(),"",0)
+        val userData = DataUser(
+            user.uid,
+            user.email.toString(),
+            "",
+            0
+        )
         createUserInDatabase("Users" , user, userData)
 
     }
 
     fun createFirmaUserInDatabase(user: FirebaseUser, ico : String){
-        val firmaData = DataFirma(user.uid, user.email.toString(),"",0,0,ico)
+        val firmaData = DataFirma(
+            user.uid,
+            user.email.toString(),
+            "",
+            0,
+            0,
+            ico
+        )
         db.collection("FirmaUsers").document(user.uid).set(firmaData)
             .addOnSuccessListener {
                 Log.w("DB for user created","")
