@@ -6,12 +6,14 @@ import android.view.View
 import kotlinx.android.synthetic.main.activity_home_screen.*
 import kotlinx.android.synthetic.main.fragment_set_username2.*
 import sk.upjs.ics.android.teazoneinc.Firebase.authentication.AuthAdapter
+import sk.upjs.ics.android.teazoneinc.Firebase.db.DbAdapterPost
 import sk.upjs.ics.android.teazoneinc.Firebase.db.DbAdapterUser
 
 class HomeScreenActivity : AppCompatActivity() {
 
     val authAdapter = AuthAdapter()
     val dbAdapterUser = DbAdapterUser()
+    val dbAdapterPost = DbAdapterPost()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -81,7 +81,7 @@ class DbAdapterUser {
         db.collection("Users").document(user.uid).get()
             .addOnSuccessListener {document ->
                 if (document.exists()) {
-                    setUserUserToLocalUser(document)
+                    setUserUserToLocalUser(document,user.uid)
                     getUser.onSuccess()
                 }
                 }
@@ -93,7 +93,7 @@ class DbAdapterUser {
                 db.collection("FirmaUsers").document(user.uid).get()
                     .addOnSuccessListener { document ->
                         if (document.exists()) {
-                            setUserFirmaToLocalUser(document)
+                            setUserFirmaToLocalUser(document,user.uid)
                             getUser.onSuccess()
                         }
                     }
@@ -102,14 +102,16 @@ class DbAdapterUser {
                     }
     }
 
-    fun setUserUserToLocalUser(document: DocumentSnapshot) {
+    fun setUserUserToLocalUser(document: DocumentSnapshot,userDocID:String) {
+        userUser.docID=userDocID
         document.getString("email")?.let {userUser.email=it}
         document.getString("username")?.let { userUser.username=it}
         document.getLong("following")?.let {userUser.following=it.toInt()}
         decider=0
     }
 
-    fun setUserFirmaToLocalUser(document: DocumentSnapshot) {
+    fun setUserFirmaToLocalUser(document: DocumentSnapshot,userDocID:String) {
+        userFirma.docID=userDocID
         document.getString("email")?.let { userFirma.email=it }
         document.getString("username")?.let { userFirma.username=it}
         document.getLong("following")?.let { userFirma.following=it.toInt()}
