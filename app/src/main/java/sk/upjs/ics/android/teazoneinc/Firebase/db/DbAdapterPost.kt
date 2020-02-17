@@ -3,6 +3,7 @@ package sk.upjs.ics.android.teazoneinc.Firebase.db
 import android.util.Log
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import sk.upjs.ics.android.teazoneinc.Firebase.DataHolderClasses.Post.DataPost
@@ -33,8 +34,40 @@ class DbAdapterPost {
         }
     }
 
-    fun addComment(comment:String){
-        db.collection("Posts").document("I62spcdIAjGYKaGYC8T9")
+    fun getPost(eventListener: EventListener<DataPost>){
+        var post = DataPost()
+        db.collection("Posts").document("xhTlJ9jKD4EQIVxcpQHg").get()
+            .addOnSuccessListener {
+                post.postID=it.id
+                it.getString("creatorID")?.let { post.creatorID=it }
+                it.getString("content")?.let { post.content=it }
+                it.getLong("likesCount")?.toInt()?.let { post.likesCount=it }
+                it.getLong("commentsCount")?.toInt()?.let { post.commentsCount=it }
+                val list:ArrayList<String>? = it.get("comments") as ArrayList<String>
+                list?.let { post.comments=it }
+                eventListener.onEvent(post,null)
+            }
+
+    }
+
+    fun getPostFirma(eventListener: EventListener<DataPost>){
+        var post = DataPost()
+        db.collection("Posts").document("I62spcdIAjGYKaGYC8T9").get()
+            .addOnSuccessListener {
+                post.postID=it.id
+                it.getString("creatorID")?.let { post.creatorID=it }
+                it.getString("content")?.let { post.content=it }
+                it.getLong("likesCount")?.toInt()?.let { post.likesCount=it }
+                it.getLong("commentsCount")?.toInt()?.let { post.commentsCount=it }
+                val list:ArrayList<String>? = it.get("comments") as ArrayList<String>
+                list?.let { post.comments=it }
+                eventListener.onEvent(post,null)
+            }
+
+    }
+
+    fun addComment(comment:String,postID:String){
+        db.collection("Posts").document(postID)
             .update("comments",FieldValue.arrayUnion(comment))
             .addOnSuccessListener {
                 Log.w("Podarilo sa komentnut","jes")
@@ -43,7 +76,6 @@ class DbAdapterPost {
                 Log.w("NEPODARILO SA KOMENT",it)
             }
     }
-
 
 
 }

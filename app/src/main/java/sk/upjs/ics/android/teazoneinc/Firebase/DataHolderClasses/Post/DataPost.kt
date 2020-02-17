@@ -1,6 +1,7 @@
 package sk.upjs.ics.android.teazoneinc.Firebase.DataHolderClasses.Post
 
 class DataPost{
+    var postID : String? = null
     var creatorID : String?=null
     var content : String?=null
     var likesCount : Int?=null

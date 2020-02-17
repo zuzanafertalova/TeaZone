@@ -95,19 +95,18 @@
     </fragment>
 
     <EditText
-        android:id="@+id/tvPost"
+        android:id="@+id/tvComment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="61dp"
-        android:layout_marginBottom="513dp"
+        android:layout_marginTop="534dp"
+        android:layout_marginBottom="40dp"
         android:ems="10"
         android:hint="Co mate na mysli?"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/bottom_menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/upper_menu"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/upper_menu" />
 
     <Button
         android:id="@+id/btnPost"
@@ -116,10 +115,11 @@
         android:layout_marginTop="29dp"
         android:layout_marginBottom="436dp"
         android:text="poslat"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/bottom_menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPost"
+        app:layout_constraintTop_toBottomOf="@+id/tvComment"
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
@@ -133,5 +133,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/upper_menu" />
+
+    <TextView
+        android:id="@+id/tvPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/bottom_menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/upper_menu"
+        app:layout_constraintVertical_bias="0.25" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
