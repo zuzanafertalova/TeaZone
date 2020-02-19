@@ -2,6 +2,7 @@ package sk.upjs.ics.android.teazoneinc.Firebase.authentication
 
 import android.app.Activity
 import android.content.Intent
+import android.provider.ContactsContract
 import android.util.Log
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
@@ -9,6 +10,8 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestoreException
+import sk.upjs.ics.android.teazoneinc.Firebase.DataHolderClasses.Users.DataFirma
+import sk.upjs.ics.android.teazoneinc.Firebase.DataHolderClasses.Users.DataUser
 import sk.upjs.ics.android.teazoneinc.Firebase.db.DbAdapterUser
 import sk.upjs.ics.android.teazoneinc.HomeScreenActivity
 
@@ -64,6 +67,12 @@ class AuthAdapter {
                 }
 
             }
+    }
+
+    fun logOut(){
+        auth.signOut()
+        DbAdapterUser.userFirma= DataFirma()
+        DbAdapterUser.userUser= DataUser()
     }
 
 }

@@ -3,6 +3,7 @@ package sk.upjs.ics.android.teazoneinc.Firebase.db
 import android.util.Log
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import sk.upjs.ics.android.teazoneinc.Firebase.DataHolderClasses.Users.DataFirma
 import sk.upjs.ics.android.teazoneinc.Firebase.DataHolderClasses.Users.DataUser

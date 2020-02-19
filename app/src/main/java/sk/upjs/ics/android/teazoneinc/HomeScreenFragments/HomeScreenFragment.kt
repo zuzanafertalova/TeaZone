@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.firebase.firestore.EventListener
 import kotlinx.android.synthetic.main.fragment_home_screen.*
 import kotlinx.android.synthetic.main.fragment_set_username2.*
 import sk.upjs.ics.android.teazoneinc.Firebase.authentication.AuthAdapter
@@ -20,7 +21,6 @@ class HomeScreenFragment : Fragment() {
     val authAdapter = AuthAdapter()
     val dbAdapterUser = DbAdapterUser()
     val dbAdapterPost = DbAdapterPost()
-    val homeScreenActivity = HomeScreenActivity()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
