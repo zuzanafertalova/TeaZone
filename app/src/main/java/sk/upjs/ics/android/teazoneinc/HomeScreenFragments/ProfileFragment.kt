@@ -49,11 +49,14 @@ class ProfileFragment : Fragment() {
             tvUsername.text = DbAdapterUser.userUser.username
             tvEmail.text=DbAdapterUser.userUser.email
             tvFollowing.text=DbAdapterUser.userUser.following.toString()
+            tvFollowHide.visibility=View.GONE
+            ciara.visibility=View.GONE
         }
         else{
             tvUsername.text = DbAdapterUser.userFirma.username
             tvEmail.text=DbAdapterUser.userFirma.email
             tvFollowing.text=DbAdapterUser.userFirma.following.toString()
+            tvFollowers.text=DbAdapterUser.userFirma.followers.toString()
         }
     }
 
