@@ -29,32 +29,13 @@ class HomeScreenFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        btnSetUsername.setOnClickListener(View.OnClickListener {
-//            val username=tvSetUsername.text.toString()
-//            authAdapter.currentUser?.let {
-//                dbAdapterUser.setUsername(it,username)
-//                fragmentSetUserame.view?.visibility = View.GONE
-//            }
-//        })
+
         if (dbAdapterUser.getStatusOfLoggedUser().equals("User")) {
             tvDajTu.text=DbAdapterUser.userUser.username
         }
         else{ tvDajTu.text=DbAdapterUser.userFirma.username }
     }
 
-//    fun setUsernameFragment(){
-//        if (dbAdapterUser.getStatusOfLoggedUser().equals("User")){
-//            if (!DbAdapterUser.userUser.username.equals("")) {
-//                fragmentSetUserame.view?.visibility = View.GONE
-//            }
-//        }
-//        else{
-//            if (!DbAdapterUser.userFirma.username.equals("")) {
-//                fragmentSetUserame.view?.visibility = View.GONE
-//            }
-//        }
-//
-//    }
 
 
 }

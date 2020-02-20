@@ -2,7 +2,10 @@ package sk.upjs.ics.android.teazoneinc.Activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_home_screen.*
+import kotlinx.android.synthetic.main.fragment_set_username2.*
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterPost
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
@@ -23,10 +26,37 @@ class HomeScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen)
 
-        setViewPager()
+        setUsernameFragment()
+        btnSetUsername.setOnClickListener(View.OnClickListener {
+            val username=tvSetUsername.text.toString()
+            if (!username.equals("")){
+            authAdapter.currentUser?.let {
+                dbAdapterUser.setUsername(it, username)
+                fragmentSetUserame.view?.visibility = View.GONE
+                setViewPager()
+                }
+            }
+            else{ Toast.makeText(this,"Nastavte si prosím uživateľské meno",Toast.LENGTH_SHORT).show() }
+        })
 
 //        setClickBtnPost()
 //        getPost()
+    }
+
+    fun setUsernameFragment(){
+        if (dbAdapterUser.getStatusOfLoggedUser().equals("User")){
+            if (!DbAdapterUser.userUser.username.equals("")) {
+                fragmentSetUserame.view?.visibility = View.GONE
+                setViewPager()
+            }
+        }
+        else{
+            if (!DbAdapterUser.userFirma.username.equals("")) {
+                fragmentSetUserame.view?.visibility = View.GONE
+                setViewPager()
+            }
+        }
+
     }
 
     fun setViewPager(){

@@ -91,6 +91,14 @@
 <!--        app:layout_constraintEnd_toEndOf="parent"-->
 <!--        app:layout_constraintStart_toStartOf="parent" />-->
 
+    <fragment
+        android:id="@+id/fragmentSetUserame"
+        android:name="sk.upjs.ics.android.teazoneinc.Activities.setUsernameFragment"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginLeft="60dp"
+        tools:layout="@layout/fragment_set_username2"></fragment>
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
