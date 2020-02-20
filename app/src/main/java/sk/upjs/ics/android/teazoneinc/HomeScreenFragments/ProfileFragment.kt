@@ -31,12 +31,30 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        btnLogOutSetClick()
+        setUserToTextFields()
+    }
+
+    fun btnLogOutSetClick(){
         btnLogOut.setOnClickListener(View.OnClickListener {
             authAdapter.logOut()
             val intent = Intent(activity, LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
         })
+    }
+
+    fun setUserToTextFields(){
+        if (dbAdapterUser.getStatusOfLoggedUser().equals("User")) {
+            tvUsername.text = DbAdapterUser.userUser.username
+            tvEmail.text=DbAdapterUser.userUser.email
+            tvFollowing.text=DbAdapterUser.userUser.following.toString()
+        }
+        else{
+            tvUsername.text = DbAdapterUser.userFirma.username
+            tvEmail.text=DbAdapterUser.userFirma.email
+            tvFollowing.text=DbAdapterUser.userFirma.following.toString()
+        }
     }
 
 

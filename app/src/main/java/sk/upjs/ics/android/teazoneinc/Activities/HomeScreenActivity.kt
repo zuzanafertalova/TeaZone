@@ -27,18 +27,7 @@ class HomeScreenActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home_screen)
 
         setUsernameFragment()
-        btnSetUsername.setOnClickListener(View.OnClickListener {
-            val username=tvSetUsername.text.toString()
-            if (!username.equals("")){
-            authAdapter.currentUser?.let {
-                dbAdapterUser.setUsername(it, username)
-                fragmentSetUserame.view?.visibility = View.GONE
-                setViewPager()
-                }
-            }
-            else{ Toast.makeText(this,"Nastavte si prosím uživateľské meno",Toast.LENGTH_SHORT).show() }
-        })
-
+        btnSetUsernameSetClick()
 //        setClickBtnPost()
 //        getPost()
     }
@@ -56,7 +45,20 @@ class HomeScreenActivity : AppCompatActivity() {
                 setViewPager()
             }
         }
+    }
 
+    fun btnSetUsernameSetClick(){
+        btnSetUsername.setOnClickListener(View.OnClickListener {
+            val username=tvSetUsername.text.toString()
+            if (!username.equals("")){
+                authAdapter.currentUser?.let {
+                    dbAdapterUser.setUsername(it, username)
+                    fragmentSetUserame.view?.visibility = View.GONE
+                    setViewPager()
+                }
+            }
+            else{ Toast.makeText(this,"Nastavte si prosím uživateľské meno",Toast.LENGTH_SHORT).show() }
+        })
     }
 
     fun setViewPager(){
