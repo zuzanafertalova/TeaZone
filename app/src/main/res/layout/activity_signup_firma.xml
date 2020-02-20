@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignupFirmaActivity">
+    tools:context=".Activities.SignupFirmaActivity">
 
     <Button
         android:id="@+id/btnLoginToAccount2"

@@ -6,13 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.google.firebase.firestore.EventListener
 import kotlinx.android.synthetic.main.fragment_home_screen.*
-import kotlinx.android.synthetic.main.fragment_set_username2.*
-import sk.upjs.ics.android.teazoneinc.Firebase.authentication.AuthAdapter
-import sk.upjs.ics.android.teazoneinc.Firebase.db.DbAdapterPost
-import sk.upjs.ics.android.teazoneinc.Firebase.db.DbAdapterUser
-import sk.upjs.ics.android.teazoneinc.HomeScreenActivity
+import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
+import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterPost
+import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
 
 import sk.upjs.ics.android.teazoneinc.R
 
@@ -39,7 +36,10 @@ class HomeScreenFragment : Fragment() {
 //                fragmentSetUserame.view?.visibility = View.GONE
 //            }
 //        })
-
+        if (dbAdapterUser.getStatusOfLoggedUser().equals("User")) {
+            tvDajTu.text=DbAdapterUser.userUser.username
+        }
+        else{ tvDajTu.text=DbAdapterUser.userFirma.username }
     }
 
 //    fun setUsernameFragment(){

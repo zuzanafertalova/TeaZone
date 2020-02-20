@@ -1,4 +1,4 @@
-package sk.upjs.ics.android.teazoneinc.Firebase.DataHolderClasses.Users
+package sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users
 
 class DataFirma{
     var docID: String?=null

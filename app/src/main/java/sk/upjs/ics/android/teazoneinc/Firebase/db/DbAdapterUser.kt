@@ -1,12 +1,12 @@
-package sk.upjs.ics.android.teazoneinc.Firebase.db
+package sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db
 
 import android.util.Log
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
-import sk.upjs.ics.android.teazoneinc.Firebase.DataHolderClasses.Users.DataFirma
-import sk.upjs.ics.android.teazoneinc.Firebase.DataHolderClasses.Users.DataUser
+import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataFirma
+import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataUser
 
 class DbAdapterUser {
 

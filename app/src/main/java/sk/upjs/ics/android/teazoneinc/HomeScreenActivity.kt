@@ -1,18 +1,16 @@
-package sk.upjs.ics.android.teazoneinc
+package sk.upjs.ics.android.teazoneinc.Activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import kotlinx.android.synthetic.main.activity_home_screen.*
-import kotlinx.android.synthetic.main.fragment_home_screen.*
-import kotlinx.android.synthetic.main.fragment_set_username2.*
-import sk.upjs.ics.android.teazoneinc.Firebase.authentication.AuthAdapter
-import sk.upjs.ics.android.teazoneinc.Firebase.db.DbAdapterPost
-import sk.upjs.ics.android.teazoneinc.Firebase.db.DbAdapterUser
+import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
+import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterPost
+import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
 import sk.upjs.ics.android.teazoneinc.HomeScreenFragments.HomeScreenFragment
 import sk.upjs.ics.android.teazoneinc.HomeScreenFragments.ProfileFragment
 import sk.upjs.ics.android.teazoneinc.HomeScreenFragments.SearchFragment
-import sk.upjs.ics.android.teazoneinc.ViewPagerAdaPter.ViewPagerAdapter
+import sk.upjs.ics.android.teazoneinc.Adapters.ViewPagerAdapter
+import sk.upjs.ics.android.teazoneinc.R
 
 class HomeScreenActivity : AppCompatActivity() {
 

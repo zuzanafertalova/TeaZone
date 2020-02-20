@@ -1,12 +1,10 @@
-package sk.upjs.ics.android.teazoneinc.Firebase.db
+package sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db
 
 import android.util.Log
-import com.google.firebase.FirebaseException
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
-import sk.upjs.ics.android.teazoneinc.Firebase.DataHolderClasses.Post.DataPost
+import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Post.DataPost
 
 class DbAdapterPost {
 

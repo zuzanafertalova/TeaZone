@@ -1,4 +1,4 @@
-package sk.upjs.ics.android.teazoneinc.ViewPagerAdaPter
+package sk.upjs.ics.android.teazoneinc.Adapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

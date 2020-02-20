@@ -1,4 +1,4 @@
-package sk.upjs.ics.android.teazoneinc
+package sk.upjs.ics.android.teazoneinc.Activities
 
 class ProfilUserActivity {
 }

@@ -1,4 +1,4 @@
-package sk.upjs.ics.android.teazoneinc.Firebase.DataHolderClasses.Post
+package sk.upjs.ics.android.teazoneinc.DataHolderClasses.Post
 
 class DataPost{
     var postID : String? = null

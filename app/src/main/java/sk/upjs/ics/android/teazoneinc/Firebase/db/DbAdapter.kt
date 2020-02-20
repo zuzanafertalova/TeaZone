@@ -1,4 +1,4 @@
-package sk.upjs.ics.android.teazoneinc.Firebase.db
+package sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db
 
 class DbAdapter {
 
