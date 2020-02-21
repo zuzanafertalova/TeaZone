@@ -1,12 +1,18 @@
 package sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db
 
 import android.util.Log
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.fragment_fragment_profile.view.*
+import sk.upjs.ics.android.teazoneinc.Activities.setUsernameFragment
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataFirma
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataUser
+import sk.upjs.ics.android.teazoneinc.HomeScreenFragments.ProfileFragment
+import sk.upjs.ics.android.teazoneinc.R
 
 class DbAdapterUser {
 
@@ -68,12 +74,21 @@ class DbAdapterUser {
             }
     }
 
-    fun setUsername(user: FirebaseUser ,username : String){
+    fun setUsername(user: FirebaseUser ,username : String,eventListener: EventListener<String>){
         if (getStatusOfLoggedUser().equals("User")) {
             db.collection("Users").document(user.uid).update("username", username)
+                .addOnSuccessListener {
+                    userUser.username=username
+                    eventListener.onEvent(username,null)
+                }
         }
         else{
             db.collection("FirmaUsers").document(user.uid).update("username", username)
+                .addOnSuccessListener {
+                    userFirma.username=username
+                    val fragment = ProfileFragment()
+                    fragment.setUserToTextFields()
+                }
         }
     }
 

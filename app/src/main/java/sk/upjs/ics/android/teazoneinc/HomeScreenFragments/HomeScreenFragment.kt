@@ -30,10 +30,10 @@ class HomeScreenFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        if (dbAdapterUser.getStatusOfLoggedUser().equals("User")) {
-            tvDajTu.text=DbAdapterUser.userUser.username
-        }
-        else{ tvDajTu.text=DbAdapterUser.userFirma.username }
+//        if (dbAdapterUser.getStatusOfLoggedUser().equals("User")) {
+//            tvDajTu.text=DbAdapterUser.userUser.username
+//        }
+//        else{ tvDajTu.text=DbAdapterUser.userFirma.username }
     }
 
 

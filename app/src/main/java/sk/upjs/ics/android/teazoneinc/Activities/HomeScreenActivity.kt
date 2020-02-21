@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.google.firebase.firestore.EventListener
 import kotlinx.android.synthetic.main.activity_home_screen.*
 import kotlinx.android.synthetic.main.fragment_set_username2.*
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
@@ -52,9 +53,13 @@ class HomeScreenActivity : AppCompatActivity() {
             val username=tvSetUsername.text.toString()
             if (!username.equals("")){
                 authAdapter.currentUser?.let {
-                    dbAdapterUser.setUsername(it, username)
-                    fragmentSetUserame.view?.visibility = View.GONE
-                    setViewPager()
+                    dbAdapterUser.setUsername(it, username, EventListener{username,_->
+                        username?.let {
+                            setViewPager()
+                            fragmentSetUserame.view?.visibility = View.GONE
+                        }
+                    })
+
                 }
             }
             else{ Toast.makeText(this,"Nastavte si prosím uživateľské meno",Toast.LENGTH_SHORT).show() }
