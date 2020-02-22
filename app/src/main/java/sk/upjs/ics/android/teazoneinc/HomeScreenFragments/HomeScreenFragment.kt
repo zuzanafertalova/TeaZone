@@ -34,12 +34,9 @@ class HomeScreenFragment : Fragment() {
     val dbAdapterUser = DbAdapterUser()
     val dbAdapterPost = DbAdapterPost()
 
-    val list:MutableList<String> = mutableListOf("nkOXDPae1tW10NOAB7zShJKHbra2","Author 4")
 
     private lateinit var mAdapter: FirestorePagingAdapter<DataPost, PostViewHolder>
     private val mFirestore = FirebaseFirestore.getInstance()
-    private val mPostsCollection= mFirestore.collection("Posts").whereIn("creatorID",list)
-    private val mQuery = mPostsCollection.orderBy("content", Query.Direction.DESCENDING)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
@@ -56,21 +53,52 @@ class HomeScreenFragment : Fragment() {
 //        }
 //        else{ tvDajTu.text=DbAdapterUser.userFirma.username }
 
-        // Init RecyclerView
-        recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager = LinearLayoutManager(context)
-
-        setupAdapter()
+        setScreen()
 
 
-        // Refresh Action on Swipe Refresh Layout
-        swipeRefreshLayout.setOnRefreshListener {
-            mAdapter.refresh()
+    }
+
+    private fun setScreen(){
+        if (dbAdapterUser.getStatusOfLoggedUser().equals("User")){
+            if (!DbAdapterUser.userUser.followingIDs.isEmpty()){
+                tvNoPosts.visibility=View.GONE
+                // Init RecyclerView
+                recyclerView.setHasFixedSize(true)
+                recyclerView.layoutManager = LinearLayoutManager(context)
+                val list:MutableList<String> = DbAdapterUser.userUser.followingIDs
+
+                setupAdapter(list)
+
+
+                // Refresh Action on Swipe Refresh Layout
+                swipeRefreshLayout.setOnRefreshListener {
+                    mAdapter.refresh()
+                }
+            }
+        }
+        else{
+            if (!DbAdapterUser.userFirma.followingIDs.isEmpty()){
+                tvNoPosts.visibility=View.GONE
+                // Init RecyclerView
+                recyclerView.setHasFixedSize(true)
+                recyclerView.layoutManager = LinearLayoutManager(context)
+                val list:MutableList<String> = DbAdapterUser.userFirma.followingIDs
+
+                setupAdapter(list)
+
+
+                // Refresh Action on Swipe Refresh Layout
+                swipeRefreshLayout.setOnRefreshListener {
+                    mAdapter.refresh()
+                }
+            }
         }
     }
 
+    private fun setupAdapter(list : MutableList<String>) {
 
-    private fun setupAdapter() {
+        val mPostsCollection= mFirestore.collection("Posts").whereIn("creatorID",list)
+        val mQuery = mPostsCollection.orderBy("content", Query.Direction.DESCENDING)
 
         // Init Paging Configuration
         val config = PagedList.Config.Builder()

@@ -123,6 +123,8 @@ class DbAdapterUser {
         document.getString("email")?.let {userUser.email=it}
         document.getString("username")?.let { userUser.username=it}
         document.getLong("following")?.let {userUser.following=it.toInt()}
+        val list = document.get("followingIDs") as ArrayList<String>
+        list?.let { userUser.followingIDs=it}
         decider=0
     }
 
@@ -133,6 +135,8 @@ class DbAdapterUser {
         document.getLong("following")?.let { userFirma.following=it.toInt()}
         document.getLong("followers")?.let { userFirma.followers=it.toInt()}
         document.getString("ico")?.let { userFirma.ICO=it}
+        val list = document.get("followingIDs") as ArrayList<String>
+        list?.let { userFirma.followingIDs=it}
         decider=1
     }
 
