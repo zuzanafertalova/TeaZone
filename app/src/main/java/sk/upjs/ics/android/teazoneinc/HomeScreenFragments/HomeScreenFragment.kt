@@ -26,6 +26,7 @@ import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Post.DataPost
 
 import sk.upjs.ics.android.teazoneinc.R
 import java.util.*
+import kotlin.collections.ArrayList
 
 class HomeScreenFragment : Fragment() {
 
@@ -33,15 +34,16 @@ class HomeScreenFragment : Fragment() {
     val dbAdapterUser = DbAdapterUser()
     val dbAdapterPost = DbAdapterPost()
 
+    val list:MutableList<String> = mutableListOf("nkOXDPae1tW10NOAB7zShJKHbra2","Author 4")
+
     private lateinit var mAdapter: FirestorePagingAdapter<DataPost, PostViewHolder>
     private val mFirestore = FirebaseFirestore.getInstance()
-    private val mPostsCollection = mFirestore.collection("Posts")
+    private val mPostsCollection= mFirestore.collection("Posts").whereIn("creatorID",list)
     private val mQuery = mPostsCollection.orderBy("content", Query.Direction.DESCENDING)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_home_screen, container, false)
-
 
     }
 
@@ -60,10 +62,6 @@ class HomeScreenFragment : Fragment() {
 
         setupAdapter()
 
-        // Add Random Posts
-        fab_add.setOnClickListener {
-            addRandomPosts()
-        }
 
         // Refresh Action on Swipe Refresh Layout
         swipeRefreshLayout.setOnRefreshListener {
@@ -71,37 +69,6 @@ class HomeScreenFragment : Fragment() {
         }
     }
 
-
-    private fun addRandomPosts() {
-        createPosts().addOnCompleteListener {
-            if (it.isSuccessful) {
-                Toast.makeText(
-                    activity,
-                    "Posts Added!",
-                    Toast.LENGTH_SHORT
-                ).show()
-
-                // Refresh Adapter
-                mAdapter.refresh()
-            }
-        }
-    }
-
-    private fun createPosts(): Task<Void> {
-        val writeBatch = mFirestore.batch()
-
-        for (i in 0..30) {
-            val authorName = "Author $i"
-            val message = "Hi There! This is message $i. Happy Coding!"
-
-            val id = String.format(Locale.getDefault(), "post_%03d", i)
-            val post = DataPost(authorName,message, 0,0)
-
-            writeBatch.set(mPostsCollection.document(id), post)
-        }
-
-        return writeBatch.commit()
-    }
 
     private fun setupAdapter() {
 
