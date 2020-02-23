@@ -10,7 +10,7 @@ class DataPost{
     var likesCount : Int?=null
     var commentsCount : Int?=null
     var comments = ArrayList<String>()
-    var timeStamp : FieldValue?= null
+//    var timeStamp : FieldValue?= null
 
     constructor()
 
@@ -19,6 +19,6 @@ class DataPost{
         this.content=content
         this.likesCount=likes
         this.commentsCount=comments
-        this.timeStamp=FieldValue.serverTimestamp()
+//        this.timeStamp=FieldValue.serverTimestamp()
     }
 }

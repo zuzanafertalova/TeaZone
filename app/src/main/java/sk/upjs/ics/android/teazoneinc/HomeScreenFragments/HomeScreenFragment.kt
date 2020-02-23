@@ -98,7 +98,7 @@ class HomeScreenFragment : Fragment() {
     private fun setupAdapter(list : MutableList<String>) {
 
         val mPostsCollection= mFirestore.collection("Posts").whereIn("creatorID",list)
-        val mQuery = mPostsCollection.orderBy("content", Query.Direction.DESCENDING)
+        val mQuery = mPostsCollection.orderBy("timeStamp", Query.Direction.DESCENDING)
 
         // Init Paging Configuration
         val config = PagedList.Config.Builder()

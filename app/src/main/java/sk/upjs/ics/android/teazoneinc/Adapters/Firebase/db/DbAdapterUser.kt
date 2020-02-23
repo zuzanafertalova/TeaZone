@@ -86,8 +86,7 @@ class DbAdapterUser {
             db.collection("FirmaUsers").document(user.uid).update("username", username)
                 .addOnSuccessListener {
                     userFirma.username=username
-                    val fragment = ProfileFragment()
-                    fragment.setUserToTextFields()
+                    eventListener.onEvent(username,null)
                 }
         }
     }
