@@ -22,6 +22,7 @@ class DbAdapterPost {
     }
 
     fun setPostToPostClass(creatorID:String,content:String,likes:Int,comments:Int){
+        val time = FieldValue.serverTimestamp()
         val post = DataPost(creatorID,content,likes,comments)
         createPostInDB(post)
     }
