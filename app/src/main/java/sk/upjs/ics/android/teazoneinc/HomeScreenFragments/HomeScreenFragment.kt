@@ -58,6 +58,9 @@ class HomeScreenFragment : Fragment() {
 
     }
 
+
+    
+
     private fun setScreen(){
         if (dbAdapterUser.getStatusOfLoggedUser().equals("User")){
             if (!DbAdapterUser.userUser.followingIDs.isEmpty()){
