@@ -14,6 +14,7 @@ class DbAdapterPost {
     fun createPostInDB(map: DataPost){
         db.collection("Posts").add(map)
             .addOnSuccessListener {
+                it.update("timeStamp",FieldValue.serverTimestamp())
                 Log.w("Doc for post created","DOCUMENT CREATED")
             }
             .addOnFailureListener { exception ->

@@ -5,6 +5,7 @@ class DataUser{
     var email:String?=null
     var username : String?=null
     var following: Int?=null
+    var followingIDs =ArrayList<String>()
 
     constructor(docID : String, email:String, username : String, following: Int){
         this.docID=docID
