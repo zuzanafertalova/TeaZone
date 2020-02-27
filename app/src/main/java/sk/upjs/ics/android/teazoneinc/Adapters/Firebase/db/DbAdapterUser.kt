@@ -1,11 +1,18 @@
-package sk.upjs.ics.android.teazoneinc.Firebase.db
+package sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db
 
 import android.util.Log
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
-import sk.upjs.ics.android.teazoneinc.Firebase.DataHolderClasses.Users.DataFirma
-import sk.upjs.ics.android.teazoneinc.Firebase.DataHolderClasses.Users.DataUser
+import kotlinx.android.synthetic.main.fragment_fragment_profile.view.*
+import sk.upjs.ics.android.teazoneinc.Activities.setUsernameFragment
+import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataFirma
+import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataUser
+import sk.upjs.ics.android.teazoneinc.HomeScreenFragments.ProfileFragment
+import sk.upjs.ics.android.teazoneinc.R
 
 class DbAdapterUser {
 
@@ -67,12 +74,20 @@ class DbAdapterUser {
             }
     }
 
-    fun setUsername(user: FirebaseUser ,username : String){
+    fun setUsername(user: FirebaseUser ,username : String,eventListener: EventListener<String>){
         if (getStatusOfLoggedUser().equals("User")) {
             db.collection("Users").document(user.uid).update("username", username)
+                .addOnSuccessListener {
+                    userUser.username=username
+                    eventListener.onEvent(username,null)
+                }
         }
         else{
             db.collection("FirmaUsers").document(user.uid).update("username", username)
+                .addOnSuccessListener {
+                    userFirma.username=username
+                    eventListener.onEvent(username,null)
+                }
         }
     }
 
@@ -107,6 +122,8 @@ class DbAdapterUser {
         document.getString("email")?.let {userUser.email=it}
         document.getString("username")?.let { userUser.username=it}
         document.getLong("following")?.let {userUser.following=it.toInt()}
+        val list = document.get("followingIDs") as ArrayList<String>
+        list?.let { userUser.followingIDs=it}
         decider=0
     }
 
@@ -117,6 +134,8 @@ class DbAdapterUser {
         document.getLong("following")?.let { userFirma.following=it.toInt()}
         document.getLong("followers")?.let { userFirma.followers=it.toInt()}
         document.getString("ico")?.let { userFirma.ICO=it}
+        val list = document.get("followingIDs") as ArrayList<String>
+        list?.let { userFirma.followingIDs=it}
         decider=1
     }
 

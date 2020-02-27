@@ -1,4 +1,4 @@
-package sk.upjs.ics.android.teazoneinc
+package sk.upjs.ics.android.teazoneinc.Activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,8 +7,9 @@ import android.view.View
 import android.widget.Toast
 import com.google.firebase.firestore.EventListener
 import kotlinx.android.synthetic.main.activity_signup.*
-import sk.upjs.ics.android.teazoneinc.Firebase.authentication.AuthAdapter
-import sk.upjs.ics.android.teazoneinc.Firebase.db.DbAdapterUser
+import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
+import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
+import sk.upjs.ics.android.teazoneinc.R
 
 class SignupActivity : AppCompatActivity() {
 
@@ -52,7 +53,7 @@ class SignupActivity : AppCompatActivity() {
         )
 
         tvSignupFiremnyUcet.setOnClickListener(View.OnClickListener {
-            intent = Intent(this,SignupFirmaActivity::class.java)
+            intent = Intent(this, SignupFirmaActivity::class.java)
             startActivity(intent)
         })
 

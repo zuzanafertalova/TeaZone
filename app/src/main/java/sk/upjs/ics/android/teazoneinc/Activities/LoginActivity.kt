@@ -1,15 +1,17 @@
-package sk.upjs.ics.android.teazoneinc
+package sk.upjs.ics.android.teazoneinc.Activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.EventListener
 import kotlinx.android.synthetic.main.activity_login.*
-import sk.upjs.ics.android.teazoneinc.Firebase.authentication.AuthAdapter
-import sk.upjs.ics.android.teazoneinc.Firebase.db.DbAdapterUser
-import sk.upjs.ics.android.teazoneinc.Firebase.db.GetUser
+import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
+import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
+import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.GetUser
+import sk.upjs.ics.android.teazoneinc.R
 
 
 class LoginActivity : AppCompatActivity() {
@@ -34,14 +36,7 @@ class LoginActivity : AppCompatActivity() {
             else{
                 authAdapter.login(email,password, this, EventListener{user,_ ->
                     user?.let {
-                        dbAdapterUser.setFirebaseUserToLocalUser(it,object : GetUser{
-                            override fun onSuccess() {
-                                startHomeScreenActivity()
-                            }
-                            override fun onFailure() {
-
-                            }
-                        })
+                        setUserToLocal(it)
                     }
                 })
             }
@@ -49,11 +44,30 @@ class LoginActivity : AppCompatActivity() {
         })
 
 
+
         btnCreateAccount.setOnClickListener(View.OnClickListener {
-            intent = Intent(this,SignupActivity::class.java)
+            intent = Intent(this, SignupActivity::class.java)
             startActivity(intent)
         })
         
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val currentUser = authAdapter.currentUser
+        if (currentUser==null){}
+        else { setUserToLocal(currentUser) }
+    }
+
+    fun setUserToLocal(user:FirebaseUser){
+        dbAdapterUser.setFirebaseUserToLocalUser(user,object : GetUser{
+            override fun onSuccess() {
+                startHomeScreenActivity()
+            }
+            override fun onFailure() {
+
+            }
+        })
     }
 
     fun startHomeScreenActivity(){

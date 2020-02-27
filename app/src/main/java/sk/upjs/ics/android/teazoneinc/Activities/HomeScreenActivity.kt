@@ -1,16 +1,20 @@
-package sk.upjs.ics.android.teazoneinc
+package sk.upjs.ics.android.teazoneinc.Activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract
 import android.view.View
+import android.widget.Toast
 import com.google.firebase.firestore.EventListener
 import kotlinx.android.synthetic.main.activity_home_screen.*
 import kotlinx.android.synthetic.main.fragment_set_username2.*
-import sk.upjs.ics.android.teazoneinc.Firebase.DataHolderClasses.Post.DataPost
-import sk.upjs.ics.android.teazoneinc.Firebase.authentication.AuthAdapter
-import sk.upjs.ics.android.teazoneinc.Firebase.db.DbAdapterPost
-import sk.upjs.ics.android.teazoneinc.Firebase.db.DbAdapterUser
+import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
+import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterPost
+import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
+import sk.upjs.ics.android.teazoneinc.HomeScreenFragments.HomeScreenFragment
+import sk.upjs.ics.android.teazoneinc.HomeScreenFragments.ProfileFragment
+import sk.upjs.ics.android.teazoneinc.HomeScreenFragments.SearchFragment
+import sk.upjs.ics.android.teazoneinc.Adapters.ViewPagerAdapter
+import sk.upjs.ics.android.teazoneinc.R
 
 class HomeScreenActivity : AppCompatActivity() {
 
@@ -22,32 +26,59 @@ class HomeScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen)
-        btnSetUsername.setOnClickListener(View.OnClickListener {
-            val username=tvSetUsername.text.toString()
-            authAdapter.currentUser?.let {
-                dbAdapterUser.setUsername(it,username)
-                fragmentSetUserame.view?.visibility = View.GONE
-            }
-        })
+
         setUsernameFragment()
+        btnSetUsernameSetClick()
 //        setClickBtnPost()
 //        getPost()
     }
-
 
     fun setUsernameFragment(){
         if (dbAdapterUser.getStatusOfLoggedUser().equals("User")){
             if (!DbAdapterUser.userUser.username.equals("")) {
                 fragmentSetUserame.view?.visibility = View.GONE
+                setViewPager()
             }
         }
         else{
             if (!DbAdapterUser.userFirma.username.equals("")) {
                 fragmentSetUserame.view?.visibility = View.GONE
+                setViewPager()
             }
         }
-
     }
+
+    fun btnSetUsernameSetClick(){
+        btnSetUsername.setOnClickListener(View.OnClickListener {
+            val username=tvSetUsername.text.toString()
+            if (!username.equals("")){
+                authAdapter.currentUser?.let {
+                    dbAdapterUser.setUsername(it, username, EventListener{username,_->
+                        username?.let {
+                            setViewPager()
+                            fragmentSetUserame.view?.visibility = View.GONE
+                        }
+                    })
+
+                }
+            }
+            else{ Toast.makeText(this,"Nastavte si prosím uživateľské meno",Toast.LENGTH_SHORT).show() }
+        })
+    }
+
+    fun setViewPager(){
+        val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
+        viewPagerAdapter.addMananger(SearchFragment())
+        viewPagerAdapter.addMananger(HomeScreenFragment())
+        viewPagerAdapter.addMananger(ProfileFragment())
+        viewPager.adapter=viewPagerAdapter
+        viewPager.currentItem=1
+        tabs.setupWithViewPager(viewPager)
+        tabs.getTabAt(0)?.setIcon(R.drawable.ic_find_24dp)
+        tabs.getTabAt(1)?.setIcon(R.drawable.ic_home)
+        tabs.getTabAt(2)?.setIcon(R.drawable.ic_person_24dp)
+    }
+
 
 //    fun setClickBtnPost(){
 //        btnPost.setOnClickListener(View.OnClickListener {

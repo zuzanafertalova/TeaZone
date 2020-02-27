@@ -1,4 +1,4 @@
-package sk.upjs.ics.android.teazoneinc
+package sk.upjs.ics.android.teazoneinc.Activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,8 +7,9 @@ import android.view.View
 import android.widget.Toast
 import com.google.firebase.firestore.EventListener
 import kotlinx.android.synthetic.main.activity_signup_firma.*
-import sk.upjs.ics.android.teazoneinc.Firebase.authentication.AuthAdapter
-import sk.upjs.ics.android.teazoneinc.Firebase.db.DbAdapterUser
+import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
+import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
+import sk.upjs.ics.android.teazoneinc.R
 
 class SignupFirmaActivity : AppCompatActivity() {
 
@@ -41,6 +42,7 @@ class SignupFirmaActivity : AppCompatActivity() {
                             dbAdapterUser.createFirmaUserInDatabase(user, ico)
                             Toast.makeText(this, "Môžete sa prihlásiť", Toast.LENGTH_SHORT).show()
                             intent = Intent(this, LoginActivity::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                             startActivity(intent)
                         }
                     })
