@@ -40,7 +40,6 @@ class DbAdapterUser {
         db.collection(collectionID).document(user.uid).set(map)
             .addOnSuccessListener {
                 Log.w("DB for user created","")
-                algoliaSearchAdapter.addUserUserToAlgolia(map)
             }
             .addOnFailureListener { exception ->
                 Log.w("Couldnt createDBforUser", exception)
@@ -72,7 +71,6 @@ class DbAdapterUser {
         db.collection("FirmaUsers").document(user.uid).set(firmaData)
             .addOnSuccessListener {
                 Log.w("DB for user created","")
-                algoliaSearchAdapter.addFirmaUserToAlgolia(firmaData)
             }
             .addOnFailureListener { exception ->
                 Log.w("Couldnt createDBforUser", exception)
@@ -84,6 +82,7 @@ class DbAdapterUser {
             db.collection("Users").document(user.uid).update("username", username)
                 .addOnSuccessListener {
                     userUser.username=username
+                    algoliaSearchAdapter.addUserUserToAlgolia(userUser)
                     eventListener.onEvent(username,null)
                 }
         }
@@ -91,6 +90,7 @@ class DbAdapterUser {
             db.collection("FirmaUsers").document(user.uid).update("username", username)
                 .addOnSuccessListener {
                     userFirma.username=username
+                    algoliaSearchAdapter.addFirmaUserToAlgolia(userFirma)
                     eventListener.onEvent(username,null)
                 }
         }

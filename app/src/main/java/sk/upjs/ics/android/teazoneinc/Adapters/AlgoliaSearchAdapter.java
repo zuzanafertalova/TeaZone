@@ -68,10 +68,8 @@ public class AlgoliaSearchAdapter {
     public void addUserUserToAlgolia(DataUser map){
         try {
             index.addObjectAsync(new JSONObject()
-                    .put("docID", map.getDocID())
-                    .put("email", map.getEmail())
-                    .put("following", map.getFollowing())
-                    .put("followingIDs", map.getFollowingIDs()), null);
+                    .put("username",map.getUsername())
+                    .put("email", map.getEmail()), null);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -80,11 +78,8 @@ public class AlgoliaSearchAdapter {
     public void addFirmaUserToAlgolia(DataFirma map){
         try {
             index.addObjectAsync(new JSONObject()
-                    .put("docID", map.getDocID())
                     .put("email", map.getEmail())
-                    .put("followers", map.getFollowers())
-                    .put("following", map.getFollowing())
-                    .put("followingIDs", map.getFollowingIDs())
+                    .put("username",map.getUsername())
                     .put("ico", map.getICO()), null);
         } catch (JSONException e) {
             e.printStackTrace();
