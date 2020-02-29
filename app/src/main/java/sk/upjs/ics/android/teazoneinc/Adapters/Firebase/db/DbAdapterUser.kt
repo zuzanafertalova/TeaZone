@@ -9,6 +9,7 @@ import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_fragment_profile.view.*
 import sk.upjs.ics.android.teazoneinc.Activities.setUsernameFragment
+import sk.upjs.ics.android.teazoneinc.Adapters.AlgoliaSearchAdapter
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataFirma
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataUser
 import sk.upjs.ics.android.teazoneinc.HomeScreenFragments.ProfileFragment
@@ -17,6 +18,7 @@ import sk.upjs.ics.android.teazoneinc.R
 class DbAdapterUser {
 
     private val db = FirebaseFirestore.getInstance()
+    private val algoliaSearchAdapter = AlgoliaSearchAdapter()
 
     companion object{
         var userUser= DataUser()
@@ -38,6 +40,7 @@ class DbAdapterUser {
         db.collection(collectionID).document(user.uid).set(map)
             .addOnSuccessListener {
                 Log.w("DB for user created","")
+                algoliaSearchAdapter.addUserUserToAlgolia(map)
             }
             .addOnFailureListener { exception ->
                 Log.w("Couldnt createDBforUser", exception)
@@ -54,6 +57,7 @@ class DbAdapterUser {
         )
         createUserInDatabase("Users" , user, userData)
 
+
     }
 
     fun createFirmaUserInDatabase(user: FirebaseUser, ico : String){
@@ -68,6 +72,7 @@ class DbAdapterUser {
         db.collection("FirmaUsers").document(user.uid).set(firmaData)
             .addOnSuccessListener {
                 Log.w("DB for user created","")
+                algoliaSearchAdapter.addFirmaUserToAlgolia(firmaData)
             }
             .addOnFailureListener { exception ->
                 Log.w("Couldnt createDBforUser", exception)
@@ -107,6 +112,7 @@ class DbAdapterUser {
 
                 db.collection("FirmaUsers").document(user.uid).get()
                     .addOnSuccessListener { document ->
+                        val daco = document.getData()
                         if (document.exists()) {
                             setUserFirmaToLocalUser(document,user.uid)
                             getUser.onSuccess()

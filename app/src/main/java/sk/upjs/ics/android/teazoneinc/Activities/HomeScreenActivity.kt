@@ -7,6 +7,7 @@ import android.widget.Toast
 import com.google.firebase.firestore.EventListener
 import kotlinx.android.synthetic.main.activity_home_screen.*
 import kotlinx.android.synthetic.main.fragment_set_username2.*
+import sk.upjs.ics.android.teazoneinc.Adapters.AlgoliaSearchAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterPost
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
@@ -21,6 +22,7 @@ class HomeScreenActivity : AppCompatActivity() {
     val authAdapter = AuthAdapter()
     val dbAdapterUser = DbAdapterUser()
     val dbAdapterPost = DbAdapterPost()
+    val algoliaSearchAdapter = AlgoliaSearchAdapter()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +31,7 @@ class HomeScreenActivity : AppCompatActivity() {
 
         setUsernameFragment()
         btnSetUsernameSetClick()
+//        algoliaSearchAdapter.transferCollectionToAlgolia("Users")
 //        setClickBtnPost()
 //        getPost()
     }

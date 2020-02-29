@@ -55,11 +55,10 @@ class HomeScreenFragment : Fragment() {
 
         setScreen()
 
-
     }
 
 
-    
+
 
     private fun setScreen(){
         if (dbAdapterUser.getStatusOfLoggedUser().equals("User")){
