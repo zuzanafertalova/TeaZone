@@ -37,55 +37,55 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setEditText()
+//        setEditText()
 
     }
 
-    fun setEditText(){
-        editText_search.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
+//    fun setEditText(){
+//        editText_search.addTextChangedListener(object : TextWatcher {
+//            override fun afterTextChanged(p0: Editable?) {
+//
+//            }
+//
+//            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+//
+//            }
+//
+//            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+//                search(p0.toString())
+//            }
+//        })
+//    }
+//
 
-            }
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                search(p0.toString())
-            }
-        })
-    }
-
-
-    fun search(content: String) {
-        val query = Query(content)
-            .setAttributesToRetrieve("username")
-            .setHitsPerPage(50)
-        index.searchAsync(query) { jsonObject, e ->
-            try {
-                val hits = jsonObject!!.getJSONArray("hits")
-                setValuesToList(hits)
-
-            } catch (ex: JSONException) {
-                ex.printStackTrace()
-            }
-        }
-    }
-
-    @Throws(JSONException::class)
-    fun setValuesToList(hits: JSONArray) {
-        val list = ArrayList<String>()
-        for (i in 0 until hits.length()) {
-            val jsonObject = hits.getJSONObject(i)
-            val username = jsonObject.getString("username")
-            list.add(username)
-        }
-        context?.let {
-            val arrayAdapter = ArrayAdapter(it,R.layout.support_simple_spinner_dropdown_item,list)
-            list_view.adapter = arrayAdapter
-        }
-    }
+//    fun search(content: String) {
+//        val query = Query(content)
+//            .setAttributesToRetrieve("username")
+//            .setHitsPerPage(50)
+//        index.searchAsync(query) { jsonObject, e ->
+//            try {
+//                val hits = jsonObject!!.getJSONArray("hits")
+//                setValuesToList(hits)
+//
+//            } catch (ex: JSONException) {
+//                ex.printStackTrace()
+//            }
+//        }
+//    }
+//
+//    @Throws(JSONException::class)
+//    fun setValuesToList(hits: JSONArray) {
+//        val list = ArrayList<String>()
+//        for (i in 0 until hits.length()) {
+//            val jsonObject = hits.getJSONObject(i)
+//            val username = jsonObject.getString("username")
+//            list.add(username)
+//        }
+//        context?.let {
+//            val arrayAdapter = ArrayAdapter(it,R.layout.support_simple_spinner_dropdown_item,list)
+//            list_view.adapter = arrayAdapter
+//        }
+//    }
 
 
 
