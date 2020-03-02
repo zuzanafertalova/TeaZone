@@ -9,12 +9,38 @@
     <!-- TODO: Update blank fragment layout -->
 
     <View
+        android:id="@+id/ciara2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:backgroundTint="#CACACA"
+        android:foregroundTint="#CACACA"
+        tools:layout_editor_absoluteX="135dp"
+        tools:layout_editor_absoluteY="429dp" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="135dp"
+        android:layout_height="130dp"
+        android:src="@drawable/bero_rero_sample"
+        app:civ_border_color="@color/colorGreenLogo"
+        app:civ_border_width="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.123" />
+
+    <View
         android:id="@+id/view"
         android:layout_width="140dp"
-        android:layout_height="1dp"
+        android:layout_height="2dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:background="@android:color/darker_gray"
+        android:backgroundTint="@color/colorGreenLogo"
+        android:foregroundTint="@color/colorGreenLogo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -25,10 +51,12 @@
     <View
         android:id="@+id/ciara"
         android:layout_width="140dp"
-        android:layout_height="1dp"
+        android:layout_height="2dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:background="@android:color/darker_gray"
+        android:backgroundTint="@color/colorGreenLogo"
+        android:foregroundTint="@color/colorGreenLogo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/view"
         app:layout_constraintHorizontal_bias="0.0"
@@ -47,7 +75,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvEmail"
-        app:layout_constraintVertical_bias="0.139" />
+        app:layout_constraintVertical_bias="0.094" />
 
     <TextView
         android:id="@+id/tvFollowers"
@@ -60,25 +88,27 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvEmail"
-        app:layout_constraintVertical_bias="0.141" />
+        app:layout_constraintVertical_bias="0.094" />
 
     <Button
         android:id="@+id/btnLogOut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Log Out"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/ic_logout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintHorizontal_bias="0.909"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.039" />
+        app:layout_constraintVertical_bias="0.052" />
 
     <TextView
         android:id="@+id/tvUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="26sp"
+        android:fontFamily="@font/source_sans_pro"
+        android:textColor="@color/colorGreenLogo"
+        android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -90,6 +120,8 @@
         android:id="@+id/tvEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/source_sans_pro"
+        android:textColor="@color/colorGrey"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -124,5 +156,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view"
         app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/button_settings"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/ic_settings_black_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.074"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.051" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
