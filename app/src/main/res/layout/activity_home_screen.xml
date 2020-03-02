@@ -18,27 +18,7 @@
 <!--        app:layout_constraintStart_toStartOf="@+id/bottom_menu"-->
 <!--        app:layout_constraintTop_toTopOf="@+id/bottom_menu" />-->
 
-        <androidx.appcompat.widget.Toolbar
-        android:id="@+id/upper_menu"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:background="#22BCAF"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" >
-
-            <TextView
-                android:layout_width=""
-                android:layout_height=""
-                android:fontFamily="@font/bauhaus_93_regular"
-                android:text="TeaZone" />
-        </androidx.appcompat.widget.Toolbar>
-
-<!--    <TextView-->
+    <!--    <TextView-->
 <!--        android:id="@+id/title"-->
 <!--        android:layout_width="wrap_content"-->
 <!--        android:layout_height="wrap_content"-->
@@ -97,6 +77,34 @@
 <!--        app:layout_constraintBottom_toTopOf="@+id/bottom_menu"-->
 <!--        app:layout_constraintEnd_toEndOf="parent"-->
 <!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/upper_menu"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:background="#22BCAF"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        app:layout_constraintVertical_bias="0.5">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contextClickable="true"
+            android:fontFamily="@font/bauhaus_93_regular"
+            android:foregroundGravity="center_vertical|center_horizontal"
+            android:gravity="center"
+            android:text="TeaZone"
+            android:textColor="@android:color/white"
+            android:textSize="30dp"
+            app:layout_constraintHorizontal_bias="0.5" />
+    </androidx.appcompat.widget.Toolbar>
 
     <fragment
         android:id="@+id/fragmentSetUserame"
