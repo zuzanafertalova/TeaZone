@@ -6,16 +6,18 @@
     android:orientation="vertical"
     tools:context=".HomeScreenFragments.SearchFragments.SearchInSeachFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/editText_search"
         android:hint="Search..."
         />
-
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/list_view"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/searchingRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/list_item"
+            android:paddingBottom="10dp"
+            >
+        </androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>

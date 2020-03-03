@@ -9,12 +9,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.LinearLayout
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.algolia.search.saas.Client
 import com.algolia.search.saas.Query
 import kotlinx.android.synthetic.main.fragment_fragment_search.*
 import kotlinx.android.synthetic.main.fragment_search_in_seach.*
 import org.json.JSONArray
 import org.json.JSONException
+import sk.upjs.ics.android.teazoneinc.Adapters.SearchResultAdapter
 
 import sk.upjs.ics.android.teazoneinc.R
 import java.util.ArrayList
@@ -26,6 +29,7 @@ class SearchInSeachFragment : Fragment() {
 
     internal var client = Client("085AYVSODT", "22c915636c1f40328cbb89a1da7a531a")
     internal var index = client.getIndex("FirmaUsers_Users")
+    internal var  adapter:SearchResultAdapter? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
@@ -37,6 +41,17 @@ class SearchInSeachFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setEditText()
+        setUpRecyclerView()
+    }
+
+    private fun setUpRecyclerView() {
+        searchingRecyclerView.layoutManager = LinearLayoutManager(context)
+        adapter = SearchResultAdapter(object : SearchResultAdapter.OnResultsClick{
+            override fun setOnProfileClickListener(meno: String?) {
+            }
+        })
+        searchingRecyclerView.adapter = adapter
+
     }
 
     fun setEditText(){
@@ -79,12 +94,6 @@ class SearchInSeachFragment : Fragment() {
             val username = jsonObject.getString("username")
             list.add(username)
         }
-        context?.let {
-            val arrayAdapter = ArrayAdapter(it,R.layout.support_simple_spinner_dropdown_item,list)
-            list_view.adapter = arrayAdapter
-        }
+        adapter?.setNewData(list)
     }
-
-
-
 }
