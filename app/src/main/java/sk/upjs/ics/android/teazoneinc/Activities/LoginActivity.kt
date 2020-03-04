@@ -10,7 +10,7 @@ import com.google.firebase.firestore.EventListener
 import kotlinx.android.synthetic.main.activity_login.*
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
-import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.GetUser
+import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbInterface
 import sk.upjs.ics.android.teazoneinc.R
 
 
@@ -60,7 +60,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun setUserToLocal(user:FirebaseUser){
-        dbAdapterUser.setFirebaseUserToLocalUser(user,object : GetUser{
+        dbAdapterUser.setFirebaseUserToLocalUser(user,object : DbInterface{
             override fun onSuccess() {
                 startHomeScreenActivity()
             }

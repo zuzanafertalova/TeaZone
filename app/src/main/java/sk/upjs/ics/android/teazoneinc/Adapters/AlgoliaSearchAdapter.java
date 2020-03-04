@@ -50,6 +50,7 @@ public class AlgoliaSearchAdapter {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 try {
                                     index.addObjectAsync(new JSONObject()
+                                            .put("objectID",document.getId())
                                             .put("email", document.getString("email"))
                                             .put("ico", document.getString("ico"))
                                             .put("username", document.getString("username")), null);

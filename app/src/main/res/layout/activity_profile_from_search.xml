@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeScreenFragments.ProfileFragment">
-
-    <!-- TODO: Update blank fragment layout -->
+    tools:context=".Activities.ProfileFromSearchActivity">
 
     <View
         android:id="@+id/ciara2"
@@ -23,7 +21,7 @@
         app:layout_constraintVertical_bias="0.575" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/ivProfile_image"
+        android:id="@+id/profile_image"
         android:layout_width="135dp"
         android:layout_height="130dp"
         android:src="@drawable/bero_rero_sample"
@@ -98,13 +96,14 @@
         android:id="@+id/btnFollow"
         android:layout_width="36dp"
         android:layout_height="36dp"
+        android:layout_marginEnd="50dp"
         android:background="@drawable/ic_logout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.909"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.052" />
+        app:layout_constraintVertical_bias="0.176" />
 
     <TextView
         android:id="@+id/tvUsername"
@@ -165,12 +164,13 @@
         android:id="@+id/btnAddReview"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:layout_marginStart="50dp"
         android:background="@drawable/ic_settings_black_24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.074"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.051" />
+        app:layout_constraintVertical_bias="0.178" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

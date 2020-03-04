@@ -31,7 +31,7 @@ class HomeScreenActivity : AppCompatActivity() {
 
         setUsernameFragment()
         btnSetUsernameSetClick()
-//        algoliaSearchAdapter.transferCollectionToAlgolia("Users")
+//        algoliaSearchAdapter.transferCollectionToAlgolia("FirmaUsers")
 //        setClickBtnPost()
 //        getPost()
     }

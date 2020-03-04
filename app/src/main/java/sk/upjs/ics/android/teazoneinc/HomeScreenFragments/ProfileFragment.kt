@@ -36,7 +36,7 @@ class ProfileFragment : Fragment() {
     }
 
     fun btnLogOutSetClick(){
-        btnLogOut.setOnClickListener(View.OnClickListener {
+        btnFollow.setOnClickListener(View.OnClickListener {
             authAdapter.logOut()
             val intent = Intent(activity, LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK

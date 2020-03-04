@@ -1,19 +1,14 @@
 package sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db
 
 import android.util.Log
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.fragment_fragment_profile.view.*
 import sk.upjs.ics.android.teazoneinc.Activities.setUsernameFragment
 import sk.upjs.ics.android.teazoneinc.Adapters.AlgoliaSearchAdapter
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataFirma
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataUser
-import sk.upjs.ics.android.teazoneinc.HomeScreenFragments.ProfileFragment
-import sk.upjs.ics.android.teazoneinc.R
 
 class DbAdapterUser {
 
@@ -96,17 +91,17 @@ class DbAdapterUser {
         }
     }
 
-    fun setFirebaseUserToLocalUser(user : FirebaseUser,getUser: GetUser){
+    fun setFirebaseUserToLocalUser(user : FirebaseUser, dbInterface: DbInterface){
 
         db.collection("Users").document(user.uid).get()
             .addOnSuccessListener {document ->
                 if (document.exists()) {
                     setUserUserToLocalUser(document,user.uid)
-                    getUser.onSuccess()
+                    dbInterface.onSuccess()
                 }
                 }
                 .addOnFailureListener{
-                     getUser.onFailure()
+                     dbInterface.onFailure()
                     }
 
 
@@ -115,11 +110,11 @@ class DbAdapterUser {
                         val daco = document.getData()
                         if (document.exists()) {
                             setUserFirmaToLocalUser(document,user.uid)
-                            getUser.onSuccess()
+                            dbInterface.onSuccess()
                         }
                     }
                     .addOnFailureListener{
-                        getUser.onFailure()
+                        dbInterface.onFailure()
                     }
     }
 
@@ -145,9 +140,59 @@ class DbAdapterUser {
         decider=1
     }
 
+    fun setProfileData(docID:String, sendData: sendData){
+
+        db.collection("Users").document(docID).get()
+            .addOnSuccessListener {document ->
+                if (document.exists()) {
+                    sendData.send(setUserUserProfileData(docID ,document),null)
+                }
+            }
+            .addOnFailureListener{
+            }
+
+        db.collection("FirmaUsers").document(docID).get()
+            .addOnSuccessListener { document ->
+                val daco = document.getData()
+                if (document.exists()) {
+                    sendData.send(null,setFirmaUserProfileData(docID ,document))
+                }
+            }
+            .addOnFailureListener{
+            }
+    }
+
+    fun setUserUserProfileData(docID: String,document: DocumentSnapshot):DataUser{
+        var user = DataUser()
+        user.docID = docID
+        document.getString("email")?.let {user.email=it}
+        document.getString("username")?.let { user.username=it}
+        document.getLong("following")?.let {user.following=it.toInt()}
+        val list = document.get("followingIDs") as ArrayList<String>
+        list?.let { user.followingIDs=it}
+        return user
+    }
+
+    fun setFirmaUserProfileData(docID: String,document: DocumentSnapshot):DataFirma{
+        var firmaUser= DataFirma()
+        firmaUser.docID = docID
+        document.getString("email")?.let { firmaUser.email=it }
+        document.getString("username")?.let { firmaUser.username=it}
+        document.getLong("following")?.let { firmaUser.following=it.toInt()}
+        document.getLong("followers")?.let { firmaUser.followers=it.toInt()}
+        document.getString("ico")?.let { firmaUser.ICO=it}
+        val list = document.get("followingIDs") as ArrayList<String>
+        list?.let { firmaUser.followingIDs=it}
+        return firmaUser
+    }
+
 }
 
-interface GetUser{
+interface DbInterface{
     fun onSuccess()
     fun onFailure()
+}
+
+interface sendData{
+    fun send(userUser: DataUser?,userFirma: DataFirma?)
 }

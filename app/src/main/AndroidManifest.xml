@@ -9,15 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.SignupFirmaActivity"
+        <activity android:name=".Activities.ProfileFromSearchActivity"
             android:screenOrientation="portrait"/>
-
-        <activity android:name=".Activities.HomeScreenActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".Activities.SignupActivity"
-            android:screenOrientation="portrait"/>
-
+        <activity
+            android:name=".Activities.SignupFirmaActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.HomeScreenActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.SignupActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.LoginActivity"
             android:screenOrientation="portrait">
@@ -27,7 +29,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".Activities.MainActivity">
 
             <!-- <intent-filter> -->
