@@ -95,7 +95,7 @@
         app:layout_constraintVertical_bias="0.094" />
 
     <Button
-        android:id="@+id/btnFollow"
+        android:id="@+id/btnLogOut"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:background="@drawable/ic_logout"
@@ -162,7 +162,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/btnAddReview"
+        android:id="@+id/btnSettings"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:background="@drawable/ic_settings_black_24dp"

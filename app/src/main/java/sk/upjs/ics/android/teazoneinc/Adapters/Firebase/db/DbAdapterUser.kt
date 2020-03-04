@@ -4,6 +4,7 @@ import android.util.Log
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.EventListener
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import sk.upjs.ics.android.teazoneinc.Activities.setUsernameFragment
 import sk.upjs.ics.android.teazoneinc.Adapters.AlgoliaSearchAdapter
@@ -135,8 +136,10 @@ class DbAdapterUser {
         document.getLong("following")?.let { userFirma.following=it.toInt()}
         document.getLong("followers")?.let { userFirma.followers=it.toInt()}
         document.getString("ico")?.let { userFirma.ICO=it}
-        val list = document.get("followingIDs") as ArrayList<String>
-        list?.let { userFirma.followingIDs=it}
+        val followingIDs = document.get("followingIDs") as ArrayList<String>
+        followingIDs?.let { userFirma.followingIDs=it }
+        val followersIDs = document.get("followersIDs") as ArrayList<String>
+        followersIDs?.let { userFirma.followersIDs=it }
         decider=1
     }
 
@@ -184,6 +187,37 @@ class DbAdapterUser {
         val list = document.get("followingIDs") as ArrayList<String>
         list?.let { firmaUser.followingIDs=it}
         return firmaUser
+    }
+
+    fun addFollower(docID: String,followerID:String){
+        db.collection("FirmaUsers").document(docID)
+            .update("followersIDs", FieldValue.arrayUnion(followerID))
+            .addOnSuccessListener {
+                Log.w("PODARILO PRIDAT","PRIDAT FOLOWERAAAAAAAAAAAAAAAA")
+            }
+            .addOnFailureListener{
+                Log.w("NEPODARILO SA FOLLOW",it)
+            }
+        if (getStatusOfLoggedUser().equals("User")){
+            db.collection("Users").document(followerID)
+                .update("followingIDs", FieldValue.arrayUnion(docID))
+                .addOnSuccessListener {
+                    Log.w("PODARILO PRIDAT","PRIDAT FOLOWERAAAAAAAAAAAAAAAA")
+                }
+                .addOnFailureListener{
+                    Log.w("NEPODARILO SA FOLLOW",it)
+                }
+        }
+        else{
+            db.collection("FirmaUsers").document(followerID)
+                .update("followingIDs", FieldValue.arrayUnion(docID))
+                .addOnSuccessListener {
+                    Log.w("PODARILO PRIDAT","PRIDAT FOLOWERAAAAAAAAAAAAAAAA")
+                }
+                .addOnFailureListener{
+                    Log.w("NEPODARILO SA FOLLOW",it)
+                }
+        }
     }
 
 }
