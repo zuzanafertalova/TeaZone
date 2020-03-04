@@ -69,6 +69,7 @@ public class AlgoliaSearchAdapter {
     public void addUserUserToAlgolia(DataUser map){
         try {
             index.addObjectAsync(new JSONObject()
+                    .put("objectID",map.getDocID())
                     .put("username",map.getUsername())
                     .put("email", map.getEmail()), null);
         } catch (JSONException e) {
@@ -79,6 +80,7 @@ public class AlgoliaSearchAdapter {
     public void addFirmaUserToAlgolia(DataFirma map){
         try {
             index.addObjectAsync(new JSONObject()
+                    .put("objectID",map.getDocID())
                     .put("email", map.getEmail())
                     .put("username",map.getUsername())
                     .put("ico", map.getICO()), null);
