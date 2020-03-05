@@ -34,35 +34,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.123" />
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="140dp"
-        android:layout_height="2dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:background="@android:color/darker_gray"
-        android:backgroundTint="@color/colorGreenLogo"
-        android:foregroundTint="@color/colorGreenLogo"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/tvFollowing_Followers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="10dp"
+        android:text="Following"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tabsProfile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvFollowing"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="Following"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.84"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/tvFollowing"
@@ -75,22 +60,6 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvEmail"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <View
-        android:id="@+id/ciara"
-        android:layout_width="140dp"
-        android:layout_height="2dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:background="@android:color/darker_gray"
-        android:backgroundTint="@color/colorGreenLogo"
-        android:foregroundTint="@color/colorGreenLogo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/view"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvFollowers"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -106,20 +75,21 @@
         app:layout_constraintTop_toBottomOf="@+id/tvEmail"
         app:layout_constraintVertical_bias="0.0" />
 
+
     <TextView
-        android:id="@+id/tvFollowHide"
+        android:id="@+id/tvReviews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="Followers"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="10dp"
+        android:text="Reviews"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tabsProfile"
         app:layout_constraintEnd_toStartOf="@+id/textView15"
-        app:layout_constraintHorizontal_bias="0.212"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ciara"
-        app:layout_constraintVertical_bias="0.0" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/tvUsername"

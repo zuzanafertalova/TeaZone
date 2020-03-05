@@ -55,23 +55,20 @@ class ProfileFromSearchActivity : AppCompatActivity() {
     fun setDataUserUserToFields(user: DataUser){
         tvUsername.text = user.username
         tvEmail.text=user.email
-        tvFollowing.text=user.following.toString()
-        tvFollowHide.visibility= View.GONE
-        ciara.visibility= View.GONE
+        tvFollowing_Followers.text = "Following"
         val titles = ArrayList<String>()
         titles.add("0")
-        titles.add(tvFollowing.text.toString())
+        titles.add(user.following.toString())
         setViewPager(titles)
     }
 
     fun setDataFirmaUserToFields(userFirma: DataFirma){
         tvUsername.text = userFirma.username
         tvEmail.text=userFirma.email
-        tvFollowing.text=userFirma.following.toString()
-        tvFollowers.text=userFirma.followers.toString()
+        tvFollowing_Followers.text = "Followers"
         val titles = ArrayList<String>()
         titles.add("0")
-        titles.add(tvFollowers.text.toString())
+        titles.add(userFirma.followers.toString())
         setViewPager(titles)
     }
 
