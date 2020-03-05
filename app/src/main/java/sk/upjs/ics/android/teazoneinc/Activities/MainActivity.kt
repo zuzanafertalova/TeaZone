@@ -1,9 +1,8 @@
-package sk.upjs.ics.android.teazoneinc
+package sk.upjs.ics.android.teazoneinc.Activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import kotlinx.android.synthetic.main.activity_login.*
+import sk.upjs.ics.android.teazoneinc.R
 
 class MainActivity : AppCompatActivity() {
 

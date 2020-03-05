@@ -4,7 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignupFirmaActivity">
+    tools:context=".Activities.SignupFirmaActivity">
+
+    <Button
+        android:id="@+id/btnLoginToAccount2"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:background="@drawable/button_grey"
+        android:fontFamily="@font/source_sans_pro"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:text="PRIHLÁSENIE"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.953" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="13dp"
+        android:fontFamily="@font/source_sans_pro"
+        android:text="Máte už účet? Prihláste sa!"
+        android:textColor="@color/colorGreyLogo"
+        app:layout_constraintBottom_toTopOf="@+id/btnLoginToAccount2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSignupFirma" />
 
     <TextView
         android:id="@+id/textView8"
@@ -25,17 +56,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="3dp"
         android:fontFamily="@font/source_sans_pro"
         android:text="Registrácia firmy"
         android:textColor="@color/colorGreyLogo"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/tvSignupFirmaICO"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.018" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -53,7 +84,7 @@
         android:id="@+id/tvSignupFirmaEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textPersonName"
@@ -67,7 +98,7 @@
         android:id="@+id/pswdSignupFirmaPswrd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:ems="10"
         android:hint="Heslo"
         android:inputType="textPassword"
@@ -81,8 +112,8 @@
         android:id="@+id/pswdSignupFirmaConfirmPswrd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="22dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="40dp"
         android:ems="10"
         android:hint="Potvrď heslo"
         android:inputType="textPassword"
@@ -104,13 +135,13 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.919" />
+        app:layout_constraintVertical_bias="0.823" />
 
     <EditText
         android:id="@+id/tvSignupFirmaICO"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="IČO"
         android:inputType="textPersonName"

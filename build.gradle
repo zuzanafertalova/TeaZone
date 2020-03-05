@@ -2,7 +2,9 @@
 
 buildscript {
     ext.kotlin_version = '1.3.50'
+    ext.ktor_version = '1.3.1'
     repositories {
+        maven { url "https://dl.bintray.com/algolia/maven" }
         google()
         jcenter()
         
@@ -18,6 +20,7 @@ buildscript {
 
 allprojects {
     repositories {
+        maven { url "https://dl.bintray.com/algolia/maven" }
         google()
         jcenter()
         

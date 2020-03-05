@@ -1,4 +1,4 @@
-package sk.upjs.ics.android.teazoneinc
+package sk.upjs.ics.android.teazoneinc.Activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,13 +7,15 @@ import android.view.View
 import android.widget.Toast
 import com.google.firebase.firestore.EventListener
 import kotlinx.android.synthetic.main.activity_signup.*
-import sk.upjs.ics.android.teazoneinc.Firebase.db.DbAdapter
+import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
+import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
+import sk.upjs.ics.android.teazoneinc.R
 
 class SignupActivity : AppCompatActivity() {
 
 
-    val authAdapter = sk.upjs.ics.android.teazoneinc.Firebase.authentication.AuthAdapter()
-    val dbAdapter = DbAdapter()
+    val authAdapter = AuthAdapter()
+    val dbAdapterUser = DbAdapterUser()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
@@ -33,15 +35,13 @@ class SignupActivity : AppCompatActivity() {
 
             else {
                 if (password.equals(confrimpassword)){
-                    authAdapter.signup(email,password,this, EventListener { user, _ ->
-                        val user = user
-                        Toast.makeText(this,"Môžete sa prihlásiť",Toast.LENGTH_SHORT).show()
-                        finish()
-                        user?.let {user ->
-                            dbAdapter.createUserUserInDatabase(user)
+                    authAdapter.signup(email,password,this, EventListener{user , _->
+                        user?.let {
+                            Toast.makeText(this, "Úspešná registrácia, môžete sa prihlásiť", Toast.LENGTH_SHORT).show()
+                            dbAdapterUser.createUserUserInDatabase(user)
+                            finish()
                         }
                     })
-
                 }
                 else{
                     Toast.makeText(this,"Heslá sa nezhodujú",Toast.LENGTH_SHORT).show()
@@ -53,7 +53,7 @@ class SignupActivity : AppCompatActivity() {
         )
 
         tvSignupFiremnyUcet.setOnClickListener(View.OnClickListener {
-            intent = Intent(this,SignupFirmaActivity::class.java)
+            intent = Intent(this, SignupFirmaActivity::class.java)
             startActivity(intent)
         })
 
