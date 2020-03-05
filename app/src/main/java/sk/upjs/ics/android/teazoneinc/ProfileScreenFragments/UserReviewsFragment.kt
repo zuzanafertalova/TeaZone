@@ -12,11 +12,14 @@ import sk.upjs.ics.android.teazoneinc.R
 /**
  * A simple [Fragment] subclass.
  */
-class ReviewsFragment : Fragment() {
+class UserReviewsFragment : Fragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?)
-            : View? {
-        return inflater.inflate(R.layout.fragment_reviews, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_user_reviews, container, false)
     }
 
 

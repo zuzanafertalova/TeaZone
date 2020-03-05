@@ -3,27 +3,18 @@ package sk.upjs.ics.android.teazoneinc.Activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import kotlinx.android.synthetic.main.activity_home_screen.*
 import kotlinx.android.synthetic.main.activity_profile_from_search.*
-import kotlinx.android.synthetic.main.fragment_fragment_profile.*
-import kotlinx.android.synthetic.main.fragment_fragment_profile.ciara
 import kotlinx.android.synthetic.main.fragment_fragment_profile.tvEmail
-import kotlinx.android.synthetic.main.fragment_fragment_profile.tvFollowHide
-import kotlinx.android.synthetic.main.fragment_fragment_profile.tvFollowers
-import kotlinx.android.synthetic.main.fragment_fragment_profile.tvFollowing
 import kotlinx.android.synthetic.main.fragment_fragment_profile.tvUsername
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
-import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbInterface
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.sendData
 import sk.upjs.ics.android.teazoneinc.Adapters.ViewPagerAdapter
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataFirma
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataUser
-import sk.upjs.ics.android.teazoneinc.HomeScreenFragments.HomeScreenFragment
-import sk.upjs.ics.android.teazoneinc.HomeScreenFragments.ProfileFragment
-import sk.upjs.ics.android.teazoneinc.HomeScreenFragments.SearchFragment
 import sk.upjs.ics.android.teazoneinc.ProfileScreenFragments.FollowersFragment
-import sk.upjs.ics.android.teazoneinc.ProfileScreenFragments.ReviewsFragment
+import sk.upjs.ics.android.teazoneinc.ProfileScreenFragments.FirmaReviewsFragment
+import sk.upjs.ics.android.teazoneinc.ProfileScreenFragments.UserReviewsFragment
 import sk.upjs.ics.android.teazoneinc.R
 
 class ProfileFromSearchActivity : AppCompatActivity() {
@@ -59,7 +50,7 @@ class ProfileFromSearchActivity : AppCompatActivity() {
         val titles = ArrayList<String>()
         titles.add("0")
         titles.add(user.following.toString())
-        setViewPager(titles)
+        setUserViewPager(titles)
     }
 
     fun setDataFirmaUserToFields(userFirma: DataFirma){
@@ -69,7 +60,7 @@ class ProfileFromSearchActivity : AppCompatActivity() {
         val titles = ArrayList<String>()
         titles.add("0")
         titles.add(userFirma.followers.toString())
-        setViewPager(titles)
+        setFirmaViewPager(titles)
     }
 
     fun setOnClickBtnFollow(){
@@ -84,12 +75,19 @@ class ProfileFromSearchActivity : AppCompatActivity() {
         })
     }
 
-    fun setViewPager(titles: ArrayList<String>){
+    fun setUserViewPager(titles: ArrayList<String>){
         val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
-        viewPagerAdapter.addManagerProfile(ReviewsFragment(),titles[0])
+        viewPagerAdapter.addManagerProfile(UserReviewsFragment(),titles[0])
         viewPagerAdapter.addManagerProfile(FollowersFragment(),titles[1])
         viewPagerProfile.adapter=viewPagerAdapter
-        viewPagerProfile.currentItem=1
+        tabsProfile.setupWithViewPager(viewPagerProfile)
+    }
+
+    fun setFirmaViewPager(titles: ArrayList<String>){
+        val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
+        viewPagerAdapter.addManagerProfile(FirmaReviewsFragment(),titles[0])
+        viewPagerAdapter.addManagerProfile(FollowersFragment(),titles[1])
+        viewPagerProfile.adapter=viewPagerAdapter
         tabsProfile.setupWithViewPager(viewPagerProfile)
     }
 }
