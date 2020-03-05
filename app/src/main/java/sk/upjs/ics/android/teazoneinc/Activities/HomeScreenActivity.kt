@@ -71,9 +71,9 @@ class HomeScreenActivity : AppCompatActivity() {
 
     fun setViewPager(){
         val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
-        viewPagerAdapter.addMananger(SearchFragment())
-        viewPagerAdapter.addMananger(HomeScreenFragment())
-        viewPagerAdapter.addMananger(ProfileFragment())
+        viewPagerAdapter.addManagerProfile(SearchFragment(),"")
+        viewPagerAdapter.addManagerProfile(HomeScreenFragment(),"")
+        viewPagerAdapter.addManagerProfile(ProfileFragment(),"")
         viewPager.adapter=viewPagerAdapter
         viewPager.currentItem=1
         tabs.setupWithViewPager(viewPager)
