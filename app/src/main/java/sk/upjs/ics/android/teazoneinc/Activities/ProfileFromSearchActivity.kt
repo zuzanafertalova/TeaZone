@@ -14,6 +14,7 @@ import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataFirma
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataUser
 import sk.upjs.ics.android.teazoneinc.ProfileScreenFragments.FollowersFragment
 import sk.upjs.ics.android.teazoneinc.ProfileScreenFragments.FirmaReviewsFragment
+import sk.upjs.ics.android.teazoneinc.ProfileScreenFragments.PostReviewFragment
 import sk.upjs.ics.android.teazoneinc.ProfileScreenFragments.UserReviewsFragment
 import sk.upjs.ics.android.teazoneinc.R
 
@@ -59,6 +60,7 @@ class ProfileFromSearchActivity : AppCompatActivity() {
         tvFollowing_Followers.text = "Followers"
         val titles = ArrayList<String>()
         titles.add("0")
+        titles.add("Napiste hodnotenie")
         titles.add(userFirma.followers.toString())
         setFirmaViewPager(titles)
     }
@@ -86,7 +88,8 @@ class ProfileFromSearchActivity : AppCompatActivity() {
     fun setFirmaViewPager(titles: ArrayList<String>){
         val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
         viewPagerAdapter.addManagerProfile(FirmaReviewsFragment(),titles[0])
-        viewPagerAdapter.addManagerProfile(FollowersFragment(),titles[1])
+        viewPagerAdapter.addManagerProfile(PostReviewFragment(),titles[1])
+        viewPagerAdapter.addManagerProfile(FollowersFragment(),titles[2])
         viewPagerProfile.adapter=viewPagerAdapter
         tabsProfile.setupWithViewPager(viewPagerProfile)
     }
