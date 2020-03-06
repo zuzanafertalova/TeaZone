@@ -1,8 +1,5 @@
 package sk.upjs.ics.android.teazoneinc.Adapters;
 
-import android.content.Context;
-import android.widget.ArrayAdapter;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -17,8 +14,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.gson.JsonArray;
-import com.google.protobuf.Any;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,13 +21,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapter;
-import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser;
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataFirma;
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataUser;
-import sk.upjs.ics.android.teazoneinc.R;
 
 public class AlgoliaSearchAdapter {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();

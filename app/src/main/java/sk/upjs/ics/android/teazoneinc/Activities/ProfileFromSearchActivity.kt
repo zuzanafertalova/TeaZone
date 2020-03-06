@@ -22,7 +22,10 @@ class ProfileFromSearchActivity : AppCompatActivity() {
 
     val authAdapter = AuthAdapter()
     val dbAdapterUser = DbAdapterUser()
-    lateinit var docID : String
+
+    companion object {
+        lateinit var docID : String
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

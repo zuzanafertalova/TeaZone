@@ -32,7 +32,7 @@ class DbAdapterUser {
     }
 
 
-    fun createUserInDatabase(collectionID : String, user : FirebaseUser, map: DataUser){
+    private fun createUserInDatabase(collectionID : String, user : FirebaseUser, map: DataUser){
         db.collection(collectionID).document(user.uid).set(map)
             .addOnSuccessListener {
                 Log.w("DB for user created","")
@@ -119,7 +119,7 @@ class DbAdapterUser {
                     }
     }
 
-    fun setUserUserToLocalUser(document: DocumentSnapshot,userDocID:String) {
+    private fun setUserUserToLocalUser(document: DocumentSnapshot,userDocID:String) {
         userUser.docID=userDocID
         document.getString("email")?.let {userUser.email=it}
         document.getString("username")?.let { userUser.username=it}
@@ -129,7 +129,7 @@ class DbAdapterUser {
         decider=0
     }
 
-    fun setUserFirmaToLocalUser(document: DocumentSnapshot,userDocID:String) {
+    private fun setUserFirmaToLocalUser(document: DocumentSnapshot,userDocID:String) {
         userFirma.docID=userDocID
         document.getString("email")?.let { userFirma.email=it }
         document.getString("username")?.let { userFirma.username=it}
@@ -165,7 +165,7 @@ class DbAdapterUser {
             }
     }
 
-    fun setUserUserProfileData(docID: String,document: DocumentSnapshot):DataUser{
+    private fun setUserUserProfileData(docID: String,document: DocumentSnapshot):DataUser{
         var user = DataUser()
         user.docID = docID
         document.getString("email")?.let {user.email=it}
@@ -176,7 +176,7 @@ class DbAdapterUser {
         return user
     }
 
-    fun setFirmaUserProfileData(docID: String,document: DocumentSnapshot):DataFirma{
+    private fun setFirmaUserProfileData(docID: String,document: DocumentSnapshot):DataFirma{
         var firmaUser= DataFirma()
         firmaUser.docID = docID
         document.getString("email")?.let { firmaUser.email=it }
