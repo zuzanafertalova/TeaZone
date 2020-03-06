@@ -62,11 +62,8 @@ class PostReviewFragment : Fragment() {
     fun setDatasToPost(){
         review.content = tvReviewContent.text.toString()
         review.creatorID = authAdapter.currentUser?.uid
-        setPostToDatabase()
-    }
-
-    fun setPostToDatabase(){
-        dbAdapterReview.setPostToDatabase(ProfileFromSearchActivity.docID,review)
+        review.recieverID = ProfileFromSearchActivity.docID
+        dbAdapterReview.setPostToDatabase(review)
     }
 
 

@@ -7,8 +7,8 @@ class DbAdapterReview {
 
     private val db = FirebaseFirestore.getInstance()
 
-    fun setPostToDatabase (docID : String, map : DataReview){
-        db.collection("FirmaUsers").document(docID).collection("Reviews").add(map)
+    fun setPostToDatabase (map : DataReview){
+        db.collection("Reviews").add(map)
     }
 
 
