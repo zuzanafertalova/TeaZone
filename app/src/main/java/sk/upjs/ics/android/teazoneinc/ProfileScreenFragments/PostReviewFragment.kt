@@ -35,6 +35,7 @@ class PostReviewFragment : Fragment() {
         setButtonsToList()
         setButtonsOnClick()
         setButtonPostClick()
+
     }
 
     fun setButtonsToList(){
