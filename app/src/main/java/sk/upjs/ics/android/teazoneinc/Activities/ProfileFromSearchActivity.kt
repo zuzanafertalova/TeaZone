@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.activity_profile_from_search.*
+import kotlinx.android.synthetic.main.fragment_fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_fragment_profile.tvEmail
 import kotlinx.android.synthetic.main.fragment_fragment_profile.tvUsername
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
@@ -33,7 +34,6 @@ class ProfileFromSearchActivity : AppCompatActivity() {
         docID = intent.getStringExtra("objectID")
 
         setData()
-        setOnClickBtnFollow()
 
     }
 
@@ -48,6 +48,7 @@ class ProfileFromSearchActivity : AppCompatActivity() {
     }
 
     fun setDataUserUserToFields(user: DataUser){
+        btnFollow.visibility=View.GONE
         tvUsername.text = user.username
         tvEmail.text=user.email
         tvFollowing_Followers.text = "Following"
@@ -66,6 +67,7 @@ class ProfileFromSearchActivity : AppCompatActivity() {
         titles.add("Napiste hodnotenie")
         titles.add(userFirma.followers.toString())
         setFirmaViewPager(titles)
+        setOnClickBtnFollow()
     }
 
     fun setOnClickBtnFollow(){
