@@ -38,16 +38,15 @@
         android:id="@+id/tvFollowing_Followers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
         android:layout_marginBottom="10dp"
-        android:text="Following"
+        android:text="Počet sledovateľov"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/tabsProfile"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.903"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.967" />
 
     <TextView
         android:id="@+id/tvFollowing"
@@ -80,16 +79,15 @@
         android:id="@+id/tvReviews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="56dp"
         android:layout_marginBottom="10dp"
-        android:text="Reviews"
+        android:text="Hodnotenie"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/tabsProfile"
         app:layout_constraintEnd_toStartOf="@+id/textView15"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.967" />
 
     <TextView
         android:id="@+id/tvUsername"
@@ -121,16 +119,16 @@
 
     <Button
         android:id="@+id/btnFollow"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginEnd="50dp"
-        android:background="@drawable/ic_logout"
+        android:background="@drawable/ic_tea_cup"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.176" />
+        app:layout_constraintVertical_bias="0.073" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabsProfile"
@@ -157,5 +155,18 @@
         app:layout_constraintTop_toBottomOf="@+id/ciara2">
 
     </androidx.viewpager.widget.ViewPager>
+
+    <TextView
+        android:id="@+id/textView_sledovat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:text=" Sledovať "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.447"
+        app:layout_constraintStart_toEndOf="@+id/profile_image"
+        app:layout_constraintTop_toBottomOf="@+id/btnFollow"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
