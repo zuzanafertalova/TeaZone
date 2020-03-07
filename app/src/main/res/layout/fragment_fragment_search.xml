@@ -8,19 +8,21 @@
     tools:context=".HomeScreenFragments.SearchFragment">
 
     <EditText
+        android:id="@+id/editText_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText_search"
         android:hint="Search..."
-        />
+        android:textColor="@color/colorGreyLogo"
+        android:textColorHighlight="@color/colorGrey"
+        android:textColorHint="@color/colorGrey"
+        android:textColorLink="@color/colorGreyLogo" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/searchingRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/list_item"
-        android:paddingBottom="10dp"
-        >
-    </androidx.recyclerview.widget.RecyclerView>
+        android:paddingBottom="12dp"
+        tools:listitem="@layout/list_item"></androidx.recyclerview.widget.RecyclerView>
 
 <!--    <EditText-->
 <!--        android:layout_width="match_parent"-->

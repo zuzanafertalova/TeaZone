@@ -6,7 +6,6 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
-import sk.upjs.ics.android.teazoneinc.Activities.setUsernameFragment
 import sk.upjs.ics.android.teazoneinc.Adapters.AlgoliaSearchAdapter
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataFirma
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataUser

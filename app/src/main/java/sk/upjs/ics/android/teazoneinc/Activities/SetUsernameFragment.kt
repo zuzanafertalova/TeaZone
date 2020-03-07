@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import sk.upjs.ics.android.teazoneinc.R
 
 
-class setUsernameFragment : Fragment(){
+class SetUsernameFragment : Fragment(){
 
     override fun onCreateView(
         inflater: LayoutInflater,

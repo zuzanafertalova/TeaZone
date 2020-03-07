@@ -80,35 +80,28 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/upper_menu"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#22BCAF"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
-        app:layout_constraintVertical_bias="0.5">
+        android:theme="?attr/actionBarTheme">
 
         <TextView
             android:id="@+id/title"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:contextClickable="true"
             android:fontFamily="@font/bauhaus_93_regular"
-            android:foregroundGravity="center_vertical|center_horizontal"
             android:gravity="center"
             android:text="TeaZone"
             android:textColor="@android:color/white"
-            android:textSize="30dp"
-            app:layout_constraintHorizontal_bias="0.5" />
+            android:textSize="30dp" />
     </androidx.appcompat.widget.Toolbar>
 
     <fragment
         android:id="@+id/fragmentSetUserame"
-        android:name="sk.upjs.ics.android.teazoneinc.Activities.setUsernameFragment"
+        android:name="sk.upjs.ics.android.teazoneinc.Activities.SetUsernameFragment"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_marginLeft="60dp"
@@ -118,15 +111,19 @@
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
-    </androidx.viewpager.widget.ViewPager>
+        android:layout_weight="1"></androidx.viewpager.widget.ViewPager>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
         android:layout_width="match_parent"
-        app:tabMode="fixed"
+        android:layout_height="?android:actionBarSize"
+        android:background="@color/white"
         app:tabGravity="fill"
-        android:layout_height="?android:actionBarSize">
+        app:tabIndicatorColor="@color/colorGreenLogo"
+        app:tabMode="fixed"
+        app:tabRippleColor="@color/colorGrey"
+        app:tabSelectedTextColor="@color/colorGrey"
+        app:tabTextColor="@color/white">
 
     </com.google.android.material.tabs.TabLayout>
 
