@@ -1,10 +1,11 @@
 package sk.upjs.ics.android.teazoneinc.Activities
 
-import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_profile_from_search.*
-import kotlinx.android.synthetic.main.fragment_fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_fragment_profile.tvEmail
 import kotlinx.android.synthetic.main.fragment_fragment_profile.tvUsername
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
@@ -13,11 +14,12 @@ import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.sendData
 import sk.upjs.ics.android.teazoneinc.Adapters.ViewPagerAdapter
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataFirma
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataUser
-import sk.upjs.ics.android.teazoneinc.ProfileScreenFragments.FollowersFragment
 import sk.upjs.ics.android.teazoneinc.ProfileScreenFragments.FirmaReviewsFragment
+import sk.upjs.ics.android.teazoneinc.ProfileScreenFragments.FollowersFragment
 import sk.upjs.ics.android.teazoneinc.ProfileScreenFragments.PostReviewFragment
 import sk.upjs.ics.android.teazoneinc.ProfileScreenFragments.UserReviewsFragment
 import sk.upjs.ics.android.teazoneinc.R
+
 
 class ProfileFromSearchActivity : AppCompatActivity() {
 
@@ -32,8 +34,9 @@ class ProfileFromSearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile_from_search)
         docID = intent.getStringExtra("objectID")
-
         setData()
+
+
 
     }
 
@@ -70,6 +73,11 @@ class ProfileFromSearchActivity : AppCompatActivity() {
         setOnClickBtnFollow()
     }
 
+
+
+
+
+
     fun setOnClickBtnFollow(){
         btnFollow.setOnClickListener(View.OnClickListener {
             if (dbAdapterUser.getStatusOfLoggedUser().equals("User")){
@@ -78,9 +86,11 @@ class ProfileFromSearchActivity : AppCompatActivity() {
             else{
                 DbAdapterUser.userFirma.docID?.let { dbAdapterUser.addFollower(docID,it) }
             }
-
+            btnFollow.background = resources.getDrawable(R.drawable.ic_tea_cup_onclick)
         })
     }
+
+
 
     fun setUserViewPager(titles: ArrayList<String>){
         val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
