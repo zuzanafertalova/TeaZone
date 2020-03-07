@@ -37,7 +37,7 @@
 
 <!--    <fragment-->
 <!--        android:id="@+id/fragmentSearch"-->
-<!--        android:name="sk.upjs.ics.android.teazoneinc.HomeScreenFragments.SearchFragments.SearchInSeachFragment"-->
+<!--        android:name="sk.upjs.ics.android.teazoneinc.HomeScreenFragments.SearchFragments.ReviewsFragment"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="match_parent"-->
 <!--        app:layout_constraintBottom_toBottomOf="parent"-->

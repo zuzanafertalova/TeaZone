@@ -8,11 +8,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_fragment_profile.*
+import kotlinx.android.synthetic.main.fragment_fragment_profile.tvEmail
+import kotlinx.android.synthetic.main.fragment_fragment_profile.tvFollowers
+import kotlinx.android.synthetic.main.fragment_fragment_profile.tvFollowing
+import kotlinx.android.synthetic.main.fragment_fragment_profile.tvUsername
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterPost
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
 import sk.upjs.ics.android.teazoneinc.Activities.HomeScreenActivity
 import sk.upjs.ics.android.teazoneinc.Activities.LoginActivity
+import sk.upjs.ics.android.teazoneinc.Adapters.ViewPagerAdapter
+import sk.upjs.ics.android.teazoneinc.HomeScreenFragments.ProfileFragments.ReviewsFragment
+import sk.upjs.ics.android.teazoneinc.ProfileScreenFragments.FollowersFragment
 
 import sk.upjs.ics.android.teazoneinc.R
 
@@ -49,14 +56,47 @@ class ProfileFragment : Fragment() {
             tvUsername.text = DbAdapterUser.userUser.username
             tvEmail.text=DbAdapterUser.userUser.email
             tvFollowing.text=DbAdapterUser.userUser.following.toString()
-            tvFollowHide.visibility=View.GONE
-            ciara.visibility=View.GONE
+            tvFollowing_FollowersProfileFragment.text = "Following"
+
+            val titles = ArrayList<String>()
+            titles.add("0")
+            titles.add(DbAdapterUser.userUser.following.toString())
+            setUserViewPager(titles)
         }
         else{
             tvUsername.text = DbAdapterUser.userFirma.username
             tvEmail.text=DbAdapterUser.userFirma.email
             tvFollowing.text=DbAdapterUser.userFirma.following.toString()
             tvFollowers.text=DbAdapterUser.userFirma.followers.toString()
+            tvFollowing_FollowersProfileFragment.text="Followers"
+
+            val titles = ArrayList<String>()
+            titles.add("0")
+            titles.add(DbAdapterUser.userFirma.followers.toString())
+            setFirmaViewPager(titles)
+        }
+    }
+
+
+    fun setUserViewPager(titles: ArrayList<String>){
+        val viewPagerAdapterProfleFragment : ViewPagerAdapter
+        fragmentManager?.let {
+            viewPagerAdapterProfleFragment = ViewPagerAdapter(it)
+            viewPagerAdapterProfleFragment.addManagerProfile(ReviewsFragment(),titles[0])
+            viewPagerAdapterProfleFragment.addManagerProfile(FollowersFragment(),titles[1])
+            viewPagerProfileFragment.adapter=viewPagerAdapterProfleFragment
+            tabsProfileFragment.setupWithViewPager(viewPagerProfileFragment)
+        }
+    }
+
+    fun setFirmaViewPager(titles: ArrayList<String>){
+        val viewPagerAdapterProfileFragment : ViewPagerAdapter
+        fragmentManager?.let {
+            viewPagerAdapterProfileFragment = ViewPagerAdapter(it)
+            viewPagerAdapterProfileFragment.addManagerProfile(ReviewsFragment(),titles[0])
+            viewPagerAdapterProfileFragment.addManagerProfile(FollowersFragment(),titles[1])
+            viewPagerProfileFragment.adapter=viewPagerAdapterProfileFragment
+            tabsProfileFragment.setupWithViewPager(viewPagerProfileFragment)
         }
     }
 
