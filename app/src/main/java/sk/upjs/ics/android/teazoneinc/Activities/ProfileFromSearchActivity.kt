@@ -46,10 +46,19 @@ class ProfileFromSearchActivity : AppCompatActivity() {
         dbAdapterUser.setProfileData(docID,object : sendData {
             override fun send(user: DataUser? , userFirma: DataFirma?) {
                 user?.let { setDataUserUserToFields(user) }
-                userFirma?.let { setDataFirmaUserToFields(userFirma) }
+                userFirma?.let { setDataFirmaUserToFields(userFirma)
+                    setBtnFollowIfFollowed(userFirma)
+                }
             }
 
         })
+    }
+
+    fun setBtnFollowIfFollowed(userFirma: DataFirma){
+        if (userFirma.followersIDs.contains(authAdapter.currentUser?.uid)){
+            btnFollow.background = resources.getDrawable(R.drawable.ic_tea_cup_onclick)
+            textView_sledovat.text="Sledované"
+        }
     }
 
     fun setDataUserUserToFields(user: DataUser){
@@ -94,12 +103,7 @@ class ProfileFromSearchActivity : AppCompatActivity() {
 
     fun setOnClickBtnFollow(){
         btnFollow.setOnClickListener(View.OnClickListener {
-            if (dbAdapterUser.getStatusOfLoggedUser().equals("User")){
-                DbAdapterUser.userUser.docID?.let { dbAdapterUser.addFollower(docID,it) }
-            }
-            else{
-                DbAdapterUser.userFirma.docID?.let { dbAdapterUser.addFollower(docID,it) }
-            }
+            dbAdapterUser.addFollower(docID,authAdapter.currentUser?.uid)
             btnFollow.background = resources.getDrawable(R.drawable.ic_tea_cup_onclick)
         })
     }

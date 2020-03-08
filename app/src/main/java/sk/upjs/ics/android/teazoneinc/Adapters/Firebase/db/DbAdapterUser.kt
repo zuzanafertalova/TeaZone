@@ -170,6 +170,7 @@ class DbAdapterUser {
         document.getString("email")?.let {user.email=it}
         document.getString("username")?.let { user.username=it}
         document.getLong("following")?.let {user.following=it.toInt()}
+        document.get("followersIDs")
         val list = document.get("followingIDs") as ArrayList<String>
         list?.let { user.followingIDs=it}
         return user
@@ -185,10 +186,12 @@ class DbAdapterUser {
         document.getString("ico")?.let { firmaUser.ICO=it}
         val list = document.get("followingIDs") as ArrayList<String>
         list?.let { firmaUser.followingIDs=it}
+        val followersIDs = document.get("followersIDs") as ArrayList<String>
+        followersIDs?.let { firmaUser.followersIDs=it }
         return firmaUser
     }
 
-    fun addFollower(docID: String,followerID:String){
+    fun addFollower(docID: String,followerID:String?){
         db.collection("FirmaUsers").document(docID)
             .update("followersIDs", FieldValue.arrayUnion(followerID))
             .addOnSuccessListener {
@@ -198,7 +201,7 @@ class DbAdapterUser {
                 Log.w("NEPODARILO SA FOLLOW",it)
             }
         if (getStatusOfLoggedUser().equals("User")){
-            db.collection("Users").document(followerID)
+            db.collection("Users").document(followerID!!)
                 .update("followingIDs", FieldValue.arrayUnion(docID))
                 .addOnSuccessListener {
                     Log.w("PODARILO PRIDAT","PRIDAT FOLOWERAAAAAAAAAAAAAAAA")
@@ -208,7 +211,7 @@ class DbAdapterUser {
                 }
         }
         else{
-            db.collection("FirmaUsers").document(followerID)
+            db.collection("FirmaUsers").document(followerID!!)
                 .update("followingIDs", FieldValue.arrayUnion(docID))
                 .addOnSuccessListener {
                     Log.w("PODARILO PRIDAT","PRIDAT FOLOWERAAAAAAAAAAAAAAAA")

@@ -49,9 +49,7 @@ class PostReviewFragment : Fragment() {
         for (i in 0..4){
             starsButtons[i].setOnClickListener(View.OnClickListener {
                 review.rating=i+1
-                for(k in 0..4){
-                    starsButtons[k].background = resources.getDrawable(R.drawable.ic_star_border_black_24dp)
-                }
+                resetStars()
                 for (j in 0..i){
                     starsButtons[j].background = resources.getDrawable(R.drawable.ic_star_black_24dp)
                 }
@@ -62,7 +60,15 @@ class PostReviewFragment : Fragment() {
     fun setButtonPostClick(){
         btnPostReview.setOnClickListener(View.OnClickListener {
             setDatasToPost()
+            resetStars()
+            tvReviewContent.setText("")
         })
+    }
+
+    fun resetStars(){
+        for(k in 0..4){
+            starsButtons[k].background = resources.getDrawable(R.drawable.ic_star_border_black_24dp)
+        }
     }
 
     fun setDatasToPost(){
