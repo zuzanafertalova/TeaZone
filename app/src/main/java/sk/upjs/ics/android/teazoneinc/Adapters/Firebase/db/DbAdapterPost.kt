@@ -1,10 +1,12 @@
 package sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db
 
 import android.util.Log
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Post.DataPost
+import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Review.DataReview
 
 class DbAdapterPost {
 
@@ -74,6 +76,27 @@ class DbAdapterPost {
             .addOnFailureListener{
                 Log.w("NEPODARILO SA KOMENT",it)
             }
+    }
+
+    fun getPostsList(creatorID:String, eventListener: EventListener<ArrayList<DataPost>>){
+        val reviewsList = ArrayList<DataPost>()
+        db.collection("Posts").whereEqualTo("creatorID",creatorID).get()
+            .addOnSuccessListener { documents ->
+                for (document in documents){
+                    reviewsList.add(setDocumentToDataClass(document))
+                    eventListener.onEvent(reviewsList,null)
+                }
+            }
+    }
+
+    private fun setDocumentToDataClass(document : DocumentSnapshot):DataPost{
+        var post = DataPost()
+        document.getString("content")?.let { post.content = it }
+        document.getString("creatorID")?.let { post.creatorID = it }
+        document.getLong("likesCount")?.let { post.likesCount = it.toInt() }
+        document.getLong("commentsCount")?.let { post.commentsCount = it.toInt() }
+
+        return post
     }
 
 

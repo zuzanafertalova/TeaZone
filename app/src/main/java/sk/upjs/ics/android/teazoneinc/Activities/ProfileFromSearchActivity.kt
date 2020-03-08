@@ -15,10 +15,7 @@ import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.sendData
 import sk.upjs.ics.android.teazoneinc.Adapters.ViewPagerAdapter
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataFirma
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataUser
-import sk.upjs.ics.android.teazoneinc.ProfileScreenFragments.FirmaReviewsFragment
-import sk.upjs.ics.android.teazoneinc.ProfileScreenFragments.FollowersFragment
-import sk.upjs.ics.android.teazoneinc.ProfileScreenFragments.PostReviewFragment
-import sk.upjs.ics.android.teazoneinc.ProfileScreenFragments.UserReviewsFragment
+import sk.upjs.ics.android.teazoneinc.ProfileScreenFragments.*
 import sk.upjs.ics.android.teazoneinc.R
 
 
@@ -74,6 +71,7 @@ class ProfileFromSearchActivity : AppCompatActivity() {
     private fun setDataUserUserToFields(){
         btnFollow.visibility=View.GONE
         btnWriteReview.visibility=View.GONE
+        tvPosts.visibility=View.GONE
         fragmentWriteReview.view?.visibility= View.GONE
 
         textView_sledovat.visibility = View.GONE
@@ -93,6 +91,7 @@ class ProfileFromSearchActivity : AppCompatActivity() {
         tvEmail.text=userFirma.email
         tvFollowing_Followers.text = "Followers"
         val titles = ArrayList<String>()
+        titles.add("0")
         titles.add("0")
         titles.add(userFirma.followers.toString())
         setFirmaViewPager(titles)
@@ -140,7 +139,8 @@ class ProfileFromSearchActivity : AppCompatActivity() {
     private fun setFirmaViewPager(titles: ArrayList<String>){
         val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
         viewPagerAdapter.addManagerProfile(FirmaReviewsFragment(),titles[0])
-        viewPagerAdapter.addManagerProfile(FollowersFragment(),titles[1])
+        viewPagerAdapter.addManagerProfile(PostsFragment(),titles[1])
+        viewPagerAdapter.addManagerProfile(FollowersFragment(),titles[2])
         viewPagerProfile.adapter=viewPagerAdapter
         tabsProfile.setupWithViewPager(viewPagerProfile)
     }
