@@ -222,6 +222,22 @@ class DbAdapterUser {
         }
     }
 
+    fun removeFollower(user:DataFirma ,docID: String,followerID: String?){
+        user.followersIDs.remove(followerID)
+        db.collection("FirmaUsers").document(docID)
+            .update("followersIDs",user.followersIDs)
+        if (getStatusOfLoggedUser().equals("User")){
+            userUser.followingIDs.remove(docID)
+            db.collection("Users").document(followerID!!)
+                .update("followingIDs", userUser.followingIDs)
+        }
+        else {
+            userFirma.followingIDs.remove(docID)
+            db.collection("FirmaUsers").document(followerID!!)
+                .update("followingIDs", userFirma.followingIDs)
+        }
+    }
+
 }
 
 interface DbInterface{

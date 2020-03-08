@@ -26,6 +26,10 @@ class ProfileFromSearchActivity : AppCompatActivity() {
 
     val authAdapter = AuthAdapter()
     val dbAdapterUser = DbAdapterUser()
+    var isBtnClicked : Boolean =false
+
+    var userUser=DataUser()
+    var userFirma=DataFirma()
 
     companion object {
         lateinit var docID : String
@@ -42,41 +46,47 @@ class ProfileFromSearchActivity : AppCompatActivity() {
 
     }
 
-    fun setData(){
+    private fun setData(){
         dbAdapterUser.setProfileData(docID,object : sendData {
-            override fun send(user: DataUser? , userFirma: DataFirma?) {
-                user?.let { setDataUserUserToFields(user) }
-                userFirma?.let { setDataFirmaUserToFields(userFirma)
-                    setBtnFollowIfFollowed(userFirma)
+            override fun send(user: DataUser? , userFir: DataFirma?) {
+                user?.let {
+                    userUser=it
+                    setDataUserUserToFields()
+                }
+                userFir?.let {
+                    userFirma = it
+                    setDataFirmaUserToFields()
+                    setBtnFollowIfFollowed()
                 }
             }
 
         })
     }
 
-    fun setBtnFollowIfFollowed(userFirma: DataFirma){
+    private fun setBtnFollowIfFollowed(){
         if (userFirma.followersIDs.contains(authAdapter.currentUser?.uid)){
+            isBtnClicked=true
             btnFollow.background = resources.getDrawable(R.drawable.ic_tea_cup_onclick)
             textView_sledovat.text="Sledované"
         }
     }
 
-    fun setDataUserUserToFields(user: DataUser){
+    private fun setDataUserUserToFields(){
         btnFollow.visibility=View.GONE
         btnWriteReview.visibility=View.GONE
         fragmentWriteReview.view?.visibility= View.GONE
 
         textView_sledovat.visibility = View.GONE
-        tvUsername.text = user.username
-        tvEmail.text=user.email
+        tvUsername.text = userUser.username
+        tvEmail.text=userUser.email
         tvFollowing_Followers.text = "Following"
         val titles = ArrayList<String>()
         titles.add("0")
-        titles.add(user.following.toString())
+        titles.add(userUser.following.toString())
         setUserViewPager(titles)
     }
 
-    fun setDataFirmaUserToFields(userFirma: DataFirma){
+    private fun setDataFirmaUserToFields(){
         fragmentWriteReview.view?.visibility=View.GONE
 
         tvUsername.text = userFirma.username
@@ -84,13 +94,12 @@ class ProfileFromSearchActivity : AppCompatActivity() {
         tvFollowing_Followers.text = "Followers"
         val titles = ArrayList<String>()
         titles.add("0")
-//        titles.add("Napiste hodnotenie")
         titles.add(userFirma.followers.toString())
         setFirmaViewPager(titles)
         setOnClickBtnFollow()
     }
 
-    fun setOnClickBtnWriteReview(){
+    private fun setOnClickBtnWriteReview(){
         btnWriteReview.setOnClickListener(View.OnClickListener {
             if (fragmentWriteReview.isVisible){
                 fragmentWriteReview.view?.visibility = View.GONE
@@ -101,16 +110,24 @@ class ProfileFromSearchActivity : AppCompatActivity() {
         })
     }
 
-    fun setOnClickBtnFollow(){
+    private fun setOnClickBtnFollow(){
         btnFollow.setOnClickListener(View.OnClickListener {
-            dbAdapterUser.addFollower(docID,authAdapter.currentUser?.uid)
-            btnFollow.background = resources.getDrawable(R.drawable.ic_tea_cup_onclick)
+            if (isBtnClicked==true){
+                isBtnClicked=false
+                dbAdapterUser.removeFollower(userFirma, docID,authAdapter.currentUser?.uid)
+                btnFollow.background = resources.getDrawable(R.drawable.ic_tea_cup)
+            }
+            else{
+                dbAdapterUser.addFollower(docID,authAdapter.currentUser?.uid)
+                isBtnClicked=true
+                btnFollow.background = resources.getDrawable(R.drawable.ic_tea_cup_onclick)
+            }
         })
     }
 
 
 
-    fun setUserViewPager(titles: ArrayList<String>){
+    private fun setUserViewPager(titles: ArrayList<String>){
         val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
         viewPagerAdapter.addManagerProfile(UserReviewsFragment(),titles[0])
         viewPagerAdapter.addManagerProfile(FollowersFragment(),titles[1])
@@ -118,10 +135,9 @@ class ProfileFromSearchActivity : AppCompatActivity() {
         tabsProfile.setupWithViewPager(viewPagerProfile)
     }
 
-    fun setFirmaViewPager(titles: ArrayList<String>){
+    private fun setFirmaViewPager(titles: ArrayList<String>){
         val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
         viewPagerAdapter.addManagerProfile(FirmaReviewsFragment(),titles[0])
-//        viewPagerAdapter.addManagerProfile(PostReviewFragment(),titles[1])
         viewPagerAdapter.addManagerProfile(FollowersFragment(),titles[1])
         viewPagerProfile.adapter=viewPagerAdapter
         tabsProfile.setupWithViewPager(viewPagerProfile)
