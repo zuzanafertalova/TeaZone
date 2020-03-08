@@ -116,10 +116,12 @@ class ProfileFromSearchActivity : AppCompatActivity() {
                 isBtnClicked=false
                 dbAdapterUser.removeFollower(userFirma, docID,authAdapter.currentUser?.uid)
                 btnFollow.background = resources.getDrawable(R.drawable.ic_tea_cup)
+                textView_sledovat.text="Sledovať"
             }
             else{
                 dbAdapterUser.addFollower(docID,authAdapter.currentUser?.uid)
                 isBtnClicked=true
+                textView_sledovat.text="Sledované"
                 btnFollow.background = resources.getDrawable(R.drawable.ic_tea_cup_onclick)
             }
         })
