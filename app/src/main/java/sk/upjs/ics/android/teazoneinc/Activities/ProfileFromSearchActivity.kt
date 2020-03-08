@@ -1,6 +1,7 @@
 package sk.upjs.ics.android.teazoneinc.Activities
 
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -35,6 +36,7 @@ class ProfileFromSearchActivity : AppCompatActivity() {
         setContentView(R.layout.activity_profile_from_search)
         docID = intent.getStringExtra("objectID")
         setData()
+        setOnClickBtnWriteReview()
 
 
 
@@ -52,6 +54,10 @@ class ProfileFromSearchActivity : AppCompatActivity() {
 
     fun setDataUserUserToFields(user: DataUser){
         btnFollow.visibility=View.GONE
+        btnWriteReview.visibility=View.GONE
+        fragmentWriteReview.view?.visibility= View.GONE
+
+        textView_sledovat.visibility = View.GONE
         tvUsername.text = user.username
         tvEmail.text=user.email
         tvFollowing_Followers.text = "Following"
@@ -62,21 +68,29 @@ class ProfileFromSearchActivity : AppCompatActivity() {
     }
 
     fun setDataFirmaUserToFields(userFirma: DataFirma){
+        fragmentWriteReview.view?.visibility=View.GONE
+
         tvUsername.text = userFirma.username
         tvEmail.text=userFirma.email
         tvFollowing_Followers.text = "Followers"
         val titles = ArrayList<String>()
         titles.add("0")
-        titles.add("Napiste hodnotenie")
+//        titles.add("Napiste hodnotenie")
         titles.add(userFirma.followers.toString())
         setFirmaViewPager(titles)
         setOnClickBtnFollow()
     }
 
-
-
-
-
+    fun setOnClickBtnWriteReview(){
+        btnWriteReview.setOnClickListener(View.OnClickListener {
+            if (fragmentWriteReview.isVisible){
+                fragmentWriteReview.view?.visibility = View.GONE
+            }
+            else {
+                fragmentWriteReview.view?.visibility = View.VISIBLE
+            }
+        })
+    }
 
     fun setOnClickBtnFollow(){
         btnFollow.setOnClickListener(View.OnClickListener {
@@ -103,8 +117,8 @@ class ProfileFromSearchActivity : AppCompatActivity() {
     fun setFirmaViewPager(titles: ArrayList<String>){
         val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
         viewPagerAdapter.addManagerProfile(FirmaReviewsFragment(),titles[0])
-        viewPagerAdapter.addManagerProfile(PostReviewFragment(),titles[1])
-        viewPagerAdapter.addManagerProfile(FollowersFragment(),titles[2])
+//        viewPagerAdapter.addManagerProfile(PostReviewFragment(),titles[1])
+        viewPagerAdapter.addManagerProfile(FollowersFragment(),titles[1])
         viewPagerProfile.adapter=viewPagerAdapter
         tabsProfile.setupWithViewPager(viewPagerProfile)
     }
