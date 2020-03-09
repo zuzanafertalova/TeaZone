@@ -47,6 +47,7 @@ class DbAdapterUser {
             user.uid,
             user.email.toString(),
             "",
+            0,
             0
         )
         createUserInDatabase("Users" , user, userData)
@@ -59,6 +60,7 @@ class DbAdapterUser {
             user.uid,
             user.email.toString(),
             "",
+            0,
             0,
             0,
             ico

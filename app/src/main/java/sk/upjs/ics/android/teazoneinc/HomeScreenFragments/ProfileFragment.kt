@@ -9,8 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_fragment_profile.tvEmail
-import kotlinx.android.synthetic.main.fragment_fragment_profile.tvFollowers
-import kotlinx.android.synthetic.main.fragment_fragment_profile.tvFollowing
 import kotlinx.android.synthetic.main.fragment_fragment_profile.tvUsername
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterPost
@@ -55,23 +53,20 @@ class ProfileFragment : Fragment() {
         if (dbAdapterUser.getStatusOfLoggedUser().equals("User")) {
             tvUsername.text = DbAdapterUser.userUser.username
             tvEmail.text=DbAdapterUser.userUser.email
-            tvFollowing.text=DbAdapterUser.userUser.following.toString()
             tvFollowing_FollowersProfileFragment.text = "Following"
 
             val titles = ArrayList<String>()
-            titles.add("0")
+            titles.add(DbAdapterUser.userUser.reviews.toString())
             titles.add(DbAdapterUser.userUser.following.toString())
             setUserViewPager(titles)
         }
         else{
             tvUsername.text = DbAdapterUser.userFirma.username
             tvEmail.text=DbAdapterUser.userFirma.email
-            tvFollowing.text=DbAdapterUser.userFirma.following.toString()
-            tvFollowers.text=DbAdapterUser.userFirma.followers.toString()
             tvFollowing_FollowersProfileFragment.text="Followers"
 
             val titles = ArrayList<String>()
-            titles.add("0")
+            titles.add(DbAdapterUser.userFirma.reviews.toString())
             titles.add(DbAdapterUser.userFirma.followers.toString())
             setFirmaViewPager(titles)
         }
