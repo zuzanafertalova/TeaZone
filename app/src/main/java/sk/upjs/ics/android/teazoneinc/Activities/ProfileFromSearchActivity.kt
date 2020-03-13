@@ -77,7 +77,7 @@ class ProfileFromSearchActivity : AppCompatActivity() {
         textView_sledovat.visibility = View.GONE
         tvUsername.text = userUser.username
         tvEmail.text=userUser.email
-        tvFollowing_Followers.text = "Following"
+        tvFollowing_Followers.text = "Sleduje"
         val titles = ArrayList<String>()
         titles.add("0")
         titles.add(userUser.following.toString())
@@ -89,7 +89,7 @@ class ProfileFromSearchActivity : AppCompatActivity() {
 
         tvUsername.text = userFirma.username
         tvEmail.text=userFirma.email
-        tvFollowing_Followers.text = "Followers"
+        tvFollowing_Followers.text = "Sledovatelia"
         val titles = ArrayList<String>()
         titles.add("0")
         titles.add("0")
