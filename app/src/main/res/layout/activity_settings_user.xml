@@ -1,66 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".Activities.SettingsUserActivity">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="147dp"
+        android:layout_height="134dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.069"
+        app:srcCompat="@drawable/teazone_logo_transparent" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/textview_border_green"
         android:fontFamily="@font/source_sans_pro"
         android:text="Nastavenia"
         android:textColor="@color/colorGreyLogo"
-        android:textSize="32sp"
+        android:textSize="28sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.115" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.058" />
 
     <Button
         android:id="@+id/buttonChangeUsername"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="85dp"
         android:background="@drawable/button_grey"
-        android:fontFamily="@font/source_sans_pro"
         android:text="ZMENIŤ MENO"
         android:textColor="@color/white"
+        android:textIsSelectable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11"
-        app:layout_constraintVertical_bias="0.069" />
+        app:layout_constraintVertical_bias="0.01" />
 
     <Button
         android:id="@+id/buttonChangePassword"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_grey"
-        android:fontFamily="@font/source_sans_pro"
+        android:background="@drawable/button_turquoise"
         android:text="ZMENIŤ HESLO"
         android:textColor="@color/white"
+        android:textIsSelectable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonChangeUsername"
-        app:layout_constraintVertical_bias="0.076" />
+        app:layout_constraintVertical_bias="0.1" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonDeleteAccount"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button_red"
-        android:fontFamily="@font/source_sans_pro"
         android:text="ODSTRÁNIŤ ÚČET"
         android:textColor="@color/white"
+        android:textIsSelectable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonChangePassword" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonChangePassword"
+        app:layout_constraintVertical_bias="0.684" />
 </androidx.constraintlayout.widget.ConstraintLayout>

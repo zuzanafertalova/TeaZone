@@ -3,25 +3,22 @@ package sk.upjs.ics.android.teazoneinc.HomeScreenFragments
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_fragment_profile.*
-import kotlinx.android.synthetic.main.fragment_fragment_profile.tvEmail
-import kotlinx.android.synthetic.main.fragment_fragment_profile.tvUsername
+import sk.upjs.ics.android.teazoneinc.Activities.HomeScreenActivity
+import sk.upjs.ics.android.teazoneinc.Activities.LoginActivity
+import sk.upjs.ics.android.teazoneinc.Activities.SettingsUserActivity
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterPost
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
-import sk.upjs.ics.android.teazoneinc.Activities.HomeScreenActivity
-import sk.upjs.ics.android.teazoneinc.Activities.LoginActivity
-import sk.upjs.ics.android.teazoneinc.Activities.SettingsActivity
 import sk.upjs.ics.android.teazoneinc.Adapters.ViewPagerAdapter
 import sk.upjs.ics.android.teazoneinc.HomeScreenFragments.ProfileFragments.ReviewsFragment
 import sk.upjs.ics.android.teazoneinc.ProfileScreenFragments.FollowersFragment
-
 import sk.upjs.ics.android.teazoneinc.R
+
 
 class ProfileFragment : Fragment() {
 
@@ -44,6 +41,7 @@ class ProfileFragment : Fragment() {
     }
 
     fun btnLogOutSetClick(){
+
         btnLogOut.setOnClickListener(View.OnClickListener {
             authAdapter.logOut()
             val intent = Intent(activity, LoginActivity::class.java)
@@ -53,8 +51,9 @@ class ProfileFragment : Fragment() {
     }
 
     fun btnSettingsSetClick(){
+
         btnSettings.setOnClickListener{
-            val intent2 = Intent(activity, SettingsActivity::class.java)
+            val intent2 = Intent(activity, SettingsUserActivity::class.java)
             startActivity(intent2)
         }
     }

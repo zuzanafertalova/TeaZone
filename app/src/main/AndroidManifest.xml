@@ -9,8 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.ProfileFromSearchActivity"
-            android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.SettingsUserActivity"></activity>
+        <activity
+            android:name=".Activities.ProfileFromSearchActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.SignupFirmaActivity"
             android:screenOrientation="portrait" />
