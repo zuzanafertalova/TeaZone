@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import kotlinx.android.synthetic.main.fragment_fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_fragment_profile.tvEmail
 import kotlinx.android.synthetic.main.fragment_fragment_profile.tvUsername
@@ -15,6 +16,7 @@ import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterPost
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
 import sk.upjs.ics.android.teazoneinc.Activities.HomeScreenActivity
 import sk.upjs.ics.android.teazoneinc.Activities.LoginActivity
+import sk.upjs.ics.android.teazoneinc.Activities.SettingsActivity
 import sk.upjs.ics.android.teazoneinc.Adapters.ViewPagerAdapter
 import sk.upjs.ics.android.teazoneinc.HomeScreenFragments.ProfileFragments.ReviewsFragment
 import sk.upjs.ics.android.teazoneinc.ProfileScreenFragments.FollowersFragment
@@ -38,6 +40,7 @@ class ProfileFragment : Fragment() {
 
         btnLogOutSetClick()
         setUserToTextFields()
+        btnSettingsSetClick()
     }
 
     fun btnLogOutSetClick(){
@@ -47,6 +50,13 @@ class ProfileFragment : Fragment() {
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
         })
+    }
+
+    fun btnSettingsSetClick(){
+        btnSettings.setOnClickListener{
+            val intent2 = Intent(activity, SettingsActivity::class.java)
+            startActivity(intent2)
+        }
     }
 
     fun setUserToTextFields(){
@@ -71,6 +81,8 @@ class ProfileFragment : Fragment() {
             setFirmaViewPager(titles)
         }
     }
+
+
 
 
     fun setUserViewPager(titles: ArrayList<String>){
