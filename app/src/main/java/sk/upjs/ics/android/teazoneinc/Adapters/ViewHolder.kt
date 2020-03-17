@@ -13,11 +13,13 @@ class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private var tvContentView: TextView = itemView.findViewById(sk.upjs.ics.android.teazoneinc.R.id.tvContent)
     private var tvLikesCountView: TextView = itemView.findViewById(sk.upjs.ics.android.teazoneinc.R.id.tvLikesCount)
     private var tvCommentCounts: TextView = itemView.findViewById(sk.upjs.ics.android.teazoneinc.R.id.tvCommentCount)
+    private var tvFirmaUsername : TextView = itemView.findViewById(sk.upjs.ics.android.teazoneinc.R.id.tvFirmaUsername)
 
 
     fun bind(post: DataPost) {
         tvContentView.text = post.content
         tvLikesCountView.text = post.likesCount.toString()
         tvCommentCounts.text=post.commentsCount.toString()
+        tvFirmaUsername.text=post.creatorUsername
     }
 }
