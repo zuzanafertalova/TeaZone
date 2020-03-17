@@ -6,6 +6,7 @@ import com.google.firebase.firestore.FieldValue
 class DataPost{
     var postID : String? = null
     var creatorID : String?=null
+    var creatorUsername : String? = null
     var content : String?=null
     var likesCount : Int?=null
     var commentsCount : Int?=null
@@ -14,8 +15,9 @@ class DataPost{
 
     constructor()
 
-    constructor(creatorID:String,content:String,likes:Int,comments:Int){
+    constructor(creatorID:String, creatorUsername: String,content:String,likes:Int,comments:Int){
         this.creatorID=creatorID
+        this.creatorUsername=creatorUsername
         this.content=content
         this.likesCount=likes
         this.commentsCount=comments

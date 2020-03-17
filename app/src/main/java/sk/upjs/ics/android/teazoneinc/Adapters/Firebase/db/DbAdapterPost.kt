@@ -24,14 +24,14 @@ class DbAdapterPost {
             }
     }
 
-    fun setPostToPostClass(creatorID:String,content:String,likes:Int,comments:Int){
-        val post = DataPost(creatorID,content,likes,comments)
+    fun setPostToPostClass(creatorID:String,creatorUsername : String,content:String,likes:Int,comments:Int){
+        val post = DataPost(creatorID,creatorUsername,content,likes,comments)
         createPostInDB(post)
     }
 
     fun setPost(content:String){
-        DbAdapterUser.userFirma.docID?.let {
-            setPostToPostClass(it,content,0,0)
+        DbAdapterUser.userFirma?.let {
+            setPostToPostClass(it.docID!!,it.username!!,content,0,0)
         }
     }
 
