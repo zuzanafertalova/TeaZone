@@ -73,6 +73,7 @@ class ProfileFromSearchActivity : AppCompatActivity() {
         btnWriteReview.visibility=View.GONE
         tvPosts.visibility=View.GONE
         fragmentWriteReview.view?.visibility= View.GONE
+        textView10.visibility=View.GONE
 
         textView_sledovat.visibility = View.GONE
         tvUsername.text = userUser.username
