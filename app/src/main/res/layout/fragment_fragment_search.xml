@@ -4,13 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#59000000"
     android:orientation="vertical"
     tools:context=".HomeScreenFragments.SearchFragment">
 
     <EditText
         android:id="@+id/editText_search"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="43dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/search_rectangle_green"
+        android:baselineAligned="false"
         android:hint="Search..."
         android:textColor="@color/colorGreyLogo"
         android:textColorHighlight="@color/colorGrey"
@@ -21,29 +27,33 @@
         android:id="@+id/searchingRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
         android:paddingBottom="12dp"
         tools:listitem="@layout/list_item"></androidx.recyclerview.widget.RecyclerView>
 
-<!--    <EditText-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:id="@+id/editText_search"-->
-<!--        android:hint="Search..."-->
-<!--        />-->
+    <!--    <EditText-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:id="@+id/editText_search"-->
+    <!--        android:hint="Search..."-->
+    <!--        />-->
 
-<!--    <ListView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:id="@+id/list_view"/>-->
+    <!--    <ListView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:id="@+id/list_view"/>-->
 
 
-<!--    <fragment-->
-<!--        android:id="@+id/fragmentSearch"-->
-<!--        android:name="sk.upjs.ics.android.teazoneinc.HomeScreenFragments.SearchFragments.ReviewsFragment"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+    <!--    <fragment-->
+    <!--        android:id="@+id/fragmentSearch"-->
+    <!--        android:name="sk.upjs.ics.android.teazoneinc.HomeScreenFragments.SearchFragments.ReviewsFragment"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
 </LinearLayout>
