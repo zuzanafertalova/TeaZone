@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#59000000"
+    android:background="#CDCDCD"
     android:orientation="vertical"
     tools:context=".HomeScreenFragments.SearchFragment">
 
@@ -15,7 +15,7 @@
         android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="5dp"
-        android:background="@drawable/search_rectangle_green"
+        android:background="@drawable/search_rectangle_white"
         android:baselineAligned="false"
         android:hint="Search..."
         android:textColor="@color/colorGreyLogo"

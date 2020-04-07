@@ -5,10 +5,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnFocusChangeListener
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.algolia.search.saas.Client
 import com.algolia.search.saas.Query
@@ -17,9 +19,9 @@ import org.json.JSONArray
 import org.json.JSONException
 import sk.upjs.ics.android.teazoneinc.Activities.ProfileFromSearchActivity
 import sk.upjs.ics.android.teazoneinc.Adapters.SearchResultAdapter
-
 import sk.upjs.ics.android.teazoneinc.R
-import java.util.ArrayList
+import java.util.*
+
 
 class SearchFragment : Fragment() {
 
@@ -36,6 +38,7 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setOnClickSearch()
         setEditText()
         setUpRecyclerView()
 
@@ -45,6 +48,7 @@ class SearchFragment : Fragment() {
         searchingRecyclerView.layoutManager = LinearLayoutManager(context)
         adapter = SearchResultAdapter(object : SearchResultAdapter.OnResultsClick{
             override fun setOnProfileClickListener(objectID: String?) {
+                editText_search.clearFocus()
                 val intent = Intent(context, ProfileFromSearchActivity::class.java)
                 intent.putExtra("objectID",objectID)
                 startActivity(intent)
@@ -69,6 +73,19 @@ class SearchFragment : Fragment() {
             }
         })
     }
+
+    private fun setOnClickSearch(){
+        editText_search.setOnFocusChangeListener(OnFocusChangeListener { _ , hasFocus ->
+            if(hasFocus){
+                editText_search.background = resources.getDrawable(R.drawable.search_rectangle_green)
+            }
+            else {
+                editText_search.background = resources.getDrawable(R.drawable.search_rectangle_white)
+            }
+        })
+    }
+
+
 
 
     fun search(content: String) {

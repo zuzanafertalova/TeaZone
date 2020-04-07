@@ -62,7 +62,7 @@ class ProfileFragment : Fragment() {
         if (dbAdapterUser.getStatusOfLoggedUser().equals("User")) {
             tvUsername.text = DbAdapterUser.userUser.username
             tvEmail.text=DbAdapterUser.userUser.email
-            tvFollowing_FollowersProfileFragment.text = "Following"
+            tvFollowing_FollowersProfileFragment.text = "Sleduje"
 
             val titles = ArrayList<String>()
             titles.add(DbAdapterUser.userUser.reviews.toString())
@@ -72,7 +72,7 @@ class ProfileFragment : Fragment() {
         else{
             tvUsername.text = DbAdapterUser.userFirma.username
             tvEmail.text=DbAdapterUser.userFirma.email
-            tvFollowing_FollowersProfileFragment.text="Followers"
+            tvFollowing_FollowersProfileFragment.text="Sledovatelia"
 
             val titles = ArrayList<String>()
             titles.add(DbAdapterUser.userFirma.reviews.toString())
