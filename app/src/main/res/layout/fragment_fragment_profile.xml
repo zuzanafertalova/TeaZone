@@ -31,10 +31,9 @@
         app:civ_border_width="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.123" />
+        app:layout_constraintVertical_bias="0.059" />
 
     <Button
         android:id="@+id/btnLogOut"
@@ -58,22 +57,24 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.311" />
+        app:layout_constraintVertical_bias="0.273" />
 
     <TextView
         android:id="@+id/tvEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/source_sans_pro"
-        android:textColor="@color/colorGrey"
+        android:textColor="#CDCDCD"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvUsername"
-        app:layout_constraintVertical_bias="0.019" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tvReviewsProfileFragment"
@@ -81,26 +82,28 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:text="Hodnotenia"
+        android:textColor="@color/colorGreyLogo"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/tabsProfileFragment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.947" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/tvFollowing_FollowersProfileFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sleduje"
+        android:textColor="@color/colorGreyLogo"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/tabsProfileFragment"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintHorizontal_bias="0.807"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.947" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/btnSettings"
@@ -132,12 +135,79 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPagerProfileFragment"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="310dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ciara2">
 
     </androidx.viewpager.widget.ViewPager>
+
+    <TextView
+        android:id="@+id/tvTypPodniku"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:background="@drawable/textview_border_green"
+        android:fontFamily="@font/source_sans_pro"
+        android:text="TYP PODNIKU"
+        android:textColor="@color/colorGreyLogo"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tabsProfileFragment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmail"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/tvAdresaPodniku"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/source_sans_pro"
+        android:text="Adresa podniku"
+        android:textColor="@color/colorGreyLogo"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tvTypPodniku"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmail"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnOtvaracieHodiny"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:background="@drawable/button_turquoise"
+        android:fontFamily="@font/source_sans_pro"
+        android:text="Otváracie&#10; hodiny"
+        android:textColor="@color/white"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tvReviewsProfileFragment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.901" />
+
+    <Button
+        android:id="@+id/btnNapojovylistok"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:background="@drawable/button_grey"
+        android:fontFamily="@font/source_sans_pro"
+        android:text="Nápojový&#10; lístok"
+        android:textColor="@color/colorGreyLogo"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tvReviewsProfileFragment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.924"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.901" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
