@@ -34,10 +34,25 @@
         app:layout_constraintVertical_bias="0.058" />
 
     <Button
-        android:id="@+id/buttonChangeUsername"
+        android:id="@+id/buttonChangeDescrib"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button_grey"
+        android:text="ZMENIŤ POPIS"
+        android:textColor="@color/white"
+        android:textIsSelectable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonChangePassword"
+        app:layout_constraintVertical_bias="0.035" />
+
+    <Button
+        android:id="@+id/buttonChangeUsername"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_darkgrey"
         android:text="ZMENIŤ MENO"
         android:textColor="@color/white"
         android:textIsSelectable="true"
@@ -49,19 +64,19 @@
         app:layout_constraintVertical_bias="0.043" />
 
     <Button
-        android:id="@+id/buttonChangeTypeOfFirm"
+        android:id="@+id/buttonChangeProfilePic"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_grey"
-        android:text="ZMENIŤ TYP PODNIKU"
+        android:background="@drawable/button_darkgrey"
+        android:text="ZMENIŤ PROFILOVÚ FOTKU"
         android:textColor="@color/white"
         android:textIsSelectable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonChangePassword"
-        app:layout_constraintVertical_bias="0.037" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonChangeDescrib"
+        app:layout_constraintVertical_bias="0.064" />
 
     <Button
         android:id="@+id/buttonChangeMenu"
@@ -75,8 +90,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonChangePassword"
-        app:layout_constraintVertical_bias="0.435" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonChangeOpeningHours"
+        app:layout_constraintVertical_bias="0.117" />
 
     <Button
         android:id="@+id/buttonChangePassword"
@@ -105,8 +120,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonChangeUsername"
-        app:layout_constraintVertical_bias="0.36" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonChangeProfilePic"
+        app:layout_constraintVertical_bias="0.058" />
 
     <Button
         android:id="@+id/buttonDeleteAccount"

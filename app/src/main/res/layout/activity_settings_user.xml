@@ -6,6 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".Activities.SettingsUserActivity">
 
+    <Button
+        android:id="@+id/buttonChangeProfilePic2"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_darkgrey"
+        android:text="ZMENIŤ PROFILOVÚ FOTKU"
+        android:textColor="@color/white"
+        android:textIsSelectable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        app:layout_constraintVertical_bias="0.107" />
+
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="147dp"
@@ -37,7 +52,6 @@
         android:id="@+id/buttonChangeUsername"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="85dp"
         android:background="@drawable/button_grey"
         android:text="ZMENIŤ MENO"
         android:textColor="@color/white"
@@ -46,8 +60,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11"
-        app:layout_constraintVertical_bias="0.01" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonChangeProfilePic2"
+        app:layout_constraintVertical_bias="0.081" />
 
     <Button
         android:id="@+id/buttonChangePassword"
@@ -62,7 +76,7 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonChangeUsername"
-        app:layout_constraintVertical_bias="0.1" />
+        app:layout_constraintVertical_bias="0.12" />
 
     <Button
         android:id="@+id/buttonDeleteAccount"
