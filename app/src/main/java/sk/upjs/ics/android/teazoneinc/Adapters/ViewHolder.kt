@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.collection.R
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+import de.hdodenhof.circleimageview.CircleImageView
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.Storage.StorageAdapter
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Post.DataPost
 
@@ -22,6 +23,7 @@ class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private var tvCommentCounts: TextView = itemView.findViewById(sk.upjs.ics.android.teazoneinc.R.id.tvCommentCount)
     private var tvFirmaUsername : TextView = itemView.findViewById(sk.upjs.ics.android.teazoneinc.R.id.tvFirmaUsername)
     private var ivPostPic : ImageView = itemView.findViewById(sk.upjs.ics.android.teazoneinc.R.id.ivPostPic)
+    private var ivProfilePic : CircleImageView = itemView.findViewById(sk.upjs.ics.android.teazoneinc.R.id.ivProfilePic)
 
 
     fun bind(post: DataPost, context: Context?) {
@@ -29,7 +31,11 @@ class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         tvLikesCountView.text = post.likesCount.toString()
         tvCommentCounts.text=post.commentsCount.toString()
         tvFirmaUsername.text=post.creatorUsername
+        storageAdapter.getProfilePic(post.creatorProfilePic!!,ivProfilePic)
 
-        storageAdapter.getPostPic("ja.jpg", ivPostPic)
+        if (!post.postPic.equals(null)){
+            storageAdapter.getPostPic(post.postPic!!, ivPostPic)
+        }
+
     }
 }

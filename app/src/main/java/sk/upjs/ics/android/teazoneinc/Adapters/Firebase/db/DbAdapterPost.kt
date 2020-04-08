@@ -24,14 +24,14 @@ class DbAdapterPost {
             }
     }
 
-    fun setPostToPostClass(creatorID:String,creatorUsername : String,content:String,likes:Int,comments:Int){
-        val post = DataPost(creatorID,creatorUsername,content,likes,comments)
+    fun setPostToPostClass(creatorID:String,creatorUsername : String,content:String,likes:Int,comments:Int,creatorProfilePic : String){
+        val post = DataPost(creatorID,creatorUsername,content,likes,comments,creatorProfilePic)
         createPostInDB(post)
     }
 
     fun setPost(content:String){
         DbAdapterUser.userFirma?.let {
-            setPostToPostClass(it.docID!!,it.username!!,content,0,0)
+            setPostToPostClass(it.docID!!,it.username!!,content,0,0,it.profilePic!!)
         }
     }
 
@@ -79,12 +79,12 @@ class DbAdapterPost {
     }
 
     fun getPostsList(creatorID:String, eventListener: EventListener<ArrayList<DataPost>>){
-        val reviewsList = ArrayList<DataPost>()
+        val postList = ArrayList<DataPost>()
         db.collection("Posts").whereEqualTo("creatorID",creatorID).get()
             .addOnSuccessListener { documents ->
                 for (document in documents){
-                    reviewsList.add(setDocumentToDataClass(document))
-                    eventListener.onEvent(reviewsList,null)
+                    postList.add(setDocumentToDataClass(document))
+                    eventListener.onEvent(postList,null)
                 }
             }
     }
