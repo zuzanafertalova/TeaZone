@@ -11,6 +11,7 @@ class DataPost{
     var likesCount : Int?=null
     var commentsCount : Int?=null
     var comments = ArrayList<String>()
+    var postPic : String? = null
 //    var timeStamp : FieldValue?= null
 
     constructor()

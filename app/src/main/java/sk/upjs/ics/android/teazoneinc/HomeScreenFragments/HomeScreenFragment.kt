@@ -118,7 +118,7 @@ class HomeScreenFragment : Fragment() {
         // Instantiate Paging Adapter
         mAdapter = object : FirestorePagingAdapter<DataPost, PostViewHolder>(options) {
             override fun onBindViewHolder(p0: PostViewHolder, p1: Int, p2: DataPost) {
-                p0.bind(p2)
+                p0.bind(p2, context)
             }
 
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {

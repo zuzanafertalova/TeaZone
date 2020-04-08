@@ -48,7 +48,8 @@ class DbAdapterUser {
             user.email.toString(),
             "",
             0,
-            0
+            0,
+            "default.png"
         )
         createUserInDatabase("Users" , user, userData)
 
@@ -63,7 +64,8 @@ class DbAdapterUser {
             0,
             0,
             0,
-            ico
+            ico,
+            "default.png"
         )
         db.collection("FirmaUsers").document(user.uid).set(firmaData)
             .addOnSuccessListener {
@@ -125,6 +127,7 @@ class DbAdapterUser {
         document.getString("email")?.let {userUser.email=it}
         document.getString("username")?.let { userUser.username=it}
         document.getLong("following")?.let {userUser.following=it.toInt()}
+        document.getString("profilePic")?.let { userUser.profilePic=it }
         val list = document.get("followingIDs") as ArrayList<String>
         list?.let { userUser.followingIDs=it}
         decider=0
@@ -137,6 +140,7 @@ class DbAdapterUser {
         document.getLong("following")?.let { userFirma.following=it.toInt()}
         document.getLong("followers")?.let { userFirma.followers=it.toInt()}
         document.getString("ico")?.let { userFirma.ICO=it}
+        document.getString("profilePic")?.let { userFirma.profilePic=it }
         val followingIDs = document.get("followingIDs") as ArrayList<String>
         followingIDs?.let { userFirma.followingIDs=it }
         val followersIDs = document.get("followersIDs") as ArrayList<String>

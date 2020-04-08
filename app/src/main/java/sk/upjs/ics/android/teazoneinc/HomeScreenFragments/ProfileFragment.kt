@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.fragment_fragment_profile.*
 import sk.upjs.ics.android.teazoneinc.Activities.HomeScreenActivity
 import sk.upjs.ics.android.teazoneinc.Activities.LoginActivity
 import sk.upjs.ics.android.teazoneinc.Activities.SettingsUserActivity
+import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.Storage.StorageAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterPost
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
@@ -26,6 +27,7 @@ class ProfileFragment : Fragment() {
     val dbAdapterUser = DbAdapterUser()
     val dbAdapterPost = DbAdapterPost()
     val homeScreenActivity= HomeScreenActivity()
+    val storageAdapter = StorageAdapter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -63,6 +65,7 @@ class ProfileFragment : Fragment() {
             tvUsername.text = DbAdapterUser.userUser.username
             tvEmail.text=DbAdapterUser.userUser.email
             tvFollowing_FollowersProfileFragment.text = "Sleduje"
+            storageAdapter.getProfilePic(DbAdapterUser.userUser.profilePic!!, ivProfile_image)
 
             val titles = ArrayList<String>()
             titles.add(DbAdapterUser.userUser.reviews.toString())
@@ -73,6 +76,7 @@ class ProfileFragment : Fragment() {
             tvUsername.text = DbAdapterUser.userFirma.username
             tvEmail.text=DbAdapterUser.userFirma.email
             tvFollowing_FollowersProfileFragment.text="Sledovatelia"
+            storageAdapter.getProfilePic(DbAdapterUser.userFirma.profilePic!!, ivProfile_image)
 
             val titles = ArrayList<String>()
             titles.add(DbAdapterUser.userFirma.reviews.toString())
