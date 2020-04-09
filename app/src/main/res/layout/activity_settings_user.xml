@@ -78,4 +78,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonChangePassword"
         app:layout_constraintVertical_bias="0.684" />
+
+    <fragment
+        android:id="@+id/fragmentChangePassword"
+        android:name="sk.upjs.ics.android.teazoneinc.SettingsScreenFragments.ChangePasswordFragment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.123" />
+
+    <fragment
+        android:id="@+id/fragment2"
+        android:name="sk.upjs.ics.android.teazoneinc.Activities.SetUsernameFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.167" />
 </androidx.constraintlayout.widget.ConstraintLayout>
