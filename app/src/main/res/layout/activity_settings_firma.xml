@@ -132,6 +132,23 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
+        android:id="@+id/buttonChangeTypPodniku"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_turquoise"
+        android:text="ZMENIŤ TYP PODNIKU"
+        android:textColor="@color/white"
+        android:textIsSelectable="true"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonChangeAddress"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
         android:id="@+id/buttonChangePassword"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
@@ -179,7 +196,7 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/upper_menu3"
-        app:layout_constraintVertical_bias="0.931" />
+        app:layout_constraintVertical_bias="0.978" />
 
     <Switch
         android:id="@+id/switchDarkMode"
@@ -192,7 +209,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonChangeAddress"
-        app:layout_constraintVertical_bias="0.437" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/ivLogo"

@@ -78,7 +78,11 @@ class ProfileFragment : Fragment() {
             tvEmail.text = DbAdapterUser.userUser.email
             tvFollowing_FollowersProfileFragment.text = "Sleduje"
             storageAdapter.getProfilePic(DbAdapterUser.userUser.profilePic!!, ivProfile_image)
-
+            tvAdresaPodniku.visibility = View.GONE
+            tvPopisPodniku.visibility = View.GONE
+            btnOtvaracieHodiny.visibility = View.GONE
+            tvTypPodniku.visibility = View.GONE
+            btnNapojovylistok.visibility = View.GONE
             val titles = ArrayList<String>()
             titles.add(DbAdapterUser.userUser.reviews.toString())
             titles.add(DbAdapterUser.userUser.following.toString())

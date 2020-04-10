@@ -19,6 +19,8 @@ import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataUser
 import sk.upjs.ics.android.teazoneinc.Dialogs.DialogOtvaracieHodiny
 import sk.upjs.ics.android.teazoneinc.ProfileScreenFragments.*
 import sk.upjs.ics.android.teazoneinc.R
+import kotlinx.android.synthetic.main.activity_profile_from_search.btnNapojovylistok as btnNapojovylistok1
+import kotlinx.android.synthetic.main.activity_profile_from_search.tvPopisPodniku as tvPopisPodniku1
 
 
 class ProfileFromSearchActivity : AppCompatActivity() {
@@ -74,8 +76,13 @@ class ProfileFromSearchActivity : AppCompatActivity() {
         tvPosts.visibility = View.GONE
         fragmentWriteReview.view?.visibility = View.GONE
         textView10.visibility = View.GONE
-
+        btnNapojovylistok.visibility = View.GONE
+        tvTypPodniku2.visibility = View.GONE
+        btnOtvaracieHodiny2.visibility = View.GONE
+        tvPopisPodniku.visibility = View.GONE
+        tvAdresaPodniku2.visibility = View.GONE
         textView_sledovat.visibility = View.GONE
+
         tvUsername.text = userUser.username
         tvEmail.text = userUser.email
         tvFollowing_Followers.text = "Sleduje"
