@@ -83,6 +83,8 @@ class ProfileFragment : Fragment() {
             btnOtvaracieHodiny.visibility = View.GONE
             tvTypPodniku.visibility = View.GONE
             btnNapojovylistok.visibility = View.GONE
+            btnAddPost.visibility = View.GONE
+            tvPostsProfileFragment.visibility = View.GONE
             val titles = ArrayList<String>()
             titles.add(DbAdapterUser.userUser.reviews.toString())
             titles.add(DbAdapterUser.userUser.following.toString())
@@ -92,7 +94,7 @@ class ProfileFragment : Fragment() {
             tvEmail.text = DbAdapterUser.userFirma.email
             tvFollowing_FollowersProfileFragment.text = "Sledovatelia"
             storageAdapter.getProfilePic(DbAdapterUser.userFirma.profilePic!!, ivProfile_image)
-
+            tvTypPodniku.text = DbAdapterUser.userFirma.typPodniku
             val titles = ArrayList<String>()
             titles.add(DbAdapterUser.userFirma.reviews.toString())
             titles.add(DbAdapterUser.userFirma.followers.toString())

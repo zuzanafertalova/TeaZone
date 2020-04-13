@@ -9,6 +9,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import sk.upjs.ics.android.teazoneinc.Adapters.AlgoliaSearchAdapter
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataFirma
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataUser
+import sk.upjs.ics.android.teazoneinc.Dialogs.BottomSheetDialogTypPodniku
 
 class DbAdapterUser {
 
@@ -65,7 +66,8 @@ class DbAdapterUser {
             0,
             0,
             ico,
-            "default.png"
+            "default.png",
+            ""
         )
         db.collection("FirmaUsers").document(user.uid).set(firmaData)
             .addOnSuccessListener {
@@ -94,6 +96,17 @@ class DbAdapterUser {
                 }
         }
     }
+
+
+    fun setTypPodniku(user: FirebaseUser ,typPodniku: String) {
+
+        db.collection("FirmaUsers").document(user.uid).update("typPodniku", typPodniku)
+            .addOnSuccessListener {
+                userFirma.typPodniku = typPodniku
+            }
+    }
+
+
 
     fun setFirebaseUserToLocalUser(user : FirebaseUser, dbInterface: DbInterface){
 
@@ -135,12 +148,13 @@ class DbAdapterUser {
 
     private fun setUserFirmaToLocalUser(document: DocumentSnapshot,userDocID:String) {
         userFirma.docID=userDocID
-        document.getString("email")?.let { userFirma.email=it }
+        document.getString("email")?.let { userFirma.email=it}
         document.getString("username")?.let { userFirma.username=it}
         document.getLong("following")?.let { userFirma.following=it.toInt()}
         document.getLong("followers")?.let { userFirma.followers=it.toInt()}
         document.getString("ico")?.let { userFirma.ICO=it}
-        document.getString("profilePic")?.let { userFirma.profilePic=it }
+        document.getString("typPodniku")?.let{ userFirma.typPodniku=it}
+        document.getString("profilePic")?.let { userFirma.profilePic=it}
         val followingIDs = document.get("followingIDs") as ArrayList<String>
         followingIDs?.let { userFirma.followingIDs=it }
         val followersIDs = document.get("followersIDs") as ArrayList<String>
@@ -190,6 +204,7 @@ class DbAdapterUser {
         document.getLong("following")?.let { firmaUser.following=it.toInt()}
         document.getLong("followers")?.let { firmaUser.followers=it.toInt()}
         document.getString("ico")?.let { firmaUser.ICO=it}
+        document.getString("typPodniku")?.let{ firmaUser.typPodniku=it}
         val list = document.get("followingIDs") as ArrayList<String>
         list?.let { firmaUser.followingIDs=it}
         val followersIDs = document.get("followersIDs") as ArrayList<String>

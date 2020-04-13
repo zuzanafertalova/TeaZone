@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:padding="16sp"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BottomSheet"
+
+        />
+
+    <TextView
+        android:id="@+id/tvKaviaren"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16sp"
+        android:text="KAVIAREŇ"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tvRestauracia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16sp"
+        android:text="REŠTAURÁCIA"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tvBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16sp"
+        android:text="BAR"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tvKrcma"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16sp"
+        android:text="PUB/KRČMA"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tvCukraren"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16sp"
+        android:text="CUKRÁREŇ"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tvRychleObcerstvenie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16sp"
+        android:text="RÝCHLE OBČERSTVENIE"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tvVinaren"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16sp"
+        android:text="VINÁREŇ"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tvCajovna"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16sp"
+        android:text="ČAJOVŇA"
+        android:textSize="20sp" />
+
+</LinearLayout>

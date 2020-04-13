@@ -94,7 +94,7 @@ class ProfileFromSearchActivity : AppCompatActivity() {
 
     private fun setDataFirmaUserToFields() {
         fragmentWriteReview.view?.visibility = View.GONE
-
+        tvTypPodniku2.text = userFirma.typPodniku
         tvUsername.text = userFirma.username
         tvEmail.text = userFirma.email
         tvFollowing_Followers.text = "Sledovatelia"

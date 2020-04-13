@@ -103,14 +103,17 @@
         android:id="@+id/fragmentSetUserame"
         android:name="sk.upjs.ics.android.teazoneinc.Activities.SetUsernameFragment"
         android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginLeft="60dp"
-        tools:layout="@layout/fragment_set_username2"></fragment>
+        android:layout_height="500dp"
+        android:layout_marginLeft="50dp"
+        android:gravity="center_horizontal"
+        android:layout_centerInParent="true"
+        tools:layout="@layout/fragment_set_username">
+    </fragment>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="200dp"
         android:layout_weight="1"></androidx.viewpager.widget.ViewPager>
 
     <com.google.android.material.tabs.TabLayout

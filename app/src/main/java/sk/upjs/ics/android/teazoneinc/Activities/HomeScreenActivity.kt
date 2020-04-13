@@ -6,7 +6,8 @@ import android.view.View
 import android.widget.Toast
 import com.google.firebase.firestore.EventListener
 import kotlinx.android.synthetic.main.activity_home_screen.*
-import kotlinx.android.synthetic.main.fragment_set_username2.*
+import kotlinx.android.synthetic.main.fragment_fragment_profile.*
+import kotlinx.android.synthetic.main.fragment_set_username.*
 import sk.upjs.ics.android.teazoneinc.Adapters.AlgoliaSearchAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterPost
@@ -56,18 +57,20 @@ class HomeScreenActivity : AppCompatActivity() {
             val username=tvSetUsername.text.toString()
             if (!username.equals("")){
                 authAdapter.currentUser?.let {
-                    dbAdapterUser.setUsername(it, username, EventListener{username,_->
+                    dbAdapterUser.setUsername(it, username, EventListener { username, _ ->
                         username?.let {
                             setViewPager()
                             fragmentSetUserame.view?.visibility = View.GONE
                         }
+                        dbAdapterUser.setTypPodniku(it, tvTypPodnikuChosen.text.toString())
                     })
-
-                }
+                    }
             }
-            else{ Toast.makeText(this,"Nastavte si prosím uživateľské meno",Toast.LENGTH_SHORT).show() }
+            else{ Toast.makeText(this,"Nastavte si prosím uživateľské meno",Toast.LENGTH_SHORT).show()
+            }
         })
     }
+
 
     fun setViewPager(){
         val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
