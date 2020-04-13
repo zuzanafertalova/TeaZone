@@ -23,6 +23,7 @@ class SettingsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_settings_user)
 
         fragmentChangePassword.view?.visibility = View.GONE
+        fragment2.view?.visibility= View.GONE
         btnOpenChangeFragmentSet()
     }
 
@@ -30,6 +31,9 @@ class SettingsActivity : AppCompatActivity() {
         buttonChangePassword.setOnClickListener(View.OnClickListener {
             fragmentChangePassword.view?.visibility = View.VISIBLE
             btnChangePasswordSet()
+        })
+        buttonChangeUsername.setOnClickListener(View.OnClickListener {
+            fragment2.view?.visibility = View.VISIBLE
         })
     }
 
