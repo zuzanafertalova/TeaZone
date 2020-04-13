@@ -3,38 +3,25 @@ package sk.upjs.ics.android.teazoneinc.Activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-<<<<<<< HEAD
 import kotlinx.android.synthetic.main.fragment_fragment_profile.*
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
 import sk.upjs.ics.android.teazoneinc.Dialogs.DialogOtvaracieHodiny
-=======
 import android.widget.Toast
 import com.google.firebase.firestore.EventListener
 import kotlinx.android.synthetic.main.activity_settings_user.*
 import kotlinx.android.synthetic.main.fragment_change_password.*
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
->>>>>>> berovemudrosti
 import sk.upjs.ics.android.teazoneinc.R
 import java.util.*
 
 class SettingsActivity : AppCompatActivity() {
 
-<<<<<<< HEAD
-    val dbAdapterUser = DbAdapterUser()
-=======
     val authAdapter = AuthAdapter()
->>>>>>> berovemudrosti
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings_user)
 
-<<<<<<< HEAD
-        if(dbAdapterUser.getStatusOfLoggedUser().equals("User")){
-            setContentView(R.layout.activity_settings_user)
-        }
-    }
-=======
         fragmentChangePassword.view?.visibility = View.GONE
         btnOpenChangeFragmentSet()
     }
@@ -73,5 +60,4 @@ class SettingsActivity : AppCompatActivity() {
     }
 
 
->>>>>>> berovemudrosti
 }
