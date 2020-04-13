@@ -5,12 +5,14 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.Storage.StorageAdapter
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Post.DataPost
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Review.DataReview
 
 class DbAdapterPost {
 
     private val db = FirebaseFirestore.getInstance()
+    private val storageAdapter = StorageAdapter()
 
 
     fun createPostInDB(map: DataPost){
@@ -24,14 +26,21 @@ class DbAdapterPost {
             }
     }
 
-    fun setPostToPostClass(creatorID:String,creatorUsername : String,content:String,likes:Int,comments:Int,creatorProfilePic : String){
-        val post = DataPost(creatorID,creatorUsername,content,likes,comments,creatorProfilePic)
+    fun setPostToPostClass(creatorID:String,
+                           creatorUsername : String,
+                           content:String,
+                           likes:Int,
+                           comments:Int,
+                           creatorProfilePic : String,
+                           picID: String?){
+        var post = DataPost(creatorID,creatorUsername,content,likes,comments,creatorProfilePic)
+        post.postPic = picID
         createPostInDB(post)
     }
 
-    fun setPost(content:String){
+    fun setPost(content:String, picID : String?){
         DbAdapterUser.userFirma?.let {
-            setPostToPostClass(it.docID!!,it.username!!,content,0,0,it.profilePic!!)
+            setPostToPostClass(it.docID!!,it.username!!,content,0,0,it.profilePic!!, picID)
         }
     }
 

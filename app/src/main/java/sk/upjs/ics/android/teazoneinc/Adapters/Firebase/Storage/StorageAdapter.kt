@@ -3,13 +3,16 @@ package sk.upjs.ics.android.teazoneinc.Adapters.Firebase.Storage
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
+import android.net.Uri
 import android.widget.ImageView
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 import de.hdodenhof.circleimageview.CircleImageView
+import java.io.ByteArrayOutputStream
 import java.io.InputStream
-
+import java.util.*
 
 
 class StorageAdapter{
@@ -43,6 +46,28 @@ class StorageAdapter{
             val bitmap = BitmapFactory.decodeByteArray(it,0,it.size)
             imageView.setImageBitmap(bitmap)
         }
+    }
+
+    fun uploadPic(imageViewPic: ImageView) : String{
+        imageViewPic.isDrawingCacheEnabled = true
+        imageViewPic.buildDrawingCache()
+        val bitmap = (imageViewPic.drawable as BitmapDrawable).bitmap
+        val baos = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        val data = baos.toByteArray()
+
+        val uuid = UUID.randomUUID().toString()
+        val uploadRef : StorageReference = postPicRef?.child(uuid)!!
+
+        var uploadTask = uploadRef?.putBytes(data)
+        uploadTask?.addOnFailureListener {
+            // Handle unsuccessful uploads
+        }?.addOnSuccessListener {
+            // taskSnapshot.metadata contains file metadata such as size, content-type, etc.
+            // ...
+        }
+
+        return uuid
     }
 
 
