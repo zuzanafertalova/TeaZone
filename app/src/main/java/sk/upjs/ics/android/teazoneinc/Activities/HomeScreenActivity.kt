@@ -72,6 +72,7 @@ class HomeScreenActivity : AppCompatActivity() {
     }
 
 
+
     fun setViewPager(){
         val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
         viewPagerAdapter.addManagerProfile(SearchFragment(),"")

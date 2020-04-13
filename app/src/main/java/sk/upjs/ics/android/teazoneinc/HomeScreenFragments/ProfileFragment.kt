@@ -16,13 +16,15 @@ import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapt
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterPost
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
 import sk.upjs.ics.android.teazoneinc.Adapters.ViewPagerAdapter
+import sk.upjs.ics.android.teazoneinc.Dialogs.BottomSheetAddPost
+import sk.upjs.ics.android.teazoneinc.Dialogs.BottomSheetDialogTypPodniku
 import sk.upjs.ics.android.teazoneinc.Dialogs.DialogOtvaracieHodiny
 import sk.upjs.ics.android.teazoneinc.HomeScreenFragments.ProfileFragments.ReviewsFragment
 import sk.upjs.ics.android.teazoneinc.ProfileScreenFragments.FollowersFragment
 import sk.upjs.ics.android.teazoneinc.R
 
 
-class ProfileFragment : Fragment() {
+class ProfileFragment : Fragment(), BottomSheetAddPost.BottomSheetListener {
 
     val authAdapter = AuthAdapter()
     val dbAdapterUser = DbAdapterUser()
@@ -43,6 +45,7 @@ class ProfileFragment : Fragment() {
         btnLogOutSetClick()
         setUserToTextFields()
         btnSettingsSetClick()
+        btnAddPostClick()
         btnOtvaracieHodinyOnClick()
     }
 
@@ -123,6 +126,17 @@ class ProfileFragment : Fragment() {
             viewPagerProfileFragment.adapter = viewPagerAdapterProfileFragment
             tabsProfileFragment.setupWithViewPager(viewPagerProfileFragment)
         }
+    }
+
+    fun btnAddPostClick(){
+        btnAddPost.setOnClickListener(View.OnClickListener {
+            val bottomSheet = BottomSheetAddPost(this)
+            bottomSheet.show(fragmentManager, "BottomSheetDialogAddPost")
+        })
+    }
+
+    override fun onOptionClick(text: String) {
+
     }
 
 
