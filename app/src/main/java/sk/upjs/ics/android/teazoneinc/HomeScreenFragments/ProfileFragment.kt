@@ -10,12 +10,13 @@ import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_fragment_profile.*
 import sk.upjs.ics.android.teazoneinc.Activities.HomeScreenActivity
 import sk.upjs.ics.android.teazoneinc.Activities.LoginActivity
-import sk.upjs.ics.android.teazoneinc.Activities.SettingsUserActivity
+import sk.upjs.ics.android.teazoneinc.Activities.SettingsActivity
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.Storage.StorageAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterPost
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
 import sk.upjs.ics.android.teazoneinc.Adapters.ViewPagerAdapter
+import sk.upjs.ics.android.teazoneinc.Dialogs.DialogOtvaracieHodiny
 import sk.upjs.ics.android.teazoneinc.HomeScreenFragments.ProfileFragments.ReviewsFragment
 import sk.upjs.ics.android.teazoneinc.ProfileScreenFragments.FollowersFragment
 import sk.upjs.ics.android.teazoneinc.R
@@ -26,11 +27,13 @@ class ProfileFragment : Fragment() {
     val authAdapter = AuthAdapter()
     val dbAdapterUser = DbAdapterUser()
     val dbAdapterPost = DbAdapterPost()
-    val homeScreenActivity= HomeScreenActivity()
+    val homeScreenActivity = HomeScreenActivity()
     val storageAdapter = StorageAdapter()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_fragment_profile, container, false)
     }
 
@@ -40,9 +43,10 @@ class ProfileFragment : Fragment() {
         btnLogOutSetClick()
         setUserToTextFields()
         btnSettingsSetClick()
+        btnOtvaracieHodinyOnClick()
     }
 
-    fun btnLogOutSetClick(){
+    fun btnLogOutSetClick() {
 
         btnLogOut.setOnClickListener(View.OnClickListener {
             authAdapter.logOut()
@@ -52,30 +56,41 @@ class ProfileFragment : Fragment() {
         })
     }
 
-    fun btnSettingsSetClick(){
+    fun btnOtvaracieHodinyOnClick() {
+        btnOtvaracieHodiny.setOnClickListener {
+            activity?.let {
+                val dialog = DialogOtvaracieHodiny().onCreateDialog(it)
+                dialog.show()
+            }
+        }
+    }
 
-        btnSettings.setOnClickListener{
-            val intent2 = Intent(activity, SettingsUserActivity::class.java)
+    fun btnSettingsSetClick() {
+        btnSettings.setOnClickListener {
+            val intent2 = Intent(activity, SettingsActivity::class.java)
             startActivity(intent2)
         }
     }
 
-    fun setUserToTextFields(){
+    fun setUserToTextFields() {
         if (dbAdapterUser.getStatusOfLoggedUser().equals("User")) {
             tvUsername.text = DbAdapterUser.userUser.username
-            tvEmail.text=DbAdapterUser.userUser.email
+            tvEmail.text = DbAdapterUser.userUser.email
             tvFollowing_FollowersProfileFragment.text = "Sleduje"
             storageAdapter.getProfilePic(DbAdapterUser.userUser.profilePic!!, ivProfile_image)
-
+            tvAdresaPodniku.visibility = View.GONE
+            tvPopisPodniku.visibility = View.GONE
+            btnOtvaracieHodiny.visibility = View.GONE
+            tvTypPodniku.visibility = View.GONE
+            btnNapojovylistok.visibility = View.GONE
             val titles = ArrayList<String>()
             titles.add(DbAdapterUser.userUser.reviews.toString())
             titles.add(DbAdapterUser.userUser.following.toString())
             setUserViewPager(titles)
-        }
-        else{
+        } else {
             tvUsername.text = DbAdapterUser.userFirma.username
-            tvEmail.text=DbAdapterUser.userFirma.email
-            tvFollowing_FollowersProfileFragment.text="Sledovatelia"
+            tvEmail.text = DbAdapterUser.userFirma.email
+            tvFollowing_FollowersProfileFragment.text = "Sledovatelia"
             storageAdapter.getProfilePic(DbAdapterUser.userFirma.profilePic!!, ivProfile_image)
 
             val titles = ArrayList<String>()
@@ -86,26 +101,24 @@ class ProfileFragment : Fragment() {
     }
 
 
-
-
-    fun setUserViewPager(titles: ArrayList<String>){
-        val viewPagerAdapterProfleFragment : ViewPagerAdapter
+    fun setUserViewPager(titles: ArrayList<String>) {
+        val viewPagerAdapterProfleFragment: ViewPagerAdapter
         fragmentManager?.let {
             viewPagerAdapterProfleFragment = ViewPagerAdapter(it)
-            viewPagerAdapterProfleFragment.addManagerProfile(ReviewsFragment(),titles[0])
-            viewPagerAdapterProfleFragment.addManagerProfile(FollowersFragment(),titles[1])
-            viewPagerProfileFragment.adapter=viewPagerAdapterProfleFragment
+            viewPagerAdapterProfleFragment.addManagerProfile(ReviewsFragment(), titles[0])
+            viewPagerAdapterProfleFragment.addManagerProfile(FollowersFragment(), titles[1])
+            viewPagerProfileFragment.adapter = viewPagerAdapterProfleFragment
             tabsProfileFragment.setupWithViewPager(viewPagerProfileFragment)
         }
     }
 
-    fun setFirmaViewPager(titles: ArrayList<String>){
-        val viewPagerAdapterProfileFragment : ViewPagerAdapter
+    fun setFirmaViewPager(titles: ArrayList<String>) {
+        val viewPagerAdapterProfileFragment: ViewPagerAdapter
         fragmentManager?.let {
             viewPagerAdapterProfileFragment = ViewPagerAdapter(it)
-            viewPagerAdapterProfileFragment.addManagerProfile(ReviewsFragment(),titles[0])
-            viewPagerAdapterProfileFragment.addManagerProfile(FollowersFragment(),titles[1])
-            viewPagerProfileFragment.adapter=viewPagerAdapterProfileFragment
+            viewPagerAdapterProfileFragment.addManagerProfile(ReviewsFragment(), titles[0])
+            viewPagerAdapterProfileFragment.addManagerProfile(FollowersFragment(), titles[1])
+            viewPagerProfileFragment.adapter = viewPagerAdapterProfileFragment
             tabsProfileFragment.setupWithViewPager(viewPagerProfileFragment)
         }
     }

@@ -37,8 +37,8 @@
 
     <Button
         android:id="@+id/btnLogOut"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
+        android:layout_width="48sp"
+        android:layout_height="48sp"
         android:background="@drawable/ic_logout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -88,6 +88,18 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
+        android:id="@+id/tvPostsProfileFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Príspevky"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tabsProfileFragment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
         android:id="@+id/tvFollowing_FollowersProfileFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -104,7 +116,7 @@
         android:id="@+id/btnSettings"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:background="@drawable/ic_settings_black_24dp"
+        android:background="@drawable/ic_settings"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/ivProfile_image"
         app:layout_constraintStart_toStartOf="parent"
@@ -220,5 +232,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.95" />
+
+    <Button
+        android:id="@+id/btnAddPost"
+        android:layout_width="40sp"
+        android:layout_height="40sp"
+        android:background="@drawable/ic_add_post"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.318"
+        app:layout_constraintStart_toEndOf="@+id/tvUsername"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogOut"
+        app:layout_constraintVertical_bias="0.179" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

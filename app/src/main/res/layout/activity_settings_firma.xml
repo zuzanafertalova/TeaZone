@@ -4,24 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.SettingsUserActivity">
+    android:clipToPadding="true"
+    tools:context=".Activities.SettingsActivity">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="147dp"
-        android:layout_height="134dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/upper_menu3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#22BCAF"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.069"
-        app:srcCompat="@drawable/teazone_logo_transparent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:contextClickable="true"
+            android:fontFamily="@font/bauhaus_93_regular"
+            android:gravity="center"
+            android:text="TeaZone"
+            android:textColor="@android:color/white"
+            android:textSize="30dp" />
+    </androidx.appcompat.widget.Toolbar>
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/textview_border_gray"
+        android:background="@drawable/line"
         android:fontFamily="@font/source_sans_pro"
         android:text="Nastavenia"
         android:textColor="@color/colorGreyLogo"
@@ -30,17 +44,35 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.058" />
+        app:layout_constraintTop_toBottomOf="@+id/upper_menu3"
+        app:layout_constraintVertical_bias="0.186" />
+
+    <Button
+        android:id="@+id/buttonChangeDescrib"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_grey"
+        android:text="ZMENIŤ POPIS"
+        android:textColor="@color/white"
+        android:textIsSelectable="true"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonChangePassword"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/buttonChangeUsername"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_grey"
+        android:background="@drawable/button_darkgrey"
         android:text="ZMENIŤ MENO"
         android:textColor="@color/white"
         android:textIsSelectable="true"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -49,64 +81,106 @@
         app:layout_constraintVertical_bias="0.043" />
 
     <Button
-        android:id="@+id/buttonChangeTypeOfFirm"
+        android:id="@+id/buttonChangeProfilePic"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_grey"
-        android:text="ZMENIŤ TYP PODNIKU"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_darkgrey"
+        android:text="ZMENIŤ PROFILOVÚ FOTKU"
         android:textColor="@color/white"
         android:textIsSelectable="true"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonChangePassword"
-        app:layout_constraintVertical_bias="0.037" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonChangeDescrib"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/buttonChangeMenu"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:background="@drawable/button_grey"
         android:text="JEDÁLNY/NÁPOJOVÝ LÍSTOK"
         android:textColor="@color/white"
         android:textIsSelectable="true"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonChangePassword"
-        app:layout_constraintVertical_bias="0.435" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonChangeOpeningHours"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/buttonChangeAddress"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_darkgrey"
+        android:text="ZMENIŤ ADRESU PODNIKU"
+        android:textColor="@color/white"
+        android:textIsSelectable="true"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonChangeMenu"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/buttonChangeTypPodniku"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_turquoise"
+        android:text="ZMENIŤ TYP PODNIKU"
+        android:textColor="@color/white"
+        android:textIsSelectable="true"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonChangeAddress"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/buttonChangePassword"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:background="@drawable/button_turquoise"
         android:text="ZMENIŤ HESLO"
         android:textColor="@color/white"
         android:textIsSelectable="true"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonChangeUsername"
-        app:layout_constraintVertical_bias="0.028" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/buttonChangeOpeningHours"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:background="@drawable/button_turquoise"
         android:text="OTVÁRACIE HODINY"
         android:textColor="@color/white"
         android:textIsSelectable="true"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonChangeUsername"
-        app:layout_constraintVertical_bias="0.36" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonChangeProfilePic"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/buttonDeleteAccount"
@@ -116,10 +190,37 @@
         android:text="ODSTRÁNIŤ ÚČET"
         android:textColor="@color/white"
         android:textIsSelectable="true"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonChangePassword"
-        app:layout_constraintVertical_bias="0.846" />
+        app:layout_constraintTop_toBottomOf="@+id/upper_menu3"
+        app:layout_constraintVertical_bias="0.978" />
+
+    <Switch
+        android:id="@+id/switchDarkMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/source_sans_pro"
+        android:text="Tmavý režim   "
+        app:layout_constraintBottom_toTopOf="@+id/buttonDeleteAccount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonChangeAddress"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="129dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="9dp"
+        android:src="@drawable/teazone_logo_transparent"
+        app:layout_constraintBottom_toTopOf="@+id/textView11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/upper_menu3" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".Activities.ProfileFromSearchActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/upper_menu2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#22BCAF"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:contextClickable="true"
+            android:fontFamily="@font/bauhaus_93_regular"
+            android:gravity="center"
+            android:text="TeaZone"
+            android:textColor="@android:color/white"
+            android:textSize="30dp" />
+    </androidx.appcompat.widget.Toolbar>
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
         android:layout_width="135dp"
@@ -17,7 +41,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.064" />
+        app:layout_constraintVertical_bias="0.135" />
 
     <Button
         android:id="@+id/btnWriteReview"
@@ -26,10 +50,10 @@
         android:background="@drawable/ic_stars_review_24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/profile_image"
-        app:layout_constraintHorizontal_bias="0.522"
+        app:layout_constraintHorizontal_bias="0.455"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.101" />
+        app:layout_constraintVertical_bias="0.125" />
 
     <Button
         android:id="@+id/btnFollow"
@@ -38,9 +62,10 @@
         android:background="@drawable/ic_tea_cup"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toEndOf="@+id/profile_image"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.101" />
+        app:layout_constraintVertical_bias="0.121" />
 
     <TextView
         android:id="@+id/textView_sledovat"
@@ -66,7 +91,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/tvPosts"
         app:layout_constraintEnd_toStartOf="@+id/btnNapojovylistok"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toEndOf="@+id/btnOtvaracieHodiny2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.95" />
@@ -100,8 +125,7 @@
         app:layout_constraintBottom_toTopOf="@+id/tvPopisPodniku"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEmail"
-        app:layout_constraintVertical_bias="0.74" />
+        app:layout_constraintTop_toBottomOf="@id/tvEmail" />
 
     <Button
         android:id="@+id/btnOtvaracieHodiny2"
@@ -130,7 +154,6 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@id/tvAdresaPodniku2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvUsername"
         app:layout_constraintVertical_bias="0.0" />
@@ -206,28 +229,26 @@
     <fragment
         android:id="@+id/fragmentWriteReview"
         android:name="sk.upjs.ics.android.teazoneinc.ProfileScreenFragments.PostReviewFragment"
-        android:layout_height="300dp"
         android:layout_width="match_parent"
+        android:layout_height="200dp"
         app:layout_constraintBottom_toBottomOf="@+id/viewPagerProfile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ciara2"
-        app:layout_constraintVertical_bias="0.67"
-         />
+        app:layout_constraintVertical_bias="0.67" />
 
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPagerProfile"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ciara2"
-        app:layout_constraintVertical_bias="1.0">
-    </androidx.viewpager.widget.ViewPager>
+        app:layout_constraintVertical_bias="1.0"></androidx.viewpager.widget.ViewPager>
 
     <TextView
         android:id="@+id/tvUsername"
@@ -240,7 +261,6 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/tvEmail"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_image" />
 
@@ -267,9 +287,9 @@
         android:textColor="@color/colorGreenLogo"
         app:layout_constraintBottom_toTopOf="@+id/tvTypPodniku2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAdresaPodniku2"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/tvAdresaPodniku2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
