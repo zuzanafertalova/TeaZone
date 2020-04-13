@@ -7,11 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_set_username.*
-import sk.upjs.ics.android.teazoneinc.Dialogs.BottomSheetDialogTypPodniku
+import sk.upjs.ics.android.teazoneinc.Dialogs.BottomSheetTypPodniku
 import sk.upjs.ics.android.teazoneinc.R
 
 
-class SetUsernameFragment : Fragment(), BottomSheetDialogTypPodniku.BottomSheetListener{
+class SetUsernameFragment : Fragment(), BottomSheetTypPodniku.BottomSheetListener{
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,7 +26,7 @@ class SetUsernameFragment : Fragment(), BottomSheetDialogTypPodniku.BottomSheetL
         super.onViewCreated(view, savedInstanceState)
 
         btnShowOptions.setOnClickListener{
-            val bottomSheet = BottomSheetDialogTypPodniku(this)
+            val bottomSheet = BottomSheetTypPodniku(this)
             bottomSheet.show(fragmentManager, "BottomSheetDialogTypPodniku")
         }
     }

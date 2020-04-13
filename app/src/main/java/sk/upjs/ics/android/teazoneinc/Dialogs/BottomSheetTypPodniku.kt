@@ -9,7 +9,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.bottom_sheet.view.*
 import sk.upjs.ics.android.teazoneinc.R
 
-class BottomSheetDialogTypPodniku(private var mBottomSheetListener: BottomSheetListener) : BottomSheetDialogFragment() {
+class BottomSheetTypPodniku(private var mBottomSheetListener: BottomSheetListener) : BottomSheetDialogFragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
