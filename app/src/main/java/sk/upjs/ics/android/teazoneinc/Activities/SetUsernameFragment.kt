@@ -25,16 +25,16 @@ class SetUsernameFragment : Fragment(), BottomSheetTypPodniku.BottomSheetListene
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        btnShowOptions.setOnClickListener{
-            val bottomSheet = BottomSheetTypPodniku(this)
-            bottomSheet.show(fragmentManager, "BottomSheetDialogTypPodniku")
-        }
+//        btnShowOptions.setOnClickListener{
+//            val bottomSheet = BottomSheetTypPodniku(this)
+//            bottomSheet.show(fragmentManager, "BottomSheetDialogTypPodniku")
+//        }
     }
 
     override fun onOptionClick(text: String) {
         //change text on each item click
         Log.i("Haha", text)
-        tvTypPodnikuChosen.text = text
+//        tvTypPodnikuChosen.text = text
 
     }
 

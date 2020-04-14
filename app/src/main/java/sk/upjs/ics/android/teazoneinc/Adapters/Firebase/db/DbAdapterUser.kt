@@ -96,6 +96,21 @@ class DbAdapterUser {
         }
     }
 
+    fun changeUsername(user: FirebaseUser, username: String){
+        if (getStatusOfLoggedUser().equals("User")) {
+            db.collection("Users").document(user.uid).update("username", username)
+                .addOnSuccessListener {
+                    algoliaSearchAdapter.updateUsername(username,user.uid)
+                }
+        }
+        else{
+            db.collection("FirmaUsers").document(user.uid).update("username", username)
+                .addOnSuccessListener {
+                    algoliaSearchAdapter.updateUsername(username,user.uid)
+                }
+        }
+    }
+
 
     fun setTypPodniku(user: FirebaseUser ,typPodniku: String) {
 

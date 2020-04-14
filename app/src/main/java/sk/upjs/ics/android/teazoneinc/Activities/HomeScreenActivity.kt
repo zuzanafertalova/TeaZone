@@ -62,7 +62,7 @@ class HomeScreenActivity : AppCompatActivity() {
                             setViewPager()
                             fragmentSetUserame.view?.visibility = View.GONE
                         }
-                        dbAdapterUser.setTypPodniku(it, tvTypPodnikuChosen.text.toString())
+//                        dbAdapterUser.setTypPodniku(it, tvTypPodnikuChosen.text.toString())
                     })
                     }
             }

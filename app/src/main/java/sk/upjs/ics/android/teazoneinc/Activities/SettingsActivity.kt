@@ -8,6 +8,7 @@ import android.widget.Toast
 import com.google.firebase.firestore.EventListener
 import kotlinx.android.synthetic.main.activity_settings_user.*
 import kotlinx.android.synthetic.main.fragment_change_password.*
+import kotlinx.android.synthetic.main.fragment_set_username.*
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.R
 import java.util.*
@@ -27,6 +28,7 @@ class SettingsActivity : AppCompatActivity() {
         fragmentChangePassword.view?.visibility = View.GONE
         fragment.view?.visibility= View.GONE
         btnOpenChangeFragmentSet()
+        btnSetUsernameClick()
     }
 
     private fun btnOpenChangeFragmentSet() {
@@ -70,6 +72,14 @@ class SettingsActivity : AppCompatActivity() {
                     })
             }
 
+        })
+    }
+
+    private fun btnSetUsernameClick(){
+        btnSetUsername.setOnClickListener(View.OnClickListener {
+            if (tvSetUsername.text.isNotEmpty()){
+                dbAdapterUser.changeUsername(authAdapter.currentUser!!,tvSetUsername.text.toString())
+            }
         })
     }
 

@@ -107,6 +107,10 @@ public class AlgoliaSearchAdapter {
         }
     }
 
+    public void updateUsername(String username, String objectID) throws JSONException, AlgoliaException {
+        index.partialUpdateObjectAsync(new JSONObject().put("username",username), objectID,null);
+    }
+
 
 
 }
