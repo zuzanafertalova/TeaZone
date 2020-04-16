@@ -98,6 +98,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/ic_comment"
+                android:focusable="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.31"
@@ -117,5 +118,37 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvContent"
                 app:layout_constraintVertical_bias="1.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/tiCommentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="80sp"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/tiComment"
+                android:layout_width="300sp"
+                android:layout_height="40sp"
+                android:layout_gravity="center"
+                android:layout_marginStart="20sp"
+                android:background="@drawable/textview_border_green"
+                android:ems="10"
+                android:gravity="start"
+                android:hint="Pridať komentár"
+                android:inputType="textLongMessage"
+                android:paddingTop="10sp"
+                android:textColor="@color/colorGreyLogo"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btnAddComment"
+                android:layout_width="36sp"
+                android:layout_height="36sp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20sp"
+                android:layout_marginRight="20sp"
+                android:background="@drawable/ic_add_comment" />
+
+        </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

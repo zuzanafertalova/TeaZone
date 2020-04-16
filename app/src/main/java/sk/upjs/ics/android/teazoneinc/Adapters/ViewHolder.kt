@@ -1,65 +1,79 @@
 package sk.upjs.ics.android.teazoneinc.Adapters
 
 import android.content.Context
-import android.graphics.drawable.Drawable
-import android.provider.ContactsContract
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.ktx.storage
 import de.hdodenhof.circleimageview.CircleImageView
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.Storage.StorageAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Post.DataPost
 import sk.upjs.ics.android.teazoneinc.R
+import sk.upjs.ics.android.teazoneinc.R.*
 
 class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     val storageAdapter = StorageAdapter()
-    var isLikeButtonClicked: Boolean = false
     val dbAdapterUser = DbAdapterUser()
+    var isLikeButtonClicked: Boolean = false
+    var isCommentButtonClicked: Boolean = false
 
-    private var tvContentView: TextView = itemView.findViewById(sk.upjs.ics.android.teazoneinc.R.id.tvContent)
-    private var tvLikesCountView: TextView = itemView.findViewById(sk.upjs.ics.android.teazoneinc.R.id.tvLikesCount)
-    private var tvCommentCounts: TextView = itemView.findViewById(sk.upjs.ics.android.teazoneinc.R.id.tvCommentCount)
-    private var tvFirmaUsername : TextView = itemView.findViewById(sk.upjs.ics.android.teazoneinc.R.id.tvFirmaUsername)
-    private var ivPostPic : ImageView = itemView.findViewById(sk.upjs.ics.android.teazoneinc.R.id.ivPostPic)
-    private var ivProfilePic : CircleImageView = itemView.findViewById(sk.upjs.ics.android.teazoneinc.R.id.ivProfilePic)
-    private var likeButton : Button = itemView.findViewById(sk.upjs.ics.android.teazoneinc.R.id.likeButton)
-
-
+    private var tvContentView: TextView = itemView.findViewById(id.tvContent)
+    private var tvLikesCountView: TextView = itemView.findViewById(id.tvLikesCount)
+    private var tvCommentCounts: TextView = itemView.findViewById(id.tvCommentCount)
+    private var tvFirmaUsername: TextView = itemView.findViewById(id.tvFirmaUsername)
+    private var ivPostPic: ImageView = itemView.findViewById(id.ivPostPic)
+    private var ivProfilePic: CircleImageView = itemView.findViewById(id.ivProfilePic)
+    private var likeButton: Button = itemView.findViewById(id.likeButton)
+    private var commentButton: Button = itemView.findViewById(id.commentButton)
+    private var tiCommentLayout: LinearLayout = itemView.findViewById(id.tiCommentLayout)
 
     fun bind(post: DataPost, context: Context?) {
 
         setLikeButtonIfLiked(context)
+        setCommentButtonOnClick(context)
 
         tvContentView.text = post.content
         tvLikesCountView.text = post.likesCount.toString()
-        tvCommentCounts.text=post.commentsCount.toString()
-        tvFirmaUsername.text=post.creatorUsername
-        storageAdapter.getProfilePic(post.creatorProfilePic!!,ivProfilePic)
+        tvCommentCounts.text = post.commentsCount.toString()
+        tvFirmaUsername.text = post.creatorUsername
+        storageAdapter.getProfilePic(post.creatorProfilePic!!, ivProfilePic)
 
-        if (!post.postPic.equals(null)){
+        if (!post.postPic.equals(null)) {
             storageAdapter.getPostPic(post.postPic!!, ivPostPic)
         }
-
     }
 
-
     private fun setLikeButtonIfLiked(context: Context?) {
+
         likeButton.setOnClickListener(View.OnClickListener {
             if (isLikeButtonClicked == true) {
                 isLikeButtonClicked = false
-            //    dbAdapterUser.removeFollower(userFirma, docID, authAdapter.currentUser?.uid)
-                likeButton.background = context?.let { it1 -> ContextCompat.getDrawable(it1, R.drawable.ic_like ) }
+                //    dbAdapterUser.removeFollower(userFirma, docID, authAdapter.currentUser?.uid)
+                likeButton.background = context?.let { it1 -> ContextCompat.getDrawable(it1, drawable.ic_like)}
             } else {
-            //    dbAdapterUser.addFollower(docID, authAdapter.currentUser?.uid)
+                //    dbAdapterUser.addFollower(docID, authAdapter.currentUser?.uid)
                 isLikeButtonClicked = true
-                likeButton.background = context?.let { it1 -> ContextCompat.getDrawable(it1, R.drawable.ic_like_onclick) }
+                likeButton.background = context?.let { it1 -> ContextCompat.getDrawable(it1, drawable.ic_like_onclick)}
+            }
+        })
+    }
+
+    private fun setCommentButtonOnClick(context: Context?) {
+        commentButton.setOnClickListener(View.OnClickListener {
+            if (isCommentButtonClicked == true) {
+                isCommentButtonClicked = false
+                tiCommentLayout.setVisibility(View.VISIBLE)
+                commentButton.background = context?.let {it1 -> ContextCompat.getDrawable(it1, drawable.ic_comment)}
+            } else {
+                isCommentButtonClicked = true
+                tiCommentLayout.setVisibility(View.GONE)
+                commentButton.background = context?.let {it1 -> ContextCompat.getDrawable(it1, drawable.ic_comment_onclick)}
+
             }
         })
     }
