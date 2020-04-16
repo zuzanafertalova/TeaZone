@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:gravity="center_horizontal"
+    android:orientation="vertical"
     android:padding="16sp">
 
     <TextView
@@ -15,53 +16,54 @@
         android:text="Nastavte si používateľské meno:"
         android:textSize="16sp"
         android:textStyle="bold" />
+
     <EditText
         android:id="@+id/tvSetUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
         android:layout_marginTop="10sp"
         android:ems="10"
+        android:gravity="center_horizontal"
         android:inputType="textPersonName" />
 
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:gravity="center_horizontal"-->
-<!--        android:orientation="vertical">-->
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:gravity="center_horizontal"-->
+    <!--        android:orientation="vertical">-->
 
-<!--        <TextView-->
-<!--            android:id="@+id/tvSetTypPodniku"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:fontFamily="@font/source_sans_pro"-->
-<!--            android:gravity="center"-->
-<!--            android:layout_marginTop="30sp"-->
-<!--            android:text="Vyberte si typ podniku:"-->
-<!--            android:textSize="16sp"-->
-<!--            android:textStyle="bold" />-->
+    <!--        <TextView-->
+    <!--            android:id="@+id/tvSetTypPodniku"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:fontFamily="@font/source_sans_pro"-->
+    <!--            android:gravity="center"-->
+    <!--            android:layout_marginTop="30sp"-->
+    <!--            android:text="Vyberte si typ podniku:"-->
+    <!--            android:textSize="16sp"-->
+    <!--            android:textStyle="bold" />-->
 
-<!--        <Button-->
-<!--            android:id="@+id/btnShowOptions"-->
-<!--            android:layout_width="150sp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="20sp"-->
-<!--            android:background="@drawable/button_grey"-->
-<!--            android:fontFamily="@font/source_sans_pro"-->
-<!--            android:text="Zobraz možnosti"-->
-<!--            android:textColor="@color/colorGreyLogo" />-->
+    <!--        <Button-->
+    <!--            android:id="@+id/btnShowOptions"-->
+    <!--            android:layout_width="150sp"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginTop="20sp"-->
+    <!--            android:background="@drawable/button_grey"-->
+    <!--            android:fontFamily="@font/source_sans_pro"-->
+    <!--            android:text="Zobraz možnosti"-->
+    <!--            android:textColor="@color/colorGreyLogo" />-->
 
-<!--        <TextView-->
-<!--            android:id="@+id/tvTypPodnikuChosen"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="10sp"-->
-<!--            android:background="@drawable/textview_border_green"-->
-<!--            android:fontFamily="@font/source_sans_pro"-->
-<!--            android:text="Tu sa zobrazí váš typ podniku." />-->
+    <!--        <TextView-->
+    <!--            android:id="@+id/tvTypPodnikuChosen"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginTop="10sp"-->
+    <!--            android:background="@drawable/textview_border_green"-->
+    <!--            android:fontFamily="@font/source_sans_pro"-->
+    <!--            android:text="Tu sa zobrazí váš typ podniku." />-->
 
-<!--        -->
-<!--    </LinearLayout>-->
+    <!--        -->
+    <!--    </LinearLayout>-->
 
     <Button
         android:id="@+id/btnSetUsername"

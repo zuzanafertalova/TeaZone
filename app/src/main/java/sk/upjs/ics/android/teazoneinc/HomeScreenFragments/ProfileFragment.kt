@@ -41,6 +41,8 @@ class ProfileFragment : Fragment(), BottomSheetAddPost.BottomSheetListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
         btnLogOutSetClick()
         setUserToTextFields()
         btnSettingsSetClick()
@@ -48,8 +50,8 @@ class ProfileFragment : Fragment(), BottomSheetAddPost.BottomSheetListener {
         btnOtvaracieHodinyOnClick()
     }
 
-    fun btnLogOutSetClick() {
 
+    fun btnLogOutSetClick() {
         btnLogOut.setOnClickListener(View.OnClickListener {
             authAdapter.logOut()
             val intent = Intent(activity, LoginActivity::class.java)
@@ -127,7 +129,7 @@ class ProfileFragment : Fragment(), BottomSheetAddPost.BottomSheetListener {
         }
     }
 
-    fun btnAddPostClick(){
+    fun btnAddPostClick() {
         btnAddPost.setOnClickListener(View.OnClickListener {
             val bottomSheet = BottomSheetAddPost(this)
             bottomSheet.show(fragmentManager, "BottomSheetDialogAddPost")

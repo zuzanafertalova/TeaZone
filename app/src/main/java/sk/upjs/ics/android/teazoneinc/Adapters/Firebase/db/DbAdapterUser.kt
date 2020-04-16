@@ -49,7 +49,7 @@ class DbAdapterUser {
             "",
             0,
             0,
-            "default.png"
+            "default_user.png"
         )
         createUserInDatabase("Users" , user, userData)
 
@@ -65,7 +65,7 @@ class DbAdapterUser {
             0,
             0,
             ico,
-            "default.png",
+            "defaultFirma.png",
             ""
         )
         db.collection("FirmaUsers").document(user.uid).set(firmaData)
