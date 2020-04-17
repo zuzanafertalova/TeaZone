@@ -31,6 +31,7 @@ class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private var likeButton: Button = itemView.findViewById(id.likeButton)
     private var commentButton: Button = itemView.findViewById(id.commentButton)
     private var tiCommentLayout: LinearLayout = itemView.findViewById(id.tiCommentLayout)
+    private var rvComments : RecyclerView = itemView.findViewById(id.rvComments)
 
     fun bind(post: DataPost, context: Context?) {
 
@@ -68,10 +69,12 @@ class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             if (isCommentButtonClicked == true) {
                 isCommentButtonClicked = false
                 tiCommentLayout.setVisibility(View.VISIBLE)
+                rvComments.setVisibility(View.VISIBLE)
                 commentButton.background = context?.let {it1 -> ContextCompat.getDrawable(it1, drawable.ic_comment)}
             } else {
                 isCommentButtonClicked = true
                 tiCommentLayout.setVisibility(View.GONE)
+                rvComments.setVisibility(View.GONE)
                 commentButton.background = context?.let {it1 -> ContextCompat.getDrawable(it1, drawable.ic_comment_onclick)}
 
             }
