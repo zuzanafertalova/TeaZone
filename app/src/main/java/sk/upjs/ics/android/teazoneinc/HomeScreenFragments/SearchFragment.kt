@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnFocusChangeListener
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.algolia.search.saas.Client
@@ -19,6 +18,7 @@ import org.json.JSONArray
 import org.json.JSONException
 import sk.upjs.ics.android.teazoneinc.Activities.ProfileFromSearchActivity
 import sk.upjs.ics.android.teazoneinc.Adapters.SearchResultAdapter
+import sk.upjs.ics.android.teazoneinc.Dialogs.BottomSheetFilters
 import sk.upjs.ics.android.teazoneinc.R
 import java.util.*
 
@@ -41,6 +41,7 @@ class SearchFragment : Fragment() {
         setOnClickSearch()
         setEditText()
         setUpRecyclerView()
+        btnFiltreOnClick()
 
     }
 
@@ -85,6 +86,12 @@ class SearchFragment : Fragment() {
         })
     }
 
+    fun btnFiltreOnClick() {
+        btnFiltre.setOnClickListener(View.OnClickListener {
+            val bottomSheet = BottomSheetFilters(this)
+            bottomSheet.show(fragmentManager, "BottomSheetFilters")
+        })
+    }
 
 
 

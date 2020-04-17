@@ -6,12 +6,6 @@
     android:gravity="center_horizontal"
     android:padding="16sp"
     >
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="BottomSheet"
-
-        />
 
     <TextView
         android:id="@+id/tvKaviaren"
