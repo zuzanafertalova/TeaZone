@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/btnStar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="5sp"
+        android:background="@drawable/ic_star_border_black_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/profilePicReviews"
+        app:layout_constraintTop_toBottomOf="@+id/tvMenoUseraReviews"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnStar6"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="5sp"
+        android:layout_marginEnd="15sp"
+        android:background="@drawable/ic_star_border_black_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/btnStar7"
+        app:layout_constraintTop_toBottomOf="@+id/tvMenoUseraReviews"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnStar7"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="5sp"
+        android:background="@drawable/ic_star_border_black_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/btnStar8"
+        app:layout_constraintTop_toBottomOf="@+id/tvMenoUseraReviews"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnStar8"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="5sp"
+        android:background="@drawable/ic_star_border_black_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/btnStar9"
+        app:layout_constraintTop_toBottomOf="@+id/tvMenoUseraReviews"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnStar9"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="5sp"
+        android:background="@drawable/ic_star_border_black_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/btnStar"
+        app:layout_constraintTop_toBottomOf="@+id/tvMenoUseraReviews"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tvMenoUseraReviews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15sp"
+        android:fontFamily="@font/source_sans_pro"
+        android:text="Meno usera"
+        android:textColor="@color/colorGreenLogo"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.167"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profilePicReviews"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="15sp"
+        android:layout_weight="1"
+        app:civ_border_color="@color/colorGrey"
+        app:civ_border_width="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1" />
+</androidx.constraintlayout.widget.ConstraintLayout>

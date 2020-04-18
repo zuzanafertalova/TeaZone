@@ -54,10 +54,12 @@
         android:textColor="@color/colorGreenLogo"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/tvEmail"
+        app:layout_constraintBottom_toBottomOf="@+id/viewPagerProfileFragment"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivProfile_image" />
+        app:layout_constraintTop_toBottomOf="@+id/ivProfile_image"
+        app:layout_constraintVertical_bias="0.02" />
 
     <TextView
         android:id="@+id/tvEmail"
@@ -67,11 +69,11 @@
         android:text="Email Podniku"
         android:textColor="@color/colorGrey"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@id/tvAdresaPodniku"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvUsername"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.023" />
 
     <TextView
         android:id="@+id/tvReviewsProfileFragment"
@@ -164,7 +166,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAdresaPodniku" />
+        app:layout_constraintTop_toBottomOf="@+id/tvAdresaPodniku"
+        app:layout_constraintVertical_bias="0.255" />
 
     <TextView
         android:id="@+id/tvTypPodniku"
@@ -192,11 +195,11 @@
         android:textColor="@color/colorGreyLogo"
         android:textSize="11sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/tvPopisPodniku"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvEmail"
-        app:layout_constraintVertical_bias="0.74" />
+        app:layout_constraintVertical_bias="0.017" />
 
     <Button
         android:id="@+id/btnOtvaracieHodiny"
@@ -237,11 +240,11 @@
         android:layout_width="40sp"
         android:layout_height="40sp"
         android:background="@drawable/ic_add_post"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tvPopisPodniku"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.318"
+        app:layout_constraintHorizontal_bias="0.22"
         app:layout_constraintStart_toEndOf="@+id/tvUsername"
         app:layout_constraintTop_toBottomOf="@+id/btnLogOut"
-        app:layout_constraintVertical_bias="0.179" />
+        app:layout_constraintVertical_bias="0.492" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

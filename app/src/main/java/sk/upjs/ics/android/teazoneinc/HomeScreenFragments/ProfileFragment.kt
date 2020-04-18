@@ -20,6 +20,7 @@ import sk.upjs.ics.android.teazoneinc.Dialogs.BottomSheetAddPost
 import sk.upjs.ics.android.teazoneinc.Dialogs.DialogOtvaracieHodiny
 import sk.upjs.ics.android.teazoneinc.HomeScreenFragments.ProfileFragments.ReviewsFragment
 import sk.upjs.ics.android.teazoneinc.ProfileScreenFragments.FollowersFragment
+import sk.upjs.ics.android.teazoneinc.ProfileScreenFragments.PostsFragment
 import sk.upjs.ics.android.teazoneinc.R
 
 
@@ -124,6 +125,7 @@ class ProfileFragment : Fragment(), BottomSheetAddPost.BottomSheetListener {
             viewPagerAdapterProfileFragment = ViewPagerAdapter(it)
             viewPagerAdapterProfileFragment.addManagerProfile(ReviewsFragment(), titles[0])
             viewPagerAdapterProfileFragment.addManagerProfile(FollowersFragment(), titles[1])
+//            viewPagerAdapterProfileFragment.addManagerProfile(PostsFragment(), titles[2])
             viewPagerProfileFragment.adapter = viewPagerAdapterProfileFragment
             tabsProfileFragment.setupWithViewPager(viewPagerProfileFragment)
         }

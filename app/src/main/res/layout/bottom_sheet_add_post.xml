@@ -40,8 +40,8 @@
 
     <ImageView
         android:id="@+id/ivChoosenPic"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20sp"
         android:background="@drawable/textview_border_green" />
 
