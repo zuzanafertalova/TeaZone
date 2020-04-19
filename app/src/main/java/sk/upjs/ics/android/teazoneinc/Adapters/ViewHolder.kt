@@ -2,14 +2,13 @@ package sk.upjs.ics.android.teazoneinc.Adapters
 
 import android.content.Context
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import de.hdodenhof.circleimageview.CircleImageView
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.Storage.StorageAdapter
+import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
+import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterPost
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Post.DataPost
 import sk.upjs.ics.android.teazoneinc.R
@@ -19,6 +18,8 @@ class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     val storageAdapter = StorageAdapter()
     val dbAdapterUser = DbAdapterUser()
+    val dbAdapterPost = DbAdapterPost()
+    val authAdapter = AuthAdapter()
     var isLikeButtonClicked: Boolean = false
     var isCommentButtonClicked: Boolean = false
 
@@ -32,11 +33,13 @@ class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private var commentButton: Button = itemView.findViewById(id.commentButton)
     private var tiCommentLayout: LinearLayout = itemView.findViewById(id.tiCommentLayout)
     private var rvComments : RecyclerView = itemView.findViewById(id.rvComments)
+    private var btnAddComment : Button = itemView.findViewById(id.btnAddComment)
+    private var tiComment : EditText = itemView.findViewById(id.tiComment)
 
     fun bind(post: DataPost, context: Context?) {
 
         setLikeButtonIfLiked(context)
-        setCommentButtonOnClick(context)
+        setCommentButtonOnClick(context,post.postID!!)
 
         tvContentView.text = post.content
         tvLikesCountView.text = post.likesCount.toString()
@@ -64,18 +67,34 @@ class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         })
     }
 
-    private fun setCommentButtonOnClick(context: Context?) {
+    private fun setCommentButtonOnClick(context: Context?,postID : String) {
         commentButton.setOnClickListener(View.OnClickListener {
             if (isCommentButtonClicked == true) {
                 isCommentButtonClicked = false
                 tiCommentLayout.setVisibility(View.VISIBLE)
                 rvComments.setVisibility(View.VISIBLE)
+                btnAddCommentOnClick(postID)
                 commentButton.background = context?.let {it1 -> ContextCompat.getDrawable(it1, drawable.ic_comment)}
             } else {
                 isCommentButtonClicked = true
                 tiCommentLayout.setVisibility(View.GONE)
                 rvComments.setVisibility(View.GONE)
                 commentButton.background = context?.let {it1 -> ContextCompat.getDrawable(it1, drawable.ic_comment_onclick)}
+
+            }
+        })
+    }
+
+    private fun btnAddCommentOnClick(postID:String){
+        btnAddComment.setOnClickListener(View.OnClickListener {
+            if (tiComment.text.isNotEmpty()){
+                if (dbAdapterUser.getStatusOfLoggedUser().equals("User")){
+                    dbAdapterPost.createComment(postID, authAdapter.currentUser!!.uid, DbAdapterUser.userUser.username!!,tiComment.text.toString())
+                }
+                else
+                {
+                    dbAdapterPost.createComment(postID, authAdapter.currentUser!!.uid, DbAdapterUser.userFirma.username!!,tiComment.text.toString())
+                }
 
             }
         })

@@ -6,6 +6,7 @@ import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.Storage.StorageAdapter
+import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Post.DataComment
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Post.DataPost
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Review.DataReview
 
@@ -19,6 +20,7 @@ class DbAdapterPost {
         db.collection("Posts").add(map)
             .addOnSuccessListener {
                 it.update("timeStamp",FieldValue.serverTimestamp())
+                it.update("postID",it.id)
                 Log.w("Doc for post created","DOCUMENT CREATED")
             }
             .addOnFailureListener { exception ->
@@ -76,14 +78,27 @@ class DbAdapterPost {
 
     }
 
-    fun addComment(comment:String,postID:String){
+//    fun addComment(comment:String,postID:String){
+//        db.collection("Posts").document(postID)
+//            .update("comments",FieldValue.arrayUnion(comment))
+//            .addOnSuccessListener {
+//                Log.w("Podarilo sa komentnut","jes")
+//            }
+//            .addOnFailureListener{
+//                Log.w("NEPODARILO SA KOMENT",it)
+//            }
+//    }
+
+    fun createComment(postID: String ,creatorID: String, username : String, content: String){
+        val comment = DataComment(creatorID,username,content)
+        addComment2(postID, comment)
+    }
+
+    fun addComment2(postID: String, comment: DataComment){
         db.collection("Posts").document(postID)
-            .update("comments",FieldValue.arrayUnion(comment))
+            .collection("Comments").add(comment)
             .addOnSuccessListener {
-                Log.w("Podarilo sa komentnut","jes")
-            }
-            .addOnFailureListener{
-                Log.w("NEPODARILO SA KOMENT",it)
+
             }
     }
 
