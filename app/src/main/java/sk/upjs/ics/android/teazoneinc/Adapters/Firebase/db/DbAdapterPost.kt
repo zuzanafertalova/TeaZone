@@ -39,10 +39,7 @@ class DbAdapterPost {
                            comments:Int,
                            creatorProfilePic : String,
                            picID: String?){
-        val date = Date()
-        val dateFormat = SimpleDateFormat("dd.MM.yyyy hh:mm")
-        val dateTime = dateFormat.format(date)
-        var post = DataPost(creatorID,creatorUsername,content,likes,comments,creatorProfilePic, dateTime)
+        var post = DataPost(creatorID,creatorUsername,content,likes,comments,creatorProfilePic)
         post.postPic = picID
         createPostInDB(post)
     }
