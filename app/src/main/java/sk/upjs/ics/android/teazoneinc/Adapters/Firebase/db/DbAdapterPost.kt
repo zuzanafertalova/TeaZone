@@ -102,6 +102,23 @@ class DbAdapterPost {
             }
     }
 
+    fun addLike(postID: String,followerID:String?){
+        db.collection("Posts").document(postID)
+            .update("likesIDs", FieldValue.arrayUnion(followerID))
+            .addOnSuccessListener {
+                Log.w("PODARILO PRIDAT","PRIDAT LIKEEEEEEEEE")
+            }
+            .addOnFailureListener{
+                Log.w("NEPODARILO SA LIKE",it)
+            }
+    }
+
+    fun removeLike(postID: String,followerID: String?){
+        db.collection("Posts").document(postID)
+            .update("likesIDs",FieldValue.arrayRemove(followerID))
+    }
+
+
     fun getPostsList(creatorID:String, eventListener: EventListener<ArrayList<DataPost>>){
         val postList = ArrayList<DataPost>()
         db.collection("Posts").whereEqualTo("creatorID",creatorID).get()

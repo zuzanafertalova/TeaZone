@@ -44,7 +44,8 @@ class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bind(post: DataPost, context: Context?) {
 
-        setLikeButtonIfLiked(context)
+        ifLikeButtonClicked(context, post.likesIDs)
+        setLikeButtonIfLiked(context, post.postID!!)
         setCommentButtonOnClick(context,post.postID!!)
         commentsList(post.postID!!)
 
@@ -62,34 +63,41 @@ class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         }
     }
 
-    private fun setLikeButtonIfLiked(context: Context?) {
+    private fun ifLikeButtonClicked(context: Context?, likesIDs: ArrayList<String>){
+        if(likesIDs.contains(authAdapter.currentUser?.uid)){
+            isLikeButtonClicked = true
+            likeButton.background = context?.let { it1 -> ContextCompat.getDrawable(it1, drawable.ic_like_onclick)}
+        }
+    }
+
+    private fun setLikeButtonIfLiked(context: Context?, postID: String) {
 
         likeButton.setOnClickListener(View.OnClickListener {
-            if (isLikeButtonClicked == true) {
-                isLikeButtonClicked = false
-                likeButton.background = context?.let { it1 -> ContextCompat.getDrawable(it1, drawable.ic_like)}
-
-            } else {
-                //    dbAdapterUser.addFollower(docID, authAdapter.currentUser?.uid)
+            if (isLikeButtonClicked == false) {
                 isLikeButtonClicked = true
                 likeButton.background = context?.let { it1 -> ContextCompat.getDrawable(it1, drawable.ic_like_onclick)}
+                dbAdapterPost.addLike(postID, authAdapter.currentUser?.uid)
+            } else {
+                isLikeButtonClicked = false
+                likeButton.background = context?.let { it1 -> ContextCompat.getDrawable(it1, drawable.ic_like)}
+                dbAdapterPost.removeLike(postID,authAdapter.currentUser?.uid)
             }
         })
     }
 
     private fun setCommentButtonOnClick(context: Context?,postID : String) {
         commentButton.setOnClickListener(View.OnClickListener {
-            if (isCommentButtonClicked == true) {
-                isCommentButtonClicked = false
+            if (isCommentButtonClicked == false) {
+                isCommentButtonClicked = true
                 tiCommentLayout.setVisibility(View.VISIBLE)
                 rvComments.setVisibility(View.VISIBLE)
                 btnAddCommentOnClick(postID,context)
-                commentButton.background = context?.let {it1 -> ContextCompat.getDrawable(it1, drawable.ic_comment)}
+                commentButton.background = context?.let {it1 -> ContextCompat.getDrawable(it1, drawable.ic_comment_onclick)}
             } else {
-                isCommentButtonClicked = true
+                isCommentButtonClicked = false
                 tiCommentLayout.setVisibility(View.GONE)
                 rvComments.setVisibility(View.GONE)
-                commentButton.background = context?.let {it1 -> ContextCompat.getDrawable(it1, drawable.ic_comment_onclick)}
+                commentButton.background = context?.let {it1 -> ContextCompat.getDrawable(it1, drawable.ic_comment)}
 
             }
         })
