@@ -39,7 +39,7 @@ class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private var tiCommentLayout: LinearLayout = itemView.findViewById(id.tiCommentLayout)
     private var rvComments : RecyclerView = itemView.findViewById(id.rvComments)
     private var btnAddComment : Button = itemView.findViewById(id.btnAddComment)
-    private var tvTimeAdded : TextView = itemView.findViewById(id.tvCasPridaniaCommentu)
+    private var tvTimeAdded : TextView = itemView.findViewById(id.casPridania)
     private var tiComment : EditText = itemView.findViewById(id.tiComment)
 
     fun bind(post: DataPost, context: Context?) {
