@@ -127,7 +127,7 @@
         android:layout_gravity="center"
         android:layout_margin="10sp"
         android:layout_weight="1"
-        android:background="@drawable/button_grey"
+        android:background="@drawable/button_turquoise"
         android:fontFamily="@font/source_sans_pro"
         android:text="POTVRDIŤ"
         android:textColor="@color/white"
