@@ -67,8 +67,8 @@ class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         likeButton.setOnClickListener(View.OnClickListener {
             if (isLikeButtonClicked == true) {
                 isLikeButtonClicked = false
-                //    dbAdapterUser.removeFollower(userFirma, docID, authAdapter.currentUser?.uid)
                 likeButton.background = context?.let { it1 -> ContextCompat.getDrawable(it1, drawable.ic_like)}
+
             } else {
                 //    dbAdapterUser.addFollower(docID, authAdapter.currentUser?.uid)
                 isLikeButtonClicked = true

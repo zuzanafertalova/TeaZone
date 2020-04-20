@@ -260,7 +260,7 @@ class DbAdapterUser {
     fun removeFollower(user:DataFirma ,docID: String,followerID: String?){
         user.followersIDs.remove(followerID)
         db.collection("FirmaUsers").document(docID)
-            .update("followersIDs",user.followersIDs)
+            .update("followersIDs",FieldValue.arrayRemove(followerID))
         if (getStatusOfLoggedUser().equals("User")){
             userUser.followingIDs.remove(docID)
             db.collection("Users").document(followerID!!)

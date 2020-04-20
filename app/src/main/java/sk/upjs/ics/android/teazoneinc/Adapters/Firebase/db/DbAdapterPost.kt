@@ -62,8 +62,6 @@ class DbAdapterPost {
                 it.getString("content")?.let { post.content=it }
                 it.getLong("likesCount")?.toInt()?.let { post.likesCount=it }
                 it.getLong("commentsCount")?.toInt()?.let { post.commentsCount=it }
-                val list:ArrayList<String>? = it.get("comments") as ArrayList<String>
-                list?.let { post.comments=it }
                 eventListener.onEvent(post,null)
             }
 
@@ -78,8 +76,6 @@ class DbAdapterPost {
                 it.getString("content")?.let { post.content=it }
                 it.getLong("likesCount")?.toInt()?.let { post.likesCount=it }
                 it.getLong("commentsCount")?.toInt()?.let { post.commentsCount=it }
-                val list:ArrayList<String>? = it.get("comments") as ArrayList<String>
-                list?.let { post.comments=it }
                 eventListener.onEvent(post,null)
             }
 

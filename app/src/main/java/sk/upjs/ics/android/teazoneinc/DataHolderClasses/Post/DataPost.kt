@@ -12,7 +12,7 @@ class DataPost{
     var content : String?=null
     var likesCount : Int?=null
     var commentsCount : Int?=null
-    var comments = ArrayList<String>()
+    var likes = ArrayList<String>()
     var postPic : String? = null
     var creatorProfilePic : String? = null
     var dateTime: String? = null
