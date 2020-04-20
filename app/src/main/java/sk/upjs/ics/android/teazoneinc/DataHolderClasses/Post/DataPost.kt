@@ -15,19 +15,17 @@ class DataPost{
     var comments = ArrayList<String>()
     var postPic : String? = null
     var creatorProfilePic : String? = null
-    var dateTime: String? = null
     var timeStamp : Date?= null
 
     constructor()
 
-    constructor(creatorID:String, creatorUsername: String,content:String,likes:Int,comments:Int, creatorProfilePic : String, dateTime:String){
+    constructor(creatorID:String, creatorUsername: String,content:String,likes:Int,comments:Int, creatorProfilePic : String){
         this.creatorID=creatorID
         this.creatorUsername=creatorUsername
         this.content=content
         this.likesCount=likes
         this.commentsCount=comments
         this.creatorProfilePic = creatorProfilePic
-        this.dateTime = dateTime
 //        this.timeStamp=FieldValue.serverTimestamp()
     }
 }
