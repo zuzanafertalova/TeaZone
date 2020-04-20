@@ -1,6 +1,7 @@
 package sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db
 
 import android.util.Log
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FieldValue
@@ -9,6 +10,7 @@ import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.Storage.StorageAdapter
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Post.DataComment
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Post.DataPost
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Review.DataReview
+import java.text.SimpleDateFormat
 
 class DbAdapterPost {
 
@@ -35,7 +37,10 @@ class DbAdapterPost {
                            comments:Int,
                            creatorProfilePic : String,
                            picID: String?){
-        var post = DataPost(creatorID,creatorUsername,content,likes,comments,creatorProfilePic)
+        val timestamp = FieldValue.serverTimestamp()
+        val dateFormat = SimpleDateFormat("dd.MM.yyyy hh:mm")
+        val dateTime = dateFormat.format(timestamp)
+        var post = DataPost(creatorID,creatorUsername,content,likes,comments,creatorProfilePic, dateTime)
         post.postPic = picID
         createPostInDB(post)
     }
