@@ -98,7 +98,7 @@ class DbAdapterPost {
         db.collection("Posts").document(postID)
             .collection("Comments").add(comment)
             .addOnSuccessListener {
-
+                it.update("timeStamp",FieldValue.serverTimestamp())
             }
     }
 
@@ -121,6 +121,31 @@ class DbAdapterPost {
         document.getLong("commentsCount")?.let { post.commentsCount = it.toInt() }
 
         return post
+    }
+
+    fun getCommentList(postID : String, eventListener: EventListener<ArrayList<DataComment>>){
+        val commentList = ArrayList<DataComment>()
+        db.collection("Posts").document(postID)
+            .collection("Comments").whereEqualTo("commentID",null).get()
+            .addOnSuccessListener { documents ->
+                for (document in documents){
+                    commentList.add(setCommentToDataClass(document))
+                    eventListener.onEvent(commentList,null)
+                }
+                Log.w("TU SOOOOOOM" , "no to len breakpoint taky")
+            }
+            .addOnFailureListener {
+                Log.w("ERRORIKSAAA", it)
+            }
+    }
+
+    private fun setCommentToDataClass(document: DocumentSnapshot): DataComment {
+        var comment = DataComment()
+        document.getString("content")?.let { comment.content = it }
+        document.getString("creatorID")?.let { comment.creatorID = it }
+        document.getString("creatorUsername")?.let { comment.creatorUsername = it}
+
+        return comment
     }
 
 

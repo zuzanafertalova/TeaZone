@@ -1,18 +1,22 @@
 package sk.upjs.ics.android.teazoneinc.Adapters
 
 import android.content.Context
+import android.text.Editable
 import android.view.View
 import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.EventListener
 import de.hdodenhof.circleimageview.CircleImageView
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.Storage.StorageAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterPost
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
+import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Post.DataComment
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Post.DataPost
 import sk.upjs.ics.android.teazoneinc.R
 import sk.upjs.ics.android.teazoneinc.R.*
+import java.util.ArrayList
 
 class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -40,6 +44,7 @@ class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         setLikeButtonIfLiked(context)
         setCommentButtonOnClick(context,post.postID!!)
+        commentsList(post.postID!!)
 
         tvContentView.text = post.content
         tvLikesCountView.text = post.likesCount.toString()
@@ -73,7 +78,7 @@ class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 isCommentButtonClicked = false
                 tiCommentLayout.setVisibility(View.VISIBLE)
                 rvComments.setVisibility(View.VISIBLE)
-                btnAddCommentOnClick(postID)
+                btnAddCommentOnClick(postID,context)
                 commentButton.background = context?.let {it1 -> ContextCompat.getDrawable(it1, drawable.ic_comment)}
             } else {
                 isCommentButtonClicked = true
@@ -85,18 +90,27 @@ class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         })
     }
 
-    private fun btnAddCommentOnClick(postID:String){
+    private fun btnAddCommentOnClick(postID:String, context: Context?){
         btnAddComment.setOnClickListener(View.OnClickListener {
             if (tiComment.text.isNotEmpty()){
                 if (dbAdapterUser.getStatusOfLoggedUser().equals("User")){
                     dbAdapterPost.createComment(postID, authAdapter.currentUser!!.uid, DbAdapterUser.userUser.username!!,tiComment.text.toString())
+                    Toast.makeText(context,"Pridany" , Toast.LENGTH_SHORT).show()
                 }
                 else
                 {
                     dbAdapterPost.createComment(postID, authAdapter.currentUser!!.uid, DbAdapterUser.userFirma.username!!,tiComment.text.toString())
+                    Toast.makeText(context,"Pridany" , Toast.LENGTH_SHORT).show()
                 }
 
             }
+        })
+    }
+
+    private fun commentsList(postID: String){
+        var postList = ArrayList<DataComment>()
+        dbAdapterPost.getCommentList(postID, EventListener{ list, _ ->
+            postList?.let { postList = it }
         })
     }
 
