@@ -12,10 +12,8 @@ import sk.upjs.ics.android.teazoneinc.R
 
 class BottomSheetFilters(private var mBottomSheetListener: SearchFragment) : BottomSheetDialogFragment() {
 
-    var isOptionClicked: Boolean = false
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
+
         val v =  inflater.inflate(R.layout.bottom_sheet_filters, container, false)
 
         // To handle clicks
@@ -49,6 +47,4 @@ class BottomSheetFilters(private var mBottomSheetListener: SearchFragment) : Bot
         }
         return v
     }
-
-
 }

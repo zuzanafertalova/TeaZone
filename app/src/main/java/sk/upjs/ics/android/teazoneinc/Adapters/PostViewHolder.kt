@@ -1,10 +1,11 @@
 package sk.upjs.ics.android.teazoneinc.Adapters
 
 import android.content.Context
-import android.text.Editable
 import android.view.View
 import android.widget.*
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.FragmentManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.EventListener
 import de.hdodenhof.circleimageview.CircleImageView
@@ -14,7 +15,7 @@ import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterPost
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Post.DataComment
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Post.DataPost
-import sk.upjs.ics.android.teazoneinc.R
+import sk.upjs.ics.android.teazoneinc.Dialogs.BottomSheetComments
 import sk.upjs.ics.android.teazoneinc.R.*
 import java.text.SimpleDateFormat
 import java.util.ArrayList
@@ -28,6 +29,7 @@ class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var isLikeButtonClicked: Boolean = false
     var isCommentButtonClicked: Boolean = false
 
+
     private var tvContentView: TextView = itemView.findViewById(id.tvContent)
     private var tvLikesCountView: TextView = itemView.findViewById(id.tvLikesCount)
     private var tvCommentCounts: TextView = itemView.findViewById(id.tvCommentCount)
@@ -36,17 +38,13 @@ class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private var ivProfilePic: CircleImageView = itemView.findViewById(id.ivProfilePic)
     private var likeButton: Button = itemView.findViewById(id.likeButton)
     private var commentButton: Button = itemView.findViewById(id.commentButton)
-    private var tiCommentLayout: LinearLayout = itemView.findViewById(id.tiCommentLayout)
-    private var rvComments : RecyclerView = itemView.findViewById(id.rvComments)
-    private var btnAddComment : Button = itemView.findViewById(id.btnAddComment)
     private var tvTimeAdded : TextView = itemView.findViewById(id.casPridania)
-    private var tiComment : EditText = itemView.findViewById(id.tiComment)
 
-    fun bind(post: DataPost, context: Context?) {
+    fun bind(post: DataPost, context: Context?, fragmentManager: FragmentManager) {
 
         ifLikeButtonClicked(context, post.likesIDs)
         setLikeButtonIfLiked(context, post.postID!!)
-        setCommentButtonOnClick(context,post.postID!!)
+        setCommentButtonOnClick(context,post.postID!!, fragmentManager)
         commentsList(post.postID!!)
 
         tvContentView.text = post.content
@@ -85,40 +83,44 @@ class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         })
     }
 
-    private fun setCommentButtonOnClick(context: Context?,postID : String) {
+    private fun setCommentButtonOnClick(context: Context?,postID : String, fragmentManager: FragmentManager) {
+
         commentButton.setOnClickListener(View.OnClickListener {
-            if (isCommentButtonClicked == false) {
+            if(isCommentButtonClicked == false) {
                 isCommentButtonClicked = true
-                tiCommentLayout.setVisibility(View.VISIBLE)
-                rvComments.setVisibility(View.VISIBLE)
-                btnAddCommentOnClick(postID,context)
-                commentButton.background = context?.let {it1 -> ContextCompat.getDrawable(it1, drawable.ic_comment_onclick)}
-            } else {
+                showBottomSheetComments(fragmentManager)
+            }
+            else{
                 isCommentButtonClicked = false
-                tiCommentLayout.setVisibility(View.GONE)
-                rvComments.setVisibility(View.GONE)
-                commentButton.background = context?.let {it1 -> ContextCompat.getDrawable(it1, drawable.ic_comment)}
-
             }
         })
     }
 
-    private fun btnAddCommentOnClick(postID:String, context: Context?){
-        btnAddComment.setOnClickListener(View.OnClickListener {
-            if (tiComment.text.isNotEmpty()){
-                if (dbAdapterUser.getStatusOfLoggedUser().equals("User")){
-                    dbAdapterPost.createComment(postID, authAdapter.currentUser!!.uid, DbAdapterUser.userUser.username!!,tiComment.text.toString())
-                    Toast.makeText(context,"Pridany" , Toast.LENGTH_SHORT).show()
-                }
-                else
-                {
-                    dbAdapterPost.createComment(postID, authAdapter.currentUser!!.uid, DbAdapterUser.userFirma.username!!,tiComment.text.toString())
-                    Toast.makeText(context,"Pridany" , Toast.LENGTH_SHORT).show()
-                }
-
-            }
+    fun showBottomSheetComments(fragmentManager: FragmentManager) {
+        commentButton.setOnClickListener(View.OnClickListener {
+            val bottomSheet = BottomSheetComments(this)
+            bottomSheet.show(fragmentManager, "BottomSheetComments")
         })
     }
+
+
+
+//    private fun btnAddCommentOnClick(postID:String, context: Context?){
+//        btnAddComment.setOnClickListener(View.OnClickListener {
+//            if (tiComment.text.isNotEmpty()){
+//                if (dbAdapterUser.getStatusOfLoggedUser().equals("User")){
+//                    dbAdapterPost.createComment(postID, authAdapter.currentUser!!.uid, DbAdapterUser.userUser.username!!,tiComment.text.toString())
+//                    Toast.makeText(context,"Pridany" , Toast.LENGTH_SHORT).show()
+//                }
+//                else
+//                {
+//                    dbAdapterPost.createComment(postID, authAdapter.currentUser!!.uid, DbAdapterUser.userFirma.username!!,tiComment.text.toString())
+//                    Toast.makeText(context,"Pridany" , Toast.LENGTH_SHORT).show()
+//                }
+//
+//            }
+//        })
+//    }
 
     private fun commentsList(postID: String){
         var postList = ArrayList<DataComment>()
