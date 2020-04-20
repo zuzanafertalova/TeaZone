@@ -11,6 +11,8 @@ import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Post.DataComment
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Post.DataPost
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Review.DataReview
 import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class DbAdapterPost {
 
@@ -37,9 +39,9 @@ class DbAdapterPost {
                            comments:Int,
                            creatorProfilePic : String,
                            picID: String?){
-        val timestamp = FieldValue.serverTimestamp()
+        val date = Date()
         val dateFormat = SimpleDateFormat("dd.MM.yyyy hh:mm")
-        val dateTime = dateFormat.format(timestamp)
+        val dateTime = dateFormat.format(date)
         var post = DataPost(creatorID,creatorUsername,content,likes,comments,creatorProfilePic, dateTime)
         post.postPic = picID
         createPostInDB(post)
