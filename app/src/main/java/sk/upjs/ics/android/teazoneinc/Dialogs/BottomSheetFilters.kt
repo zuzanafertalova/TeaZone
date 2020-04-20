@@ -12,6 +12,8 @@ import sk.upjs.ics.android.teazoneinc.R
 
 class BottomSheetFilters(private var mBottomSheetListener: SearchFragment) : BottomSheetDialogFragment() {
 
+    var isOptionClicked: Boolean = false
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val v =  inflater.inflate(R.layout.bottom_sheet_filters, container, false)
@@ -41,6 +43,12 @@ class BottomSheetFilters(private var mBottomSheetListener: SearchFragment) : Bot
         v.tvCajovnaFilter.setOnClickListener {
             tvCajovnaFilter.setBackgroundResource(R.drawable.search_rectangle_green)
         }
+
+        v.btnConfirmFilters.setOnClickListener{
+            dismiss()
+        }
         return v
     }
+
+
 }
