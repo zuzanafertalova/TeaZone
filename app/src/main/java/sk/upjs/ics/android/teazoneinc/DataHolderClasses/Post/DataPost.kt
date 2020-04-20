@@ -2,6 +2,8 @@ package sk.upjs.ics.android.teazoneinc.DataHolderClasses.Post
 
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FieldValue
+import java.util.*
+import kotlin.collections.ArrayList
 
 class DataPost{
     var postID : String? = null
@@ -14,7 +16,7 @@ class DataPost{
     var postPic : String? = null
     var creatorProfilePic : String? = null
     var dateTime: String? = null
-//    var timeStamp : FieldValue?= null
+    var timeStamp : Date?= null
 
     constructor()
 
