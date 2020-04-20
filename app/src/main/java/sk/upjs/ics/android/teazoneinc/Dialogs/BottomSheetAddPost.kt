@@ -33,6 +33,7 @@ class BottomSheetAddPost(private var mBottomSheetListener: BottomSheetListener) 
         val v = inflater.inflate(R.layout.bottom_sheet_add_post, container, false)
 
         v.btnChoosePic.setOnClickListener {
+            ivChoosenPic.visibility = View.VISIBLE
             openPicChooser()
         }
 

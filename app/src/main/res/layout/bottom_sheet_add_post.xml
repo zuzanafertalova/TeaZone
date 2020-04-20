@@ -1,58 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:padding="20sp">
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvPridatPrispevok"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/source_sans_pro"
-        android:text="PRIDAŤ PRÍSPEVOK"
-        android:gravity="center"
-        android:textColor="@color/colorGreenLogo"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/tvPostContent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_marginTop="20sp"
-        android:fontFamily="@font/source_sans_pro"
-        android:hint="Napíšte niečo..."
-        android:inputType="textPersonName" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="20sp">
 
-    <Button
-        android:id="@+id/btnChoosePic"
-        android:layout_width="100sp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_grey"
-        android:fontFamily="@font/source_sans_pro"
-        android:layout_marginTop="40sp"
-        android:text="Pridať fotku"
-        android:textColor="@color/colorGreyLogo"
-        android:textSize="12sp" />
+            <TextView
+                android:id="@+id/tvPridatPrispevok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
+                android:text="PRIDAŤ PRÍSPEVOK"
+                android:textColor="@color/colorGreenLogo"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/ivChoosenPic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
-        android:background="@drawable/textview_border_green" />
+            <EditText
+                android:id="@+id/tvPostContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20sp"
+                android:ems="10"
+                android:fontFamily="@font/source_sans_pro"
+                android:hint="Napíšte niečo..."
+                android:inputType="textPersonName" />
 
-    <Button
-        android:id="@+id/btnPostPost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
-        android:background="@drawable/button_turquoise"
-        android:fontFamily="@font/source_sans_pro"
-        android:text="ZDIEĽAŤ"
-        android:textColor="@color/white" />
+            <Button
+                android:id="@+id/btnChoosePic"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="40sp"
+                android:background="@drawable/button_grey"
+                android:fontFamily="@font/source_sans_pro"
+                android:text="Pridať fotku"
+                android:textColor="@color/colorGreyLogo"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/ivChoosenPic"
+                android:layout_width="400sp"
+                android:layout_height="400sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20sp"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btnPostPost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20sp"
+                android:background="@drawable/button_turquoise"
+                android:fontFamily="@font/source_sans_pro"
+                android:text="ZDIEĽAŤ"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
