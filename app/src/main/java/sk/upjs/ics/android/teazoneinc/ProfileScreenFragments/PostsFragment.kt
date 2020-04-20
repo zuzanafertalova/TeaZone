@@ -23,6 +23,7 @@ class PostsFragment : Fragment() {
     val dbAdapterPost = DbAdapterPost()
     var postList = ArrayList<DataPost>()
 
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_posts, container, false)
     }
@@ -30,9 +31,9 @@ class PostsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        dbAdapterPost.getPostsList(ProfileFromSearchActivity.docID, EventListener{ list, _ ->
-            list?.let { postList = it }
-        })
+//        dbAdapterPost.getPostsList(ProfileFromSearchActivity.docID, EventListener{ list, _ ->
+//            list?.let { postList = it }
+//        })
     }
 
 

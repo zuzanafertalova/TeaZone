@@ -9,6 +9,7 @@ class DataFirma{
     var following : Int?=null
     var followers : Int?=null
     var reviews : Int? = null
+    var posts = ArrayList<String>()
     var ICO: String?=null
     var followingIDs = ArrayList<String>()
     var followersIDs = ArrayList<String>()

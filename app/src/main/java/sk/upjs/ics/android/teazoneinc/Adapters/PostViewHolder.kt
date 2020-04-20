@@ -84,16 +84,7 @@ class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     }
 
     private fun setCommentButtonOnClick(context: Context?,postID : String, fragmentManager: FragmentManager) {
-
-        commentButton.setOnClickListener(View.OnClickListener {
-            if(isCommentButtonClicked == false) {
-                isCommentButtonClicked = true
                 showBottomSheetComments(fragmentManager)
-            }
-            else{
-                isCommentButtonClicked = false
-            }
-        })
     }
 
     fun showBottomSheetComments(fragmentManager: FragmentManager) {
