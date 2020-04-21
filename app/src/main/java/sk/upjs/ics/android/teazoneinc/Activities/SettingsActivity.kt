@@ -6,12 +6,11 @@ import android.view.View
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
 import android.widget.Toast
 import com.google.firebase.firestore.EventListener
-import kotlinx.android.synthetic.main.activity_settings_user.*
+import kotlinx.android.synthetic.main.activity_settings.*
 import kotlinx.android.synthetic.main.fragment_change_password.*
 import kotlinx.android.synthetic.main.fragment_set_username.*
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.R
-import java.util.*
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -21,12 +20,18 @@ class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (dbAdapterUser.getStatusOfLoggedUser().equals("User")) {
-            setContentView(R.layout.activity_settings_user)
-        } else (setContentView(R.layout.activity_settings_firma))
+        setContentView(R.layout.activity_settings)
+
+        if(dbAdapterUser.getStatusOfLoggedUser().equals("User")){
+            buttonChangeDescrib.visibility = View.GONE
+            buttonChangeAddress.visibility = View.GONE
+            buttonChangeTypPodniku.visibility = View.GONE
+            buttonChangeMenu.visibility = View.GONE
+            buttonChangeOpeningHours.visibility  =View.GONE
+        }
 
         fragmentChangePassword.view?.visibility = View.GONE
-        fragment.view?.visibility= View.GONE
+        fragmentChangeUsername.view?.visibility= View.GONE
         btnOpenChangeFragmentSet()
         btnSetUsernameClick()
     }
@@ -37,12 +42,12 @@ class SettingsActivity : AppCompatActivity() {
             btnChangePasswordSet()
         })
         buttonChangeUsername.setOnClickListener(View.OnClickListener {
-            fragment.view?.visibility = View.VISIBLE
+            fragmentChangeUsername.view?.visibility = View.VISIBLE
         })
     }
 
     private fun btnChangePasswordSet() {
-        buttonChangePassword.setOnClickListener(View.OnClickListener {
+        btnChangePassword.setOnClickListener(View.OnClickListener {
             if (tvCurrPassword.text.isNotEmpty() && tvNewPassword.text.isNotEmpty() && tvNewPasswordConfirm.text.isNotEmpty()) {
                 authAdapter.reauthenticate(
                     tvCurrPassword.text.toString(),
@@ -53,21 +58,15 @@ class SettingsActivity : AppCompatActivity() {
                                     tvNewPassword.text.toString(),
                                     EventListener { isTrue, _ ->
                                         if (isTrue!!) {
-                                            Toast.makeText(
-                                                this,
-                                                "Heslo uspesne zmenene",
-                                                Toast.LENGTH_SHORT
-                                            ).show()
+                                            Toast.makeText(this, "Heslo úspešne zmenené.", Toast.LENGTH_SHORT).show()
                                             fragmentChangePassword.view?.visibility = View.GONE
                                         }
                                     })
                             } else {
-                                Toast.makeText(this, "Hesla sa nezhoduju", Toast.LENGTH_SHORT)
-                                    .show()
+                                Toast.makeText(this, "Heslá sa nezhodujú.", Toast.LENGTH_SHORT).show()
                             }
                         } else {
-                            Toast.makeText(this, "Sucastne heslo je nespravne", Toast.LENGTH_SHORT)
-                                .show()
+                            Toast.makeText(this, "Súčasné heslo je nesprávne.", Toast.LENGTH_SHORT).show()
                         }
                     })
             }

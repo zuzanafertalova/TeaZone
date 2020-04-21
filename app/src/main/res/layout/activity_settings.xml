@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="true"
+    tools:context=".Activities.SettingsActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/upper_menu3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#22BCAF"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:contextClickable="true"
+                    android:fontFamily="@font/bauhaus_93_regular"
+                    android:gravity="center"
+                    android:text="TeaZone"
+                    android:textColor="@android:color/white"
+                    android:textSize="30dp" />
+            </androidx.appcompat.widget.Toolbar>
+
+            <ImageView
+                android:id="@+id/ivLogo"
+                android:layout_width="150sp"
+                android:layout_height="150sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10sp"
+                android:src="@drawable/teazone_logo_transparent" />
+
+            <TextView
+                android:id="@+id/tvSettings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
+                android:text="Nastavenia"
+                android:textColor="@color/colorGreyLogo"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <fragment
+                android:id="@+id/fragmentChangeUsername"
+                android:name="sk.upjs.ics.android.teazoneinc.Activities.SetUsernameFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+            <Button
+                android:id="@+id/buttonChangeUsername"
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/button_grey"
+                android:text="ZMENIŤ MENO"
+                android:textColor="@color/white"
+                android:textIsSelectable="true"
+                android:textSize="12sp" />
+
+            <fragment
+                android:id="@+id/fragmentChangePassword"
+                android:name="sk.upjs.ics.android.teazoneinc.SettingsScreenFragments.ChangePasswordFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+            <Button
+                android:id="@+id/buttonChangePassword"
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/button_darkgrey"
+                android:text="ZMENIŤ HESLO"
+                android:textColor="@color/white"
+                android:textIsSelectable="true"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/buttonChangeProfilePic"
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/button_turquoise"
+                android:text="ZMENIŤ PROFILOVÚ FOTKU"
+                android:textColor="@color/white"
+                android:textIsSelectable="true"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/buttonChangeDescrib"
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/button_grey"
+                android:text="ZMENIŤ POPIS"
+                android:textColor="@color/white"
+                android:textIsSelectable="true"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/buttonChangeAddress"
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/button_darkgrey"
+                android:text="ZMENIŤ ADRESU PODNIKU"
+                android:textColor="@color/white"
+                android:textIsSelectable="true"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/buttonChangeTypPodniku"
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/button_turquoise"
+                android:text="ZMENIŤ TYP PODNIKU"
+                android:textColor="@color/white"
+                android:textIsSelectable="true"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/buttonChangeMenu"
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/button_grey"
+                android:text="JEDÁLNY/NÁPOJOVÝ LÍSTOK"
+                android:textColor="@color/white"
+                android:textIsSelectable="true"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/buttonChangeOpeningHours"
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/button_darkgrey"
+                android:text="OTVÁRACIE HODINY"
+                android:textColor="@color/white"
+                android:textIsSelectable="true"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/buttonDeleteAccount"
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30sp"
+                android:background="@drawable/button_red"
+                android:text="ODSTRÁNIŤ ÚČET"
+                android:textColor="@color/white"
+                android:textIsSelectable="true"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
