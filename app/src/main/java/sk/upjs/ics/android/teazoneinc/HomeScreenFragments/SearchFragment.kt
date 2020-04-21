@@ -103,7 +103,7 @@ class SearchFragment : Fragment(), BottomSheetFilters.BottomSheetListener {
         filterString="("
         for (filter in filterList){
             val singleFilter = "typPodniku:$filter OR "
-            filterString.plus(singleFilter)
+            filterString += singleFilter
         }
         filterString.removeRange(filterString.length-4, filterString.length-1)
         filterString.plus(")")
