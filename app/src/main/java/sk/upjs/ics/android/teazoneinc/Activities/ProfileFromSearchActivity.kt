@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.activity_profile_from_search.*
 import kotlinx.android.synthetic.main.fragment_fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_fragment_profile.tvEmail
 import kotlinx.android.synthetic.main.fragment_fragment_profile.tvUsername
+import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.Storage.StorageAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.sendData
@@ -27,6 +28,7 @@ class ProfileFromSearchActivity : AppCompatActivity() {
 
     val authAdapter = AuthAdapter()
     val dbAdapterUser = DbAdapterUser()
+    val storageAdapter = StorageAdapter()
     var isBtnClicked: Boolean = false
 
     var userUser = DataUser()
@@ -83,6 +85,7 @@ class ProfileFromSearchActivity : AppCompatActivity() {
         tvAdresaPodniku2.visibility = View.GONE
         textView_sledovat.visibility = View.GONE
 
+        storageAdapter.getProfilePic(userUser.profilePic!!,ivProfilePicFromSearch)
         tvUsername.text = userUser.username
         tvEmail.text = userUser.email
         tvFollowing_Followers.text = "Sleduje"
@@ -94,6 +97,8 @@ class ProfileFromSearchActivity : AppCompatActivity() {
 
     private fun setDataFirmaUserToFields() {
         fragmentWriteReview.view?.visibility = View.GONE
+
+        storageAdapter.getProfilePic(userUser.profilePic!!,ivProfilePicFromSearch)
         tvTypPodniku2.text = userFirma.typPodniku
         tvUsername.text = userFirma.username
         tvEmail.text = userFirma.email

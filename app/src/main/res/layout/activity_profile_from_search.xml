@@ -31,7 +31,7 @@
     </androidx.appcompat.widget.Toolbar>
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
+        android:id="@+id/ivProfilePicFromSearch"
         android:layout_width="135dp"
         android:layout_height="130dp"
         app:civ_border_color="@color/colorGreenLogo"
@@ -48,7 +48,7 @@
         android:layout_height="48dp"
         android:background="@drawable/ic_stars_review_24dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/profile_image"
+        app:layout_constraintEnd_toStartOf="@+id/ivProfilePicFromSearch"
         app:layout_constraintHorizontal_bias="0.455"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -62,7 +62,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.511"
-        app:layout_constraintStart_toEndOf="@+id/profile_image"
+        app:layout_constraintStart_toEndOf="@+id/ivProfilePicFromSearch"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.121" />
 
@@ -74,7 +74,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.592"
-        app:layout_constraintStart_toEndOf="@+id/profile_image"
+        app:layout_constraintStart_toEndOf="@+id/ivProfilePicFromSearch"
         app:layout_constraintTop_toBottomOf="@+id/btnFollow"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -261,7 +261,7 @@
         app:layout_constraintBottom_toTopOf="@id/tvEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+        app:layout_constraintTop_toBottomOf="@+id/ivProfilePicFromSearch" />
 
     <TextView
         android:id="@+id/textView10"
@@ -269,7 +269,7 @@
         android:layout_height="wrap_content"
         android:text="Ohodnotiť"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/profile_image"
+        app:layout_constraintEnd_toStartOf="@+id/ivProfilePicFromSearch"
         app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnWriteReview"
