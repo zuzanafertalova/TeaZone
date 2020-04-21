@@ -23,6 +23,7 @@ class BottomSheetComments(private var mBottomSheetListener: PostViewHolder, post
 
     internal var  adapter: CommentAdapter? = null
     private var dbAdapterPost = DbAdapterPost()
+    private val postID = postID
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -35,6 +36,7 @@ class BottomSheetComments(private var mBottomSheetListener: PostViewHolder, post
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpRecyclerView()
+        commentsList(postID)
 //        var comment = ArrayList<String>()
 //        comment.add("Pekný koment. :) ")
 //        comment.add("JUJ")
