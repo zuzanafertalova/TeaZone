@@ -21,13 +21,15 @@ import sk.upjs.ics.android.teazoneinc.Adapters.SearchResultAdapter
 import sk.upjs.ics.android.teazoneinc.Dialogs.BottomSheetFilters
 import sk.upjs.ics.android.teazoneinc.R
 import java.util.*
+import kotlin.collections.ArrayList
 
 
-class SearchFragment : Fragment() {
+class SearchFragment : Fragment(), BottomSheetFilters.BottomSheetListener {
 
     internal var client = Client("085AYVSODT", "22c915636c1f40328cbb89a1da7a531a")
     internal var index = client.getIndex("FirmaUsers_Users")
     internal var  adapter: SearchResultAdapter? = null
+    var filterString = ""
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -93,12 +95,24 @@ class SearchFragment : Fragment() {
         })
     }
 
+    override fun onOptionClick(filterList:ArrayList<String>) {
+        setFiltersString(filterList)
+    }
 
+    private fun setFiltersString(filterList: ArrayList<String>){
+        filterString="("
+        for (filter in filterList){
+            val singleFilter = "typPodniku:$filter OR "
+            filterString.plus(singleFilter)
+        }
+        filterString.removeRange(filterString.length-4, filterString.length-1)
+        filterString.plus(")")
+    }
 
     fun search(content: String) {
         val query = Query(content)
             .setAttributesToRetrieve("username","objectID")
-            .setHitsPerPage(50)
+            .setHitsPerPage(50).setFilters(filterString)
         index.searchAsync(query) { jsonObject, e ->
             try {
                 val hits = jsonObject!!.getJSONArray("hits")
@@ -123,6 +137,7 @@ class SearchFragment : Fragment() {
         }
         adapter?.setNewData(usernames,objectIDs)
     }
+
 
 //    fun setEditText(){
 //        editText_search.addTextChangedListener(object : TextWatcher {
