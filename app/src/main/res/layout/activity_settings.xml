@@ -56,6 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginBottom="10sp"
                 android:fontFamily="@font/source_sans_pro"
                 android:gravity="center"
                 android:text="Nastavenia"
@@ -66,15 +67,17 @@
             <fragment
                 android:id="@+id/fragmentChangeUsername"
                 android:name="sk.upjs.ics.android.teazoneinc.Activities.SetUsernameFragment"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:layout_margin="10sp" />
 
             <Button
                 android:id="@+id/buttonChangeUsername"
                 android:layout_width="250sp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginBottom="10sp"
                 android:background="@drawable/button_grey"
                 android:text="ZMENIŤ MENO"
                 android:textColor="@color/white"
@@ -84,37 +87,57 @@
             <fragment
                 android:id="@+id/fragmentChangePassword"
                 android:name="sk.upjs.ics.android.teazoneinc.SettingsScreenFragments.ChangePasswordFragment"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:layout_margin="10sp" />
 
             <Button
                 android:id="@+id/buttonChangePassword"
                 android:layout_width="250sp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginBottom="10sp"
                 android:background="@drawable/button_darkgrey"
                 android:text="ZMENIŤ HESLO"
                 android:textColor="@color/white"
                 android:textIsSelectable="true"
                 android:textSize="12sp" />
 
+            <fragment
+                android:id="@+id/fragmentChangeProfilePic"
+                android:name="sk.upjs.ics.android.teazoneinc.SettingsScreenFragments.ChangeProfilePicFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10sp" />
+
             <Button
                 android:id="@+id/buttonChangeProfilePic"
                 android:layout_width="250sp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginBottom="10sp"
                 android:background="@drawable/button_turquoise"
                 android:text="ZMENIŤ PROFILOVÚ FOTKU"
                 android:textColor="@color/white"
                 android:textIsSelectable="true"
                 android:textSize="12sp" />
 
+            <fragment
+                android:id="@+id/fragmentChangeDescrib"
+                android:name="sk.upjs.ics.android.teazoneinc.SettingsScreenFragments.ChangeDescribFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10sp" />
+
             <Button
                 android:id="@+id/buttonChangeDescrib"
                 android:layout_width="250sp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginBottom="10sp"
                 android:background="@drawable/button_grey"
                 android:text="ZMENIŤ POPIS"
                 android:textColor="@color/white"
@@ -126,6 +149,7 @@
                 android:layout_width="250sp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginBottom="10sp"
                 android:background="@drawable/button_darkgrey"
                 android:text="ZMENIŤ ADRESU PODNIKU"
                 android:textColor="@color/white"
@@ -137,6 +161,7 @@
                 android:layout_width="250sp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginBottom="10sp"
                 android:background="@drawable/button_turquoise"
                 android:text="ZMENIŤ TYP PODNIKU"
                 android:textColor="@color/white"
@@ -148,6 +173,7 @@
                 android:layout_width="250sp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginBottom="10sp"
                 android:background="@drawable/button_grey"
                 android:text="JEDÁLNY/NÁPOJOVÝ LÍSTOK"
                 android:textColor="@color/white"
@@ -159,6 +185,7 @@
                 android:layout_width="250sp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginBottom="10sp"
                 android:background="@drawable/button_darkgrey"
                 android:text="OTVÁRACIE HODINY"
                 android:textColor="@color/white"
@@ -171,6 +198,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="30sp"
+                android:layout_marginBottom="10sp"
                 android:background="@drawable/button_red"
                 android:text="ODSTRÁNIŤ ÚČET"
                 android:textColor="@color/white"

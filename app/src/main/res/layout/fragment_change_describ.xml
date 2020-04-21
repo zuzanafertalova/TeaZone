@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/tiChangeDescrib"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20sp"
+        android:ems="10"
+        android:hint="Napíšte niečo..."
+        android:inputType="textPersonName"
+        android:textColor="@color/colorGreyLogo"
+        android:textColorHint="#CDCDCD" />
+
+    <Button
+        android:id="@+id/btnChangeDescrib"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20sp"
+        android:background="@drawable/button_turquoise"
+        android:fontFamily="@font/source_sans_pro"
+        android:text="ULOŽIŤ"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+</LinearLayout>

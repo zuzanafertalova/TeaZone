@@ -6,6 +6,7 @@ import android.view.View
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
 import android.widget.Toast
 import com.google.firebase.firestore.EventListener
+import kotlinx.android.synthetic.main.activity_home_screen.*
 import kotlinx.android.synthetic.main.activity_settings.*
 import kotlinx.android.synthetic.main.fragment_change_password.*
 import kotlinx.android.synthetic.main.fragment_set_username.*
@@ -16,6 +17,10 @@ class SettingsActivity : AppCompatActivity() {
 
     val authAdapter = AuthAdapter()
     val dbAdapterUser = DbAdapterUser()
+    var isButtonChangeUsernameClicked : Boolean = false
+    var isButtonChangePasswordClicked : Boolean = false
+    var isButtonChangeProfilePicClicked : Boolean = false
+    var isButtonChangeDescribClicked : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,19 +36,54 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         fragmentChangePassword.view?.visibility = View.GONE
-        fragmentChangeUsername.view?.visibility= View.GONE
+        fragmentChangeUsername.view?.visibility = View.GONE
+        fragmentChangeProfilePic.view?.visibility = View.GONE
+        fragmentChangeDescrib.view?.visibility = View.GONE
+
         btnOpenChangeFragmentSet()
         btnSetUsernameClick()
     }
 
     private fun btnOpenChangeFragmentSet() {
         buttonChangePassword.setOnClickListener(View.OnClickListener {
-            fragmentChangePassword.view?.visibility = View.VISIBLE
-            btnChangePasswordSet()
+            if(isButtonChangePasswordClicked == false){
+                isButtonChangePasswordClicked = true
+                fragmentChangePassword.view?.visibility = View.VISIBLE
+                btnChangePasswordSet()
+            }else{
+                isButtonChangePasswordClicked = false
+                fragmentChangePassword.view?.visibility = View.GONE
+            }
+
         })
         buttonChangeUsername.setOnClickListener(View.OnClickListener {
-            fragmentChangeUsername.view?.visibility = View.VISIBLE
+            if(isButtonChangeUsernameClicked == false){
+                isButtonChangeUsernameClicked = true
+                fragmentChangeUsername.view?.visibility = View.VISIBLE
+            }else{
+                isButtonChangeUsernameClicked = false
+                fragmentChangeUsername.view?.visibility = View.GONE
+            }
         })
+        buttonChangeProfilePic.setOnClickListener(View.OnClickListener {
+            if(isButtonChangeProfilePicClicked == false){
+                isButtonChangeProfilePicClicked = true
+                fragmentChangeProfilePic.view?.visibility = View.VISIBLE
+            }else{
+                isButtonChangeProfilePicClicked = false
+                fragmentChangeProfilePic.view?.visibility = View.GONE
+            }
+        })
+        buttonChangeDescrib.setOnClickListener(View.OnClickListener {
+            if(isButtonChangeDescribClicked == false){
+                isButtonChangeDescribClicked = true
+                fragmentChangeDescrib.view?.visibility = View.VISIBLE
+            }else{
+                isButtonChangeDescribClicked = false
+                fragmentChangeDescrib.view?.visibility = View.GONE
+            }
+        })
+
     }
 
     private fun btnChangePasswordSet() {
@@ -68,6 +108,7 @@ class SettingsActivity : AppCompatActivity() {
                         } else {
                             Toast.makeText(this, "Súčasné heslo je nesprávne.", Toast.LENGTH_SHORT).show()
                         }
+                        fragmentChangePassword.view?.visibility = View.GONE
                     })
             }
 
@@ -78,6 +119,7 @@ class SettingsActivity : AppCompatActivity() {
         btnSetUsername.setOnClickListener(View.OnClickListener {
             if (tvSetUsername.text.isNotEmpty()){
                 dbAdapterUser.changeUsername(authAdapter.currentUser!!,tvSetUsername.text.toString())
+                fragmentSetUserame.view?.visibility = View.GONE
             }
         })
     }
