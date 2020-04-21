@@ -6,6 +6,7 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.list_item_comment.view.*
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.Storage.StorageAdapter
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Post.DataComment
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Post.DataPost
@@ -78,29 +79,24 @@ class DbAdapterPost {
 
     }
 
-//    fun addComment(comment:String,postID:String){
-//        db.collection("Posts").document(postID)
-//            .update("comments",FieldValue.arrayUnion(comment))
-//            .addOnSuccessListener {
-//                Log.w("Podarilo sa komentnut","jes")
-//            }
-//            .addOnFailureListener{
-//                Log.w("NEPODARILO SA KOMENT",it)
-//            }
-//    }
 
-    fun createComment(postID: String ,creatorID: String, username : String, content: String){
-        val comment = DataComment(creatorID,username,content)
-        addComment2(postID, comment)
-    }
-
-    fun addComment2(postID: String, comment: DataComment){
-        db.collection("Posts").document(postID)
+    fun createComment(postID: String? ,creatorID: String?, username : String?, content: String?, eventListener: EventListener<DataComment>){
+        val comment = DataComment(creatorID!!,username!!,content!!)
+        db.collection("Posts").document(postID!!)
             .collection("Comments").add(comment)
             .addOnSuccessListener {
                 it.update("timeStamp",FieldValue.serverTimestamp())
+                eventListener.onEvent(comment, null)
             }
     }
+
+//    fun addComment2(postID: String, comment: DataComment){
+//        db.collection("Posts").document(postID)
+//            .collection("Comments").add(comment)
+//            .addOnSuccessListener {
+//                it.update("timeStamp",FieldValue.serverTimestamp())
+//            }
+//    }
 
     fun addLike(postID: String,followerID:String?){
         db.collection("Posts").document(postID)

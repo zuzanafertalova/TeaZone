@@ -10,6 +10,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.firebase.firestore.EventListener
 import kotlinx.android.synthetic.main.bottom_sheet_comment.*
 import kotlinx.android.synthetic.main.fragment_fragment_search.*
+import kotlinx.android.synthetic.main.list_item_comment.*
 import sk.upjs.ics.android.teazoneinc.Activities.ProfileFromSearchActivity
 import sk.upjs.ics.android.teazoneinc.Adapters.CommentAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterPost
@@ -23,11 +24,14 @@ class BottomSheetComments(private var mBottomSheetListener: PostViewHolder, post
 
     internal var  adapter: CommentAdapter? = null
     private var dbAdapterPost = DbAdapterPost()
+    private var dbAdapterUser = DbAdapterUser()
     private val postID = postID
+    private var postList = ArrayList<DataComment>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val v =  inflater.inflate(R.layout.bottom_sheet_comment, container, false)
+
 
 
         return v
@@ -37,13 +41,26 @@ class BottomSheetComments(private var mBottomSheetListener: PostViewHolder, post
         super.onViewCreated(view, savedInstanceState)
         setUpRecyclerView()
         commentsList(postID)
-//        var comment = ArrayList<String>()
-//        comment.add("Pekný koment. :) ")
-//        comment.add("JUJ")
-//        comment.add("Ďalší super koment, som super proste.")
-
+        addComment()
     }
 
+    private fun addComment(){
+        btnAddComment.setOnClickListener{
+            if(tiComment.text.isNotEmpty()){
+                if(dbAdapterUser.getStatusOfLoggedUser().equals("User")){
+                    dbAdapterPost.createComment(postID, DbAdapterUser.userUser.docID, DbAdapterUser.userUser.username, tiComment.text.toString(), EventListener{comment, _ ->
+                        postList.add(comment!!)
+                        setRecyclerData(postList)
+                    })
+                }else {
+                    dbAdapterPost.createComment(postID, DbAdapterUser.userFirma.docID, DbAdapterUser.userFirma.username, tiComment.text.toString(), EventListener { comment, _ ->
+                        postList.add(comment!!)
+                        setRecyclerData(postList)
+                    })
+                }
+            }
+        }
+    }
     private fun setUpRecyclerView() {
         rvComments.layoutManager = LinearLayoutManager(context)
         adapter = CommentAdapter()
@@ -51,7 +68,7 @@ class BottomSheetComments(private var mBottomSheetListener: PostViewHolder, post
     }
 
     private fun commentsList(postID: String){
-        var postList = java.util.ArrayList<DataComment>()
+
         dbAdapterPost.getCommentList(postID, EventListener{ list, _ ->
             list?.let {
                 postList = it
@@ -63,7 +80,5 @@ class BottomSheetComments(private var mBottomSheetListener: PostViewHolder, post
     private fun setRecyclerData(commentList:ArrayList<DataComment>){
         adapter?.setNewData(commentList)
     }
-
-
 
 }
