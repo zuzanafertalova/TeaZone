@@ -50,7 +50,10 @@
         <ImageView
             android:id="@+id/ivPostPic"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

@@ -119,7 +119,8 @@ class SettingsActivity : AppCompatActivity() {
         btnSetUsername.setOnClickListener(View.OnClickListener {
             if (tvSetUsername.text.isNotEmpty()){
                 dbAdapterUser.changeUsername(authAdapter.currentUser!!,tvSetUsername.text.toString())
-                fragmentSetUserame.view?.visibility = View.GONE
+                fragmentChangeUsername.view?.visibility = View.GONE
+
             }
         })
     }

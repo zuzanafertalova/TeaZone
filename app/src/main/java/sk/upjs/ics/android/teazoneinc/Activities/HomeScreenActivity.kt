@@ -26,6 +26,8 @@ class HomeScreenActivity : AppCompatActivity() {
     val algoliaSearchAdapter = AlgoliaSearchAdapter()
 
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen)
@@ -36,6 +38,8 @@ class HomeScreenActivity : AppCompatActivity() {
 //        setClickBtnPost()
 //        getPost()
     }
+
+
 
     fun setUsernameFragment(){
         if (dbAdapterUser.getStatusOfLoggedUser().equals("User")){
