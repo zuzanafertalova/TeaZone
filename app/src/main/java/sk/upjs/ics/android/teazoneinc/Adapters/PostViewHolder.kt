@@ -45,7 +45,6 @@ class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         ifLikeButtonClicked(context, post.likesIDs)
         setLikeButtonIfLiked(context, post.postID!!)
         setCommentButtonOnClick(context,post.postID!!, fragmentManager)
-        commentsList(post.postID!!)
 
         tvContentView.text = post.content
         tvLikesCountView.text = post.likesCount.toString()
@@ -84,12 +83,12 @@ class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     }
 
     private fun setCommentButtonOnClick(context: Context?,postID : String, fragmentManager: FragmentManager) {
-                showBottomSheetComments(fragmentManager)
+                showBottomSheetComments(fragmentManager,postID)
     }
 
-    fun showBottomSheetComments(fragmentManager: FragmentManager) {
+    fun showBottomSheetComments(fragmentManager: FragmentManager,postID: String) {
         commentButton.setOnClickListener(View.OnClickListener {
-            val bottomSheet = BottomSheetComments(this)
+            val bottomSheet = BottomSheetComments(this,postID)
             bottomSheet.show(fragmentManager, "BottomSheetComments")
         })
     }
@@ -112,12 +111,5 @@ class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 //            }
 //        })
 //    }
-
-    private fun commentsList(postID: String){
-        var postList = ArrayList<DataComment>()
-        dbAdapterPost.getCommentList(postID, EventListener{ list, _ ->
-            postList?.let { postList = it }
-        })
-    }
 
 }

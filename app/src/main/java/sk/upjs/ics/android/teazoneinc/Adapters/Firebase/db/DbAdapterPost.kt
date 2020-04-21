@@ -161,6 +161,7 @@ class DbAdapterPost {
         document.getString("content")?.let { comment.content = it }
         document.getString("creatorID")?.let { comment.creatorID = it }
         document.getString("creatorUsername")?.let { comment.creatorUsername = it}
+        document.getDate("timeStamp")?.let { comment.timeStamp=it }
 
         return comment
     }

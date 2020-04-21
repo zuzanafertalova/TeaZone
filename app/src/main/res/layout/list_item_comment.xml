@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="0.4" />
 
     <TextView
-        android:id="@+id/tvMenoUseraComment"
+        android:id="@+id/tvCommentUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="70sp"
@@ -40,7 +40,7 @@
         app:layout_constraintVertical_bias="0.05" />
 
     <TextView
-        android:id="@+id/tvCasPridaniaCommentu"
+        android:id="@+id/tvCommentDateTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="7dp"
@@ -51,15 +51,15 @@
         android:layout_marginEnd="10sp"
         android:layout_marginLeft="10sp"
         app:layout_goneMarginBottom="5sp"
-        app:layout_constraintBottom_toTopOf="@+id/tvObsahCommentu"
+        app:layout_constraintBottom_toTopOf="@+id/tvCommentContent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.193"
-        app:layout_constraintStart_toEndOf="@+id/tvMenoUseraComment"
+        app:layout_constraintStart_toEndOf="@+id/tvCommentUsername"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/tvObsahCommentu"
+        android:id="@+id/tvCommentContent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="70sp"
@@ -71,7 +71,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.251"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMenoUseraComment"
+        app:layout_constraintTop_toBottomOf="@+id/tvCommentUsername"
         app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
