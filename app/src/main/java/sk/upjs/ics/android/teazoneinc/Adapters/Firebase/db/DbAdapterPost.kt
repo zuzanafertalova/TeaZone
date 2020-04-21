@@ -86,9 +86,11 @@ class DbAdapterPost {
             .collection("Comments").add(comment)
             .addOnSuccessListener {
                 it.update("timeStamp",FieldValue.serverTimestamp())
+                comment.timeStamp=Date()
                 eventListener.onEvent(comment, null)
             }
     }
+
 
 //    fun addComment2(postID: String, comment: DataComment){
 //        db.collection("Posts").document(postID)
