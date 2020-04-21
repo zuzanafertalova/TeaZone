@@ -106,7 +106,7 @@ class SearchFragment : Fragment(), BottomSheetFilters.BottomSheetListener {
             filterString += singleFilter
         }
         filterString.removeRange(filterString.length-4, filterString.length-1)
-        filterString.plus(")")
+        filterString+= ")"
     }
 
     fun search(content: String) {
