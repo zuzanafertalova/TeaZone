@@ -24,7 +24,7 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/ivProfile_image"
-        android:layout_width="135dp"
+        android:layout_width="130sp"
         android:layout_height="130dp"
         app:civ_border_color="@color/colorGreenLogo"
         app:civ_border_width="3dp"
