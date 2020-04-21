@@ -98,7 +98,7 @@ class ProfileFromSearchActivity : AppCompatActivity() {
     private fun setDataFirmaUserToFields() {
         fragmentWriteReview.view?.visibility = View.GONE
 
-        storageAdapter.getProfilePic(userUser.profilePic!!,ivProfilePicFromSearch)
+        storageAdapter.getProfilePic(userFirma.profilePic!!,ivProfilePicFromSearch)
         tvTypPodniku2.text = userFirma.typPodniku
         tvUsername.text = userFirma.username
         tvEmail.text = userFirma.email
