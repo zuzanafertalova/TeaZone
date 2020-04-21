@@ -144,6 +144,14 @@
                 android:textIsSelectable="true"
                 android:textSize="12sp" />
 
+            <fragment
+                android:id="@+id/fragmentChangeAddress"
+                android:name="sk.upjs.ics.android.teazoneinc.SettingsScreenFragments.ChangeAddressFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10sp" />
+
             <Button
                 android:id="@+id/buttonChangeAddress"
                 android:layout_width="250sp"

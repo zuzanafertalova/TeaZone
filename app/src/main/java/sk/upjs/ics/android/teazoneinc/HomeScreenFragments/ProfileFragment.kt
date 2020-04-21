@@ -135,7 +135,7 @@ class ProfileFragment : Fragment(), BottomSheetAddPost.BottomSheetListener {
     fun btnAddPostClick() {
         btnAddPost.setOnClickListener(View.OnClickListener {
             val bottomSheet = BottomSheetAddPost(this)
-            bottomSheet.show(fragmentManager, "BottomSheetDialogAddPost")
+            fragmentManager?.let { it1 -> bottomSheet.show(it1, "BottomSheetDialogAddPost") }
         })
     }
 

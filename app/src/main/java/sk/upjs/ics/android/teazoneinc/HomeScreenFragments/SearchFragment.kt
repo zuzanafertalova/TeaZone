@@ -91,7 +91,7 @@ class SearchFragment : Fragment(), BottomSheetFilters.BottomSheetListener {
     fun btnFiltreOnClick() {
         btnFiltre.setOnClickListener(View.OnClickListener {
             val bottomSheet = BottomSheetFilters(this)
-            bottomSheet.show(fragmentManager, "BottomSheetFilters")
+            fragmentManager?.let { it1 -> bottomSheet.show(it1, "BottomSheetFilters") }
         })
     }
 

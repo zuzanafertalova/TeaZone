@@ -6,7 +6,6 @@ import android.view.View
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
 import android.widget.Toast
 import com.google.firebase.firestore.EventListener
-import kotlinx.android.synthetic.main.activity_home_screen.*
 import kotlinx.android.synthetic.main.activity_settings.*
 import kotlinx.android.synthetic.main.fragment_change_password.*
 import kotlinx.android.synthetic.main.fragment_set_username.*
@@ -21,6 +20,7 @@ class SettingsActivity : AppCompatActivity() {
     var isButtonChangePasswordClicked : Boolean = false
     var isButtonChangeProfilePicClicked : Boolean = false
     var isButtonChangeDescribClicked : Boolean = false
+    var isButtonChangeAddressClicked : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +39,7 @@ class SettingsActivity : AppCompatActivity() {
         fragmentChangeUsername.view?.visibility = View.GONE
         fragmentChangeProfilePic.view?.visibility = View.GONE
         fragmentChangeDescrib.view?.visibility = View.GONE
+        fragmentChangeAddress.view?.visibility  =View.GONE
 
         btnOpenChangeFragmentSet()
         btnSetUsernameClick()
@@ -81,6 +82,15 @@ class SettingsActivity : AppCompatActivity() {
             }else{
                 isButtonChangeDescribClicked = false
                 fragmentChangeDescrib.view?.visibility = View.GONE
+            }
+        })
+        buttonChangeAddress.setOnClickListener(View.OnClickListener {
+            if(isButtonChangeAddressClicked == false){
+                isButtonChangeAddressClicked = true
+                fragmentChangeAddress.view?.visibility = View.VISIBLE
+            }else{
+                isButtonChangeAddressClicked = false
+                fragmentChangeAddress.view?.visibility = View.GONE
             }
         })
 
