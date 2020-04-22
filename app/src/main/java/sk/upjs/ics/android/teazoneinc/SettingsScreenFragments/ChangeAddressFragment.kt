@@ -1,6 +1,7 @@
 package sk.upjs.ics.android.teazoneinc.SettingsScreenFragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,7 +50,7 @@ class ChangeAddressFragment : Fragment() {
                var changeAddress = place.name            }
 
             override fun onError(p0: Status) {
-                TODO("Not yet implemented")
+                Log.w("GOOGPLEAVESERROR", "no nejdde")
             }
 
 
