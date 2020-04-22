@@ -19,19 +19,273 @@
         android:textSize="24sp"
         android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/tiChangeOpeningHours"
-        android:layout_width="300sp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="10sp"
-        android:background="@drawable/textview_border_gray"
-        android:ems="10"
-        android:hint="Zadajte vaše otváracie hodiny..."
-        android:inputType="textPersonName"
-        android:textColor="@color/colorGreyLogo"
-        android:textColorHint="#CDCDCD"
-        android:textSize="14sp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50sp"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:text="OD"
+            android:textColor="@color/colorGrey"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:text="DO"
+            android:textColor="@color/colorGrey"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="270sp"
+        android:layout_height="280sp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="50sp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvPondelok"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
+                android:text="PO"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvUtorok"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
+                android:text="UT"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvStreda"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
+                android:text="ST"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvStvrtok"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
+                android:text="ŠT"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvPiatok"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
+                android:text="PI"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvSobota"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
+                android:text="SO"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvNedela"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
+                android:text="NE"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="110sp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/editText3"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:ems="10"
+                android:fontFamily="@font/source_sans_pro"
+                android:inputType="time"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/editText4"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:ems="10"
+                android:fontFamily="@font/source_sans_pro"
+                android:inputType="time"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/editText5"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:ems="10"
+                android:fontFamily="@font/source_sans_pro"
+                android:inputType="time"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/editText6"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:ems="10"
+                android:fontFamily="@font/source_sans_pro"
+                android:inputType="time"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/editText7"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:ems="10"
+                android:fontFamily="@font/source_sans_pro"
+                android:inputType="time"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/editText8"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:ems="10"
+                android:fontFamily="@font/source_sans_pro"
+                android:inputType="time"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/editText9"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:ems="10"
+                android:fontFamily="@font/source_sans_pro"
+                android:inputType="time"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="110sp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/editText10"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:ems="10"
+                android:fontFamily="@font/source_sans_pro"
+                android:inputType="time"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/editText11"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:ems="10"
+                android:fontFamily="@font/source_sans_pro"
+                android:inputType="time"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/editText12"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:ems="10"
+                android:fontFamily="@font/source_sans_pro"
+                android:inputType="time"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/editText13"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:ems="10"
+                android:fontFamily="@font/source_sans_pro"
+                android:inputType="time"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/editText14"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:ems="10"
+                android:fontFamily="@font/source_sans_pro"
+                android:inputType="time"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/editText15"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:ems="10"
+                android:fontFamily="@font/source_sans_pro"
+                android:inputType="time"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/editText16"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:ems="10"
+                android:fontFamily="@font/source_sans_pro"
+                android:inputType="time"
+                android:textSize="13sp" />
+        </LinearLayout>
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnSetOpeningHours"

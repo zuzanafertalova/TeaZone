@@ -59,7 +59,7 @@ class SettingsActivity : AppCompatActivity() {
         btnSetUsernameClick()
         buttonDeleteAccountOnClick()
         btnSetTypPodnikuClick()
-     //   btnSetDescribClick(view)
+//        btnSetDescribClick()
     }
 
     private fun btnOpenChangeFragmentSet() {
@@ -195,20 +195,20 @@ class SettingsActivity : AppCompatActivity() {
             }
         })
     }
-    private fun btnSetOpeningHoursClick(){
-        btnSetOpeningHours.setOnClickListener{
-            if (tiChangeOpeningHours.text.isNotEmpty()){
-
-            }
-        }
-    }
-    private fun btnSetDescribClick(view: View){
-        btnSetDescrib.setOnClickListener{
-            if(tiChangeDescrib.text.isNotEmpty()){
-                view.tvPopisPodniku.text.toString()
-                fragmentChangeDescrib.view?.visibility = View.GONE
-            }
-        }
-    }
+//    private fun btnSetOpeningHoursClick(){
+//        btnSetOpeningHours.setOnClickListener{
+//            if (tiChangeOpeningHours.text.isNotEmpty()){
+//
+//            }
+//        }
+//    }
+//    private fun btnSetDescribClick(){
+//        btnSetDescrib.setOnClickListener{
+//            if(tiChangeDescrib.text.isNotEmpty()){
+//                tvPopisPodniku.text.toString()
+//                fragmentChangeDescrib.view?.visibility = View.GONE
+//            }
+//        }
+//    }
 
 }
