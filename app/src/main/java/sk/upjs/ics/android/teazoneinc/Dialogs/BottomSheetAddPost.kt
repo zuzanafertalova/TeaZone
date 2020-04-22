@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.bottom_sheet_add_post.*
 import kotlinx.android.synthetic.main.bottom_sheet_add_post.view.*
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.Storage.StorageAdapter
@@ -40,8 +39,10 @@ class BottomSheetAddPost(private var mBottomSheetListener: BottomSheetListener) 
         v.btnPostPost.setOnClickListener {
             var picID: String? = null
             if (ivChoosenPic.getDrawable() == null) {
-            } else {
-                picID = storageAdapter.uploadPic(ivChoosenPic)
+
+            }
+            else {
+                picID = storageAdapter.uploadPostPic(ivChoosenPic)
             }
             dbAdapterPost.setPost(v.tvPostContent.text.toString(), picID)
 

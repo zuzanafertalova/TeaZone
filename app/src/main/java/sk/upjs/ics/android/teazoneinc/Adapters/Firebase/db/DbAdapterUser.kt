@@ -290,6 +290,16 @@ class DbAdapterUser {
         }
     }
 
+    fun updateProfilePic(docID:String, profilePic:String){
+        if (getStatusOfLoggedUser().equals("User")){
+            db.collection("Users").document(docID).update("profilePic",profilePic)
+        }
+        else{
+            db.collection("FirmaUsers").document(docID).update("profilePic",profilePic)
+        }
+
+    }
+
 }
 
 interface DbInterface{
