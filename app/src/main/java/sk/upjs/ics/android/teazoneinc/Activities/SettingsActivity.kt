@@ -8,8 +8,11 @@ import android.widget.Toast
 import com.google.firebase.firestore.EventListener
 import kotlinx.android.synthetic.main.activity_settings.*
 import kotlinx.android.synthetic.main.fragment_change_password.*
+import kotlinx.android.synthetic.main.fragment_fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_set_username.*
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
+import sk.upjs.ics.android.teazoneinc.Dialogs.DialogOdstranitUcet
+import sk.upjs.ics.android.teazoneinc.Dialogs.DialogOtvaracieHodiny
 import sk.upjs.ics.android.teazoneinc.R
 
 class SettingsActivity : AppCompatActivity() {
@@ -23,6 +26,7 @@ class SettingsActivity : AppCompatActivity() {
     var isButtonChangeAddressClicked : Boolean = false
     var isButtonChangeTypPodnikuClicked : Boolean = false
     var isButtonChangeMenuClicked : Boolean = false
+    var isButtonChangeOpeningHoursClicked : Boolean = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,9 +49,11 @@ class SettingsActivity : AppCompatActivity() {
         fragmentChangeAddress.view?.visibility  =View.GONE
         fragmentChangeTypPodniku.view?.visibility = View.GONE
         fragmentChangeMenu.view?.visibility = View.GONE
+        fragmentChangeOpeningHours.view?.visibility = View.GONE
 
         btnOpenChangeFragmentSet()
         btnSetUsernameClick()
+        buttonDeleteAccountOnClick()
     }
 
     private fun btnOpenChangeFragmentSet() {
@@ -116,8 +122,24 @@ class SettingsActivity : AppCompatActivity() {
                 fragmentChangeMenu.view?.visibility = View.GONE
             }
         })
+        buttonChangeOpeningHours.setOnClickListener(View.OnClickListener {
+            if(isButtonChangeOpeningHoursClicked == false){
+                isButtonChangeOpeningHoursClicked = true
+                fragmentChangeOpeningHours.view?.visibility = View.VISIBLE
+            }else{
+                isButtonChangeOpeningHoursClicked = false
+                fragmentChangeOpeningHours.view?.visibility = View.GONE
+            }
+        })
 
 
+    }
+
+    private fun buttonDeleteAccountOnClick() {
+        buttonDeleteAccount.setOnClickListener {
+                val dialog = DialogOdstranitUcet().onCreateDialog(this)
+                dialog.show()
+        }
     }
 
     private fun btnChangePasswordSet() {
