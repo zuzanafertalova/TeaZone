@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <Button
-        android:id="@+id/btnStar"
+        android:id="@+id/btnStarReview1"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_margin="5sp"
@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/btnStar6"
+        android:id="@+id/btnStarReview5"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_margin="5sp"
@@ -28,12 +28,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/btnStar7"
+        app:layout_constraintStart_toEndOf="@+id/btnStarReview4"
         app:layout_constraintTop_toBottomOf="@+id/tvMenoUseraReviews"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/btnStar7"
+        android:id="@+id/btnStarReview4"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_margin="5sp"
@@ -41,12 +41,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/btnStar8"
+        app:layout_constraintStart_toEndOf="@+id/btnStarReview3"
         app:layout_constraintTop_toBottomOf="@+id/tvMenoUseraReviews"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/btnStar8"
+        android:id="@+id/btnStarReview3"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_margin="5sp"
@@ -54,12 +54,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/btnStar9"
+        app:layout_constraintStart_toEndOf="@+id/btnStarReview2"
         app:layout_constraintTop_toBottomOf="@+id/tvMenoUseraReviews"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/btnStar9"
+        android:id="@+id/btnStarReview2"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_margin="5sp"
@@ -67,7 +67,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/btnStar"
+        app:layout_constraintStart_toEndOf="@+id/btnStarReview1"
         app:layout_constraintTop_toBottomOf="@+id/tvMenoUseraReviews"
         app:layout_constraintVertical_bias="0.0" />
 
