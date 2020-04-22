@@ -65,7 +65,7 @@ class DbAdapterUser {
             0,
             0,
             ico,
-            "defaultFirma.png",
+            "default_firma.png",
             ""
         )
         db.collection("FirmaUsers").document(user.uid).set(firmaData)
@@ -135,6 +135,12 @@ class DbAdapterUser {
             }
     }
 
+    fun setDescription(user:FirebaseUser,description:String){
+        db.collection("FirmaUsers").document(user.uid).update("description", description)
+            .addOnSuccessListener {
+                userFirma.description =description
+            }
+    }
 
 
     fun setFirebaseUserToLocalUser(user : FirebaseUser, dbInterface: DbInterface){
