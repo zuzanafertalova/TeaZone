@@ -12,7 +12,7 @@ class DialogOtvaracieHodiny : DialogFragment() {
     fun onCreateDialog(activity: Activity): Dialog {
 
         val builder = AlertDialog.Builder(activity)
-        builder.setMessage("Tu raz budú otváracie hodiny :)")
+        builder.setMessage("Otváracie hodiny zatiaľ neboli určené.")
             .setNegativeButton("Zavrieť",
                 DialogInterface.OnClickListener { dialog, id ->
                 })

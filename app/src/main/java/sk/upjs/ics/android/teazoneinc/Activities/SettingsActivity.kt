@@ -21,6 +21,9 @@ class SettingsActivity : AppCompatActivity() {
     var isButtonChangeProfilePicClicked : Boolean = false
     var isButtonChangeDescribClicked : Boolean = false
     var isButtonChangeAddressClicked : Boolean = false
+    var isButtonChangeTypPodnikuClicked : Boolean = false
+    var isButtonChangeMenuClicked : Boolean = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +43,8 @@ class SettingsActivity : AppCompatActivity() {
         fragmentChangeProfilePic.view?.visibility = View.GONE
         fragmentChangeDescrib.view?.visibility = View.GONE
         fragmentChangeAddress.view?.visibility  =View.GONE
+        fragmentChangeTypPodniku.view?.visibility = View.GONE
+        fragmentChangeMenu.view?.visibility = View.GONE
 
         btnOpenChangeFragmentSet()
         btnSetUsernameClick()
@@ -93,6 +98,25 @@ class SettingsActivity : AppCompatActivity() {
                 fragmentChangeAddress.view?.visibility = View.GONE
             }
         })
+        buttonChangeTypPodniku.setOnClickListener(View.OnClickListener {
+            if(isButtonChangeTypPodnikuClicked == false){
+                isButtonChangeTypPodnikuClicked = true
+                fragmentChangeTypPodniku.view?.visibility = View.VISIBLE
+            }else{
+                isButtonChangeTypPodnikuClicked = false
+                fragmentChangeTypPodniku.view?.visibility = View.GONE
+            }
+        })
+        buttonChangeMenu.setOnClickListener(View.OnClickListener {
+            if(isButtonChangeMenuClicked == false){
+                isButtonChangeMenuClicked = true
+                fragmentChangeMenu.view?.visibility = View.VISIBLE
+            }else{
+                isButtonChangeMenuClicked = false
+                fragmentChangeMenu.view?.visibility = View.GONE
+            }
+        })
+
 
     }
 

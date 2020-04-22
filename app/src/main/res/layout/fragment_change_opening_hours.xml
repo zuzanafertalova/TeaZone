@@ -6,27 +6,44 @@
     android:background="@drawable/textview_border_green"
     android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/tiChangeDescrib"
+    <TextView
+        android:id="@+id/tvChangeOpeningHours"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="20sp"
+        android:fontFamily="@font/source_sans_pro"
+        android:gravity="center"
+        android:text="Otváracie hodiny"
+        android:textColor="@color/colorGreyLogo"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/tiChangeOpeningHours"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10sp"
+        android:background="@drawable/textview_border_gray"
         android:ems="10"
-        android:hint="Napíšte niečo..."
+        android:hint="Zadajte vaše otváracie hodiny..."
         android:inputType="textPersonName"
         android:textColor="@color/colorGreyLogo"
-        android:textColorHint="#CDCDCD" />
+        android:textColorHint="#CDCDCD"
+        android:textSize="14sp" />
 
     <Button
-        android:id="@+id/btnChangeDescrib"
+        android:id="@+id/btnChangeOpeningHours"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="20sp"
         android:layout_marginBottom="20sp"
         android:background="@drawable/button_turquoise"
         android:fontFamily="@font/source_sans_pro"
         android:text="ULOŽIŤ"
         android:textColor="@color/white"
         android:textStyle="bold" />
+
 </LinearLayout>

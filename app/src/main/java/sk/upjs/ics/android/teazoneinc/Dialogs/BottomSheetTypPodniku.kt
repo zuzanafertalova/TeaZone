@@ -1,12 +1,11 @@
 package sk.upjs.ics.android.teazoneinc.Dialogs
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import kotlinx.android.synthetic.main.bottom_sheet.view.*
+import kotlinx.android.synthetic.main.bottom_sheet_typ_podniku.view.*
 import sk.upjs.ics.android.teazoneinc.R
 
 class BottomSheetTypPodniku(private var mBottomSheetListener: BottomSheetListener) : BottomSheetDialogFragment() {
@@ -14,7 +13,7 @@ class BottomSheetTypPodniku(private var mBottomSheetListener: BottomSheetListene
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val v =  inflater.inflate(R.layout.bottom_sheet, container, false)
+        val v =  inflater.inflate(R.layout.bottom_sheet_typ_podniku, container, false)
 
         // To handle clicks
         v.tvKaviaren.setOnClickListener {

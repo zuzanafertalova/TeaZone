@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/textview_border_green"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvChangeMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20sp"
+        android:fontFamily="@font/source_sans_pro"
+        android:gravity="center"
+        android:text="Jedálny/nápojový lístok"
+        android:textColor="@color/colorGreyLogo"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnLoadFile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20sp"
+        android:background="@drawable/button_grey"
+        android:paddingLeft="10sp"
+        android:paddingRight="10sp"
+        android:text="Nahrať súbor"
+        android:textColor="@color/colorGreyLogo"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/tvLoadedFile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Tu sa zobrazí nahratý súbor." />
+
+    <Button
+        android:id="@+id/btnChangeDescrib2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20sp"
+        android:layout_marginBottom="20sp"
+        android:background="@drawable/button_turquoise"
+        android:fontFamily="@font/source_sans_pro"
+        android:text="ULOŽIŤ"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+</LinearLayout>

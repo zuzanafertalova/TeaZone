@@ -1,17 +1,15 @@
 package sk.upjs.ics.android.teazoneinc.Activities
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_set_username.*
-import sk.upjs.ics.android.teazoneinc.Dialogs.BottomSheetTypPodniku
 import sk.upjs.ics.android.teazoneinc.R
 
 
-class SetUsernameFragment : Fragment(), BottomSheetTypPodniku.BottomSheetListener{
+class SetUsernameFragment : Fragment(){
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,18 +23,6 @@ class SetUsernameFragment : Fragment(), BottomSheetTypPodniku.BottomSheetListene
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        btnShowOptions.setOnClickListener{
-//            val bottomSheet = BottomSheetTypPodniku(this)
-//            bottomSheet.show(fragmentManager, "BottomSheetDialogTypPodniku")
-//        }
     }
-
-    override fun onOptionClick(text: String) {
-        //change text on each item click
-        Log.i("Haha", text)
-//        tvTypPodnikuChosen.text = text
-
-    }
-
 
 }
