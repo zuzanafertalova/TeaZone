@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/textview_border_green"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="16sp">
+
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30sp"
+        android:fontFamily="@font/source_sans_pro"
+        android:text="Nastavte si používateľské meno:"
+        android:textColor="@color/colorGreyLogo"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/tvSetUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/tvChangeTypPodniku2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20sp"
+        android:fontFamily="@font/source_sans_pro"
+        android:gravity="center"
+        android:text="Vyberte si typ podniku:"
+        android:textColor="@color/colorGreyLogo"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnShowOptions2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10sp"
+        android:background="@drawable/button_grey"
+        android:fontFamily="@font/source_sans_pro"
+        android:text="Zobraz možnosti"
+        android:textColor="@color/colorGreyLogo" />
+
+    <TextView
+        android:id="@+id/tvTypPodnikuChosen2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10sp"
+        android:background="@drawable/textview_border_green"
+        android:fontFamily="@font/source_sans_pro"
+        android:text="Tu sa zobrazí váš typ podniku." />
+
+    <Button
+        android:id="@+id/btnSaveTypPodniku2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20sp"
+        android:background="@drawable/button_turquoise"
+        android:fontFamily="@font/source_sans_pro"
+        android:text="ULOŽIŤ"
+        android:textColor="@color/white" />
+</LinearLayout>
