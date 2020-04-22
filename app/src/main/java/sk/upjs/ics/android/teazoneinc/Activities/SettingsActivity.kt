@@ -96,6 +96,7 @@ class SettingsActivity : AppCompatActivity() {
             if(isButtonChangeDescribClicked == false){
                 isButtonChangeDescribClicked = true
                 fragmentChangeDescrib.view?.visibility = View.VISIBLE
+                btnSetDescribClick()
             }else{
                 isButtonChangeDescribClicked = false
                 fragmentChangeDescrib.view?.visibility = View.GONE
@@ -210,5 +211,20 @@ class SettingsActivity : AppCompatActivity() {
 //            }
 //        }
 //    }
+
+            }
+        }
+    }
+    private fun btnSetDescribClick(){
+        btnSetDescrib.setOnClickListener{
+            if(tiChangeDescrib.text.isNotEmpty()){
+                fragmentChangeDescrib.view?.visibility = View.GONE
+                if (tiChangeDescrib.text.isNotEmpty()){
+                    dbAdapterUser.setDescription(authAdapter.currentUser!!,tiChangeDescrib.text.toString())
+                }
+                else Toast.makeText(this,"Vyplnte pole prosím",Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 
 }

@@ -65,7 +65,7 @@ class DbAdapterUser {
             0,
             0,
             ico,
-            "defaultFirma.png",
+            "default_firma.png",
             ""
         )
         db.collection("FirmaUsers").document(user.uid).set(firmaData)
@@ -77,23 +77,38 @@ class DbAdapterUser {
             }
     }
 
-    fun setUsername(user: FirebaseUser ,username : String,eventListener: EventListener<String>){
-        if (getStatusOfLoggedUser().equals("User")) {
+    fun setFirstSettingsUser(user: FirebaseUser, username : String, eventListener: EventListener<String>){
             db.collection("Users").document(user.uid).update("username", username)
                 .addOnSuccessListener {
                     userUser.username=username
                     algoliaSearchAdapter.addUserUserToAlgolia(userUser)
                     eventListener.onEvent(username,null)
                 }
-        }
-        else{
-            db.collection("FirmaUsers").document(user.uid).update("username", username)
-                .addOnSuccessListener {
-                    userFirma.username=username
-                    algoliaSearchAdapter.addFirmaUserToAlgolia(userFirma)
-                    eventListener.onEvent(username,null)
-                }
-        }
+    }
+
+    fun setFirstSettingsFirma(user: FirebaseUser, username : String, typPodniku: String, eventListener: EventListener<String>){
+        val docRef = db.collection("FirmaUsers").document(user.uid)
+        db.runBatch{
+            it.update(docRef,"username", username)
+            it.update(docRef,"typPodniku",typPodniku)
+            }.addOnSuccessListener {
+
+                userFirma.username=username
+                userFirma.typPodniku=typPodniku
+                algoliaSearchAdapter.addFirmaUserToAlgolia(userFirma)
+                eventListener.onEvent(username,null)
+            }
+//            db.collection("FirmaUsers").document(user.uid).update()
+//                .addOnSuccessListener {
+//                    userFirma.username=username
+//                    eventListener.onEvent(username,null)
+//                }
+//            db.collection("FirmaUsers").document(user.uid).update("typPodniku", typPodniku)
+//                .addOnSuccessListener {
+//                    userFirma.username=username
+//                    algoliaSearchAdapter.addFirmaUserToAlgolia(userFirma)
+//                    eventListener.onEvent(username,null)
+//                }
     }
 
     fun changeUsername(user: FirebaseUser, username: String){
@@ -120,6 +135,12 @@ class DbAdapterUser {
             }
     }
 
+    fun setDescription(user:FirebaseUser,description:String){
+        db.collection("FirmaUsers").document(user.uid).update("description", description)
+            .addOnSuccessListener {
+                userFirma.description =description
+            }
+    }
 
 
     fun setFirebaseUserToLocalUser(user : FirebaseUser, dbInterface: DbInterface){
@@ -273,6 +294,16 @@ class DbAdapterUser {
             db.collection("FirmaUsers").document(followerID!!)
                 .update("followingIDs", userFirma.followingIDs)
         }
+    }
+
+    fun updateProfilePic(docID:String, profilePic:String){
+        if (getStatusOfLoggedUser().equals("User")){
+            db.collection("Users").document(docID).update("profilePic",profilePic)
+        }
+        else{
+            db.collection("FirmaUsers").document(docID).update("profilePic",profilePic)
+        }
+
     }
 
 }

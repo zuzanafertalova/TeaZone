@@ -6,8 +6,8 @@ import android.view.View
 import android.widget.Toast
 import com.google.firebase.firestore.EventListener
 import kotlinx.android.synthetic.main.activity_home_screen.*
-import kotlinx.android.synthetic.main.fragment_fragment_profile.*
-import kotlinx.android.synthetic.main.fragment_set_username.*
+import kotlinx.android.synthetic.main.fragment_firstsettings.*
+import kotlinx.android.synthetic.main.fragment_set_username.tvSetUsername
 import sk.upjs.ics.android.teazoneinc.Adapters.AlgoliaSearchAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterPost
@@ -16,9 +16,10 @@ import sk.upjs.ics.android.teazoneinc.HomeScreenFragments.HomeScreenFragment
 import sk.upjs.ics.android.teazoneinc.HomeScreenFragments.ProfileFragment
 import sk.upjs.ics.android.teazoneinc.HomeScreenFragments.SearchFragment
 import sk.upjs.ics.android.teazoneinc.Adapters.ViewPagerAdapter
+import sk.upjs.ics.android.teazoneinc.Dialogs.BottomSheetTypPodniku
 import sk.upjs.ics.android.teazoneinc.R
 
-class HomeScreenActivity : AppCompatActivity() {
+class HomeScreenActivity : AppCompatActivity(), BottomSheetTypPodniku.BottomSheetListener {
 
     val authAdapter = AuthAdapter()
     val dbAdapterUser = DbAdapterUser()
@@ -32,7 +33,9 @@ class HomeScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen)
 
+
         setUsernameFragment()
+        setUpOpenBottomSheetTypPodniku()
         btnSetUsernameSetClick()
 //        algoliaSearchAdapter.transferCollectionToAlgolia("FirmaUsers")
 //        setClickBtnPost()
@@ -57,25 +60,51 @@ class HomeScreenActivity : AppCompatActivity() {
     }
 
     fun btnSetUsernameSetClick(){
-        btnSetUsername.setOnClickListener(View.OnClickListener {
+        btnSetFirstSettings.setOnClickListener(View.OnClickListener {
             val username=tvSetUsername.text.toString()
-            if (!username.equals("")){
-                authAdapter.currentUser?.let {
-                    dbAdapterUser.setUsername(it, username, EventListener { username, _ ->
-                        username?.let {
-                            setViewPager()
-                            fragmentSetUserame.view?.visibility = View.GONE
-                        }
+            val typPodniku = tvTypPodnikuChosen2.text.toString()
+            if (dbAdapterUser.getStatusOfLoggedUser().equals("User")){
+                if (!username.equals("")){
+                    authAdapter.currentUser?.let {
+                        dbAdapterUser.setFirstSettingsUser(it, username, EventListener { username, _ ->
+                            username?.let {
+                                setViewPager()
+                                fragmentSetUserame.view?.visibility = View.GONE
+                            }
 //                        dbAdapterUser.setTypPodniku(it, tvTypPodnikuChosen.text.toString())
-                    })
+                        })
                     }
+                }
+                else{ Toast.makeText(this,"Nastavte si prosím uživateľské meno",Toast.LENGTH_SHORT).show()
+                }
             }
-            else{ Toast.makeText(this,"Nastavte si prosím uživateľské meno",Toast.LENGTH_SHORT).show()
+            else{
+                if (!username.equals("") && !typPodniku.equals("")){
+                    authAdapter.currentUser?.let {
+                        dbAdapterUser.setFirstSettingsFirma(it, username, typPodniku, EventListener { username, _ ->
+                            username?.let {
+                                setViewPager()
+                                fragmentSetUserame.view?.visibility = View.GONE
+                            }
+//                        dbAdapterUser.setTypPodniku(it, tvTypPodnikuChosen.text.toString())
+                        })
+                    }
+                }
             }
+
         })
     }
 
+    fun setUpOpenBottomSheetTypPodniku(){
+        btnShowOptions2.setOnClickListener{
+            val bottomSheet = BottomSheetTypPodniku(this)
+            supportFragmentManager?.let { it1 -> bottomSheet.show(it1, "BottomSheetDialogTypPodniku") }
+        }
+    }
 
+    override fun onOptionClick(text: String) {
+        tvTypPodnikuChosen2.text = text
+    }
 
     fun setViewPager(){
         val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)

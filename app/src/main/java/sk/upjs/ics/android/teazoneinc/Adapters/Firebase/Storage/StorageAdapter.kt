@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
+import android.util.Log
 import android.widget.ImageView
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
@@ -49,7 +50,7 @@ class StorageAdapter{
         }
     }
 
-    fun uploadPic(imageViewPic: ImageView) : String{
+    fun uploadPostPic(imageViewPic: ImageView) : String{
         imageViewPic.isDrawingCacheEnabled = true
         imageViewPic.buildDrawingCache()
         val bitmap = (imageViewPic.drawable as BitmapDrawable).bitmap
@@ -65,6 +66,28 @@ class StorageAdapter{
             // Handle unsuccessful uploads
         }?.addOnSuccessListener {
             // taskSnapshot.metadata contains file metadata such as size, content-type, etc.
+            // ...
+        }
+
+        return uuid
+    }
+
+    fun uploadProfilePic(imageViewPic: ImageView) : String{
+        imageViewPic.isDrawingCacheEnabled = true
+        imageViewPic.buildDrawingCache()
+        val bitmap = (imageViewPic.drawable as BitmapDrawable).bitmap
+        val baos = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        val data = baos.toByteArray()
+
+        val uuid = UUID.randomUUID().toString()
+        val uploadRef : StorageReference = profilePicRef?.child(uuid)!!
+
+        var uploadTask = uploadRef?.putBytes(data)
+        uploadTask?.addOnFailureListener {
+            // Handle unsuccessful uploads
+        }?.addOnSuccessListener {
+            Log.w("dajaky tag","breakpointto je")
             // ...
         }
 
