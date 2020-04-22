@@ -32,7 +32,7 @@
 
     <fragment
         android:id="@+id/fragmentSetUserame"
-        android:name="sk.upjs.ics.android.teazoneinc.Activities.SetUsernameFragment"
+        android:name="sk.upjs.ics.android.teazoneinc.HomeScreenFragments.FirstSettingsFragment"
         android:layout_width="300dp"
         android:layout_height="500dp"
         android:layout_marginLeft="50dp"

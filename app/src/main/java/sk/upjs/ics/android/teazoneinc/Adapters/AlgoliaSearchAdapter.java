@@ -74,6 +74,7 @@ public class AlgoliaSearchAdapter {
                     .put("objectID",map.getDocID())
                     .put("email", map.getEmail())
                     .put("username",map.getUsername())
+                    .put("typPodniku", map.getTypPodniku())
                     .put("ico", map.getICO()), null);
         } catch (JSONException e) {
             e.printStackTrace();
