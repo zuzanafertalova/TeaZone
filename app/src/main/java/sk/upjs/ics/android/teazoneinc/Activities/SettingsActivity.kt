@@ -7,8 +7,12 @@ import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
 import android.widget.Toast
 import com.google.firebase.firestore.EventListener
 import kotlinx.android.synthetic.main.activity_settings.*
+import kotlinx.android.synthetic.main.fragment_change_describ.*
+import kotlinx.android.synthetic.main.fragment_change_opening_hours.*
 import kotlinx.android.synthetic.main.fragment_change_password.*
+import kotlinx.android.synthetic.main.fragment_change_typ_podniku.*
 import kotlinx.android.synthetic.main.fragment_fragment_profile.*
+import kotlinx.android.synthetic.main.fragment_fragment_profile.view.*
 import kotlinx.android.synthetic.main.fragment_set_username.*
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.Dialogs.DialogOdstranitUcet
@@ -54,6 +58,8 @@ class SettingsActivity : AppCompatActivity() {
         btnOpenChangeFragmentSet()
         btnSetUsernameClick()
         buttonDeleteAccountOnClick()
+        btnSetTypPodnikuClick()
+     //   btnSetDescribClick(view)
     }
 
     private fun btnOpenChangeFragmentSet() {
@@ -171,6 +177,15 @@ class SettingsActivity : AppCompatActivity() {
         })
     }
 
+    private fun btnSetTypPodnikuClick(){
+        btnSaveTypPodniku.setOnClickListener{
+            if(tvTypPodnikuChosen.text.isNotEmpty()){
+                dbAdapterUser.setTypPodniku(authAdapter.currentUser!!,tvTypPodnikuChosen.text.toString())
+                fragmentChangeTypPodniku.view?.visibility = View.GONE
+            }
+        }
+    }
+
     private fun btnSetUsernameClick(){
         btnSetUsername.setOnClickListener(View.OnClickListener {
             if (tvSetUsername.text.isNotEmpty()){
@@ -179,6 +194,21 @@ class SettingsActivity : AppCompatActivity() {
 
             }
         })
+    }
+    private fun btnSetOpeningHoursClick(){
+        btnSetOpeningHours.setOnClickListener{
+            if (tiChangeOpeningHours.text.isNotEmpty()){
+
+            }
+        }
+    }
+    private fun btnSetDescribClick(view: View){
+        btnSetDescrib.setOnClickListener{
+            if(tiChangeDescrib.text.isNotEmpty()){
+                view.tvPopisPodniku.text.toString()
+                fragmentChangeDescrib.view?.visibility = View.GONE
+            }
+        }
     }
 
 }

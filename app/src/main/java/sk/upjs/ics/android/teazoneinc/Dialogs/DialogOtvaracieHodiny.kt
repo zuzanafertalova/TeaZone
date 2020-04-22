@@ -8,7 +8,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import sk.upjs.ics.android.teazoneinc.R
 
-class DialogOtvaracieHodiny : DialogFragment() {
+open class DialogOtvaracieHodiny : DialogFragment() {
     fun onCreateDialog(activity: Activity): Dialog {
 
         val builder = AlertDialog.Builder(activity)

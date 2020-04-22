@@ -19,7 +19,7 @@
         android:textColorHint="#CDCDCD" />
 
     <Button
-        android:id="@+id/btnChangeDescrib"
+        android:id="@+id/btnSetDescrib"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
