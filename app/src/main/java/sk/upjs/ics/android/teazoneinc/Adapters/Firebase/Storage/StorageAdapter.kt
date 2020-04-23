@@ -7,6 +7,8 @@ import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.util.Log
 import android.widget.ImageView
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.EventListener
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
@@ -14,6 +16,7 @@ import de.hdodenhof.circleimageview.CircleImageView
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class StorageAdapter{
@@ -94,5 +97,30 @@ class StorageAdapter{
         return uuid
     }
 
+    fun deletePostPics(postPics:ArrayList<String>,eventListener: EventListener<Boolean>){
+        var kolkoBolo = 0
+        for (postPic in postPics){
+            val kolkoJe = postPics.size
+            deleteSinglePostPic(postPic, EventListener{staloSA,_ ->
+                if (staloSA!!){
+                    kolkoBolo++
+                    if (kolkoBolo==kolkoJe){
+                        eventListener.onEvent(true,null)
+                    }
+                }
+            })
+        }
+    }
+    fun deleteSinglePostPic(postPic:String, eventListener: EventListener<Boolean>){
+        postPicRef?.child(postPic)?.delete()
+            ?.addOnSuccessListener {
+                Log.w("podarilo sa pomazat","podarilo sa vymazat")
+                eventListener.onEvent(true,null)
+            }
+    }
+
+    fun deleteProfilePic(profilePic:String){
+        postPicRef?.child(profilePic)?.delete()
+    }
 
 }

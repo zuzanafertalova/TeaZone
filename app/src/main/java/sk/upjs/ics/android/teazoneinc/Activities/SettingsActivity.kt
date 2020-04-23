@@ -212,9 +212,6 @@ class SettingsActivity : AppCompatActivity() {
 //        }
 //    }
 
-            }
-        }
-    }
     private fun btnSetDescribClick(){
         btnSetDescrib.setOnClickListener{
             if(tiChangeDescrib.text.isNotEmpty()){

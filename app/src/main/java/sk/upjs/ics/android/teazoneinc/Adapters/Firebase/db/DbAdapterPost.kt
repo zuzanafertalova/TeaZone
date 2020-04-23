@@ -2,10 +2,9 @@ package sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db
 
 import android.util.Log
 import com.google.firebase.Timestamp
-import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.*
 import com.google.firebase.firestore.EventListener
-import com.google.firebase.firestore.FieldValue
-import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.list_item_comment.view.*
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.Storage.StorageAdapter
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Post.DataComment
@@ -163,6 +162,108 @@ class DbAdapterPost {
 
         return comment
     }
+
+
+    fun deletePosts(user: FirebaseUser,eventListener: EventListener<ArrayList<String>>){
+        var kolkoBolo =0
+        var postPicsList = ArrayList<String>()
+        db.collection("Posts").whereEqualTo("creatorID",user.uid).get()
+            .addOnSuccessListener { documents->
+                val kolkoJe = documents.size()
+                for (document in documents){
+                    getPosPicID(document, EventListener{postPic,_->
+                        postPic.let {
+                            if (postPic==null){
+                                deletePost(document.id, EventListener{staloSa, _->
+                                    if (staloSa!!){
+                                        kolkoBolo++
+                                        if (kolkoBolo==kolkoJe){
+                                            eventListener.onEvent(postPicsList,null)
+                                        }
+                                    }
+                                })
+                            }
+                            else{
+                                postPicsList.add(postPic)
+                                deletePost(document.id, EventListener{staloSa, _->
+                                    if (staloSa!!){
+                                        kolkoBolo++
+                                        if (kolkoBolo==kolkoJe){
+                                            eventListener.onEvent(postPicsList,null)
+                                        }
+                                    }
+                                })
+                            }
+                        }
+                    })
+
+                }
+            }
+//        var postPics = ArrayList<String>()
+//        db.collection("Posts").whereEqualTo("creatorID",user.uid).get()
+//            .addOnSuccessListener{documents ->
+//                for (document in documents){
+//                    val commentRef = db.collection("Posts").document(document.id).collection("Comments")
+//                    commentRef.get()
+//                        .addOnSuccessListener {
+//                            deleteComments(it,commentRef)
+//                        }
+//                        .addOnFailureListener {
+//                            Log.w("tu som",it)
+//                        }
+//                    if (!document.getString("postPic").isNullOrEmpty()){
+//                        postPics.add(document.getString("postPiC")!!)
+//                    }
+//                    db.collection("Posts").document(document.id).delete()
+//                }
+//                if (!postPics.isEmpty()){
+//                    storageAdapter.deletePostPics(postPics)
+//                }
+//            }
+    }
+
+    private fun getPosPicID(document: QueryDocumentSnapshot,eventListener: EventListener<String>){
+        db.collection("Posts").document(document.id).get()
+            .addOnSuccessListener {
+                val postPic = it.getString("postPic")
+                eventListener.onEvent(postPic,null)
+            }
+    }
+
+    private fun deletePost(documentID:String,eventListener: EventListener<Boolean>){
+        db.collection("Posts").document(documentID).delete()
+            .addOnSuccessListener {
+                Log.w("tu som","to je breakPoinit")
+                eventListener.onEvent(true,null)
+            }
+    }
+
+//    fun middleStepGetPostsDocs(user: FirebaseUser, eventListener: EventListener<QuerySnapshot>){
+//        db.collection("Posts").whereEqualTo("creatorID",user.uid).get()
+//            .addOnSuccessListener{documents ->
+//                eventListener.onEvent(documents,null)
+//            }
+//    }
+//
+//    fun middleStepGetCommentsDocs(document: DocumentSnapshot, eventListener: EventListener<QuerySnapshot>){
+//        db.collection("Posts").document(document.id).collection("Comments").get()
+//            .addOnSuccessListener {
+//                eventListener.onEvent(it,null)
+//            }
+//    }
+//
+//    fun deleteComments(comments: QuerySnapshot, post:QueryDocumentSnapshot,eventListener: EventListener<Boolean>){
+//        for (comment in comments){
+//            db.collection("Posts").document(post.id).collection("Comments").document(comment.id).delete()
+//                .addOnSuccessListener {
+//                    eventListener.onEvent(true,null)
+//                }
+//        }
+//    }
+
+//    fun deletePost(){
+//
+//    }
 
 
 }

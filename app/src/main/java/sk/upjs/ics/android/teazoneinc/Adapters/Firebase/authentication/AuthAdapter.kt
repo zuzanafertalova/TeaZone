@@ -16,7 +16,6 @@ import java.lang.Exception
 class AuthAdapter {
 
     private val auth : FirebaseAuth = FirebaseAuth.getInstance()
-    private val dbAdapterUser=DbAdapterUser()
     val currentUser = auth.currentUser
 
 
@@ -92,6 +91,10 @@ class AuthAdapter {
         auth.signOut()
         DbAdapterUser.userFirma= DataFirma()
         DbAdapterUser.userUser= DataUser()
+    }
+
+    fun deleteUser(){
+        auth.currentUser?.delete()
     }
 
 }

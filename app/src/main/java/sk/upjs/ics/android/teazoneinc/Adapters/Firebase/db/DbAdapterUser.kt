@@ -2,17 +2,19 @@ package sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db
 
 import android.util.Log
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.EventListener
-import com.google.firebase.firestore.FieldValue
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.*
 import sk.upjs.ics.android.teazoneinc.Adapters.AlgoliaSearchAdapter
+import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.Storage.StorageAdapter
+import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataFirma
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataUser
 
 class DbAdapterUser {
 
     private val db = FirebaseFirestore.getInstance()
+    private val dbAdapterPost=DbAdapterPost()
+    private val authAdapter = AuthAdapter()
+    private val storageAdapter=StorageAdapter()
     private val algoliaSearchAdapter = AlgoliaSearchAdapter()
 
     companion object{
@@ -305,6 +307,71 @@ class DbAdapterUser {
         }
 
     }
+
+    fun deleteUserFromDatabase(user: FirebaseUser,eventListener: EventListener<Boolean>){
+        if (getStatusOfLoggedUser().equals("User")){
+            deleteUser(user)
+        }
+        else{
+            deleteFirma(user, EventListener{spraviloSa,_->
+                if(spraviloSa!!){
+                    eventListener.onEvent(true,null)
+                }
+            })
+        }
+    }
+
+    private fun deleteUser(user: FirebaseUser){
+
+    }
+
+    private fun deleteFirma(user: FirebaseUser, eventListener: EventListener<Boolean>){
+//        dbAdapterPost.middleStepGetPostsDocs(user, EventListener{ posts, _->
+//            posts.let {posts->
+//                for (post in posts!!){
+//                    dbAdapterPost.middleStepGetCommentsDocs(post, EventListener{ comments, _->
+//                        comments.let {
+//                            dbAdapterPost.deleteComments(it!!,post, EventListener{spraviloSa,_->
+//                                spraviloSa.let {
+//                                    if (it!!){
+//
+//                                    }
+//                                }
+//                            })
+//                        }
+//                    })
+//
+//                }
+//
+//            }
+//        })
+        dbAdapterPost.deletePosts(user, EventListener{staloSa,_->
+            staloSa.let {
+                storageAdapter.deletePostPics(it!!, EventListener{staloSa, _->
+                    if (staloSa!!){
+                        eventListener.onEvent(true,null)
+                    }
+                })
+            }
+        })
+//        db.collection("FirmaUsers").document(user.uid).get()
+//            .addOnSuccessListener {
+//                if (!it.getString("profilePic")!!.equals("deafualt_firma.png")){
+//                    storageAdapter.deleteProfilePic(it.getString("profilePic")!!)
+//                }
+//                db.collection("FirmaUsers").document(user.uid).delete()
+//                    .addOnSuccessListener {
+//                        Log.w("odarilo","PODAROLO SAAAA")
+//                    }
+//                    .addOnFailureListener {
+//                        Log.w("tu jest",it)
+//                    }
+//            }
+//        authAdapter.deleteUser()
+    }
+
+
+
 
 }
 
