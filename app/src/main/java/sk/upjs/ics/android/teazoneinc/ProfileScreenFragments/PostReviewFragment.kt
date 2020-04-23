@@ -34,7 +34,6 @@ class PostReviewFragment : Fragment() {
         setButtonsToList()
         setButtonsOnClick()
         setButtonPostClick()
-
     }
 
     fun setButtonsToList(){
@@ -45,19 +44,19 @@ class PostReviewFragment : Fragment() {
         starsButtons.add(btnStar5)
     }
 
-    fun setButtonsOnClick(){
+    private fun setButtonsOnClick(){
         for (i in 0..4){
             starsButtons[i].setOnClickListener(View.OnClickListener {
                 review.rating=i+1
                 resetStars()
                 for (j in 0..i){
-                    starsButtons[j].background = resources.getDrawable(R.drawable.ic_star_black_24dp)
+                    starsButtons[j].setBackgroundResource(R.drawable.ic_star_black_24dp)
                 }
             })
         }
     }
 
-    fun setButtonPostClick(){
+    private fun setButtonPostClick(){
         btnPostReview.setOnClickListener(View.OnClickListener {
             setDatasToPost()
             resetStars()
@@ -65,19 +64,17 @@ class PostReviewFragment : Fragment() {
         })
     }
 
-    fun resetStars(){
+    private fun resetStars(){
         for(k in 0..4){
-            starsButtons[k].background = resources.getDrawable(R.drawable.ic_star_border_black_24dp)
+            starsButtons[k].setBackgroundResource(R.drawable.ic_star_border_black_24dp)
         }
     }
 
-    fun setDatasToPost(){
+    private fun setDatasToPost(){
         review.content = tvReviewContent.text.toString()
         review.creatorID = authAdapter.currentUser?.uid
         review.recieverID = ProfileFromSearchActivity.docID
         dbAdapterReview.setPostToDatabase(review)
     }
-
-
 
 }

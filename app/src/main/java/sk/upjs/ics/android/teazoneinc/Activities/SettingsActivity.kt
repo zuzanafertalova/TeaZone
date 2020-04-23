@@ -203,14 +203,6 @@ class SettingsActivity : AppCompatActivity() {
 //            }
 //        }
 //    }
-//    private fun btnSetDescribClick(){
-//        btnSetDescrib.setOnClickListener{
-//            if(tiChangeDescrib.text.isNotEmpty()){
-//                tvPopisPodniku.text.toString()
-//                fragmentChangeDescrib.view?.visibility = View.GONE
-//            }
-//        }
-//    }
 
     private fun btnSetDescribClick(){
         btnSetDescrib.setOnClickListener{
