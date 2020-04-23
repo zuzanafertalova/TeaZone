@@ -7,6 +7,7 @@ import android.content.Intent
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import com.google.firebase.firestore.EventListener
+import kotlinx.android.synthetic.main.activity_profile_from_search.*
 import sk.upjs.ics.android.teazoneinc.Activities.HomeScreenActivity
 import sk.upjs.ics.android.teazoneinc.Activities.LoginActivity
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.Storage.StorageAdapter
@@ -23,12 +24,16 @@ class DialogOdstranitUcet : DialogFragment() {
         builder.setMessage("Naozaj chcete odstrániť účet?")
             .setPositiveButton("Potvrdiť",
                 DialogInterface.OnClickListener{ dialog, id ->
-
+                    val password = "Tu treba dat heslo"
+                    authAdapterUser.reauthenticate(password, EventListener{staloSa,_->
+                        if (staloSa!!){
                             dbAdapterUser.deleteUserFromDatabase(authAdapterUser.currentUser!!, EventListener{spraviloSA,_->
                                 if (spraviloSA!!){
                                     startLoginActivity()
                                 }
                             })
+                        }
+                    })
 
             })
             .setNegativeButton("Zrušiť",

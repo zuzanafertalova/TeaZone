@@ -93,8 +93,11 @@ class AuthAdapter {
         DbAdapterUser.userUser= DataUser()
     }
 
-    fun deleteUser(){
-        auth.currentUser?.delete()
+    fun deleteUser(eventListener: EventListener<Boolean>){
+                auth.currentUser?.delete()
+                    ?.addOnSuccessListener {
+                        eventListener.onEvent(true,null)
+                    }
     }
 
 }

@@ -347,11 +347,64 @@ class DbAdapterUser {
 //        })
         dbAdapterPost.deletePosts(user, EventListener{staloSa,_->
             staloSa.let {
+                if (staloSa==null){
+                    getProfilePicFirma(user, EventListener{profilePic,_->
+                        if (profilePic==null){
+                            deleteUserDoc(user,"FirmaUsers", EventListener{staloSa,_->
+                                if (staloSa!!){
+                                    authAdapter.deleteUser(EventListener{staloSa, _->
+                                        if(staloSa!!){
+                                            eventListener.onEvent(true,null)
+                                        }
+                                    })
+                                }
+                            })
+                        }
+                        else{
+                            storageAdapter.deleteProfilePic(profilePic)
+                            deleteUserDoc(user,"FirmaUsers", EventListener{staloSa,_->
+                                if (staloSa!!){
+                                    authAdapter.deleteUser(EventListener{staloSa, _->
+                                        if(staloSa!!){
+                                            eventListener.onEvent(true,null)
+                                        }
+                                    })
+                                }
+                            })
+                        }
+                    })
+                }
+                else{
                 storageAdapter.deletePostPics(it!!, EventListener{staloSa, _->
                     if (staloSa!!){
-                        eventListener.onEvent(true,null)
+                        getProfilePicFirma(user, EventListener{profilePic,_->
+                            if (profilePic==null){
+                                deleteUserDoc(user,"FirmaUsers", EventListener{staloSa,_->
+                                    if (staloSa!!){
+                                        authAdapter.deleteUser(EventListener{staloSa, _->
+                                            if(staloSa!!){
+                                                eventListener.onEvent(true,null)
+                                            }
+                                        })
+                                    }
+                                })
+                            }
+                            else{
+                                storageAdapter.deleteProfilePic(profilePic)
+                                deleteUserDoc(user,"FirmaUsers", EventListener{staloSa,_->
+                                    if (staloSa!!){
+                                        authAdapter.deleteUser(EventListener{staloSa, _->
+                                            if(staloSa!!){
+                                                eventListener.onEvent(true,null)
+                                            }
+                                        })
+                                    }
+                                })
+                            }
+                        })
                     }
                 })
+                }
             }
         })
 //        db.collection("FirmaUsers").document(user.uid).get()
@@ -368,6 +421,26 @@ class DbAdapterUser {
 //                    }
 //            }
 //        authAdapter.deleteUser()
+    }
+
+    private fun getProfilePicFirma(user: FirebaseUser,eventListener: EventListener<String>){
+        db.collection("FirmaUsers").document(user.uid).get()
+            .addOnSuccessListener {
+                val profilePic = it.getString("profilePic")
+                if(profilePic!!.equals("default_firma.png")){
+                    eventListener.onEvent(null,null)
+                }
+                else{
+                    eventListener.onEvent(profilePic,null)
+                }
+            }
+    }
+
+    private fun deleteUserDoc(user: FirebaseUser, collection: String, eventListener: EventListener<Boolean>){
+        db.collection(collection).document(user.uid).delete()
+            .addOnSuccessListener {
+                eventListener.onEvent(true,null)
+            }
     }
 
 

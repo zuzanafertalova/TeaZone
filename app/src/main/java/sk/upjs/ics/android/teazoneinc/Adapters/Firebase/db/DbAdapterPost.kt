@@ -169,35 +169,46 @@ class DbAdapterPost {
         var postPicsList = ArrayList<String>()
         db.collection("Posts").whereEqualTo("creatorID",user.uid).get()
             .addOnSuccessListener { documents->
-                val kolkoJe = documents.size()
-                for (document in documents){
-                    getPosPicID(document, EventListener{postPic,_->
-                        postPic.let {
-                            if (postPic==null){
-                                deletePost(document.id, EventListener{staloSa, _->
-                                    if (staloSa!!){
-                                        kolkoBolo++
-                                        if (kolkoBolo==kolkoJe){
-                                            eventListener.onEvent(postPicsList,null)
-                                        }
-                                    }
-                                })
-                            }
-                            else{
-                                postPicsList.add(postPic)
-                                deletePost(document.id, EventListener{staloSa, _->
-                                    if (staloSa!!){
-                                        kolkoBolo++
-                                        if (kolkoBolo==kolkoJe){
-                                            eventListener.onEvent(postPicsList,null)
-                                        }
-                                    }
-                                })
-                            }
-                        }
-                    })
-
+                if(documents.size()==0){
+                    eventListener.onEvent(null,null)
                 }
+                else{
+                    val kolkoJe = documents.size()
+                    for (document in documents){
+                        getPosPicID(document, EventListener{postPic,_->
+                            postPic.let {
+                                if (postPic==null){
+                                    deletePost(document.id, EventListener{staloSa, _->
+                                        if (staloSa!!){
+                                            kolkoBolo++
+                                            if (kolkoBolo==kolkoJe){
+                                                if (postPicsList.size==0){
+                                                    eventListener.onEvent(null,null)
+                                                }
+                                                else{
+                                                    eventListener.onEvent(postPicsList,null)
+                                                }
+                                            }
+                                        }
+                                    })
+                                }
+                                else{
+                                    postPicsList.add(postPic)
+                                    deletePost(document.id, EventListener{staloSa, _->
+                                        if (staloSa!!){
+                                            kolkoBolo++
+                                            if (kolkoBolo==kolkoJe){
+                                                eventListener.onEvent(postPicsList,null)
+                                            }
+                                        }
+                                    })
+                                }
+                            }
+                        })
+
+                    }
+                }
+
             }
 //        var postPics = ArrayList<String>()
 //        db.collection("Posts").whereEqualTo("creatorID",user.uid).get()

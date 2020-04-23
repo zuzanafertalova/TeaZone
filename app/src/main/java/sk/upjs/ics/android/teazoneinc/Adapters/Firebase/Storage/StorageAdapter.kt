@@ -120,7 +120,10 @@ class StorageAdapter{
     }
 
     fun deleteProfilePic(profilePic:String){
-        postPicRef?.child(profilePic)?.delete()
+        profilePicRef?.child(profilePic)?.delete()
+            ?.addOnSuccessListener {
+            Log.w("ATATATAT", "PODADAAWAD")
+        }
     }
 
 }
