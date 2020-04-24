@@ -90,15 +90,6 @@ class DbAdapterPost {
             }
     }
 
-
-//    fun addComment2(postID: String, comment: DataComment){
-//        db.collection("Posts").document(postID)
-//            .collection("Comments").add(comment)
-//            .addOnSuccessListener {
-//                it.update("timeStamp",FieldValue.serverTimestamp())
-//            }
-//    }
-
     fun addLike(postID: String,followerID:String?){
         db.collection("Posts").document(postID)
             .update("likesIDs", FieldValue.arrayUnion(followerID))

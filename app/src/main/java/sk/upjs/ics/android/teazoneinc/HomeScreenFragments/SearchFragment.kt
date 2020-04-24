@@ -30,6 +30,7 @@ class SearchFragment : Fragment(), BottomSheetFilters.BottomSheetListener {
     internal var client = Client("085AYVSODT", "22c915636c1f40328cbb89a1da7a531a")
     internal var index = client.getIndex("FirmaUsers_Users")
     internal var  adapter: SearchResultAdapter? = null
+    var filterListHere = ArrayList<String>()
     var filterString = ""
 
 
@@ -91,7 +92,7 @@ class SearchFragment : Fragment(), BottomSheetFilters.BottomSheetListener {
 
     fun btnFiltreOnClick() {
         btnFiltre.setOnClickListener(View.OnClickListener {
-            val bottomSheet = BottomSheetFilters(this)
+            val bottomSheet = BottomSheetFilters(this, filterListHere)
             fragmentManager?.let { it1 -> bottomSheet.show(it1, "BottomSheetFilters") }
         })
     }
@@ -102,6 +103,7 @@ class SearchFragment : Fragment(), BottomSheetFilters.BottomSheetListener {
 
     private fun setFiltersString(filterList: ArrayList<String>){
         filterString=""
+        filterListHere=filterList
         var kolkoBolo = 0
         val kolkoJe = filterList.size
         filterString="("

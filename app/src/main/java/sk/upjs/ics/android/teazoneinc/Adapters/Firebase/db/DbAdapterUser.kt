@@ -326,25 +326,7 @@ class DbAdapterUser {
     }
 
     private fun deleteFirma(user: FirebaseUser, eventListener: EventListener<Boolean>){
-//        dbAdapterPost.middleStepGetPostsDocs(user, EventListener{ posts, _->
-//            posts.let {posts->
-//                for (post in posts!!){
-//                    dbAdapterPost.middleStepGetCommentsDocs(post, EventListener{ comments, _->
-//                        comments.let {
-//                            dbAdapterPost.deleteComments(it!!,post, EventListener{spraviloSa,_->
-//                                spraviloSa.let {
-//                                    if (it!!){
-//
-//                                    }
-//                                }
-//                            })
-//                        }
-//                    })
-//
-//                }
-//
-//            }
-//        })
+
         dbAdapterPost.deletePosts(user, EventListener{staloSa,_->
             staloSa.let {
                 if (staloSa==null){
