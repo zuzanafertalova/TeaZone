@@ -3,6 +3,7 @@ package sk.upjs.ics.android.teazoneinc.Activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
 import android.widget.Toast
 import com.google.firebase.firestore.EventListener
@@ -15,6 +16,7 @@ import kotlinx.android.synthetic.main.fragment_fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_fragment_profile.view.*
 import kotlinx.android.synthetic.main.fragment_set_username.*
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
+import sk.upjs.ics.android.teazoneinc.DataHolderClasses.DataOpeningHours
 import sk.upjs.ics.android.teazoneinc.Dialogs.DialogOdstranitUcet
 import sk.upjs.ics.android.teazoneinc.Dialogs.DialogOtvaracieHodiny
 import sk.upjs.ics.android.teazoneinc.R
@@ -131,6 +133,9 @@ class SettingsActivity : AppCompatActivity() {
             if(isButtonChangeOpeningHoursClicked == false){
                 isButtonChangeOpeningHoursClicked = true
                 fragmentChangeOpeningHours.view?.visibility = View.VISIBLE
+
+                btnSetOpeningHoursClick()
+
             }else{
                 isButtonChangeOpeningHoursClicked = false
                 fragmentChangeOpeningHours.view?.visibility = View.GONE
@@ -138,6 +143,13 @@ class SettingsActivity : AppCompatActivity() {
         })
 
 
+    }
+
+    private fun getHours(od : TextView,doo: TextView):HashMap<String,String>{
+        val mapHours = HashMap<String,String>()
+        mapHours.put("OD",od.text.toString())
+        mapHours.put("DO",doo.text.toString())
+        return mapHours
     }
 
     private fun buttonDeleteAccountOnClick() {
@@ -196,13 +208,18 @@ class SettingsActivity : AppCompatActivity() {
             }
         })
     }
-//    private fun btnSetOpeningHoursClick(){
-//        btnSetOpeningHours.setOnClickListener{
-//            if (tiChangeOpeningHours.text.isNotEmpty()){
-//
-//            }
-//        }
-//    }
+    private fun btnSetOpeningHoursClick(){
+        btnSetOpeningHours.setOnClickListener{
+            if (tvOdPo.text.isNotEmpty()&&tvOdUt.text.isNotEmpty()&&tvOdSt.text.isNotEmpty()&&tvOdŠt.text.isNotEmpty()&&tvOdPi.text.isNotEmpty()&&tvOdSo.text.isNotEmpty()&&tvOdNe.text.isNotEmpty()&&
+                tvDoPo.text.isNotEmpty()&&tvDoUt.text.isNotEmpty()&&tvDoSt.text.isNotEmpty()&&tvDoŠt.text.isNotEmpty()&&tvDoPi.text.isNotEmpty()&&tvDoSo.text.isNotEmpty()&&tvDoNe.text.isNotEmpty()){
+                val openingHours = DataOpeningHours(DbAdapterUser.userFirma.docID!!,getHours(tvOdPo,tvDoPo),getHours(tvOdUt,tvDoUt),getHours(tvOdSt,tvDoSt),getHours(tvOdŠt,tvDoŠt),getHours(tvOdPi,tvDoPi),getHours(tvOdSo,tvDoSo),getHours(tvOdNe,tvDoNe))
+                dbAdapterUser.setOpeningHours(openingHours)
+            }
+            else{
+                Toast.makeText(this, "Vyplňte prosím všetky polia", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 
     private fun btnSetDescribClick(){
         btnSetDescrib.setOnClickListener{

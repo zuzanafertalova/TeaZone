@@ -6,6 +6,7 @@ import com.google.firebase.firestore.*
 import sk.upjs.ics.android.teazoneinc.Adapters.AlgoliaSearchAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.Storage.StorageAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
+import sk.upjs.ics.android.teazoneinc.DataHolderClasses.DataOpeningHours
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataFirma
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataUser
 
@@ -193,6 +194,12 @@ class DbAdapterUser {
         document.getString("typPodniku")?.let{ userFirma.typPodniku=it}
         document.getString("profilePic")?.let { userFirma.profilePic=it}
         document.getString("description")?.let { userFirma.description= it }
+        getOpeningHours(userDocID, EventListener{openingHours, _->
+            if (openingHours==null){ }
+            else{
+                userFirma.openHours=openingHours
+            }
+        })
         val followingIDs = document.get("followingIDs") as ArrayList<String>
         followingIDs?.let { userFirma.followingIDs=it }
         val followersIDs = document.get("followersIDs") as ArrayList<String>
@@ -321,6 +328,29 @@ class DbAdapterUser {
                 }
             })
         }
+    }
+
+    fun setOpeningHours(openHours : DataOpeningHours){
+            db.collection("OpeningHours").document(openHours.creatorID!!).set(openHours)
+                .addOnSuccessListener {
+                    Log.w("awawdaw","DAWWWADWA")
+                }
+        }
+
+    fun getOpeningHours(docID:String,eventListener: EventListener<DataOpeningHours>){
+        db.collection("OpeningHours").document(docID).get()
+            .addOnSuccessListener {
+                if (it.exists()){
+                    val openHours= it.toObject(DataOpeningHours::class.java)
+                    eventListener.onEvent(openHours,null)
+                }
+                else{
+                    eventListener.onEvent(null,null)
+                }
+            }
+            .addOnFailureListener {
+                eventListener.onEvent(null,null)
+            }
     }
 
     private fun deleteUser(user: FirebaseUser){

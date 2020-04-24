@@ -7,7 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.activity_profile_from_search.*
 import kotlinx.android.synthetic.main.fragment_fragment_profile.*
+import kotlinx.android.synthetic.main.fragment_fragment_profile.btnNapojovylistok
+import kotlinx.android.synthetic.main.fragment_fragment_profile.tvEmail
+import kotlinx.android.synthetic.main.fragment_fragment_profile.tvPopisPodniku
+import kotlinx.android.synthetic.main.fragment_fragment_profile.tvUsername
 import sk.upjs.ics.android.teazoneinc.Activities.HomeScreenActivity
 import sk.upjs.ics.android.teazoneinc.Activities.LoginActivity
 import sk.upjs.ics.android.teazoneinc.Activities.SettingsActivity
@@ -64,7 +69,7 @@ class ProfileFragment : Fragment(), BottomSheetAddPost.BottomSheetListener {
     fun btnOtvaracieHodinyOnClick() {
         btnOtvaracieHodiny.setOnClickListener {
             activity?.let {
-                val dialog = DialogOtvaracieHodiny().onCreateDialog(it)
+                val dialog = DialogOtvaracieHodiny().onCreateDialog(it,DbAdapterUser.userFirma.openHours)
                 dialog.show()
             }
         }

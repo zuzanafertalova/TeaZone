@@ -1,5 +1,7 @@
 package sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users
 
+import sk.upjs.ics.android.teazoneinc.DataHolderClasses.DataOpeningHours
+
 class DataFirma{
     var typPodniku: String?=null
     var docID: String?=null
@@ -12,6 +14,7 @@ class DataFirma{
     var posts = ArrayList<String>()
     var ICO: String?=null
     var description : String? = null
+    var openHours = DataOpeningHours()
     var followingIDs = ArrayList<String>()
     var followersIDs = ArrayList<String>()
 
