@@ -16,6 +16,7 @@ import com.algolia.search.saas.Query
 import kotlinx.android.synthetic.main.fragment_fragment_search.*
 import org.json.JSONArray
 import org.json.JSONException
+import org.json.JSONObject
 import sk.upjs.ics.android.teazoneinc.Activities.ProfileFromSearchActivity
 import sk.upjs.ics.android.teazoneinc.Adapters.SearchResultAdapter
 import sk.upjs.ics.android.teazoneinc.Dialogs.BottomSheetFilters
@@ -100,16 +101,26 @@ class SearchFragment : Fragment(), BottomSheetFilters.BottomSheetListener {
     }
 
     private fun setFiltersString(filterList: ArrayList<String>){
+        filterString=""
+        var kolkoBolo = 0
+        val kolkoJe = filterList.size
         filterString="("
         for (filter in filterList){
-            val singleFilter = "typPodniku:$filter OR "
-            filterString += singleFilter
+            kolkoBolo++
+            if(kolkoBolo==kolkoJe){
+                val singleFilter = "typPodniku:$filter"
+                filterString += singleFilter
+            }
+            else{
+                val singleFilter = "typPodniku:$filter OR "
+                filterString += singleFilter
+            }
         }
-        filterString.removeRange(filterString.length-4, filterString.length-1)
         filterString+= ")"
     }
 
     fun search(content: String) {
+
         val query = Query(content)
             .setAttributesToRetrieve("username","objectID")
             .setHitsPerPage(50).setFilters(filterString)
