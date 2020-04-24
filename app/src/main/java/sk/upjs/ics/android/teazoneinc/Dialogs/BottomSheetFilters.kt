@@ -36,6 +36,7 @@ class BottomSheetFilters(private var mBottomSheetListener: SearchFragment) : Bot
             }
             else{
                 isKaviarenClicked = false
+                tvKaviarenFilter.setBackgroundResource(R.drawable.search_rectangle_white)
                 removeFilter("Kaviareň")
             }
         }
@@ -47,6 +48,7 @@ class BottomSheetFilters(private var mBottomSheetListener: SearchFragment) : Bot
             }
             else{
                 isRestauraciaClicked = false
+                tvRestauraciaFilter.setBackgroundResource(R.drawable.search_rectangle_white)
                 removeFilter("Reštaurácia")
             }
         }
@@ -58,6 +60,7 @@ class BottomSheetFilters(private var mBottomSheetListener: SearchFragment) : Bot
             }
             else{
                 isBarClicked = false
+                tvBarFilter.setBackgroundResource(R.drawable.search_rectangle_white)
                 removeFilter("Bar")
             }
         }
@@ -69,6 +72,7 @@ class BottomSheetFilters(private var mBottomSheetListener: SearchFragment) : Bot
             }
             else{
                 isKrcmaClicked = false
+                tvKrcmaFilter.setBackgroundResource(R.drawable.search_rectangle_white)
                 removeFilter("Krčma")
             }
         }
@@ -80,6 +84,7 @@ class BottomSheetFilters(private var mBottomSheetListener: SearchFragment) : Bot
             }
             else{
                 isCukrarenClicked = false
+                tvCukrarenFilter.setBackgroundResource(R.drawable.search_rectangle_white)
                 removeFilter("Cukráreň")
             }
         }
@@ -91,6 +96,7 @@ class BottomSheetFilters(private var mBottomSheetListener: SearchFragment) : Bot
             }
             else{
                 isRychleObcerstvenieClicked = false
+                tvRychleObcerstvenieFilter.setBackgroundResource(R.drawable.search_rectangle_white)
                 removeFilter("Rýchle občerstvenie")
             }
         }
@@ -102,6 +108,7 @@ class BottomSheetFilters(private var mBottomSheetListener: SearchFragment) : Bot
             }
             else{
                 isVinarenClicked=false
+                tvVinarenFilter.setBackgroundResource(R.drawable.search_rectangle_white)
                 removeFilter("Vináreň")
             }
         }
@@ -113,6 +120,7 @@ class BottomSheetFilters(private var mBottomSheetListener: SearchFragment) : Bot
             }
             else{
                 isCajovnaClicked = false
+                tvCajovnaFilter.setBackgroundResource(R.drawable.search_rectangle_white)
                 removeFilter("Čajovňa")
             }
         }

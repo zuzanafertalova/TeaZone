@@ -3,44 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="200sp"
+    android:layout_height="300sp"
     android:background="@color/white"
     tools:context=".ProfileScreenFragments.PostReviewFragment">
-
-    <Button
-        android:id="@+id/btnStar2"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/ic_star_border_black_24dp"
-        app:layout_constraintBottom_toTopOf="@+id/tvReviewContent"
-        app:layout_constraintEnd_toStartOf="@+id/btnStar3"
-        app:layout_constraintStart_toEndOf="@+id/btnStar1"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.627" />
-
-    <Button
-        android:id="@+id/btnStar1"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="111dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/ic_star_border_black_24dp"
-        app:layout_constraintBottom_toTopOf="@+id/tvReviewContent"
-        app:layout_constraintEnd_toStartOf="@+id/btnStar2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.627" />
 
     <Button
         android:id="@+id/btnStar3"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="70sp"
         android:layout_marginEnd="9dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/ic_star_border_black_24dp"
@@ -48,27 +19,42 @@
         app:layout_constraintEnd_toStartOf="@+id/btnStar4"
         app:layout_constraintStart_toEndOf="@+id/btnStar2"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.627" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/btnStar5"
+        android:id="@+id/btnStar1"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="114dp"
+        android:layout_marginStart="111dp"
+        android:layout_marginTop="70sp"
+        android:layout_marginEnd="9dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/ic_star_border_black_24dp"
         app:layout_constraintBottom_toTopOf="@+id/tvReviewContent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnStar4"
+        app:layout_constraintEnd_toStartOf="@+id/btnStar2"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.627" />
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/btnStar2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="70sp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/ic_star_border_black_24dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvReviewContent"
+        app:layout_constraintEnd_toStartOf="@+id/btnStar3"
+        app:layout_constraintStart_toEndOf="@+id/btnStar1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/btnStar4"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="70sp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/ic_star_border_black_24dp"
@@ -76,7 +62,21 @@
         app:layout_constraintEnd_toStartOf="@+id/btnStar5"
         app:layout_constraintStart_toEndOf="@+id/btnStar3"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.627" />
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/btnStar5"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="70sp"
+        android:layout_marginEnd="114dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/ic_star_border_black_24dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvReviewContent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnStar4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
 
     <EditText
@@ -88,7 +88,7 @@
         android:fontFamily="@font/source_sans_pro"
         android:hint="Sem napíš recenziu"
         android:inputType="textPersonName"
-        android:textColor="#CACACA"
+        android:textColor="@color/colorGreyLogo"
         android:textColorHint="#CACACA"
         app:layout_constraintBottom_toTopOf="@+id/btnPostReview"
         app:layout_constraintEnd_toEndOf="parent"
@@ -108,5 +108,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.894" />
+
+    <TextView
+        android:id="@+id/tvPostReview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PRIDAŤ HODNOTENIE"
+        android:textColor="@color/colorGreyLogo"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnStar3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
