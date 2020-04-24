@@ -98,6 +98,10 @@ class ProfileFromSearchActivity : AppCompatActivity(), BottomSheetPostReview.Bot
         tvUsername.text = userFirma.username
         tvEmail.text = userFirma.email
         tvFollowing_Followers.text = "Sledovatelia"
+        if (!userFirma.description.isNullOrEmpty()){
+            tvPopisPodniku.text=userFirma.description
+        }
+
         val titles = ArrayList<String>()
         titles.add("0")
         titles.add("0")

@@ -192,6 +192,7 @@ class DbAdapterUser {
         document.getString("ico")?.let { userFirma.ICO=it}
         document.getString("typPodniku")?.let{ userFirma.typPodniku=it}
         document.getString("profilePic")?.let { userFirma.profilePic=it}
+        document.getString("description")?.let { userFirma.description= it }
         val followingIDs = document.get("followingIDs") as ArrayList<String>
         followingIDs?.let { userFirma.followingIDs=it }
         val followersIDs = document.get("followersIDs") as ArrayList<String>
@@ -244,6 +245,7 @@ class DbAdapterUser {
         document.getString("ico")?.let { firmaUser.ICO=it}
         document.getString("typPodniku")?.let{ firmaUser.typPodniku=it}
         document.getString("profilePic")?.let { firmaUser.profilePic=it }
+        document.getString("description")?.let { firmaUser.description=it }
         val list = document.get("followingIDs") as ArrayList<String>
         list?.let { firmaUser.followingIDs=it}
         val followersIDs = document.get("followersIDs") as ArrayList<String>

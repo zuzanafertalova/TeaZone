@@ -100,6 +100,9 @@ class ProfileFragment : Fragment(), BottomSheetAddPost.BottomSheetListener {
             tvFollowing_FollowersProfileFragment.text = "Sledovatelia"
             storageAdapter.getProfilePic(DbAdapterUser.userFirma.profilePic!!, ivProfile_image)
             tvTypPodniku.text = DbAdapterUser.userFirma.typPodniku
+            if (!DbAdapterUser.userFirma.description.isNullOrEmpty()){
+                tvPopisPodniku.text = DbAdapterUser.userFirma.description
+            }
             val titles = ArrayList<String>()
             titles.add(DbAdapterUser.userFirma.reviews.toString())
             titles.add(DbAdapterUser.userFirma.followers.toString())
