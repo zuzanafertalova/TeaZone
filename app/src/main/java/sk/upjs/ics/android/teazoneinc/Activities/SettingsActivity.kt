@@ -61,7 +61,7 @@ class SettingsActivity : AppCompatActivity() {
         btnSetUsernameClick()
         buttonDeleteAccountOnClick()
         btnSetTypPodnikuClick()
-//        btnSetDescribClick()
+
     }
 
     private fun btnOpenChangeFragmentSet() {

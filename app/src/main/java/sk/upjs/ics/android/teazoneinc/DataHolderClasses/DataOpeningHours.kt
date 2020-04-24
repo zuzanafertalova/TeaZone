@@ -1,6 +1,6 @@
 package sk.upjs.ics.android.teazoneinc.DataHolderClasses
 
-class DataOpeningHours {
+open class DataOpeningHours {
 
     var creatorID: String? = null
     var po = HashMap<String,String>()
