@@ -63,17 +63,15 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun btnOpenChangeFragmentSet() {
-        buttonChangePassword.setOnClickListener(View.OnClickListener {
-            if(isButtonChangePasswordClicked == false){
-                isButtonChangePasswordClicked = true
+        buttonChangePassword.setOnClickListener{
+            if(fragmentChangePassword.view?.visibility == View.GONE){
                 fragmentChangePassword.view?.visibility = View.VISIBLE
                 btnChangePasswordSet()
             }else{
-                isButtonChangePasswordClicked = false
                 fragmentChangePassword.view?.visibility = View.GONE
             }
 
-        })
+        }
         buttonChangeUsername.setOnClickListener(View.OnClickListener {
             if(isButtonChangeUsernameClicked == false){
                 isButtonChangeUsernameClicked = true

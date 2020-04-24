@@ -85,7 +85,6 @@
                 android:background="@drawable/button_grey"
                 android:text="ZMENIŤ MENO"
                 android:textColor="@color/white"
-                android:textIsSelectable="true"
                 android:textSize="12sp" />
 
             <fragment
@@ -105,7 +104,6 @@
                 android:background="@drawable/button_darkgrey"
                 android:text="ZMENIŤ HESLO"
                 android:textColor="@color/white"
-                android:textIsSelectable="true"
                 android:textSize="12sp" />
 
             <fragment
@@ -125,7 +123,6 @@
                 android:background="@drawable/button_turquoise"
                 android:text="ZMENIŤ PROFILOVÚ FOTKU"
                 android:textColor="@color/white"
-                android:textIsSelectable="true"
                 android:textSize="12sp" />
 
             <fragment
@@ -145,7 +142,6 @@
                 android:background="@drawable/button_grey"
                 android:text="ZMENIŤ POPIS"
                 android:textColor="@color/white"
-                android:textIsSelectable="true"
                 android:textSize="12sp" />
 
             <fragment
@@ -165,7 +161,6 @@
                 android:background="@drawable/button_darkgrey"
                 android:text="ZMENIŤ ADRESU PODNIKU"
                 android:textColor="@color/white"
-                android:textIsSelectable="true"
                 android:textSize="12sp" />
 
             <fragment
@@ -185,7 +180,6 @@
                 android:background="@drawable/button_turquoise"
                 android:text="ZMENIŤ TYP PODNIKU"
                 android:textColor="@color/white"
-                android:textIsSelectable="true"
                 android:textSize="12sp" />
 
             <fragment
@@ -205,7 +199,6 @@
                 android:background="@drawable/button_grey"
                 android:text="JEDÁLNY/NÁPOJOVÝ LÍSTOK"
                 android:textColor="@color/white"
-                android:textIsSelectable="true"
                 android:textSize="12sp" />
 
             <fragment
@@ -225,7 +218,6 @@
                 android:background="@drawable/button_darkgrey"
                 android:text="OTVÁRACIE HODINY"
                 android:textColor="@color/white"
-                android:textIsSelectable="true"
                 android:textSize="12sp" />
 
             <Button
@@ -238,7 +230,6 @@
                 android:background="@drawable/button_red"
                 android:text="ODSTRÁNIŤ ÚČET"
                 android:textColor="@color/white"
-                android:textIsSelectable="true"
                 android:textSize="12sp" />
 
         </LinearLayout>

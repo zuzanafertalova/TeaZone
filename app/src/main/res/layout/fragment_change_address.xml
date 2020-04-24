@@ -19,28 +19,6 @@
         android:textSize="24sp"
         android:textStyle="bold" />
 
-    <AutoCompleteTextView
-        android:id="@+id/atiChangeAddress"
-        android:layout_width="200sp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="10sp"
-        android:fontFamily="@font/source_sans_pro"
-        android:hint="Zadajte adresu..."
-        android:textColor="@color/colorGreyLogo"
-        android:textColorHint="#CDCDCD" />
-
-    <Button
-        android:id="@+id/btnChangeAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="20sp"
-        android:background="@drawable/button_turquoise"
-        android:fontFamily="@font/source_sans_pro"
-        android:text="ULOŽIŤ"
-        android:textColor="@color/white" />
-
     <ScrollView
         android:layout_width="202dp"
         android:layout_height="52dp"
@@ -60,9 +38,22 @@
                 android:id="@+id/findDestination_autocomplete"
                 android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_margin="5sp" />
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/btnChangeAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20sp"
+        android:background="@drawable/button_turquoise"
+        android:fontFamily="@font/source_sans_pro"
+        android:text="ULOŽIŤ"
+        android:textColor="@color/white" />
 
 
 </LinearLayout>
