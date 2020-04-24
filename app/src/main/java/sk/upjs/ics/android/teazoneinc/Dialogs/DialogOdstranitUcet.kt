@@ -13,6 +13,7 @@ import com.google.firebase.firestore.EventListener
 import kotlinx.android.synthetic.main.activity_profile_from_search.*
 import sk.upjs.ics.android.teazoneinc.Activities.HomeScreenActivity
 import sk.upjs.ics.android.teazoneinc.Activities.LoginActivity
+import sk.upjs.ics.android.teazoneinc.Adapters.AlgoliaSearchAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.Storage.StorageAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
@@ -22,6 +23,8 @@ class DialogOdstranitUcet : DialogFragment() {
 
     private val dbAdapterUser=DbAdapterUser()
     private val authAdapterUser=AuthAdapter()
+
+    private val algoliaSearchAdapter = AlgoliaSearchAdapter()
 
 
     fun onCreateDialog(activity: Activity, inflater: LayoutInflater): Dialog {
@@ -36,6 +39,7 @@ class DialogOdstranitUcet : DialogFragment() {
                     if (password.isNotEmpty()){
                         authAdapterUser.reauthenticate(password, EventListener{staloSa,_->
                             if (staloSa==true){
+                                algoliaSearchAdapter.deleteObject(authAdapterUser.currentUser?.uid)
                                 dbAdapterUser.deleteUserFromDatabase(authAdapterUser.currentUser!!, EventListener{spraviloSA,_->
                                     if (spraviloSA!!){
                                         startLoginActivity()

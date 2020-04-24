@@ -20,6 +20,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataFirma;
@@ -110,6 +111,10 @@ public class AlgoliaSearchAdapter {
 
     public void updateUsername(String username, String objectID) throws JSONException, AlgoliaException {
         index.partialUpdateObjectAsync(new JSONObject().put("username",username), objectID,null);
+    }
+
+    public void deleteObject(String objectID) throws AlgoliaException {
+        index.deleteObject("myID",null);
     }
 
 
