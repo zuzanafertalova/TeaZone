@@ -325,7 +325,11 @@ class DbAdapterUser {
 
     fun deleteUserFromDatabase(user: FirebaseUser,eventListener: EventListener<Boolean>){
         if (getStatusOfLoggedUser().equals("User")){
-            deleteUser(user)
+            deleteUser(user, EventListener{staloSa,_->
+                if(staloSa!!){
+                    eventListener.onEvent(true,null)
+                }
+            })
         }
         else{
             deleteFirma(user, EventListener{spraviloSa,_->
@@ -359,7 +363,33 @@ class DbAdapterUser {
             }
     }
 
-    private fun deleteUser(user: FirebaseUser){
+    private fun deleteUser(user: FirebaseUser, eventListener: EventListener<Boolean>){
+
+        getProfilePicUser(user, EventListener{profilePic,_->
+            if (profilePic==null){
+                deleteUserDoc(user,"Users", EventListener{staloSa,_->
+                    if (staloSa!!){
+                        authAdapter.deleteUser(EventListener{staloSa, _->
+                            if(staloSa!!){
+                                eventListener.onEvent(true,null)
+                            }
+                        })
+                    }
+                })
+            }
+            else{
+                storageAdapter.deleteProfilePic(profilePic)
+                deleteUserDoc(user,"Users", EventListener{staloSa,_->
+                    if (staloSa!!){
+                        authAdapter.deleteUser(EventListener{staloSa, _->
+                            if(staloSa!!){
+                                eventListener.onEvent(true,null)
+                            }
+                        })
+                    }
+                })
+            }
+        })
 
     }
 
@@ -448,6 +478,19 @@ class DbAdapterUser {
             .addOnSuccessListener {
                 val profilePic = it.getString("profilePic")
                 if(profilePic!!.equals("default_firma.png")){
+                    eventListener.onEvent(null,null)
+                }
+                else{
+                    eventListener.onEvent(profilePic,null)
+                }
+            }
+    }
+
+    private fun getProfilePicUser(user: FirebaseUser,eventListener: EventListener<String>){
+        db.collection("Users").document(user.uid).get()
+            .addOnSuccessListener {
+                val profilePic = it.getString("profilePic")
+                if(profilePic!!.equals("default_user.png")){
                     eventListener.onEvent(null,null)
                 }
                 else{
