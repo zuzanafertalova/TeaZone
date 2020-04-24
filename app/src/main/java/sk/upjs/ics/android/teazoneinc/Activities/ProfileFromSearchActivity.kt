@@ -121,7 +121,7 @@ class ProfileFromSearchActivity : AppCompatActivity(), BottomSheetPostReview.Bot
 
     private fun btnOtvaracieHodiny2OnClick() {
         btnOtvaracieHodiny2.setOnClickListener {
-                val dialog = DialogOtvaracieHodiny().onCreateDialog(this)
+                val dialog = DialogOtvaracieHodiny().onCreateDialog(this,userFirma.openHours)
                 dialog.show()
         }
     }

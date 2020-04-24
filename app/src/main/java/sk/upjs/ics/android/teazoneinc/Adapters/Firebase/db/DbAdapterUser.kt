@@ -253,6 +253,12 @@ class DbAdapterUser {
         document.getString("typPodniku")?.let{ firmaUser.typPodniku=it}
         document.getString("profilePic")?.let { firmaUser.profilePic=it }
         document.getString("description")?.let { firmaUser.description=it }
+        getOpeningHours(docID, EventListener{openingHours, _->
+            if (openingHours==null){ }
+            else{
+                firmaUser.openHours=openingHours
+            }
+        })
         val list = document.get("followingIDs") as ArrayList<String>
         list?.let { firmaUser.followingIDs=it}
         val followersIDs = document.get("followersIDs") as ArrayList<String>
