@@ -53,6 +53,7 @@ class ChangeProfilePicFragment : Fragment() {
     fun onBtnLoadProfilePicClick(){
         btnLoadProfilePic.setOnClickListener{
             openPicChooser()
+            ivChangeProfilePic.visibility = View.VISIBLE
         }
     }
 

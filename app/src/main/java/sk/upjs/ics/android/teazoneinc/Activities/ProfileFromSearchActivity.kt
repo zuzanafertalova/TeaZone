@@ -1,10 +1,7 @@
 package sk.upjs.ics.android.teazoneinc.Activities
 
-
-import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_profile_from_search.*
 import kotlinx.android.synthetic.main.fragment_fragment_profile.*
@@ -17,14 +14,14 @@ import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.sendData
 import sk.upjs.ics.android.teazoneinc.Adapters.ViewPagerAdapter
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataFirma
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataUser
+import sk.upjs.ics.android.teazoneinc.Dialogs.BottomSheetPostReview
 import sk.upjs.ics.android.teazoneinc.Dialogs.DialogOtvaracieHodiny
 import sk.upjs.ics.android.teazoneinc.ProfileScreenFragments.*
 import sk.upjs.ics.android.teazoneinc.R
 import kotlinx.android.synthetic.main.activity_profile_from_search.btnNapojovylistok as btnNapojovylistok1
-import kotlinx.android.synthetic.main.activity_profile_from_search.tvPopisPodniku as tvPopisPodniku1
+import kotlinx.android.synthetic.main.fragment_fragment_profile.tvPopisPodniku as tvPopisPodniku1
 
-
-class ProfileFromSearchActivity : AppCompatActivity() {
+class ProfileFromSearchActivity : AppCompatActivity(), BottomSheetPostReview.BottomSheetListener {
 
     val authAdapter = AuthAdapter()
     val dbAdapterUser = DbAdapterUser()
@@ -76,7 +73,6 @@ class ProfileFromSearchActivity : AppCompatActivity() {
         btnFollow.visibility = View.GONE
         btnWriteReview.visibility = View.GONE
         tvPosts.visibility = View.GONE
-        fragmentWriteReview.view?.visibility = View.GONE
         textView10.visibility = View.GONE
         btnNapojovylistok.visibility = View.GONE
         tvTypPodniku2.visibility = View.GONE
@@ -96,7 +92,6 @@ class ProfileFromSearchActivity : AppCompatActivity() {
     }
 
     private fun setDataFirmaUserToFields() {
-        fragmentWriteReview.view?.visibility = View.GONE
 
         storageAdapter.getProfilePic(userFirma.profilePic!!,ivProfilePicFromSearch)
         tvTypPodniku2.text = userFirma.typPodniku
@@ -111,15 +106,14 @@ class ProfileFromSearchActivity : AppCompatActivity() {
         setOnClickBtnFollow()
     }
 
+
     private fun setOnClickBtnWriteReview() {
         btnWriteReview.setOnClickListener(View.OnClickListener {
-            if (fragmentWriteReview.isVisible) {
-                fragmentWriteReview.view?.visibility = View.GONE
-            } else {
-                fragmentWriteReview.view?.visibility = View.VISIBLE
-            }
+            val bottomSheet = BottomSheetPostReview(this)
+            bottomSheet.show(supportFragmentManager, "BottomSheetDialogPostReview")
         })
     }
+
 
     private fun btnOtvaracieHodiny2OnClick() {
         btnOtvaracieHodiny2.setOnClickListener {
@@ -160,5 +154,9 @@ class ProfileFromSearchActivity : AppCompatActivity() {
         viewPagerAdapter.addManagerProfile(FollowersFragment(), titles[2])
         viewPagerProfile.adapter = viewPagerAdapter
         tabsProfile.setupWithViewPager(viewPagerProfile)
+    }
+
+    override fun onOptionClick(text: String) {
+        TODO("Not yet implemented")
     }
 }

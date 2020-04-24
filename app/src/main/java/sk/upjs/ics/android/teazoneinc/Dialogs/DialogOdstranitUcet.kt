@@ -4,6 +4,8 @@ import android.app.Activity
 import android.app.Dialog
 import android.content.DialogInterface
 import android.content.Intent
+import android.view.LayoutInflater
+import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import com.google.firebase.firestore.EventListener
@@ -13,16 +15,22 @@ import sk.upjs.ics.android.teazoneinc.Activities.LoginActivity
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.Storage.StorageAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
+import sk.upjs.ics.android.teazoneinc.R
 
 class DialogOdstranitUcet : DialogFragment() {
 
     private val dbAdapterUser=DbAdapterUser()
     private val authAdapterUser=AuthAdapter()
 
-    fun onCreateDialog(activity: Activity): Dialog {
+
+    fun onCreateDialog(activity: Activity, inflater: LayoutInflater): Dialog {
         val builder = AlertDialog.Builder(activity)
+
         builder.setMessage("Naozaj chcete odstrániť účet?")
-            .setPositiveButton("Potvrdiť",
+        val dialogPassword = inflater.inflate(R.layout.dialog_password, null)
+        val editText = dialogPassword.findViewById<EditText>(R.id.editText)
+        builder.setView(dialogPassword)
+        builder.setPositiveButton("Potvrdiť",
                 DialogInterface.OnClickListener{ dialog, id ->
                     val password = "Tu treba dat heslo"
                     authAdapterUser.reauthenticate(password, EventListener{staloSa,_->

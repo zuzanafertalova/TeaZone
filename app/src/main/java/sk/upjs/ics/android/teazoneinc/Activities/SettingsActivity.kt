@@ -144,7 +144,9 @@ class SettingsActivity : AppCompatActivity() {
 
     private fun buttonDeleteAccountOnClick() {
         buttonDeleteAccount.setOnClickListener {
-                val dialog = DialogOdstranitUcet().onCreateDialog(this)
+                val inflater = layoutInflater
+                val dialog = DialogOdstranitUcet().onCreateDialog(this, inflater)
+
                 dialog.show()
         }
     }
