@@ -82,7 +82,7 @@ class BottomSheetPostReview(private var mBottomSheetListener: ProfileFromSearchA
         }
         dbAdapterReview.setReviewToDatabase(review)
     }
-    
+
     interface BottomSheetListener {
         fun onOptionClick(text: String)
     }
