@@ -35,7 +35,7 @@ class ReviewsAdapter : RecyclerView.Adapter<ReviewsAdapter.ReviewsFragmentHolder
 
         fun bindData(review : DataReview) {
             itemView.tvReview.text = review.content
-            itemView.tvMenoUseraReviews.text= review.creatorID
+            itemView.tvMenoUseraReviews.text= review.creatorUsername
             setButtonsToList(itemView)
 
             val rating = review.rating

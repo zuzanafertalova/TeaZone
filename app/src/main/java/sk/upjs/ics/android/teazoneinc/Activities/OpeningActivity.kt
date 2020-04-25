@@ -37,7 +37,7 @@ class OpeningActivity : AppCompatActivity() {
                 startHomeScreenActivity()
             }
             override fun onFailure() {
-
+                startLoginScreenActivity()
             }
         })
     }

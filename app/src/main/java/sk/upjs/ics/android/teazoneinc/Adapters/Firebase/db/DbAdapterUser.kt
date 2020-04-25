@@ -154,6 +154,9 @@ class DbAdapterUser {
                     setUserUserToLocalUser(document,user.uid)
                     dbInterface.onSuccess()
                 }
+                else{
+                    dbInterface.onFailure()
+                }
                 }
                 .addOnFailureListener{
                      dbInterface.onFailure()
@@ -162,10 +165,12 @@ class DbAdapterUser {
 
                 db.collection("FirmaUsers").document(user.uid).get()
                     .addOnSuccessListener { document ->
-                        val daco = document.getData()
                         if (document.exists()) {
                             setUserFirmaToLocalUser(document,user.uid)
                             dbInterface.onSuccess()
+                        }
+                        else{
+                            dbInterface.onFailure()
                         }
                     }
                     .addOnFailureListener{
@@ -347,6 +352,24 @@ class DbAdapterUser {
                     Log.w("awawdaw","DAWWWADWA")
                 }
         }
+
+    fun getFollowersList(docID:String, eventListener: EventListener<ArrayList<String>>){
+        var followingList=ArrayList<String>()
+        db.collection("FirmaUsers").document(docID).get()
+            .addOnSuccessListener {
+                followingList = it.get("followers") as ArrayList<String>
+                eventListener.onEvent(followingList,null)
+            }
+    }
+
+    fun getFollowingList(docID: String, eventListener: EventListener<ArrayList<String>>){
+        var followingList=ArrayList<String>()
+        db.collection("Users").document(docID).get()
+            .addOnSuccessListener {
+                followingList = it.get("followers") as ArrayList<String>
+                eventListener.onEvent(followingList,null)
+            }
+    }
 
     fun getOpeningHours(docID:String,eventListener: EventListener<DataOpeningHours>){
         db.collection("OpeningHours").document(docID).get()

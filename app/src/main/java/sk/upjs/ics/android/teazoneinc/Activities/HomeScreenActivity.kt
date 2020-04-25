@@ -91,6 +91,9 @@ class HomeScreenActivity : AppCompatActivity(), BottomSheetTypPodniku.BottomShee
                         })
                     }
                 }
+                else{
+                    Toast.makeText(this,"Vyplnte prosím všetky polia",Toast.LENGTH_SHORT).show()
+                }
             }
 
         })

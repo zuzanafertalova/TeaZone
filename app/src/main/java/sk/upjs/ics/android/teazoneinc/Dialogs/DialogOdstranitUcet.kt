@@ -48,12 +48,12 @@ class DialogOdstranitUcet : DialogFragment() {
                                 })
                             }
                             else{
-                                Toast.makeText(activity,"Heslo je nesprávne",Toast.LENGTH_SHORT)
+                                Toast.makeText(activity,"Heslo je nesprávne",Toast.LENGTH_SHORT).show()
                             }
                         })
                     }
                     else{
-                        Toast.makeText(activity,"Zadajte Heslo",Toast.LENGTH_SHORT)
+                        Toast.makeText(activity,"Zadajte Heslo",Toast.LENGTH_SHORT).show()
                     }
 
 
