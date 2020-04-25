@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.Dialog
 import android.content.DialogInterface
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.EditText
 import android.widget.Toast
@@ -39,7 +40,7 @@ class DialogOdstranitUcet : DialogFragment() {
                     if (password.isNotEmpty()){
                         authAdapterUser.reauthenticate(password, EventListener{staloSa,_->
                             if (staloSa==true){
-                                algoliaSearchAdapter.deleteObject(authAdapterUser.currentUser?.uid)
+                                algoliaSearchAdapter.deleteObject(authAdapterUser.currentUser?.uid).toString()
                                 dbAdapterUser.deleteUserFromDatabase(authAdapterUser.currentUser!!, EventListener{spraviloSA,_->
                                     if (spraviloSA!!){
                                         startLoginActivity()

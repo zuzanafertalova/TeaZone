@@ -13,6 +13,8 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 import de.hdodenhof.circleimageview.CircleImageView
+import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
+import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
 import java.util.*
@@ -22,8 +24,10 @@ import kotlin.collections.ArrayList
 class StorageAdapter{
     private var storage = Firebase.storage
     var storageRef = storage.reference
-    var profilePicRef: StorageReference? = storageRef.child("ProfilePics")
-    var postPicRef: StorageReference? = storageRef.child("PostPics")
+    val profilePicRef: StorageReference? = storageRef.child("ProfilePics")
+    val postPicRef: StorageReference? = storageRef.child("PostPics")
+    val menuRef:StorageReference? = storageRef.child("Menus")
+    val authAdapter = AuthAdapter()
 
 //    @GlideModule public class MyAppGlideModule : AppGlideModule() {
 //        override fun registerComponents(context: Context, glide: Glide, registry: Registry) {
@@ -95,6 +99,20 @@ class StorageAdapter{
         }
 
         return uuid
+    }
+
+    fun uploadPDFFile(uri: Uri,eventListener: EventListener<String>){
+        val menuName = authAdapter.currentUser?.uid+"Menu.pdf"
+        menuRef?.child(menuName)?.putFile(uri)
+            ?.addOnSuccessListener {
+                eventListener.onEvent(menuName,null)
+            }
+            ?.addOnProgressListener {
+
+            }
+            ?.addOnFailureListener {
+                eventListener.onEvent(null,null)
+            }
     }
 
     fun deletePostPics(postPics:ArrayList<String>,eventListener: EventListener<Boolean>){

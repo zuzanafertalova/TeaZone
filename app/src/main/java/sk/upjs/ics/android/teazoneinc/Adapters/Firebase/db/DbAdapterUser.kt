@@ -363,6 +363,11 @@ class DbAdapterUser {
             }
     }
 
+    fun updateMenu(menuName:String){
+        db.collection("FirmaUsers").document(authAdapter.currentUser!!.uid)
+            .update("menu",menuName)
+    }
+
     private fun deleteUser(user: FirebaseUser, eventListener: EventListener<Boolean>){
 
         getProfilePicUser(user, EventListener{profilePic,_->

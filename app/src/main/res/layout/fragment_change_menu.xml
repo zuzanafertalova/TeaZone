@@ -41,7 +41,7 @@
         android:text="Tu sa zobrazí nahratý súbor." />
 
     <Button
-        android:id="@+id/btnChangeDescrib2"
+        android:id="@+id/btnUploadFile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

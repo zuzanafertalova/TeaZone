@@ -1,5 +1,7 @@
 package sk.upjs.ics.android.teazoneinc.Adapters;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -8,6 +10,7 @@ import com.algolia.search.saas.Client;
 import com.algolia.search.saas.CompletionHandler;
 import com.algolia.search.saas.Index;
 import com.algolia.search.saas.Query;
+import com.algolia.search.saas.RequestOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -113,8 +116,14 @@ public class AlgoliaSearchAdapter {
         index.partialUpdateObjectAsync(new JSONObject().put("username",username), objectID,null);
     }
 
-    public void deleteObject(String objectID) throws AlgoliaException {
-        index.deleteObject("myID",null);
+    public void deleteObject(String objectID) {
+//        try {
+//            RequestOptions requestOptions = new RequestOptions();
+//            index.deleteObject(objectID,requestOptions);
+//        }
+//        catch (AlgoliaException e) {
+//            e.printStackTrace();
+//        }
     }
 
 
