@@ -216,6 +216,9 @@ class SettingsActivity : AppCompatActivity() {
                 tvDoPo.text.isNotEmpty()&&tvDoUt.text.isNotEmpty()&&tvDoSt.text.isNotEmpty()&&tvDoŠt.text.isNotEmpty()&&tvDoPi.text.isNotEmpty()&&tvDoSo.text.isNotEmpty()&&tvDoNe.text.isNotEmpty()){
                 val openingHours = DataOpeningHours(DbAdapterUser.userFirma.docID!!,getHours(tvOdPo,tvDoPo),getHours(tvOdUt,tvDoUt),getHours(tvOdSt,tvDoSt),getHours(tvOdŠt,tvDoŠt),getHours(tvOdPi,tvDoPi),getHours(tvOdSo,tvDoSo),getHours(tvOdNe,tvDoNe))
                 dbAdapterUser.setOpeningHours(openingHours)
+                fragmentChangeOpeningHours.view?.visibility = View.GONE
+                Toast.makeText(this, "Otváracie hodiny úspešne zmenené.", Toast.LENGTH_SHORT).show()
+
             }
             else{
                 Toast.makeText(this, "Vyplňte prosím všetky polia", Toast.LENGTH_SHORT).show()

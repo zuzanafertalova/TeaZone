@@ -1,6 +1,7 @@
 package sk.upjs.ics.android.teazoneinc.Activities
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_profile_from_search.*
@@ -121,8 +122,9 @@ class ProfileFromSearchActivity : AppCompatActivity(), BottomSheetPostReview.Bot
 
     private fun btnOtvaracieHodiny2OnClick() {
         btnOtvaracieHodiny2.setOnClickListener {
-                val dialog = DialogOtvaracieHodiny().onCreateDialog(this,userFirma.openHours)
-                dialog.show()
+            val inflater = layoutInflater
+            val dialog = DialogOtvaracieHodiny(inflater).onCreateDialog(this, inflater,  userFirma.openHours)
+            dialog.show()
         }
     }
 

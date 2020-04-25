@@ -119,6 +119,9 @@
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
+                android:text="čas"
+                android:textColor="@color/colorGreenLogo"
                 android:textSize="13sp" />
 
             <TextView
@@ -128,6 +131,9 @@
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
+                android:text="čas"
+                android:textColor="@color/colorGreenLogo"
                 android:textSize="13sp" />
 
             <TextView
@@ -137,6 +143,9 @@
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
+                android:text="čas"
+                android:textColor="@color/colorGreenLogo"
                 android:textSize="13sp" />
 
             <TextView
@@ -146,6 +155,9 @@
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
+                android:text="čas"
+                android:textColor="@color/colorGreenLogo"
                 android:textSize="13sp" />
 
             <TextView
@@ -155,6 +167,9 @@
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
+                android:text="čas"
+                android:textColor="@color/colorGreenLogo"
                 android:textSize="13sp" />
 
             <TextView
@@ -164,6 +179,9 @@
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
+                android:text="čas"
+                android:textColor="@color/colorGreenLogo"
                 android:textSize="13sp" />
 
             <TextView
@@ -173,6 +191,9 @@
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
+                android:text="čas"
+                android:textColor="@color/colorGreenLogo"
                 android:textSize="13sp" />
         </LinearLayout>
 
@@ -188,6 +209,9 @@
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
+                android:text="čas"
+                android:textColor="@color/colorGreenLogo"
                 android:textSize="13sp" />
 
             <TextView
@@ -197,6 +221,9 @@
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
+                android:text="čas"
+                android:textColor="@color/colorGreenLogo"
                 android:textSize="13sp" />
 
             <TextView
@@ -206,6 +233,9 @@
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
+                android:text="čas"
+                android:textColor="@color/colorGreenLogo"
                 android:textSize="13sp" />
 
             <TextView
@@ -215,6 +245,9 @@
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
+                android:text="čas"
+                android:textColor="@color/colorGreenLogo"
                 android:textSize="13sp" />
 
             <TextView
@@ -224,6 +257,9 @@
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
+                android:text="čas"
+                android:textColor="@color/colorGreenLogo"
                 android:textSize="13sp" />
 
             <TextView
@@ -233,6 +269,9 @@
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
+                android:text="čas"
+                android:textColor="@color/colorGreenLogo"
                 android:textSize="13sp" />
 
             <TextView
@@ -242,6 +281,9 @@
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
+                android:text="čas"
+                android:textColor="@color/colorGreenLogo"
                 android:textSize="13sp" />
         </LinearLayout>
     </LinearLayout>

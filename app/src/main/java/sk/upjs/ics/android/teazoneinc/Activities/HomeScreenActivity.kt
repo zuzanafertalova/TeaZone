@@ -23,15 +23,16 @@ class HomeScreenActivity : AppCompatActivity(), BottomSheetTypPodniku.BottomShee
 
     val authAdapter = AuthAdapter()
     val dbAdapterUser = DbAdapterUser()
-    val dbAdapterPost = DbAdapterPost()
-    val algoliaSearchAdapter = AlgoliaSearchAdapter()
-
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen)
+
+        if(dbAdapterUser.getStatusOfLoggedUser().equals("User")){
+            tvChangeTypPodniku2.visibility = View.GONE
+            btnShowOptions2.visibility = View.GONE
+            tvTypPodnikuChosen2.visibility = View.GONE
+        }
 
 
         setUsernameFragment()

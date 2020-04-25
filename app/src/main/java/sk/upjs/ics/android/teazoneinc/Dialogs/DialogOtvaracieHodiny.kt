@@ -12,32 +12,42 @@ import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.DataOpeningHours
 import sk.upjs.ics.android.teazoneinc.R
 
-open class DialogOtvaracieHodiny : DialogFragment() {
+open class DialogOtvaracieHodiny(inflater: LayoutInflater) : DialogFragment() {
 
     private val dbAdapterUser = DbAdapterUser()
 
-    var po = DataOpeningHours()
-    var ut = DataOpeningHours()
-    var st = DataOpeningHours()
-    var št = DataOpeningHours()
-    var pi = DataOpeningHours()
-    var so = DataOpeningHours()
-    var ne = DataOpeningHours()
+
+    val dialogOtvaracieHodinky = inflater.inflate(R.layout.dialog_otvaracie_hodiny, null)
 
     fun onCreateDialog(activity: Activity, inflater: LayoutInflater, openHours:DataOpeningHours): Dialog {
 
         val openingHours = openHours
         val builder = AlertDialog.Builder(activity)
-        val dialogOtvaracieHodinky = inflater.inflate(R.layout.dialog_otvaracie_hodiny, null)
-
         builder.setNegativeButton("Zavrieť", DialogInterface.OnClickListener { dialog, id -> })
-        if( tvDoPo.isNotEmpty()){
-            builder.setView(dialogOtvaracieHodinky)
+        if(openingHours.po.isEmpty()){
+            builder.setMessage("Otváracie hodiny zatiaľ neboli určené.")
         }
         else{
-            builder.setMessage("Otváracie hodiny zatiaľ neboli určené.")
+            tvOdPo.text = openingHours.po.get(key = "OD")
+            tvOdUt.text = openingHours.ut.get(key = "OD")
+            tvOdSt.text = openingHours.st.get(key = "OD")
+            tvOdŠt.text = openingHours.št.get(key = "OD")
+            tvOdPi.text = openingHours.pi.get(key = "OD")
+            tvOdSo.text = openingHours.so.get(key = "OD")
+            tvOdNe.text = openingHours.ne.get(key = "OD")
+
+            tvDoPo.text = openingHours.po.get(key = "DO")
+            tvDoUt.text = openingHours.ut.get(key = "DO")
+            tvDoSt.text = openingHours.st.get(key = "DO")
+            tvDoŠt.text = openingHours.št.get(key = "DO")
+            tvDoPi.text = openingHours.pi.get(key = "DO")
+            tvDoSo.text = openingHours.so.get(key = "DO")
+            tvDoNe.text = openingHours.ne.get(key = "DO")
+
+            builder.setView(dialogOtvaracieHodinky)
         }
 
         return builder.create()
     }
+
 }

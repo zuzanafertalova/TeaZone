@@ -69,7 +69,8 @@ class ProfileFragment : Fragment(), BottomSheetAddPost.BottomSheetListener {
     fun btnOtvaracieHodinyOnClick() {
         btnOtvaracieHodiny.setOnClickListener {
             activity?.let {
-                val dialog = DialogOtvaracieHodiny().onCreateDialog(it,DbAdapterUser.userFirma.openHours)
+                val inflater = layoutInflater
+                val dialog = DialogOtvaracieHodiny(inflater).onCreateDialog(it, inflater, DbAdapterUser.userFirma.openHours)
                 dialog.show()
             }
         }
