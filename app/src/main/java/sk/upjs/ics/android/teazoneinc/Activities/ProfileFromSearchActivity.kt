@@ -16,6 +16,7 @@ import sk.upjs.ics.android.teazoneinc.Adapters.ViewPagerAdapter
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataFirma
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataUser
 import sk.upjs.ics.android.teazoneinc.Dialogs.BottomSheetPostReview
+import sk.upjs.ics.android.teazoneinc.Dialogs.DialogMenu
 import sk.upjs.ics.android.teazoneinc.Dialogs.DialogOtvaracieHodiny
 import sk.upjs.ics.android.teazoneinc.ProfileScreenFragments.*
 import sk.upjs.ics.android.teazoneinc.R
@@ -43,6 +44,7 @@ class ProfileFromSearchActivity : AppCompatActivity(), BottomSheetPostReview.Bot
         setData()
         setOnClickBtnWriteReview()
         btnOtvaracieHodiny2OnClick()
+        buttonMenu2OnClick()
     }
 
     private fun setData() {
@@ -124,6 +126,14 @@ class ProfileFromSearchActivity : AppCompatActivity(), BottomSheetPostReview.Bot
         btnOtvaracieHodiny2.setOnClickListener {
             val inflater = layoutInflater
             val dialog = DialogOtvaracieHodiny(inflater).onCreateDialog(this, inflater,  userFirma.openHours)
+            dialog.show()
+        }
+    }
+
+    fun buttonMenu2OnClick() {
+        btnNapojovylistok.setOnClickListener {
+            val inflater = layoutInflater
+            val dialog = DialogMenu().onCreateDialog(this)
             dialog.show()
         }
     }
