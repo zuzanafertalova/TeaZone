@@ -40,7 +40,7 @@ class ReviewsFragment : Fragment() {
     }
 
     private fun addReview(){
-        
+        setRecyclerData(reviewList)
     }
 
 

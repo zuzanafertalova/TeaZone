@@ -224,7 +224,7 @@
         android:layout_height="40dp"
         android:background="@drawable/button_grey"
         android:fontFamily="@font/source_sans_pro"
-        android:text="Nápojový&#10; lístok"
+        android:text="Menu&#10; lístok"
         android:textColor="@color/colorGreyLogo"
         android:textSize="11sp"
         android:textStyle="bold"
