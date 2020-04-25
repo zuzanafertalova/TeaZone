@@ -19,6 +19,15 @@
         android:textSize="24sp"
         android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/tvWarning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/source_sans_pro"
+        android:gravity="center"
+        android:text="Len formát .pdf !" />
+
     <Button
         android:id="@+id/btnLoadFile"
         android:layout_width="wrap_content"
@@ -38,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="Tu sa zobrazí nahratý súbor." />
+        android:text="Nebol nahratý žiaden súbor." />
 
     <Button
         android:id="@+id/btnUploadFile"

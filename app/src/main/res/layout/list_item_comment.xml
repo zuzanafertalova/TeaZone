@@ -5,26 +5,11 @@
     android:layout_height="wrap_content"
     android:padding="10sp">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profilePicComment"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_weight="1"
-        app:civ_border_color="@color/colorGrey"
-        app:civ_border_width="2dp"
-        android:layout_marginLeft="5sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.4" />
-
     <TextView
         android:id="@+id/tvCommentUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="70sp"
+        android:layout_marginLeft="20sp"
         android:layout_marginRight="10sp"
         android:layout_marginBottom="5sp"
         android:fontFamily="@font/source_sans_pro"
@@ -37,39 +22,39 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintVertical_bias="0.204" />
 
     <TextView
         android:id="@+id/tvCommentDateTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
+        android:layout_marginEnd="10sp"
         android:layout_marginBottom="7dp"
         android:fontFamily="@font/source_sans_pro"
         android:text="TimeAdded"
         android:textColor="#CACACA"
         android:textSize="12sp"
-        android:layout_marginEnd="10sp"
-        android:layout_marginLeft="10sp"
-        app:layout_goneMarginBottom="5sp"
         app:layout_constraintBottom_toTopOf="@+id/tvCommentContent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.193"
+        app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toEndOf="@+id/tvCommentUsername"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_goneMarginBottom="5sp" />
 
     <TextView
         android:id="@+id/tvCommentContent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="70sp"
+        android:layout_marginLeft="20sp"
         android:layout_marginTop="5sp"
         android:layout_marginEnd="10sp"
         android:text="Obsah komentára"
         android:textColor="@color/colorGreyLogo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.251"
+        app:layout_constraintHorizontal_bias="0.055"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCommentUsername"
         app:layout_constraintVertical_bias="0.0" />

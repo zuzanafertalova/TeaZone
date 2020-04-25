@@ -7,7 +7,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.activity_settings.*
 import kotlinx.android.synthetic.main.bottom_sheet_add_post.*
 import kotlinx.android.synthetic.main.fragment_change_profile_pic.*
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.Storage.StorageAdapter
@@ -46,7 +48,8 @@ class ChangeProfilePicFragment : Fragment() {
             }
 
             dbAdapterUser.updateProfilePic(authAdapter.currentUser!!.uid,picID!!)
-
+            fragmentChangeProfilePic.view?.visibility = View.GONE
+            Toast.makeText(context,"Úspešne zmenené.",Toast.LENGTH_SHORT).show()
         }
     }
 

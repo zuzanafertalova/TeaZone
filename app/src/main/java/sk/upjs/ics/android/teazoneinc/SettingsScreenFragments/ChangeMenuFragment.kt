@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.firebase.firestore.EventListener
+import kotlinx.android.synthetic.main.activity_settings.*
 import kotlinx.android.synthetic.main.fragment_change_menu.*
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.Storage.StorageAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
@@ -51,6 +52,7 @@ class ChangeMenuFragment : Fragment() {
 
         if (requestCode==1 && resultCode== Activity.RESULT_OK && data !=null && data.data != null){
             fileUri=data.data!!
+            tvLoadedFile.text = "Súbor bol nahratý."
         }
     }
 
@@ -62,10 +64,11 @@ class ChangeMenuFragment : Fragment() {
             else{
                 storageAdapter.uploadPDFFile(fileUri!!, EventListener{menuName,_->
                     if (menuName==null){
-                        Toast.makeText(context,"Nastala chyba",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context,"Nastala chyba!",Toast.LENGTH_SHORT).show()
                     }
                     else{
-                        Toast.makeText(context,"Úspešne nahrané",Toast.LENGTH_SHORT).show()
+                        fragmentChangeMenu.view?.visibility = View.GONE
+                        Toast.makeText(context,"Úspešne nahraté.",Toast.LENGTH_SHORT).show()
                         dbAdapterUser.updateMenu(menuName!!)
                     }
                 })

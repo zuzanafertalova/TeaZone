@@ -34,46 +34,52 @@
         android:id="@+id/ivProfilePicFromSearch"
         android:layout_width="135dp"
         android:layout_height="130dp"
+        android:layout_marginTop="30sp"
         app:civ_border_color="@color/colorGreenLogo"
         app:civ_border_width="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.135" />
+        app:layout_constraintTop_toBottomOf="@+id/upper_menu2"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btnWriteReview"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:layout_marginTop="55sp"
+        android:layout_marginRight="40sp"
         android:background="@drawable/ic_stars_review_24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/ivProfilePicFromSearch"
-        app:layout_constraintHorizontal_bias="0.455"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.125" />
+        app:layout_constraintTop_toBottomOf="@+id/upper_menu2"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btnFollow"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:layout_marginLeft="40sp"
+        android:layout_marginTop="55sp"
         android:background="@drawable/ic_tea_cup"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/ivProfilePicFromSearch"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.121" />
+        app:layout_constraintTop_toBottomOf="@+id/upper_menu2"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView_sledovat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30sp"
         android:text=" Sledovať "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.592"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/ivProfilePicFromSearch"
         app:layout_constraintTop_toBottomOf="@+id/btnFollow"
         app:layout_constraintVertical_bias="0.0" />
@@ -82,23 +88,29 @@
         android:id="@+id/tvTypPodniku2"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
+        android:layout_marginLeft="30sp"
+        android:layout_marginRight="30sp"
+        android:layout_marginBottom="20sp"
         android:background="@drawable/textview_border_green"
         android:fontFamily="@font/source_sans_pro"
+        android:gravity="center"
         android:text="TYP PODNIKU"
         android:textColor="@color/colorGreyLogo"
         android:textSize="13sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/tvPosts"
         app:layout_constraintEnd_toStartOf="@+id/btnNapojovylistok"
-        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintHorizontal_bias="0.274"
         app:layout_constraintStart_toEndOf="@+id/btnOtvaracieHodiny2"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.95" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/btnNapojovylistok"
         android:layout_width="100dp"
         android:layout_height="40dp"
+        android:layout_marginRight="30sp"
+        android:layout_marginBottom="20sp"
         android:background="@drawable/button_grey"
         android:fontFamily="@font/source_sans_pro"
         android:text="Menu&#10; lístok"
@@ -107,29 +119,35 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/tvFollowing_Followers"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.91"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.95" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPopisPodniku"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/tvAdresaPodniku2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="10sp"
+        android:layout_marginRight="20sp"
         android:fontFamily="@font/source_sans_pro"
         android:text="Adresa podniku"
         android:textColor="@color/colorGreyLogo"
         android:textSize="11sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/tvPopisPodniku"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvEmail" />
+        app:layout_constraintTop_toBottomOf="@id/tvEmail"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btnOtvaracieHodiny2"
         android:layout_width="100dp"
         android:layout_height="40dp"
+        android:layout_marginLeft="30sp"
+        android:layout_marginBottom="20sp"
         android:background="@drawable/button_turquoise"
         android:fontFamily="@font/source_sans_pro"
         android:text="Otváracie&#10; hodiny"
@@ -138,20 +156,23 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/tvReviews"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.95" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPopisPodniku"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/tvEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="10sp"
+        android:layout_marginRight="20sp"
         android:fontFamily="@font/source_sans_pro"
         android:text="Email Podniku"
         android:textColor="@color/colorGrey"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@id/tvAdresaPodniku2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvUsername"
@@ -161,11 +182,12 @@
         android:id="@+id/tvReviews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20sp"
         android:text="Hodnotenie"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/tabsProfile"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.091"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
@@ -201,11 +223,12 @@
         android:id="@+id/tvFollowing_Followers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginRight="20sp"
         android:text="Sledovatelia"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/tabsProfile"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.91"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
@@ -229,7 +252,7 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPagerProfile"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="200sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -241,15 +264,19 @@
         android:id="@+id/tvUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="20sp"
+        android:layout_marginRight="20sp"
         android:fontFamily="@font/source_sans_pro"
         android:text="Meno podniku"
         android:textColor="@color/colorGreenLogo"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/tvEmail"
+        app:layout_constraintBottom_toBottomOf="@+id/viewPagerProfile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivProfilePicFromSearch" />
+        app:layout_constraintTop_toBottomOf="@+id/ivProfilePicFromSearch"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView10"
@@ -266,17 +293,21 @@
     <TextView
         android:id="@+id/tvPopisPodniku"
         android:layout_width="300dp"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="10sp"
+        android:layout_marginRight="20sp"
         android:background="@drawable/textview_border_gray"
         android:fontFamily="@font/source_sans_pro"
-        android:text="Popis Podniku"
+        android:text="Žiaden popis"
         android:textAlignment="center"
         android:textColor="@color/colorGreenLogo"
         app:layout_constraintBottom_toTopOf="@+id/tvTypPodniku2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAdresaPodniku2" />
+        app:layout_constraintTop_toBottomOf="@+id/tvAdresaPodniku2"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

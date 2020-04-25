@@ -21,6 +21,7 @@ import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.Storage.StorageAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterPost
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
+import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser.Companion.userFirma
 import sk.upjs.ics.android.teazoneinc.Adapters.ViewPagerAdapter
 import sk.upjs.ics.android.teazoneinc.Dialogs.BottomSheetAddPost
 import sk.upjs.ics.android.teazoneinc.Dialogs.DialogMenu
@@ -57,6 +58,7 @@ class ProfileFragment : Fragment(), BottomSheetAddPost.BottomSheetListener {
         btnSettingsSetClick()
         btnAddPostClick()
         btnOtvaracieHodinyOnClick()
+        buttonMenuOnClick()
     }
 
 
@@ -79,14 +81,14 @@ class ProfileFragment : Fragment(), BottomSheetAddPost.BottomSheetListener {
         }
     }
 
-//    fun buttonMenuOnClick() {
-//        btnNapojovylistok.setOnClickListener {
-//            val inflater = layoutInflater
-//            val dialog = DialogMenu().onCreateDialog(this)
-//
-//            dialog.show()
-//        }
-//    }
+    fun buttonMenuOnClick() {
+        btnNapojovylistok.setOnClickListener {
+            val dialog =
+                activity?.let { it1 -> DialogMenu().onCreateDialog(it1,userFirma.username,userFirma.menu) }
+            dialog?.show()
+        }
+    }
+
 
     fun btnSettingsSetClick() {
         btnSettings.setOnClickListener {
