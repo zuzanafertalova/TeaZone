@@ -6,6 +6,7 @@ import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.marginLeft
 import androidx.fragment.app.DialogFragment
 import kotlinx.android.synthetic.main.dialog_otvaracie_hodiny.*
 import kotlinx.android.synthetic.main.dialog_otvaracie_hodiny.view.*
@@ -26,7 +27,6 @@ open class DialogOtvaracieHodiny(inflater: LayoutInflater) : DialogFragment() {
             builder.setMessage("Otváracie hodiny zatiaľ neboli určené.")
         }
         else{
-
             dialogView.tvOdPo.text = openingHours.po.get(key = "OD")
             dialogView.tvOdUt.text = openingHours.ut.get(key = "OD")
             dialogView.tvOdSt.text = openingHours.st.get(key = "OD")

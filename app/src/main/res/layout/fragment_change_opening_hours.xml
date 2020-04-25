@@ -129,70 +129,84 @@
                 android:id="@+id/tvOdPo"
                 android:layout_width="match_parent"
                 android:layout_height="40sp"
+                android:layout_gravity="center"
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:ems="10"
                 android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
                 android:textSize="13sp" />
 
             <EditText
                 android:id="@+id/tvOdUt"
                 android:layout_width="match_parent"
                 android:layout_height="40sp"
+                android:layout_gravity="center"
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:ems="10"
                 android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
                 android:textSize="13sp" />
 
             <EditText
                 android:id="@+id/tvOdSt"
                 android:layout_width="match_parent"
                 android:layout_height="40sp"
+                android:layout_gravity="center"
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:ems="10"
                 android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
                 android:textSize="13sp" />
 
             <EditText
                 android:id="@+id/tvOdŠt"
                 android:layout_width="match_parent"
                 android:layout_height="40sp"
+                android:layout_gravity="center"
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:ems="10"
                 android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
                 android:textSize="13sp" />
 
             <EditText
                 android:id="@+id/tvOdPi"
                 android:layout_width="match_parent"
                 android:layout_height="40sp"
+                android:layout_gravity="center"
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:ems="10"
                 android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
                 android:textSize="13sp" />
 
             <EditText
                 android:id="@+id/tvOdSo"
                 android:layout_width="match_parent"
                 android:layout_height="40sp"
+                android:layout_gravity="center"
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:ems="10"
                 android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
                 android:textSize="13sp" />
 
             <EditText
                 android:id="@+id/tvOdNe"
                 android:layout_width="match_parent"
                 android:layout_height="40sp"
+                android:layout_gravity="center"
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:ems="10"
                 android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
                 android:textSize="13sp" />
         </LinearLayout>
 
@@ -205,70 +219,84 @@
                 android:id="@+id/tvDoPo"
                 android:layout_width="match_parent"
                 android:layout_height="40sp"
+                android:layout_gravity="center"
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:ems="10"
                 android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
                 android:textSize="13sp" />
 
             <EditText
                 android:id="@+id/tvDoUt"
                 android:layout_width="match_parent"
                 android:layout_height="40sp"
+                android:layout_gravity="center"
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:ems="10"
                 android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
                 android:textSize="13sp" />
 
             <EditText
                 android:id="@+id/tvDoSt"
                 android:layout_width="match_parent"
                 android:layout_height="40sp"
+                android:layout_gravity="center"
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:ems="10"
                 android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
                 android:textSize="13sp" />
 
             <EditText
                 android:id="@+id/tvDoŠt"
                 android:layout_width="match_parent"
                 android:layout_height="40sp"
+                android:layout_gravity="center"
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:ems="10"
                 android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
                 android:textSize="13sp" />
 
             <EditText
                 android:id="@+id/tvDoPi"
                 android:layout_width="match_parent"
                 android:layout_height="40sp"
+                android:layout_gravity="center"
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:ems="10"
                 android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
                 android:textSize="13sp" />
 
             <EditText
                 android:id="@+id/tvDoSo"
                 android:layout_width="match_parent"
                 android:layout_height="40sp"
+                android:layout_gravity="center"
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:ems="10"
                 android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
                 android:textSize="13sp" />
 
             <EditText
                 android:id="@+id/tvDoNe"
                 android:layout_width="match_parent"
                 android:layout_height="40sp"
+                android:layout_gravity="center"
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:ems="10"
                 android:fontFamily="@font/source_sans_pro"
+                android:gravity="center"
                 android:textSize="13sp" />
         </LinearLayout>
     </LinearLayout>
