@@ -45,11 +45,11 @@ class ReviewsAdapter : RecyclerView.Adapter<ReviewsAdapter.ReviewsFragmentHolder
     }
 
     fun setButtonsToList(itemView: View){
-        starsButtons.add(itemView.btnStar1)
-        starsButtons.add(itemView.btnStar2)
-        starsButtons.add(itemView.btnStar3)
-        starsButtons.add(itemView.btnStar4)
-        starsButtons.add(itemView.btnStar5)
+        starsButtons.add(itemView.btnStarReview1)
+        starsButtons.add(itemView.btnStarReview2)
+        starsButtons.add(itemView.btnStarReview3)
+        starsButtons.add(itemView.btnStarReview4)
+        starsButtons.add(itemView.btnStarReview5)
     }
 
 }

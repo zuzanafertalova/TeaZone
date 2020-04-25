@@ -9,6 +9,5 @@
         android:id="@+id/rvReviews"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:itemCount="3"
         tools:listitem="@layout/list_item_reviews" />
 </FrameLayout>
