@@ -10,7 +10,7 @@ class DbAdapterReview {
 
     private val db = FirebaseFirestore.getInstance()
 
-    fun setPostToDatabase (map : DataReview){
+    fun setReviewToDatabase (map : DataReview){
         db.collection("Reviews").add(map)
     }
 

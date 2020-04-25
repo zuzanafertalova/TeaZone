@@ -22,6 +22,7 @@ class PostReviewFragment : Fragment() {
     private var review = DataReview()
 
     private val authAdapter = AuthAdapter()
+    private val dbAdapterUser=DbAdapterUser()
     private val dbAdapterReview = DbAdapterReview()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -74,7 +75,13 @@ class PostReviewFragment : Fragment() {
         review.content = tvReviewContent.text.toString()
         review.creatorID = authAdapter.currentUser?.uid
         review.recieverID = ProfileFromSearchActivity.docID
-        dbAdapterReview.setPostToDatabase(review)
+        if (dbAdapterUser.getStatusOfLoggedUser().equals("User")){
+            review.creatorUsername=DbAdapterUser.userUser.username
+        }
+        else{
+            review.creatorUsername=DbAdapterUser.userFirma.username
+        }
+        dbAdapterReview.setReviewToDatabase(review)
     }
 
 }
