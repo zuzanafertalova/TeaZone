@@ -89,6 +89,7 @@
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginLeft="30sp"
+        android:layout_marginTop="20sp"
         android:layout_marginRight="30sp"
         android:layout_marginBottom="20sp"
         android:background="@drawable/textview_border_green"
@@ -100,9 +101,9 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/tvPosts"
         app:layout_constraintEnd_toStartOf="@+id/btnNapojovylistok"
-        app:layout_constraintHorizontal_bias="0.274"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toEndOf="@+id/btnOtvaracieHodiny2"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPopisPodniku"
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
@@ -302,7 +303,7 @@
         android:text="Žiaden popis"
         android:textAlignment="center"
         android:textColor="@color/colorGreenLogo"
-        app:layout_constraintBottom_toTopOf="@+id/tvTypPodniku2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"

@@ -180,9 +180,9 @@
         android:text="Žiaden popis"
         android:textAlignment="center"
         android:textColor="@color/colorGreenLogo"
-        app:layout_constraintBottom_toTopOf="@+id/tvTypPodniku"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.522"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvAdresaPodniku"
         app:layout_constraintVertical_bias="0.0" />
@@ -192,6 +192,7 @@
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginLeft="25sp"
+        android:layout_marginTop="20sp"
         android:layout_marginRight="25sp"
         android:layout_marginBottom="20sp"
         android:background="@drawable/textview_border_green"
@@ -204,7 +205,7 @@
         app:layout_constraintEnd_toStartOf="@+id/btnNapojovylistok"
         app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toEndOf="@+id/btnOtvaracieHodiny"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddPost"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
@@ -269,9 +270,8 @@
         android:layout_width="40sp"
         android:layout_height="40sp"
         android:layout_marginTop="10sp"
-        android:layout_marginBottom="20sp"
         android:background="@drawable/ic_add_post"
-        app:layout_constraintBottom_toTopOf="@+id/tvTypPodniku"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
