@@ -14,6 +14,7 @@ class DataFirma{
     var posts = ArrayList<String>()
     var ICO: String?=null
     var description : String? = null
+    var menu :String? = null
     var openHours = DataOpeningHours()
     var followingIDs = ArrayList<String>()
     var followersIDs = ArrayList<String>()

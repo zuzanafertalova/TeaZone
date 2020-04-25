@@ -133,7 +133,7 @@ class ProfileFromSearchActivity : AppCompatActivity(), BottomSheetPostReview.Bot
     fun buttonMenu2OnClick() {
         btnNapojovylistok.setOnClickListener {
             val inflater = layoutInflater
-            val dialog = DialogMenu().onCreateDialog(this)
+            val dialog = DialogMenu().onCreateDialog(this,userFirma.username,userFirma.menu)
             dialog.show()
         }
     }

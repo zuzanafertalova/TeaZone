@@ -253,6 +253,7 @@ class DbAdapterUser {
         document.getString("typPodniku")?.let{ firmaUser.typPodniku=it}
         document.getString("profilePic")?.let { firmaUser.profilePic=it }
         document.getString("description")?.let { firmaUser.description=it }
+        document.getString("menu")?.let { firmaUser.menu = it}
         getOpeningHours(docID, EventListener{openingHours, _->
             if (openingHours==null){ }
             else{

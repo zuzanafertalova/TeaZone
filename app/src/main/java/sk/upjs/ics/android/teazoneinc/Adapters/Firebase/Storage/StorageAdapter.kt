@@ -1,13 +1,14 @@
 package sk.upjs.ics.android.teazoneinc.Adapters.Firebase.Storage
 
+import android.app.DownloadManager
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
+import android.os.Environment
 import android.util.Log
 import android.widget.ImageView
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
@@ -16,9 +17,7 @@ import de.hdodenhof.circleimageview.CircleImageView
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
 import java.io.ByteArrayOutputStream
-import java.io.InputStream
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class StorageAdapter{
@@ -113,6 +112,25 @@ class StorageAdapter{
             ?.addOnFailureListener {
                 eventListener.onEvent(null,null)
             }
+    }
+
+    fun downloadDPFFile(menuName:String,context: Context,firmaUsername:String){
+        menuRef?.child(menuName)?.downloadUrl
+            ?.addOnSuccessListener {
+            downloadFile(context,firmaUsername+"Menu",".pdf", Environment.DIRECTORY_DOWNLOADS,it.toString())
+        }
+    }
+
+    private fun downloadFile(context: Context,fileName:String,fileExtension: String,destinationDirectory:String,url:String){
+
+        val downloadManager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+        val uri = Uri.parse(url)
+        val request = DownloadManager.Request(uri)
+
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+        request.setDestinationInExternalFilesDir(context, destinationDirectory, fileName + fileExtension)
+
+        downloadManager.enqueue(request)
     }
 
     fun deletePostPics(postPics:ArrayList<String>,eventListener: EventListener<Boolean>){

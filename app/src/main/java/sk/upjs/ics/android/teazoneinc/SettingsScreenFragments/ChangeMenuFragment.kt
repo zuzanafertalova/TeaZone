@@ -65,6 +65,7 @@ class ChangeMenuFragment : Fragment() {
                         Toast.makeText(context,"Nastala chyba",Toast.LENGTH_SHORT).show()
                     }
                     else{
+                        Toast.makeText(context,"Úspešne nahrané",Toast.LENGTH_SHORT).show()
                         dbAdapterUser.updateMenu(menuName!!)
                     }
                 })
