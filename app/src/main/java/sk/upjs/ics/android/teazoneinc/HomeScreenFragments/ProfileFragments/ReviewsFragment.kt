@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.EventListener
@@ -24,6 +25,8 @@ import kotlin.collections.ArrayList
 
 class ReviewsFragment : Fragment() {
 
+    private val starsButtons  = ArrayList<Button>()
+
     val dbAdapterReview = DbAdapterReview()
     internal var  adapter: ReviewsAdapter? = null
     private var reviewList = ArrayList<DataReview>()
@@ -37,6 +40,14 @@ class ReviewsFragment : Fragment() {
         setUpRecyclerView()
         setReviewsList()
         addReview()
+    }
+
+    fun setButtonsToList(){
+        starsButtons.add(btnStar1)
+        starsButtons.add(btnStar2)
+        starsButtons.add(btnStar3)
+        starsButtons.add(btnStar4)
+        starsButtons.add(btnStar5)
     }
 
     private fun addReview(){
