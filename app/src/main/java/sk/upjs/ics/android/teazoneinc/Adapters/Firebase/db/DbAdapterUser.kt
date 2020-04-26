@@ -368,7 +368,7 @@ class DbAdapterUser {
         var followingList=ArrayList<String>()
         db.collection("FirmaUsers").document(docID).get()
             .addOnSuccessListener {
-                followingList = it.get("followers") as ArrayList<String>
+                followingList = it.get("followersIDs") as ArrayList<String>
                 eventListener.onEvent(followingList,null)
             }
     }
@@ -377,7 +377,7 @@ class DbAdapterUser {
         var followingList=ArrayList<String>()
         db.collection("Users").document(docID).get()
             .addOnSuccessListener {
-                followingList = it.get("following") as ArrayList<String>
+                followingList = it.get("followingIDs") as ArrayList<String>
                 eventListener.onEvent(followingList,null)
             }
     }
