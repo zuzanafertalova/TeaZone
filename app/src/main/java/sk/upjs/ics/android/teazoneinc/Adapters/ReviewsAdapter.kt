@@ -22,7 +22,7 @@ class ReviewsAdapter : RecyclerView.Adapter<ReviewsAdapter.ReviewsFragmentHolder
     override fun getItemCount(): Int {
         return reviewList.size
     }
-    override fun onBindViewHolder(holder: ReviewsAdapter.ReviewsFragmentHolder, position: Int) {
+    override fun onBindViewHolder(holder: ReviewsFragmentHolder, position: Int) {
         holder.bindData(reviewList[position])
     }
     fun setNewData(reviewList: ArrayList<DataReview>) {

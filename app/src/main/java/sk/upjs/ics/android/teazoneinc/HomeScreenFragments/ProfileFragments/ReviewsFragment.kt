@@ -42,13 +42,7 @@ class ReviewsFragment : Fragment() {
         addReview()
     }
 
-    fun setButtonsToList(){
-        starsButtons.add(btnStar1)
-        starsButtons.add(btnStar2)
-        starsButtons.add(btnStar3)
-        starsButtons.add(btnStar4)
-        starsButtons.add(btnStar5)
-    }
+
 
     private fun addReview(){
         setRecyclerData(reviewList)

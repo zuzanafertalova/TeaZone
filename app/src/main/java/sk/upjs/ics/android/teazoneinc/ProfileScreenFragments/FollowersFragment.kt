@@ -8,7 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.firebase.firestore.EventListener
 import sk.upjs.ics.android.teazoneinc.Activities.ProfileFromSearchActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.fragment_followers.*
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
+import sk.upjs.ics.android.teazoneinc.Adapters.FollowersAdapter
 
 import sk.upjs.ics.android.teazoneinc.R
 
@@ -18,16 +21,28 @@ import sk.upjs.ics.android.teazoneinc.R
 class FollowersFragment : Fragment() {
 
     val dbAdapterUser=DbAdapterUser()
-    private var followersFollowingList=ArrayList<String>()
+    private var followersFollowingList = ArrayList<String>()
+    internal var adapter: FollowersAdapter? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?)
-            : View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_followers, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setUpRecyclerView()
         getFollowersList()
+        addFollower()
+    }
+
+    private fun addFollower(){
+        setRecyclerData(followersFollowingList)
+    }
+
+    private fun setUpRecyclerView(){
+        rvFollowers.layoutManager = LinearLayoutManager(context)
+        adapter = FollowersAdapter()
+        rvFollowers.adapter = adapter
     }
 
     fun getFollowersList(){
@@ -43,6 +58,10 @@ class FollowersFragment : Fragment() {
                 })
             }
         })
+    }
+
+    private fun setRecyclerData(followersFollowingList:ArrayList<String>){
+        adapter?.setNewData(followersFollowingList)
     }
 
 
