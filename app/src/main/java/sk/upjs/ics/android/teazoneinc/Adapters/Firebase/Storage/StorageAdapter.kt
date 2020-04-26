@@ -38,7 +38,8 @@ class StorageAdapter{
     fun getProfilePic(pic : String, imageView: CircleImageView){
         val picRef = profilePicRef?.child(pic)
 
-        picRef?.getBytes(1024*1024)
+        val bytes: Long= 1024*1024*5
+        picRef?.getBytes(bytes)
             ?.addOnSuccessListener {
                 val bitmap = BitmapFactory.decodeByteArray(it,0,it.size)
                 imageView.setImageBitmap(bitmap)

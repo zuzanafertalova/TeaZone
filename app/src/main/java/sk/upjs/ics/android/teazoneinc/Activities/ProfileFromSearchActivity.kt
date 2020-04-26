@@ -89,7 +89,7 @@ class ProfileFromSearchActivity : AppCompatActivity(), BottomSheetPostReview.Bot
         tvEmail.text = userUser.email
         tvFollowing_Followers.text = "Sleduje"
         val titles = ArrayList<String>()
-        titles.add("0")
+        titles.add(userUser.reviews.toString())
         titles.add(userUser.following.toString())
         setUserViewPager(titles)
     }
@@ -106,7 +106,7 @@ class ProfileFromSearchActivity : AppCompatActivity(), BottomSheetPostReview.Bot
         }
 
         val titles = ArrayList<String>()
-        titles.add("0")
+        titles.add(userFirma.reviews.toString())
         titles.add("0")
         titles.add(userFirma.followers.toString())
         setFirmaViewPager(titles)

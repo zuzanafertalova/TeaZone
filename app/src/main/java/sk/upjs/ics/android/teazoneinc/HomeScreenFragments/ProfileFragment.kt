@@ -126,8 +126,8 @@ class ProfileFragment : Fragment(), BottomSheetAddPost.BottomSheetListener {
             }
             val titles = ArrayList<String>()
             titles.add(DbAdapterUser.userFirma.reviews.toString())
-            titles.add(DbAdapterUser.userFirma.followers.toString())
             titles.add(DbAdapterUser.userFirma.posts.size.toString())
+            titles.add(DbAdapterUser.userFirma.followers.toString())
             setFirmaViewPager(titles)
         }
     }
@@ -149,8 +149,8 @@ class ProfileFragment : Fragment(), BottomSheetAddPost.BottomSheetListener {
         fragmentManager?.let {
             viewPagerAdapterProfileFragment = ViewPagerAdapter(it)
             viewPagerAdapterProfileFragment.addManagerProfile(ReviewsFragment(), titles[0])
-            viewPagerAdapterProfileFragment.addManagerProfile(FollowersProfileFragment(), titles[1])
-            viewPagerAdapterProfileFragment.addManagerProfile(PostsFragment(), titles[2])
+            viewPagerAdapterProfileFragment.addManagerProfile(PostsFragment(), titles[1])
+            viewPagerAdapterProfileFragment.addManagerProfile(FollowersProfileFragment(), titles[2])
             viewPagerProfileFragment.adapter = viewPagerAdapterProfileFragment
             tabsProfileFragment.setupWithViewPager(viewPagerProfileFragment)
         }

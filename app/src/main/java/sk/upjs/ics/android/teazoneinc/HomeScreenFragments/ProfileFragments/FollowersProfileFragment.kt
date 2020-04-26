@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.firestore.EventListener
 import kotlinx.android.synthetic.main.fragment_followers.*
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
 import sk.upjs.ics.android.teazoneinc.Adapters.FollowersAdapter
@@ -27,13 +28,13 @@ class FollowersProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpRecyclerView()
-//        getFollowersList(EventListener{ list, _->
-//            followersFollowingIDList=list!!
-//            dbAdapterUser.getFollowersFollowingUsername(list!!, EventListener{usernameList,_->
-//                followersFollowingList=usernameList!!
-//                addFollower()
-//            })
-//        })
+        getFollowersList(EventListener{ list, _->
+            followersFollowingIDList=list!!
+            dbAdapterUser.getFollowersFollowingUsername(list!!, EventListener{usernameList,_->
+                followersFollowingList=usernameList!!
+                addFollower()
+            })
+        })
 
     }
 
@@ -47,20 +48,18 @@ class FollowersProfileFragment : Fragment() {
         rvFollowers.adapter = adapter
     }
 
-//    fun getFollowersList(eventListener: EventListener<ArrayList<String>>){
-//        dbAdapterUser.getStatus(docID, EventListener{ status, _->
-//            if (status.equals("User")){
-//                dbAdapterUser.getFollowingList(docID, EventListener{ followingList, _->
-//                    eventListener.onEvent(followingList,null)
-//                })
-//            }
-//            else{
-//                dbAdapterUser.getFollowersList(docID, EventListener{ followersList, _->
-//                    eventListener.onEvent(followersList,null)
-//                })
-//            }
-//        })
-//    }
+    fun getFollowersList(eventListener: EventListener<ArrayList<String>>){
+            if (dbAdapterUser.getStatusOfLoggedUser().equals("User")){
+                dbAdapterUser.getFollowingList(DbAdapterUser.userUser.docID!!, EventListener{ followingList, _->
+                    eventListener.onEvent(followingList,null)
+                })
+            }
+            else{
+                dbAdapterUser.getFollowersList(DbAdapterUser.userFirma.docID!!, EventListener{ followersList, _->
+                    eventListener.onEvent(followersList,null)
+                })
+            }
+    }
 
     private fun setRecyclerData(followersFollowingList:ArrayList<String>){
         adapter?.setNewData(followersFollowingList)
