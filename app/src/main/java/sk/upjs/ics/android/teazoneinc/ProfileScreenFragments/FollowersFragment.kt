@@ -21,6 +21,7 @@ import sk.upjs.ics.android.teazoneinc.R
 class FollowersFragment : Fragment() {
 
     val dbAdapterUser=DbAdapterUser()
+    private var followersFollowingIDList = ArrayList<String>()
     private var followersFollowingList = ArrayList<String>()
     internal var adapter: FollowersAdapter? = null
 
@@ -31,8 +32,14 @@ class FollowersFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpRecyclerView()
-        getFollowersList()
-        addFollower()
+        getFollowersList(EventListener{list,_->
+            followersFollowingIDList=list!!
+            dbAdapterUser.getFollowersFollowingUsername(list!!, EventListener{usernameList,_->
+                followersFollowingList=usernameList!!
+                addFollower()
+            })
+        })
+
     }
 
     private fun addFollower(){
@@ -45,16 +52,16 @@ class FollowersFragment : Fragment() {
         rvFollowers.adapter = adapter
     }
 
-    fun getFollowersList(){
+    fun getFollowersList(eventListener: EventListener<ArrayList<String>>){
         dbAdapterUser.getStatus(ProfileFromSearchActivity.docID, EventListener{status,_->
             if (status.equals("User")){
                 dbAdapterUser.getFollowingList(ProfileFromSearchActivity.docID, EventListener{followingList,_->
-                    followersFollowingList=followingList!!
+                    eventListener.onEvent(followingList,null)
                 })
             }
             else{
                 dbAdapterUser.getFollowersList(ProfileFromSearchActivity.docID, EventListener{followersList,_->
-                    followersFollowingList=followersList!!
+                    eventListener.onEvent(followersList,null)
                 })
             }
         })
