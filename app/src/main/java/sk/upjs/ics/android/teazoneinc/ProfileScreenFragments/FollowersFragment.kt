@@ -10,6 +10,7 @@ import com.google.firebase.firestore.EventListener
 import sk.upjs.ics.android.teazoneinc.Activities.ProfileFromSearchActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_followers.*
+import sk.upjs.ics.android.teazoneinc.Activities.ProfileFromSearchActivity.Companion.docID
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
 import sk.upjs.ics.android.teazoneinc.Adapters.FollowersAdapter
 
@@ -53,14 +54,14 @@ class FollowersFragment : Fragment() {
     }
 
     fun getFollowersList(eventListener: EventListener<ArrayList<String>>){
-        dbAdapterUser.getStatus(ProfileFromSearchActivity.docID, EventListener{status,_->
+        dbAdapterUser.getStatus(docID, EventListener{ status, _->
             if (status.equals("User")){
-                dbAdapterUser.getFollowingList(ProfileFromSearchActivity.docID, EventListener{followingList,_->
+                dbAdapterUser.getFollowingList(docID, EventListener{ followingList, _->
                     eventListener.onEvent(followingList,null)
                 })
             }
             else{
-                dbAdapterUser.getFollowersList(ProfileFromSearchActivity.docID, EventListener{followersList,_->
+                dbAdapterUser.getFollowersList(docID, EventListener{ followersList, _->
                     eventListener.onEvent(followersList,null)
                 })
             }

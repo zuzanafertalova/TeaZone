@@ -10,8 +10,6 @@ import sk.upjs.ics.android.teazoneinc.R
 
 class FollowersAdapter : RecyclerView.Adapter<FollowersAdapter.FollowersFragmentHolder>() {
 
-
-
     var followersFollowingList = ArrayList<String>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FollowersFragmentHolder {
@@ -27,16 +25,15 @@ class FollowersAdapter : RecyclerView.Adapter<FollowersAdapter.FollowersFragment
         holder.bindData(followersFollowingList[position])
     }
 
-    fun setNewData(followersList : ArrayList<>){
-        this.followersFollowingListList = followersFollowingListList
+    fun setNewData(followersList : ArrayList<String>){
+        this.followersFollowingList = followersList
         notifyDataSetChanged()
     }
 
     class FollowersFragmentHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         var dbAdapterUser = DbAdapterUser()
-        fun  bindData(){
-
-            itemView.tvMenoUseraFollowers.text =
+        fun  bindData(s: String) {
+            itemView.tvMenoUseraFollowers.text = s
         }
     }
 
