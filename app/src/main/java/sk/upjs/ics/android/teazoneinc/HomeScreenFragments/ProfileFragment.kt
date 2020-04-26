@@ -7,8 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.activity_profile_from_search.*
-import kotlinx.android.synthetic.main.activity_settings.*
 import kotlinx.android.synthetic.main.fragment_fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_fragment_profile.btnNapojovylistok
 import kotlinx.android.synthetic.main.fragment_fragment_profile.tvEmail
@@ -25,12 +23,10 @@ import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser.Compani
 import sk.upjs.ics.android.teazoneinc.Adapters.ViewPagerAdapter
 import sk.upjs.ics.android.teazoneinc.Dialogs.BottomSheetAddPost
 import sk.upjs.ics.android.teazoneinc.Dialogs.DialogMenu
-import sk.upjs.ics.android.teazoneinc.Dialogs.DialogOdstranitUcet
 import sk.upjs.ics.android.teazoneinc.Dialogs.DialogOtvaracieHodiny
 import sk.upjs.ics.android.teazoneinc.HomeScreenFragments.ProfileFragments.FollowersProfileFragment
 import sk.upjs.ics.android.teazoneinc.HomeScreenFragments.ProfileFragments.ReviewsFragment
-import sk.upjs.ics.android.teazoneinc.ProfileScreenFragments.FollowersFragment
-import sk.upjs.ics.android.teazoneinc.ProfileScreenFragments.PostsFragment
+import sk.upjs.ics.android.teazoneinc.HomeScreenFragments.ProfileFragments.PostsFragment
 import sk.upjs.ics.android.teazoneinc.R
 
 

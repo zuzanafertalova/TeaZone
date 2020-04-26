@@ -1,6 +1,5 @@
 package sk.upjs.ics.android.teazoneinc.Dialogs
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,18 +8,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.firebase.firestore.EventListener
 import kotlinx.android.synthetic.main.bottom_sheet_comment.*
-import kotlinx.android.synthetic.main.fragment_fragment_search.*
-import kotlinx.android.synthetic.main.list_item_comment.*
-import sk.upjs.ics.android.teazoneinc.Activities.ProfileFromSearchActivity
 import sk.upjs.ics.android.teazoneinc.Adapters.CommentAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterPost
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
 import sk.upjs.ics.android.teazoneinc.Adapters.PostViewHolder
-import sk.upjs.ics.android.teazoneinc.Adapters.SearchResultAdapter
+import sk.upjs.ics.android.teazoneinc.Adapters.PostsAdapter
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Post.DataComment
 import sk.upjs.ics.android.teazoneinc.R
 
-class BottomSheetComments(private var mBottomSheetListener: PostViewHolder, postID: String) : BottomSheetDialogFragment() {
+class BottomSheetCommentsPosts(private var mBottomSheetListener: PostsAdapter.PostsFragmentHolder, postID: String) : BottomSheetDialogFragment() {
 
     internal var  adapter: CommentAdapter? = null
     private var dbAdapterPost = DbAdapterPost()
@@ -30,7 +26,9 @@ class BottomSheetComments(private var mBottomSheetListener: PostViewHolder, post
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        val v =  inflater.inflate(R.layout.bottom_sheet_comment, container, false)
+        val v =  inflater.inflate(R.layout.bottom_sheet_comments_posts, container, false)
+
+
 
         return v
     }
@@ -46,7 +44,7 @@ class BottomSheetComments(private var mBottomSheetListener: PostViewHolder, post
         btnAddComment.setOnClickListener{
             if(tiComment.text.isNotEmpty()){
                 if(dbAdapterUser.getStatusOfLoggedUser().equals("User")){
-                    dbAdapterPost.createComment(postID, DbAdapterUser.userUser.docID, DbAdapterUser.userUser.username, tiComment.text.toString(), EventListener{comment, _ ->
+                    dbAdapterPost.createComment(postID, DbAdapterUser.userUser.docID, DbAdapterUser.userUser.username, tiComment.text.toString(), EventListener{ comment, _ ->
                         postList.add(comment!!)
                         setRecyclerData(postList)
                     })

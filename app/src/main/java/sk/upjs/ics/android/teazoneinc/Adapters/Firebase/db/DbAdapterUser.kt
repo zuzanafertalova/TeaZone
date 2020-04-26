@@ -533,20 +533,6 @@ class DbAdapterUser {
                 }
             }
         })
-//        db.collection("FirmaUsers").document(user.uid).get()
-//            .addOnSuccessListener {
-//                if (!it.getString("profilePic")!!.equals("deafualt_firma.png")){
-//                    storageAdapter.deleteProfilePic(it.getString("profilePic")!!)
-//                }
-//                db.collection("FirmaUsers").document(user.uid).delete()
-//                    .addOnSuccessListener {
-//                        Log.w("odarilo","PODAROLO SAAAA")
-//                    }
-//                    .addOnFailureListener {
-//                        Log.w("tu jest",it)
-//                    }
-//            }
-//        authAdapter.deleteUser()
     }
 
     private fun getProfilePicFirma(user: FirebaseUser,eventListener: EventListener<String>){

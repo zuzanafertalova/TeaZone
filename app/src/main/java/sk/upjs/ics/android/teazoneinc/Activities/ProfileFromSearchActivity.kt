@@ -165,7 +165,7 @@ class ProfileFromSearchActivity : AppCompatActivity(), BottomSheetPostReview.Bot
     private fun setFirmaViewPager(titles: ArrayList<String>) {
         val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
         viewPagerAdapter.addManagerProfile(FirmaReviewsFragment(), titles[0])
-        viewPagerAdapter.addManagerProfile(PostsFragment(), titles[1])
+        viewPagerAdapter.addManagerProfile(PostsFromSearchFragment(), titles[1])
         viewPagerAdapter.addManagerProfile(FollowersFragment(), titles[2])
         viewPagerProfile.adapter = viewPagerAdapter
         tabsProfile.setupWithViewPager(viewPagerProfile)

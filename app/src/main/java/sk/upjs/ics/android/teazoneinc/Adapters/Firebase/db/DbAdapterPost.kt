@@ -112,18 +112,16 @@ class DbAdapterPost {
         db.collection("Posts").whereEqualTo("creatorID",creatorID).get()
             .addOnSuccessListener { documents ->
                 for (document in documents){
-                    postList.add(setDocumentToDataClass(document))
+                    setDocumentToDataClass(document)?.let {
+                        postList.add(it)
+                    }
                     eventListener.onEvent(postList,null)
                 }
             }
     }
 
-    private fun setDocumentToDataClass(document : DocumentSnapshot):DataPost{
-        var post = DataPost()
-        document.getString("content")?.let { post.content = it }
-        document.getString("creatorID")?.let { post.creatorID = it }
-        document.getLong("likesCount")?.let { post.likesCount = it.toInt() }
-        document.getLong("commentsCount")?.let { post.commentsCount = it.toInt() }
+    private fun setDocumentToDataClass(document : DocumentSnapshot):DataPost?{
+        var post = document.toObject(DataPost::class.java)
 
         return post
     }
