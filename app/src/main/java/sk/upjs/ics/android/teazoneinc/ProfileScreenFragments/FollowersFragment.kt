@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.firebase.firestore.EventListener
+import sk.upjs.ics.android.teazoneinc.Activities.ProfileFromSearchActivity
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
 
 import sk.upjs.ics.android.teazoneinc.R
@@ -16,6 +18,7 @@ import sk.upjs.ics.android.teazoneinc.R
 class FollowersFragment : Fragment() {
 
     val dbAdapterUser=DbAdapterUser()
+    private var followersFollowingList=ArrayList<String>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?)
             : View? {
@@ -28,8 +31,18 @@ class FollowersFragment : Fragment() {
     }
 
     fun getFollowersList(){
-
-        dbAdapterUser
+        dbAdapterUser.getStatus(ProfileFromSearchActivity.docID, EventListener{status,_->
+            if (status.equals("User")){
+                dbAdapterUser.getFollowingList(ProfileFromSearchActivity.docID, EventListener{followingList,_->
+                    followersFollowingList=followingList!!
+                })
+            }
+            else{
+                dbAdapterUser.getFollowersList(ProfileFromSearchActivity.docID, EventListener{followersList,_->
+                    followersFollowingList=followersList!!
+                })
+            }
+        })
     }
 
 

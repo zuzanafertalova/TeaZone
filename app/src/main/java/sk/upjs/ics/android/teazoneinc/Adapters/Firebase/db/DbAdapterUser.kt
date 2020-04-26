@@ -29,8 +29,19 @@ class DbAdapterUser {
         else return "Firma"
     }
 
-    fun getStatus(userID : String){
-
+    fun getStatus(userID : String,eventListener: EventListener<String>){
+        db.collection("Users").document(userID).get()
+            .addOnSuccessListener {
+                if (it.exists()){
+                    eventListener.onEvent("User",null)
+                }
+            }
+        db.collection("FirmaUsers").document(userID).get()
+            .addOnSuccessListener {
+                if (it.exists()){
+                    eventListener.onEvent("Firma",null)
+                }
+            }
     }
 
 
@@ -366,9 +377,41 @@ class DbAdapterUser {
         var followingList=ArrayList<String>()
         db.collection("Users").document(docID).get()
             .addOnSuccessListener {
-                followingList = it.get("followers") as ArrayList<String>
+                followingList = it.get("following") as ArrayList<String>
                 eventListener.onEvent(followingList,null)
             }
+    }
+
+    fun getFollowersFollowingUsername(docIDList:ArrayList<String>,eventListener: EventListener<ArrayList<String>>){
+        var usernameList = ArrayList<String>()
+        var kolkoBolo = 0
+        for (docID in docIDList){
+            val kolkoJe = docIDList.size
+            db.collection("Users").document(docID).get()
+                .addOnSuccessListener{
+                    if (it.exists()){
+                        usernameList.add(it.getString("username")!!)
+                        kolkoBolo++
+                        if (kolkoBolo==kolkoJe){
+                            eventListener.onEvent(usernameList,null)
+                        }
+                    }
+                }
+                .addOnFailureListener {
+
+                }
+            db.collection("FirmaUsers").document(docID).get()
+                .addOnSuccessListener {
+                    if(it.exists()){
+                        usernameList.add(it.getString("username")!!)
+                        kolkoBolo++
+                        if (kolkoBolo==kolkoJe){
+                            eventListener.onEvent(usernameList,null)
+                        }
+                    }
+                }
+        }
+
     }
 
     fun getOpeningHours(docID:String,eventListener: EventListener<DataOpeningHours>){
