@@ -2,11 +2,9 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_content"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".HomeScreenFragments.ProfileFragment">
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -164,7 +162,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btnAddPost"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.877" />
 
             <TextView
                 android:id="@+id/tvTypPodniku"
@@ -182,10 +180,10 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/constraint_layout"
                 app:layout_constraintEnd_toStartOf="@+id/btnNapojovylistok"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.313"
                 app:layout_constraintStart_toEndOf="@+id/btnOtvaracieHodiny"
                 app:layout_constraintTop_toBottomOf="@+id/btnAddPost"
-                app:layout_constraintVertical_bias="0.062" />
+                app:layout_constraintVertical_bias="0.885" />
 
             <Button
                 android:id="@+id/btnNapojovylistok"
@@ -205,7 +203,7 @@
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btnAddPost"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.877" />
 
             <TextView
                 android:id="@+id/tvReviewsProfileFragment"
@@ -258,19 +256,23 @@
             android:layout_width="match_parent"
             android:layout_height="?android:actionBarSize"
             app:tabGravity="fill"
-            app:tabMode="fixed"
-            app:layout_scrollFlags="enterAlways"
-            >
+            app:tabMode="fixed">
+
         </com.google.android.material.tabs.TabLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPagerProfileFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        >
-    </androidx.viewpager.widget.ViewPager>
+<!--    <androidx.viewpager.widget.ViewPager-->
+<!--        android:id="@+id/viewPagerProfileFragment"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="150sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/ciara2"-->
+<!--        app:layout_constraintVertical_bias="1.0">-->
+
+<!--    </androidx.viewpager.widget.ViewPager>-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
