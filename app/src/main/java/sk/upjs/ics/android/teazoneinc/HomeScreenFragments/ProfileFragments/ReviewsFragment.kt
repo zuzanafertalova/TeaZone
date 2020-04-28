@@ -39,7 +39,7 @@ class ReviewsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setUpRecyclerView()
         setReviewsList()
-        addReview()
+
     }
 
 
@@ -59,12 +59,18 @@ class ReviewsFragment : Fragment() {
     fun setReviewsList(){
         DbAdapterUser.userUser.docID?.let {docID ->
             dbAdapterReview.getReviewsUserList(docID, EventListener{ list, _ ->
-                list?.let { reviewList = it }
+                list?.let {
+                    reviewList = it
+                    addReview()
+                }
             })
         }
         DbAdapterUser.userFirma.docID?.let {docID ->
             dbAdapterReview.getReviewsFirmaList(docID, EventListener{ list, _ ->
-                list?.let { reviewList = it }
+                list?.let {
+                    reviewList = it
+                    addReview()
+                }
             })
         }
     }

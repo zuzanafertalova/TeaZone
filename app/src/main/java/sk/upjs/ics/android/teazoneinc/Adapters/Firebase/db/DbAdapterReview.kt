@@ -41,6 +41,7 @@ class DbAdapterReview {
         review.creatorID = document.getString("creatorID")
         review.recieverID = document.getString("recieverID")
         review.content = document.getString("content")
+        review.creatorUsername=document.getString("creatorUsername")
         document.getLong("rating")?.let { review.rating =it.toInt() }
 
         return review

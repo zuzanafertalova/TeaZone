@@ -165,27 +165,20 @@ class DbAdapterUser {
                     setUserUserToLocalUser(document,user.uid)
                     dbInterface.onSuccess()
                 }
-                else{
-                    dbInterface.onFailure()
-                }
-                }
-                .addOnFailureListener{
-                     dbInterface.onFailure()
-                    }
+//                else{
+//                    dbInterface.onFailure()
+//                }
+            }
 
-
-                db.collection("FirmaUsers").document(user.uid).get()
+        db.collection("FirmaUsers").document(user.uid).get()
                     .addOnSuccessListener { document ->
                         if (document.exists()) {
                             setUserFirmaToLocalUser(document,user.uid)
                             dbInterface.onSuccess()
                         }
-                        else{
-                            dbInterface.onFailure()
-                        }
-                    }
-                    .addOnFailureListener{
-                        dbInterface.onFailure()
+//                        else{
+//                            dbInterface.onFailure()
+//                        }
                     }
     }
 

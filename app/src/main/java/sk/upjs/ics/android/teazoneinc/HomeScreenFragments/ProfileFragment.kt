@@ -141,6 +141,7 @@ class ProfileFragment : Fragment(), BottomSheetAddPost.BottomSheetListener {
     }
 
     fun setFirmaViewPager(titles: ArrayList<String>) {
+
         val viewPagerAdapterProfileFragment: ViewPagerAdapter
         fragmentManager?.let {
             viewPagerAdapterProfileFragment = ViewPagerAdapter(it)
