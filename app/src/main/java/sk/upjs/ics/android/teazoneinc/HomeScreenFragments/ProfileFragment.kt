@@ -148,6 +148,7 @@ class ProfileFragment : Fragment(), BottomSheetAddPost.BottomSheetListener {
             viewPagerAdapterProfileFragment.addManagerProfile(PostsFragment(), titles[1])
             viewPagerAdapterProfileFragment.addManagerProfile(FollowersProfileFragment(), titles[2])
             viewPagerProfileFragment.adapter = viewPagerAdapterProfileFragment
+            viewPagerProfileFragment.currentItem=0
             tabsProfileFragment.setupWithViewPager(viewPagerProfileFragment)
         }
     }
