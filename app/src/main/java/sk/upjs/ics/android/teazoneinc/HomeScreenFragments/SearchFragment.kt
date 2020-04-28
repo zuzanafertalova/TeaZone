@@ -128,8 +128,15 @@ class SearchFragment : Fragment(), BottomSheetFilters.BottomSheetListener {
             .setHitsPerPage(50).setFilters(filterString)
         index.searchAsync(query) { jsonObject, e ->
             try {
-                val hits = jsonObject!!.getJSONArray("hits")
-                setValuesToList(hits)
+                jsonObject.let {
+                    it?.let {
+                        val hits = it.getJSONArray("hits")
+                        setValuesToList(hits)
+                    }
+
+                }
+//                 = jsonObject.getJSONArray("hits")
+
 
             } catch (ex: JSONException) {
                 ex.printStackTrace()
