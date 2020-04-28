@@ -3,18 +3,19 @@ package sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication
 import android.app.Activity
 import android.util.Log
 import android.widget.Toast
+import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.EventListener
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataFirma
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataUser
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
+import java.lang.Exception
 
 
 class AuthAdapter {
 
     private val auth : FirebaseAuth = FirebaseAuth.getInstance()
-    private val dbAdapterUser=DbAdapterUser()
     val currentUser = auth.currentUser
 
 
@@ -64,10 +65,39 @@ class AuthAdapter {
             }
     }
 
+    fun reauthenticate(currPassword: String, eventListener: EventListener<Boolean>){
+        val credential = EmailAuthProvider
+            .getCredential(currentUser?.email!!, currPassword)
+
+        currentUser?.reauthenticate(credential)
+            ?.addOnSuccessListener {
+                eventListener.onEvent(true, null)
+            }
+            .addOnFailureListener { error: Exception ->
+                eventListener.onEvent(false,null)
+            }
+    }
+
+    fun changePassword(newPassword : String, eventListener: EventListener<Boolean>){
+        currentUser?.updatePassword(newPassword)
+            ?.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    eventListener.onEvent(true, null)
+                }
+            }
+    }
+
     fun logOut(){
         auth.signOut()
         DbAdapterUser.userFirma= DataFirma()
         DbAdapterUser.userUser= DataUser()
+    }
+
+    fun deleteUser(eventListener: EventListener<Boolean>){
+                auth.currentUser?.delete()
+                    ?.addOnSuccessListener {
+                        eventListener.onEvent(true,null)
+                    }
     }
 
 }

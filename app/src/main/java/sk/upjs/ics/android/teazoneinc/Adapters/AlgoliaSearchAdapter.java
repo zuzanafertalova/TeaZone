@@ -1,7 +1,6 @@
 package sk.upjs.ics.android.teazoneinc.Adapters;
 
-import android.content.Context;
-import android.widget.ArrayAdapter;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,28 +10,24 @@ import com.algolia.search.saas.Client;
 import com.algolia.search.saas.CompletionHandler;
 import com.algolia.search.saas.Index;
 import com.algolia.search.saas.Query;
+import com.algolia.search.saas.RequestOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.gson.JsonArray;
-import com.google.protobuf.Any;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
-import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapter;
-import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser;
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataFirma;
 import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Users.DataUser;
-import sk.upjs.ics.android.teazoneinc.R;
 
 public class AlgoliaSearchAdapter {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -83,6 +78,7 @@ public class AlgoliaSearchAdapter {
                     .put("objectID",map.getDocID())
                     .put("email", map.getEmail())
                     .put("username",map.getUsername())
+                    .put("typPodniku", map.getTypPodniku())
                     .put("ico", map.getICO()), null);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -114,6 +110,20 @@ public class AlgoliaSearchAdapter {
             String username = jsonObject.getString("username");
             list.add(username);
         }
+    }
+
+    public void updateUsername(String username, String objectID) throws JSONException, AlgoliaException {
+        index.partialUpdateObjectAsync(new JSONObject().put("username",username), objectID,null);
+    }
+
+    public void deleteObject(String objectID) {
+//        try {
+//            RequestOptions requestOptions = new RequestOptions();
+//            index.deleteObject(objectID,requestOptions);
+//        }
+//        catch (AlgoliaException e) {
+//            e.printStackTrace();
+//        }
     }
 
 

@@ -34,19 +34,15 @@ class HomeScreenFragment : Fragment() {
     val dbAdapterUser = DbAdapterUser()
     val dbAdapterPost = DbAdapterPost()
 
-
     private lateinit var mAdapter: FirestorePagingAdapter<DataPost, PostViewHolder>
     private val mFirestore = FirebaseFirestore.getInstance()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_home_screen, container, false)
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
 //        if (dbAdapterUser.getStatusOfLoggedUser().equals("User")) {
 //            tvDajTu.text=DbAdapterUser.userUser.username
@@ -54,23 +50,19 @@ class HomeScreenFragment : Fragment() {
 //        else{ tvDajTu.text=DbAdapterUser.userFirma.username }
 
         setScreen()
-
     }
 
+    private fun setScreen() {
+        if (dbAdapterUser.getStatusOfLoggedUser().equals("User")) {
+            if (!DbAdapterUser.userUser.followingIDs.isEmpty()) {
+                tvNoPosts.visibility = View.GONE
 
-
-
-    private fun setScreen(){
-        if (dbAdapterUser.getStatusOfLoggedUser().equals("User")){
-            if (!DbAdapterUser.userUser.followingIDs.isEmpty()){
-                tvNoPosts.visibility=View.GONE
                 // Init RecyclerView
                 recyclerView.setHasFixedSize(true)
                 recyclerView.layoutManager = LinearLayoutManager(context)
-                val list:MutableList<String> = DbAdapterUser.userUser.followingIDs
+                val list: MutableList<String> = DbAdapterUser.userUser.followingIDs
 
                 setupAdapter(list)
-
 
                 // Refresh Action on Swipe Refresh Layout
                 swipeRefreshLayout.setOnRefreshListener {
@@ -78,16 +70,15 @@ class HomeScreenFragment : Fragment() {
                 }
             }
         }
-        else{
-            if (!DbAdapterUser.userFirma.followingIDs.isEmpty()){
-                tvNoPosts.visibility=View.GONE
+        else {
+            if (!DbAdapterUser.userFirma.followingIDs.isEmpty()) {
+                tvNoPosts.visibility = View.GONE
                 // Init RecyclerView
                 recyclerView.setHasFixedSize(true)
                 recyclerView.layoutManager = LinearLayoutManager(context)
-                val list:MutableList<String> = DbAdapterUser.userFirma.followingIDs
+                val list: MutableList<String> = DbAdapterUser.userFirma.followingIDs
 
                 setupAdapter(list)
-
 
                 // Refresh Action on Swipe Refresh Layout
                 swipeRefreshLayout.setOnRefreshListener {
@@ -97,9 +88,9 @@ class HomeScreenFragment : Fragment() {
         }
     }
 
-    private fun setupAdapter(list : MutableList<String>) {
+    private fun setupAdapter(list: MutableList<String>) {
 
-        val mPostsCollection= mFirestore.collection("Posts").whereIn("creatorID",list)
+        val mPostsCollection = mFirestore.collection("Posts").whereIn("creatorID", list)
         val mQuery = mPostsCollection.orderBy("timeStamp", Query.Direction.DESCENDING)
 
         // Init Paging Configuration
@@ -118,7 +109,7 @@ class HomeScreenFragment : Fragment() {
         // Instantiate Paging Adapter
         mAdapter = object : FirestorePagingAdapter<DataPost, PostViewHolder>(options) {
             override fun onBindViewHolder(p0: PostViewHolder, p1: Int, p2: DataPost) {
-                p0.bind(p2)
+                p0.bind(p2, context, fragmentManager!!)
             }
 
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
@@ -166,7 +157,4 @@ class HomeScreenFragment : Fragment() {
         recyclerView.adapter = mAdapter
 
     }
-
-
-
 }

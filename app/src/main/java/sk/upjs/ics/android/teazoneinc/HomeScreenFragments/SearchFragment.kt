@@ -5,27 +5,33 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnFocusChangeListener
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.algolia.search.saas.Client
 import com.algolia.search.saas.Query
 import kotlinx.android.synthetic.main.fragment_fragment_search.*
 import org.json.JSONArray
 import org.json.JSONException
+import org.json.JSONObject
 import sk.upjs.ics.android.teazoneinc.Activities.ProfileFromSearchActivity
 import sk.upjs.ics.android.teazoneinc.Adapters.SearchResultAdapter
-
+import sk.upjs.ics.android.teazoneinc.Dialogs.BottomSheetFilters
 import sk.upjs.ics.android.teazoneinc.R
-import java.util.ArrayList
+import java.util.*
+import kotlin.collections.ArrayList
 
-class SearchFragment : Fragment() {
+
+class SearchFragment : Fragment(), BottomSheetFilters.BottomSheetListener {
 
     internal var client = Client("085AYVSODT", "22c915636c1f40328cbb89a1da7a531a")
     internal var index = client.getIndex("FirmaUsers_Users")
     internal var  adapter: SearchResultAdapter? = null
+    var filterListHere = ArrayList<String>()
+    var filterString = ""
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -36,8 +42,10 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setOnClickSearch()
         setEditText()
         setUpRecyclerView()
+        btnFiltreOnClick()
 
     }
 
@@ -45,6 +53,7 @@ class SearchFragment : Fragment() {
         searchingRecyclerView.layoutManager = LinearLayoutManager(context)
         adapter = SearchResultAdapter(object : SearchResultAdapter.OnResultsClick{
             override fun setOnProfileClickListener(objectID: String?) {
+                editText_search.clearFocus()
                 val intent = Intent(context, ProfileFromSearchActivity::class.java)
                 intent.putExtra("objectID",objectID)
                 startActivity(intent)
@@ -70,11 +79,53 @@ class SearchFragment : Fragment() {
         })
     }
 
+    private fun setOnClickSearch(){
+        editText_search.setOnFocusChangeListener(OnFocusChangeListener { _ , hasFocus ->
+            if(hasFocus){
+                editText_search.background = resources.getDrawable(R.drawable.search_rectangle_green)
+            }
+            else {
+                editText_search.background = resources.getDrawable(R.drawable.search_rectangle_white)
+            }
+        })
+    }
+
+    fun btnFiltreOnClick() {
+        btnFiltre.setOnClickListener(View.OnClickListener {
+            val bottomSheet = BottomSheetFilters(this, filterListHere)
+            fragmentManager?.let { it1 -> bottomSheet.show(it1, "BottomSheetFilters") }
+        })
+    }
+
+    override fun onOptionClick(filterList:ArrayList<String>) {
+        setFiltersString(filterList)
+    }
+
+    private fun setFiltersString(filterList: ArrayList<String>){
+        filterString=""
+        filterListHere=filterList
+        var kolkoBolo = 0
+        val kolkoJe = filterList.size
+        filterString="("
+        for (filter in filterList){
+            kolkoBolo++
+            if(kolkoBolo==kolkoJe){
+                val singleFilter = "typPodniku:$filter"
+                filterString += singleFilter
+            }
+            else{
+                val singleFilter = "typPodniku:$filter OR "
+                filterString += singleFilter
+            }
+        }
+        filterString+= ")"
+    }
 
     fun search(content: String) {
+
         val query = Query(content)
             .setAttributesToRetrieve("username","objectID")
-            .setHitsPerPage(50)
+            .setHitsPerPage(50).setFilters(filterString)
         index.searchAsync(query) { jsonObject, e ->
             try {
                 val hits = jsonObject!!.getJSONArray("hits")
@@ -99,6 +150,7 @@ class SearchFragment : Fragment() {
         }
         adapter?.setNewData(usernames,objectIDs)
     }
+
 
 //    fun setEditText(){
 //        editText_search.addTextChangedListener(object : TextWatcher {

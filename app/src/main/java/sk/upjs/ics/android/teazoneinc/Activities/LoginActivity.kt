@@ -52,12 +52,6 @@ class LoginActivity : AppCompatActivity() {
         
     }
 
-    override fun onStart() {
-        super.onStart()
-        val currentUser = authAdapter.currentUser
-        if (currentUser==null){}
-        else { setUserToLocal(currentUser) }
-    }
 
     fun setUserToLocal(user:FirebaseUser){
         dbAdapterUser.setFirebaseUserToLocalUser(user,object : DbInterface{

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvKomentare"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/colorGrey"
+        android:fontFamily="@font/source_sans_pro"
+        android:gravity="center"
+        android:padding="5sp"
+        android:text="Komentáre"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvComments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:itemCount="4"
+                tools:listitem="@layout/list_item_comment" />
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/tiCommentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="80sp"
+        android:visibility="visible">
+
+        <EditText
+            android:id="@+id/tiComment"
+            android:layout_width="300sp"
+            android:layout_height="40sp"
+            android:layout_gravity="center"
+            android:layout_marginStart="20sp"
+            android:background="@drawable/textview_border_green"
+            android:ems="10"
+            android:gravity="start"
+            android:hint="Pridať komentár"
+            android:inputType="textLongMessage"
+            android:paddingTop="10sp"
+            android:textColor="@color/colorGreyLogo"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnAddComment"
+            android:layout_width="36sp"
+            android:layout_height="36sp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20sp"
+            android:layout_marginRight="20sp"
+            android:background="@drawable/ic_add_comment" />
+
+    </LinearLayout>
+</LinearLayout>
