@@ -15,9 +15,11 @@ import com.firebase.ui.firestore.paging.FirestorePagingAdapter
 import com.firebase.ui.firestore.paging.FirestorePagingOptions
 import com.firebase.ui.firestore.paging.LoadingState
 import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.fragment_home_screen.*
+import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.Storage.StorageAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterPost
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
@@ -33,6 +35,7 @@ class HomeScreenFragment : Fragment() {
     val authAdapter = AuthAdapter()
     val dbAdapterUser = DbAdapterUser()
     val dbAdapterPost = DbAdapterPost()
+    val storageAdapter=StorageAdapter()
 
     private lateinit var mAdapter: FirestorePagingAdapter<DataPost, PostViewHolder>
     private val mFirestore = FirebaseFirestore.getInstance()
@@ -90,6 +93,8 @@ class HomeScreenFragment : Fragment() {
 
     private fun setupAdapter(list: MutableList<String>) {
 
+
+
         val mPostsCollection = mFirestore.collection("Posts").whereIn("creatorID", list)
         val mQuery = mPostsCollection.orderBy("timeStamp", Query.Direction.DESCENDING)
 
@@ -108,8 +113,15 @@ class HomeScreenFragment : Fragment() {
 
         // Instantiate Paging Adapter
         mAdapter = object : FirestorePagingAdapter<DataPost, PostViewHolder>(options) {
+            var posts = java.util.ArrayList<DataPost>()
             override fun onBindViewHolder(p0: PostViewHolder, p1: Int, p2: DataPost) {
-                p0.bind(p2, context, fragmentManager!!)
+                posts.add(p2)
+                p0.bind(posts[p1], context, fragmentManager!!)
+                if (!p2.postPic.equals(null)) {
+                    storageAdapter.getPostPic(p2, EventListener{post,_->
+                        updatePostWithPhoto(post!!)
+                    })
+                }
             }
 
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
@@ -120,6 +132,11 @@ class HomeScreenFragment : Fragment() {
             override fun onError(e: Exception) {
                 super.onError(e)
                 Log.e("MainActivity", e.message)
+            }
+
+            fun updatePostWithPhoto(post:DataPost){
+                posts.set(posts.indexOf(post),post)
+                notifyItemChanged(posts.indexOf(post))
             }
 
             override fun onLoadingStateChanged(state: LoadingState) {

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnFocusChangeListener
@@ -13,6 +14,13 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.algolia.search.saas.Client
 import com.algolia.search.saas.Query
+import io.reactivex.rxjava3.annotations.NonNull
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.core.ObservableOnSubscribe
+import io.reactivex.rxjava3.core.Observer
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.Disposable
+import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_fragment_search.*
 import org.json.JSONArray
 import org.json.JSONException
@@ -22,10 +30,13 @@ import sk.upjs.ics.android.teazoneinc.Adapters.SearchResultAdapter
 import sk.upjs.ics.android.teazoneinc.Dialogs.BottomSheetFilters
 import sk.upjs.ics.android.teazoneinc.R
 import java.util.*
+import java.util.concurrent.TimeUnit
 import kotlin.collections.ArrayList
 
 
 class SearchFragment : Fragment(), BottomSheetFilters.BottomSheetListener {
+
+    private var disposables = CompositeDisposable()
 
     internal var client = Client("085AYVSODT", "22c915636c1f40328cbb89a1da7a531a")
     internal var index = client.getIndex("FirmaUsers_Users")
@@ -43,10 +54,50 @@ class SearchFragment : Fragment(), BottomSheetFilters.BottomSheetListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setOnClickSearch()
-        setEditText()
+//        setEditText()
+        setObservableSearchView()
         setUpRecyclerView()
         btnFiltreOnClick()
 
+    }
+
+    private fun setObservableSearchView(){
+        var observableQueryText = Observable.create(ObservableOnSubscribe<String> { emitter ->
+            editText_search.addTextChangedListener(object : TextWatcher {
+                override fun afterTextChanged(p0: Editable?) {
+
+                }
+
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    if (!emitter.isDisposed){
+                        emitter.onNext(p0.toString())
+                    }
+                }
+            })
+        })
+            .debounce(500,TimeUnit.MILLISECONDS)
+            .subscribeOn(Schedulers.io())
+
+        observableQueryText.subscribe(object : Observer<String> {
+            override fun onSubscribe(d: @NonNull Disposable?) {
+                Log.d("TAAAAAAAAG", "onSubscribe: called.")
+                disposables.add(d!!)
+            }
+
+            override fun onNext(search: @NonNull String?) {
+                search(search!!)
+            }
+
+            override fun onError(e: @NonNull Throwable?) {
+                Log.e("TAAAAAAAAg", "error", e)
+            }
+
+            override fun onComplete() {}
+        })
     }
 
     private fun setUpRecyclerView() {
@@ -156,6 +207,11 @@ class SearchFragment : Fragment(), BottomSheetFilters.BottomSheetListener {
             objectIDs.add(objectID)
         }
         adapter?.setNewData(usernames,objectIDs)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        disposables.clear()
     }
 
 

@@ -73,7 +73,7 @@ class PostsAdapter(context: Context?,fragmentManager: FragmentManager) : Recycle
             storageAdapter.getProfilePic(post.creatorProfilePic!!, ivProfilePic)
 
             if (!post.postPic.equals(null)) {
-                storageAdapter.getPostPic(post.postPic!!, ivPostPic)
+                storageAdapter.getPostPicForOtherThanHome(post.postPic!!, ivPostPic)
             }
         }
 

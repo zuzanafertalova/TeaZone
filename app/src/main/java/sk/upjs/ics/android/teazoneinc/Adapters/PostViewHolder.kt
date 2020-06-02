@@ -1,6 +1,7 @@
 package sk.upjs.ics.android.teazoneinc.Adapters
 
 import android.content.Context
+import android.graphics.BitmapFactory
 import android.view.View
 import android.widget.*
 import androidx.core.content.ContextCompat
@@ -55,9 +56,18 @@ class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         tvTimeAdded.text=dateFormat.format(date)
         storageAdapter.getProfilePic(post.creatorProfilePic!!, ivProfilePic)
 
-        if (!post.postPic.equals(null)) {
-            storageAdapter.getPostPic(post.postPic!!, ivPostPic)
+//        if (!post.postPic.equals(null)) {
+//            storageAdapter.getPostPic(post.postPic!!, ivPostPic)
+//        }
+
+        if (post.photoBytes == null){
+
         }
+        else{
+            val bitmap = BitmapFactory.decodeByteArray(post.photoBytes,0,post.photoBytes!!.size)
+            ivPostPic.setImageBitmap(bitmap)
+        }
+
     }
 
     private fun ifLikeButtonClicked(context: Context?, likesIDs: ArrayList<String>){

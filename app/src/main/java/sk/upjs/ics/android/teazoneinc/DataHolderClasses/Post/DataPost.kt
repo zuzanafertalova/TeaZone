@@ -16,6 +16,7 @@ class DataPost{
     var postPic : String? = null
     var creatorProfilePic : String? = null
     var timeStamp : Date?= null
+    var photoBytes : ByteArray? = null
 
     constructor()
 

@@ -10,12 +10,14 @@ import android.os.Environment
 import android.util.Log
 import android.widget.ImageView
 import com.google.firebase.firestore.EventListener
+import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 import de.hdodenhof.circleimageview.CircleImageView
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.authentication.AuthAdapter
 import sk.upjs.ics.android.teazoneinc.Adapters.Firebase.db.DbAdapterUser
+import sk.upjs.ics.android.teazoneinc.DataHolderClasses.Post.DataPost
 import java.io.ByteArrayOutputStream
 import java.util.*
 
@@ -46,15 +48,28 @@ class StorageAdapter{
             }
     }
 
-    fun getPostPic(pic : String, imageView : ImageView){
-        val picRef = postPicRef?.child(pic)
+    fun getPostPic(post:DataPost,eventListener: EventListener<DataPost>){
+        val picRef = postPicRef?.child(post.postPic!!)
 
         val bytes: Long= 1024*1024*5
         picRef?.getBytes(bytes)
             ?.addOnSuccessListener {
+                post.photoBytes=it
+                eventListener.onEvent(post, null)
             val bitmap = BitmapFactory.decodeByteArray(it,0,it.size)
-            imageView.setImageBitmap(bitmap)
+//            imageView.setImageBitmap(bitmap)
         }
+    }
+
+    fun getPostPicForOtherThanHome(postPic:String, imageView : ImageView){
+        val picRef = postPicRef?.child(postPic!!)
+
+        val bytes: Long= 1024*1024*5
+        picRef?.getBytes(bytes)
+            ?.addOnSuccessListener {
+                val bitmap = BitmapFactory.decodeByteArray(it,0,it.size)
+                imageView.setImageBitmap(bitmap)
+            }
     }
 
     fun uploadPostPic(imageViewPic: ImageView) : String{
